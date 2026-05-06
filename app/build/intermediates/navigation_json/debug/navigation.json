@@ -1,0 +1,17 @@
+[
+  {
+    "name": "nav_graph_admin",
+    "navigationXmlIds": [],
+    "deepLinks": []
+  },
+  {
+    "name": "nav_graph_comprador",
+    "navigationXmlIds": [],
+    "deepLinks": []
+  },
+  {
+    "name": "nav_graph_vendedor",
+    "navigationXmlIds": [],
+    "deepLinks": []
+  }
+]

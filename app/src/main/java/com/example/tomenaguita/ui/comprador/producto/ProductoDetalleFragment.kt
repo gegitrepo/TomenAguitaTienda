@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import com.example.tomenaguita.R
 import com.example.tomenaguita.data.database.entity.Producto
 import com.example.tomenaguita.databinding.FragmentProductoDetalleBinding
 import com.example.tomenaguita.utils.Constants

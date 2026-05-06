@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_admin"
+    app:startDestination="@id/dashboardFragment">
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.example.tomenaguita.ui.admin.dashboard.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/listaUsuariosFragment"
+        android:name="com.example.tomenaguita.ui.admin.usuarios.ListaUsuariosFragment"
+        android:label="@string/title_users"
+        tools:layout="@layout/fragment_lista_usuarios">
+        <action
+            android:id="@+id/action_lista_to_crear"
+            app:destination="@id/crearUsuarioFragment" />
+        <action
+            android:id="@+id/action_lista_to_editar"
+            app:destination="@id/editarUsuarioFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/crearUsuarioFragment"
+        android:name="com.example.tomenaguita.ui.admin.usuarios.CrearUsuarioFragment"
+        android:label="@string/title_create_user"
+        tools:layout="@layout/fragment_crear_usuario" />
+
+    <fragment
+        android:id="@+id/editarUsuarioFragment"
+        android:name="com.example.tomenaguita.ui.admin.usuarios.EditarUsuarioFragment"
+        android:label="@string/title_edit_user"
+        tools:layout="@layout/fragment_editar_usuario">
+        <argument
+            android:name="usuarioId"
+            app:argType="long"
+            android:defaultValue="-1L" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/gestionProductosFragment"
+        android:name="com.example.tomenaguita.ui.admin.productos.GestionProductosFragment"
+        android:label="@string/title_products"
+        tools:layout="@layout/fragment_gestion_productos" />
+
+    <fragment
+        android:id="@+id/reporteVentasFragment"
+        android:name="com.example.tomenaguita.ui.admin.reportes.ReporteVentasFragment"
+        android:label="@string/title_reports"
+        tools:layout="@layout/fragment_reporte_ventas" />
+
+</navigation>

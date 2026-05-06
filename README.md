@@ -54,8 +54,6 @@ El objetivo académico de la aplicación es demostrar el dominio de los siguient
 - Arquitectura por capas: datos, dominio y presentación
 - Control de acceso por **roles de usuario**
 
-> En su estado actual (**Actividad 3 — Capa de presentación**), todos los datos mostrados son simulados y no se realizan operaciones reales sobre la base de datos. La infraestructura de Room, DAOs y repositorios está implementada y lista para ser conectada en una actividad futura.
-
 ---
 
 ## Características principales
@@ -279,6 +277,8 @@ El diseño sigue las guías de **Material Design 3** con el tema base `Theme.Mat
 | `background` | `#FAFAFA` | Fondo general de pantallas |
 | `surface` | `#FFFFFF` | Tarjetas, diálogos, BottomBar |
 | `on_primary` | `#FFFFFF` | Texto sobre elementos primarios |
+| `on_primary_dim` | `#CCFFFFFF` | Texto secundario sobre fondo primario (80% opacidad) |
+| `on_primary_soft` | `#BBFFFFFF` | Texto terciario / hints sobre fondo primario (73% opacidad) |
 | `on_background` | `#212121` | Texto principal |
 | `on_background_secondary` | `#757575` | Texto secundario / subtítulos |
 | `divider` | `#BDBDBD` | Separadores |
@@ -299,8 +299,17 @@ El splash screen usa un gradiente diagonal (135°) de `#0D47A1` → `#00BCD4`.
 
 ### Tipografía
 - Fuente del sistema (`sans-serif`) en todos los tamaños
-- Escala: `text_small` 12sp · `text_body` 14sp · `text_medium` 16sp · `text_large` 18sp · `text_title` 22sp · `text_headline` 28sp
+- Escala base: `text_small` 12sp · `text_body` 14sp · `text_medium` 16sp · `text_large` 18sp · `text_title` 22sp · `text_headline` 28sp
+- Escala extendida: `text_login_title` 28sp · `text_splash_title` 36sp · `text_card_metric` 32sp · `text_card_metric_large` 28sp · `text_card_metric_medium` 20sp
 - Precios en negrita con color `primary`
+
+### Dimensiones de íconos e imágenes
+| Token | Valor | Uso |
+|---|---|---|
+| `icon_size_logo` | 80dp | Logo en pantalla de login |
+| `icon_size_splash` | 120dp | Ícono principal en splash screen |
+| `product_thumb_size` | 110dp | Miniatura de producto en listas |
+| `margin_top_hero` | 48dp | Margen superior de la sección hero en splash/login |
 
 ### Componentes de UI personalizados
 | Estilo | Base Material3 | Personalización |
@@ -367,7 +376,7 @@ El splash screen usa un gradiente diagonal (135°) de `#0D47A1` → `#00BCD4`.
 
 ## Credenciales de demostración
 
-Dado que la aplicación usa datos simulados, las credenciales de acceso están hardcodeadas. La contraseña no es validada en Actividad 3 — solo el correo determina el rol.
+Dado que la aplicación usa datos simulados, las credenciales de acceso están definidas en `strings.xml` (datos de usuario) y gestionadas en `SessionManager`. La contraseña no es validada en Actividad 3 — solo el correo determina el rol.
 
 | Rol | Correo | Contraseña |
 |---|---|---|
@@ -412,8 +421,6 @@ git clone https://github.com/gegitrepo/TomenAguitaTienda.git
 # 4. Ejecutar en dispositivo o emulador (API 24+)
 #    Run → Run 'app'
 ```
-
-> El primer build puede tardar 3–5 minutos mientras Gradle descarga dependencias y SafeArgs genera las clases de navegación.
 
 ---
 

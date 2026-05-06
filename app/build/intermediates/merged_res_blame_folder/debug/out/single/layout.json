@@ -1,0 +1,202 @@
+[
+    {
+        "merged": "com.example.tomenaguita.app-mergeDebugResources-59:/layout/item_carrito.xml",
+        "source": "com.example.tomenaguita.app-main-62:/layout/item_carrito.xml"
+    },
+    {
+        "merged": "com.example.tomenaguita.app-mergeDebugResources-59:/layout/fragment_pasarela_pago.xml",
+        "source": "com.example.tomenaguita.app-main-62:/layout/fragment_pasarela_pago.xml"
+    },
+    {
+        "merged": "com.example.tomenaguita.app-mergeDebugResources-59:/layout/item_producto.xml",
+        "source": "com.example.tomenaguita.app-main-62:/layout/item_producto.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\fragment_perfil_vendedor.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\fragment_perfil_vendedor.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\nav_header_admin.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\nav_header_admin.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\item_pedido.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\item_pedido.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\activity_vendedor_main.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\activity_vendedor_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\fragment_crear_editar_producto.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\fragment_crear_editar_producto.xml"
+    },
+    {
+        "merged": "com.example.tomenaguita.app-mergeDebugResources-59:/layout/activity_login.xml",
+        "source": "com.example.tomenaguita.app-main-62:/layout/activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\fragment_mis_productos.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\fragment_mis_productos.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\item_usuario.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\item_usuario.xml"
+    },
+    {
+        "merged": "com.example.tomenaguita.app-mergeDebugResources-59:/layout/activity_forgot_password.xml",
+        "source": "com.example.tomenaguita.app-main-62:/layout/activity_forgot_password.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\fragment_editar_usuario.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\fragment_editar_usuario.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\fragment_producto_detalle.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\fragment_producto_detalle.xml"
+    },
+    {
+        "merged": "com.example.tomenaguita.app-mergeDebugResources-59:/layout/fragment_perfil.xml",
+        "source": "com.example.tomenaguita.app-main-62:/layout/fragment_perfil.xml"
+    },
+    {
+        "merged": "com.example.tomenaguita.app-mergeDebugResources-59:/layout/fragment_detalle_pedido.xml",
+        "source": "com.example.tomenaguita.app-main-62:/layout/fragment_detalle_pedido.xml"
+    },
+    {
+        "merged": "com.example.tomenaguita.app-mergeDebugResources-59:/layout/fragment_reporte_ventas.xml",
+        "source": "com.example.tomenaguita.app-main-62:/layout/fragment_reporte_ventas.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\item_carrito.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\item_carrito.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\fragment_perfil.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\fragment_perfil.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\activity_splash.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\activity_splash.xml"
+    },
+    {
+        "merged": "com.example.tomenaguita.app-mergeDebugResources-59:/layout/fragment_perfil_vendedor.xml",
+        "source": "com.example.tomenaguita.app-main-62:/layout/fragment_perfil_vendedor.xml"
+    },
+    {
+        "merged": "com.example.tomenaguita.app-mergeDebugResources-59:/layout/fragment_dashboard.xml",
+        "source": "com.example.tomenaguita.app-main-62:/layout/fragment_dashboard.xml"
+    },
+    {
+        "merged": "com.example.tomenaguita.app-mergeDebugResources-59:/layout/item_usuario.xml",
+        "source": "com.example.tomenaguita.app-main-62:/layout/item_usuario.xml"
+    },
+    {
+        "merged": "com.example.tomenaguita.app-mergeDebugResources-59:/layout/activity_splash.xml",
+        "source": "com.example.tomenaguita.app-main-62:/layout/activity_splash.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\fragment_detalle_pedido_vendedor.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\fragment_detalle_pedido_vendedor.xml"
+    },
+    {
+        "merged": "com.example.tomenaguita.app-mergeDebugResources-59:/layout/item_pedido.xml",
+        "source": "com.example.tomenaguita.app-main-62:/layout/item_pedido.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\activity_login.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\fragment_resumen_pedido.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\fragment_resumen_pedido.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\fragment_pasarela_pago.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\fragment_pasarela_pago.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\fragment_pedidos_recibidos.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\fragment_pedidos_recibidos.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\fragment_lista_usuarios.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\fragment_lista_usuarios.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\activity_comprador_main.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\activity_comprador_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\fragment_editar_perfil.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\fragment_editar_perfil.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\fragment_carrito.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\fragment_carrito.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\activity_admin_main.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\activity_admin_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\fragment_gestion_productos.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\fragment_gestion_productos.xml"
+    },
+    {
+        "merged": "com.example.tomenaguita.app-mergeDebugResources-59:/layout/fragment_historial_pedidos.xml",
+        "source": "com.example.tomenaguita.app-main-62:/layout/fragment_historial_pedidos.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\item_producto.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\item_producto.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\fragment_detalle_pedido.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\fragment_detalle_pedido.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\activity_register.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\activity_register.xml"
+    },
+    {
+        "merged": "com.example.tomenaguita.app-mergeDebugResources-59:/layout/fragment_pedidos_recibidos.xml",
+        "source": "com.example.tomenaguita.app-main-62:/layout/fragment_pedidos_recibidos.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\activity_forgot_password.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\activity_forgot_password.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\fragment_dashboard.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\fragment_dashboard.xml"
+    },
+    {
+        "merged": "com.example.tomenaguita.app-mergeDebugResources-59:/layout/nav_header_admin.xml",
+        "source": "com.example.tomenaguita.app-main-62:/layout/nav_header_admin.xml"
+    },
+    {
+        "merged": "com.example.tomenaguita.app-mergeDebugResources-59:/layout/fragment_detalle_pedido_vendedor.xml",
+        "source": "com.example.tomenaguita.app-main-62:/layout/fragment_detalle_pedido_vendedor.xml"
+    },
+    {
+        "merged": "com.example.tomenaguita.app-mergeDebugResources-59:/layout/fragment_resumen_pedido.xml",
+        "source": "com.example.tomenaguita.app-main-62:/layout/fragment_resumen_pedido.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\fragment_crear_usuario.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\fragment_crear_usuario.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\fragment_home.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\fragment_home.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\fragment_reporte_ventas.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\fragment_reporte_ventas.xml"
+    },
+    {
+        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-mergeDebugResources-59:\\layout\\fragment_historial_pedidos.xml",
+        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.2\\com.example.tomenaguita.app-main-62:\\layout\\fragment_historial_pedidos.xml"
+    }
+]

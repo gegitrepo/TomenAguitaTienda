@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.tomenaguita.R
-import com.example.tomenaguita.R
 import com.example.tomenaguita.databinding.FragmentResumenPedidoBinding
 import com.example.tomenaguita.utils.toCOP
 
