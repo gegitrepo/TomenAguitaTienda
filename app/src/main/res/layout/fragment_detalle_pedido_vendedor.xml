@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_medium">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardComprador"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/corner_radius_medium"
+            app:cardElevation="@dimen/card_elevation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_medium">
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_buyer_info" android:textColor="@color/primary" android:textStyle="bold" android:textSize="@dimen/text_medium" />
+                <TextView android:id="@+id/tvNombreComprador" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="Carlos Comprador" android:textColor="@color/on_background" />
+                <TextView android:id="@+id/tvTelefonoComprador" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="3001234567" android:textColor="@color/on_background_secondary" />
+                <TextView android:id="@+id/tvDireccionComprador" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Calle 123 # 45-67, Bogotá" android:textColor="@color/on_background_secondary" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tvProductosLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:text="Productos del pedido"
+            android:textColor="@color/on_background"
+            android:textSize="@dimen/text_medium"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardComprador" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvProductosPedido"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:nestedScrollingEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvProductosLabel" />
+
+        <TextView
+            android:id="@+id/tvTotalLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:text="Total del pedido:"
+            android:textColor="@color/on_background"
+            android:textSize="@dimen/text_medium"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvProductosPedido" />
+
+        <TextView
+            android:id="@+id/tvTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:text="$0"
+            android:textColor="@color/primary"
+            android:textSize="@dimen/text_large"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvProductosPedido" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnMarcarEnviado"
+            style="@style/Widget.TomenAguita.Button"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginTop="@dimen/margin_large"
+            android:text="@string/btn_mark_shipped"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTotalLabel" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnMarcarEntregado"
+            style="@style/Widget.TomenAguita.Button.Outlined"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_large"
+            android:text="@string/btn_mark_delivered"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnMarcarEnviado" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

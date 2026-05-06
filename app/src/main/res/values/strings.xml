@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tomen Agüita</string>
+    <string name="app_slogan">Tienda de Agua Embotellada</string>
+
+    <!-- Auth -->
+    <string name="hint_email">Correo electrónico</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="hint_confirm_password">Confirmar contraseña</string>
+    <string name="hint_nombre">Nombre completo</string>
+    <string name="hint_telefono">Teléfono (10 dígitos)</string>
+    <string name="btn_login">Iniciar sesión</string>
+    <string name="btn_register">Registrarse</string>
+    <string name="btn_send_link">Enviar enlace</string>
+    <string name="btn_biometric">Entrar con huella</string>
+    <string name="link_forgot_password">¿Olvidaste tu contraseña?</string>
+    <string name="link_no_account">¿No tienes cuenta? Regístrate</string>
+    <string name="link_have_account">¿Ya tienes cuenta? Inicia sesión</string>
+    <string name="link_back_to_login">Volver al inicio de sesión</string>
+    <string name="label_terms">Acepto los términos y condiciones</string>
+    <string name="title_login">Iniciar sesión</string>
+    <string name="title_register">Crear cuenta</string>
+    <string name="title_forgot_password">Recuperar contraseña</string>
+    <string name="desc_forgot_password">Ingresa tu correo y te enviaremos un enlace para restablecer tu contraseña.</string>
+
+    <!-- Home Comprador -->
+    <string name="title_home">Inicio</string>
+    <string name="title_catalog">Catálogo</string>
+    <string name="title_cart">Carrito</string>
+    <string name="title_orders">Mis pedidos</string>
+    <string name="title_profile">Perfil</string>
+    <string name="label_featured_products">Productos destacados</string>
+    <string name="label_search">Buscar productos…</string>
+    <string name="label_welcome">¡Bienvenido!</string>
+
+    <!-- Producto -->
+    <string name="label_price">Precio</string>
+    <string name="label_stock">Stock disponible</string>
+    <string name="label_presentation">Presentación</string>
+    <string name="label_description">Descripción</string>
+    <string name="label_quantity">Cantidad</string>
+    <string name="btn_add_to_cart">Agregar al carrito</string>
+    <string name="btn_buy_now">Comprar ahora</string>
+
+    <!-- Carrito -->
+    <string name="label_subtotal">Subtotal</string>
+    <string name="label_shipping">Envío</string>
+    <string name="label_total">Total</string>
+    <string name="btn_proceed_payment">Proceder al pago</string>
+    <string name="btn_clear_cart">Vaciar carrito</string>
+    <string name="label_empty_cart">Tu carrito está vacío</string>
+    <string name="label_free_shipping">Envío gratis</string>
+
+    <!-- Pedido -->
+    <string name="title_order_summary">Resumen del pedido</string>
+    <string name="title_payment">Pasarela de pagos</string>
+    <string name="title_order_history">Historial de pedidos</string>
+    <string name="title_order_detail">Detalle del pedido</string>
+    <string name="btn_confirm_payment">Confirmar y pagar</string>
+    <string name="btn_pay">Pagar</string>
+    <string name="label_delivery_address">Dirección de entrega</string>
+    <string name="label_payment_method">Método de pago</string>
+    <string name="label_order_number">N° de pedido</string>
+
+    <!-- Estados -->
+    <string name="status_pending">Pendiente</string>
+    <string name="status_paid">Pagado</string>
+    <string name="status_shipped">Enviado</string>
+    <string name="status_delivered">Entregado</string>
+    <string name="status_cancelled">Cancelado</string>
+
+    <!-- Perfil -->
+    <string name="btn_edit_profile">Editar perfil</string>
+    <string name="btn_logout">Cerrar sesión</string>
+    <string name="btn_save">Guardar cambios</string>
+    <string name="label_photo_profile">Foto de perfil</string>
+    <string name="btn_camera">Cámara</string>
+    <string name="btn_gallery">Galería</string>
+
+    <!-- Vendedor -->
+    <string name="title_my_products">Mis productos</string>
+    <string name="title_received_orders">Pedidos recibidos</string>
+    <string name="title_create_product">Crear producto</string>
+    <string name="title_edit_product">Editar producto</string>
+    <string name="btn_save_product">Guardar producto</string>
+    <string name="label_available">Disponible</string>
+    <string name="btn_mark_shipped">Marcar como enviado</string>
+    <string name="btn_mark_delivered">Marcar como entregado</string>
+    <string name="label_buyer_info">Información del comprador</string>
+
+    <!-- Admin -->
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_users">Usuarios</string>
+    <string name="title_products">Productos</string>
+    <string name="title_reports">Reportes</string>
+    <string name="title_create_user">Crear usuario</string>
+    <string name="title_edit_user">Editar usuario</string>
+    <string name="btn_create_user">Crear usuario</string>
+    <string name="label_active">Activo</string>
+    <string name="label_role">Rol</string>
+    <string name="label_total_users">Total usuarios</string>
+    <string name="label_total_products">Total productos</string>
+    <string name="label_total_orders">Total pedidos</string>
+    <string name="label_total_sales">Ventas totales</string>
+
+    <!-- General -->
+    <string name="btn_cancel">Cancelar</string>
+    <string name="btn_delete">Eliminar</string>
+    <string name="btn_confirm">Confirmar</string>
+    <string name="label_no_results">Sin resultados</string>
+    <string name="label_loading">Cargando…</string>
+    <string name="error_field_required">Este campo es obligatorio</string>
+    <string name="error_email_invalid">Correo electrónico inválido</string>
+    <string name="error_password_short">Mínimo 8 caracteres</string>
+    <string name="error_passwords_no_match">Las contraseñas no coinciden</string>
+    <string name="error_phone_invalid">Teléfono inválido (10 dígitos, empieza con 3)</string>
+    <string name="msg_login_success">¡Bienvenido!</string>
+    <string name="msg_logout_confirm">¿Deseas cerrar sesión?</string>
+    <string name="msg_delete_confirm">¿Estás seguro de eliminar?</string>
+    <string name="msg_saved">Guardado correctamente</string>
+    <string name="msg_added_to_cart">Producto agregado al carrito</string>
+    <string name="msg_order_placed">¡Pedido realizado con éxito!</string>
+    <string name="content_desc_product_image">Imagen del producto</string>
+    <string name="content_desc_logo">Logo Tomen Agüita</string>
+</resources>

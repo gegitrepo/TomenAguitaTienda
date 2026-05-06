@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/margin_medium"
+    android:layout_marginBottom="@dimen/margin_medium"
+    app:cardCornerRadius="@dimen/corner_radius_medium"
+    app:cardElevation="@dimen/card_elevation">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_small">
+
+        <ImageView
+            android:id="@+id/ivProducto"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_banner_placeholder"
+            android:contentDescription="@string/content_desc_product_image"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvNombre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:text="Botella personal"
+            android:textColor="@color/on_background"
+            android:textSize="@dimen/text_body"
+            android:textStyle="bold"
+            android:maxLines="1"
+            app:layout_constraintEnd_toStartOf="@id/btnEliminar"
+            app:layout_constraintStart_toEndOf="@id/ivProducto"
+            app:layout_constraintTop_toTopOf="@id/ivProducto" />
+
+        <TextView
+            android:id="@+id/tvPrecioUnitario"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginTop="2dp"
+            android:text="$1.500 c/u"
+            android:textColor="@color/on_background_secondary"
+            android:textSize="@dimen/text_body"
+            app:layout_constraintEnd_toStartOf="@id/btnEliminar"
+            app:layout_constraintStart_toEndOf="@id/ivProducto"
+            app:layout_constraintTop_toBottomOf="@id/tvNombre" />
+
+        <LinearLayout
+            android:id="@+id/llCantidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_small"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="@id/ivProducto"
+            app:layout_constraintStart_toEndOf="@id/ivProducto">
+
+            <ImageButton android:id="@+id/btnMinus" android:layout_width="28dp" android:layout_height="28dp" android:src="@android:drawable/ic_input_delete" android:background="@drawable/bg_button_primary" android:padding="4dp" android:contentDescription="-" />
+            <TextView android:id="@+id/tvCantidad" android:layout_width="36dp" android:layout_height="wrap_content" android:gravity="center" android:text="1" android:textColor="@color/on_background" android:textStyle="bold" />
+            <ImageButton android:id="@+id/btnPlus" android:layout_width="28dp" android:layout_height="28dp" android:src="@android:drawable/ic_input_add" android:background="@drawable/bg_button_primary" android:padding="4dp" android:contentDescription="+" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvSubtotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:text="$1.500"
+            android:textColor="@color/primary"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/ivProducto"
+            app:layout_constraintEnd_toStartOf="@id/btnEliminar" />
+
+        <ImageButton
+            android:id="@+id/btnEliminar"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@android:drawable/ic_delete"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Eliminar"
+            android:tint="@color/error"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

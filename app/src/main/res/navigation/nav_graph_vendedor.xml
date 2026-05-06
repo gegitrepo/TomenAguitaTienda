@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_vendedor"
+    app:startDestination="@id/misProductosFragment">
+
+    <fragment
+        android:id="@+id/misProductosFragment"
+        android:name="com.example.tomenaguita.ui.vendedor.productos.MisProductosFragment"
+        android:label="@string/title_my_products"
+        tools:layout="@layout/fragment_mis_productos">
+        <action
+            android:id="@+id/action_mis_productos_to_crear"
+            app:destination="@id/crearEditarProductoFragment" />
+        <action
+            android:id="@+id/action_mis_productos_to_editar"
+            app:destination="@id/crearEditarProductoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/crearEditarProductoFragment"
+        android:name="com.example.tomenaguita.ui.vendedor.productos.CrearEditarProductoFragment"
+        android:label="Producto"
+        tools:layout="@layout/fragment_crear_editar_producto">
+        <argument
+            android:name="productoId"
+            app:argType="long"
+            android:defaultValue="-1L" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/pedidosRecibidosFragment"
+        android:name="com.example.tomenaguita.ui.vendedor.pedidos.PedidosRecibidosFragment"
+        android:label="@string/title_received_orders"
+        tools:layout="@layout/fragment_pedidos_recibidos">
+        <action
+            android:id="@+id/action_pedidos_to_detalle"
+            app:destination="@id/detallePedidoVendedorFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detallePedidoVendedorFragment"
+        android:name="com.example.tomenaguita.ui.vendedor.pedidos.DetallePedidoVendedorFragment"
+        android:label="Detalle Pedido"
+        tools:layout="@layout/fragment_detalle_pedido_vendedor">
+        <argument
+            android:name="pedidoId"
+            app:argType="long"
+            android:defaultValue="-1L" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/perfilVendedorFragment"
+        android:name="com.example.tomenaguita.ui.vendedor.perfil.PerfilVendedorFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_perfil_vendedor" />
+
+</navigation>

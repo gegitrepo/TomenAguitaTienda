@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_comprador"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.tomenaguita.ui.comprador.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home_to_detalle"
+            app:destination="@id/productoDetalleFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/catalogoFragment"
+        android:name="com.example.tomenaguita.ui.comprador.catalogo.CatalogoFragment"
+        android:label="@string/title_catalog"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_catalogo_to_detalle"
+            app:destination="@id/productoDetalleFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/productoDetalleFragment"
+        android:name="com.example.tomenaguita.ui.comprador.producto.ProductoDetalleFragment"
+        android:label="Detalle Producto"
+        tools:layout="@layout/fragment_producto_detalle">
+        <argument
+            android:name="productoId"
+            app:argType="long"
+            android:defaultValue="-1L" />
+        <action
+            android:id="@+id/action_detalle_to_carrito"
+            app:destination="@id/carritoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/carritoFragment"
+        android:name="com.example.tomenaguita.ui.comprador.carrito.CarritoFragment"
+        android:label="@string/title_cart"
+        tools:layout="@layout/fragment_carrito">
+        <action
+            android:id="@+id/action_carrito_to_resumen"
+            app:destination="@id/resumenPedidoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/resumenPedidoFragment"
+        android:name="com.example.tomenaguita.ui.comprador.pago.ResumenPedidoFragment"
+        android:label="@string/title_order_summary"
+        tools:layout="@layout/fragment_resumen_pedido">
+        <action
+            android:id="@+id/action_resumen_to_pago"
+            app:destination="@id/pasarelaPagoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/pasarelaPagoFragment"
+        android:name="com.example.tomenaguita.ui.comprador.pago.PasarelaPagoFragment"
+        android:label="@string/title_payment"
+        tools:layout="@layout/fragment_pasarela_pago">
+        <action
+            android:id="@+id/action_pago_to_historial"
+            app:destination="@id/historialPedidosFragment"
+            app:popUpTo="@id/homeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/historialPedidosFragment"
+        android:name="com.example.tomenaguita.ui.comprador.pedidos.HistorialPedidosFragment"
+        android:label="@string/title_order_history"
+        tools:layout="@layout/fragment_historial_pedidos">
+        <action
+            android:id="@+id/action_historial_to_detalle"
+            app:destination="@id/detallePedidoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detallePedidoFragment"
+        android:name="com.example.tomenaguita.ui.comprador.pedidos.DetallePedidoFragment"
+        android:label="@string/title_order_detail"
+        tools:layout="@layout/fragment_detalle_pedido">
+        <argument
+            android:name="pedidoId"
+            app:argType="long"
+            android:defaultValue="-1L" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/perfilFragment"
+        android:name="com.example.tomenaguita.ui.comprador.perfil.PerfilFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_perfil">
+        <action
+            android:id="@+id/action_perfil_to_editar"
+            app:destination="@id/editarPerfilFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editarPerfilFragment"
+        android:name="com.example.tomenaguita.ui.comprador.perfil.EditarPerfilFragment"
+        android:label="Editar Perfil"
+        tools:layout="@layout/fragment_editar_perfil" />
+
+</navigation>

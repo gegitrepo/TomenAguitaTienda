@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivProducto"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/product_image_height"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_banner_placeholder"
+            android:contentDescription="@string/content_desc_product_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardContent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-16dp"
+            android:background="@drawable/bg_rounded_card"
+            android:padding="@dimen/padding_large"
+            android:elevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivProducto">
+
+            <TextView
+                android:id="@+id/tvNombre"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Botella personal"
+                android:textColor="@color/on_background"
+                android:textSize="@dimen/text_title"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvPresentacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="300 ml"
+                android:textColor="@color/on_background_secondary"
+                android:textSize="@dimen/text_body"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvNombre" />
+
+            <TextView
+                android:id="@+id/tvPrecio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="$1.500"
+                android:textColor="@color/primary"
+                android:textSize="@dimen/text_title"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvNombre" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:background="@color/divider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvPresentacion" />
+
+            <TextView
+                android:id="@+id/tvDescLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:text="@string/label_description"
+                android:textColor="@color/on_background"
+                android:textSize="@dimen/text_medium"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider" />
+
+            <TextView
+                android:id="@+id/tvDescripcion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Agua purificada en botella personal de 300ml, ideal para llevar a cualquier lugar."
+                android:textColor="@color/on_background_secondary"
+                android:textSize="@dimen/text_body"
+                android:lineSpacingMultiplier="1.4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDescLabel" />
+
+            <TextView
+                android:id="@+id/tvStockLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:text="@string/label_stock"
+                android:textColor="@color/on_background"
+                android:textSize="@dimen/text_body"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDescripcion" />
+
+            <TextView
+                android:id="@+id/tvStock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:text="150 unidades"
+                android:textColor="@color/success"
+                android:textSize="@dimen/text_body"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDescripcion" />
+
+            <TextView
+                android:id="@+id/tvCantidadLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:text="@string/label_quantity"
+                android:textColor="@color/on_background"
+                android:textSize="@dimen/text_body"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvStockLabel" />
+
+            <ImageButton
+                android:id="@+id/btnMinus"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="@dimen/margin_small"
+                android:src="@android:drawable/ic_input_delete"
+                android:background="@drawable/bg_button_primary"
+                android:contentDescription="Reducir cantidad"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCantidadLabel" />
+
+            <TextView
+                android:id="@+id/tvCantidad"
+                android:layout_width="48dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="@dimen/margin_small"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@color/on_background"
+                android:textSize="@dimen/text_large"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/btnMinus"
+                app:layout_constraintTop_toBottomOf="@id/tvCantidadLabel" />
+
+            <ImageButton
+                android:id="@+id/btnPlus"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="@dimen/margin_small"
+                android:src="@android:drawable/ic_input_add"
+                android:background="@drawable/bg_button_primary"
+                android:contentDescription="Aumentar cantidad"
+                app:layout_constraintStart_toEndOf="@id/tvCantidad"
+                app:layout_constraintTop_toBottomOf="@id/tvCantidadLabel" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAgregarCarrito"
+                style="@style/Widget.TomenAguita.Button"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginTop="@dimen/margin_large"
+                android:text="@string/btn_add_to_cart"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnMinus" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
