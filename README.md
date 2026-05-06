@@ -187,6 +187,7 @@ app/src/main/
 │   │   │   ├── CarritoAdapter.kt
 │   │   │   ├── PedidoAdapter.kt
 │   │   │   ├── ProductoAdapter.kt
+│   │   │   ├── ProductoItem.kt         ← data class UI (separa entidad Room del adaptador)
 │   │   │   └── UsuarioAdapter.kt
 │   │   ├── admin/
 │   │   │   ├── AdminMainActivity.kt    ← DrawerLayout + Toolbar
@@ -307,6 +308,7 @@ El splash screen usa un gradiente diagonal (135°) de `#0D47A1` → `#00BCD4`.
 | `Widget.TomenAguita.Button` | `Widget.Material3.Button` | Alto 48dp, esquinas 12dp, sin mayúsculas |
 | `Widget.TomenAguita.Button.Outlined` | `Widget.Material3.Button.OutlinedButton` | Alto 48dp, esquinas 12dp |
 | `Widget.TomenAguita.TextInputLayout` | `Widget.Material3.TextInputLayout.OutlinedBox` | Esquinas 8dp, borde primario |
+| `Widget.TomenAguita.EditText` | `Widget.AppCompat.EditText` | Fondo personalizado, padding uniforme, alto 48dp |
 
 ---
 

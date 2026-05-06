@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.tomenaguita.data.database.entity.Producto
 import com.example.tomenaguita.databinding.FragmentGestionProductosBinding
 import com.example.tomenaguita.ui.adapter.ProductoAdapter
+import com.example.tomenaguita.ui.adapter.ProductoItem
 import com.example.tomenaguita.utils.Constants
 import com.example.tomenaguita.utils.showSnackbar
 
@@ -35,7 +35,7 @@ class GestionProductosFragment : Fragment() {
     }
 
     private fun getProductosDemo() = Constants.PRODUCTOS_DEMO.mapIndexed { i, (nombre, presentacion, precio) ->
-        Producto(id = (i + 1).toLong(), nombre = nombre, descripcion = "Agua purificada", presentacion = presentacion, precio = precio, stock = 100 + i * 10, vendedorId = 2L)
+        ProductoItem(id = (i + 1).toLong(), nombre = nombre, presentacion = presentacion, precio = precio, stock = 100 + i * 10, disponible = true)
     }
 
     override fun onDestroyView() {
