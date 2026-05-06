@@ -1,460 +1,433 @@
-# TomenAguita — Tienda Virtual de Agua Purificada
+# Tomen Agüita — Tienda de Agua Embotellada
 
-## Descripción del Proyecto
-
-TomenAguita es una aplicación móvil nativa Android para la venta de agua purificada en Colombia. Es un proyecto académico de la Fundación Universitaria Compensar desarrollado por Gonzalo E. González. La app opera como una tienda virtual con tres roles de usuario (Comprador, Vendedor, Administrador) y un catálogo de 8 presentaciones de agua.
+> **Proyecto académico** — Fundación Universitaria Compensar · Desarrollo de Aplicaciones Móviles
+>
+> Esta aplicación fue desarrollada con fines estrictamente educativos como parte de una actividad académica.
+> **No constituye una tienda real**, no procesa pagos reales y todos sus datos son simulados.
 
 ---
 
-## Stack Tecnológico
+## Tabla de contenidos
 
-| Aspecto | Tecnología |
+1. [Descripción general](#descripción-general)
+2. [Finalidad del proyecto](#finalidad-del-proyecto)
+3. [Características principales](#características-principales)
+4. [Roles de usuario](#roles-de-usuario)
+5. [Arquitectura del proyecto](#arquitectura-del-proyecto)
+6. [Jerarquía de archivos](#jerarquía-de-archivos)
+7. [Diseño y paleta de colores](#diseño-y-paleta-de-colores)
+8. [Bibliotecas utilizadas](#bibliotecas-utilizadas)
+9. [Permisos del dispositivo](#permisos-del-dispositivo)
+10. [Credenciales de demostración](#credenciales-de-demostración)
+11. [Instalación y configuración](#instalación-y-configuración)
+12. [Información académica](#información-académica)
+
+---
+
+## Descripción general
+
+**Tomen Agüita** es una aplicación Android para la gestión de una tienda de agua purificada embotellada en Colombia. Permite a compradores explorar y simular la compra de productos, a vendedores gestionar su catálogo y pedidos, y a administradores supervisar usuarios, productos y reportes de ventas.
+
+La app está desarrollada en **Kotlin** con arquitectura **MVVM**, base de datos local **Room**, navegación con **Jetpack Navigation Component + SafeArgs**, y sigue las guías de diseño de **Material Design 3**.
+
+| Dato | Valor |
 |---|---|
+| Plataforma | Android |
 | Lenguaje | Kotlin |
-| IDE | Android Studio |
-| Min SDK | API 24 (Android 7.0 Nougat) |
-| Target SDK | 34 (Android 14) |
-| UI Framework | Android Views/XML (NO Compose) |
-| Arquitectura | MVVM (Model-View-ViewModel) |
-| Base de datos | SQLite con Room |
-| Navegación | Jetpack Navigation Component (NavGraph + SafeArgs) |
-| Binding | ViewBinding |
-| Inyección de dependencias | Manual (o Hilt si se requiere) |
-| Async | Kotlin Coroutines + Flow |
+| SDK mínimo | API 24 (Android 7.0 Nougat) |
+| SDK objetivo | API 34 (Android 14) |
+| Arquitectura | MVVM (Model – View – ViewModel) |
+| ID de paquete | `com.example.tomenaguita` |
 
 ---
 
-## Paleta de Colores (extraer de mockups Figma)
+## Finalidad del proyecto
 
-Los colores deben extraerse del proyecto de Figma. Referencia general basada en la temática de agua purificada:
+El objetivo académico de la aplicación es demostrar el dominio de los siguientes conceptos del desarrollo de aplicaciones móviles nativas para Android:
 
-```xml
-<!-- res/values/colors.xml -->
-<!-- IMPORTANTE: Reemplazar estos valores con los colores EXACTOS de los mockups de Figma -->
-<resources>
-    <color name="primary">#1565C0</color>           <!-- Azul principal -->
-    <color name="primary_dark">#0D47A1</color>       <!-- Azul oscuro -->
-    <color name="primary_light">#42A5F5</color>      <!-- Azul claro -->
-    <color name="secondary">#00BCD4</color>          <!-- Cyan/turquesa -->
-    <color name="secondary_dark">#00838F</color>     <!-- Cyan oscuro -->
-    <color name="accent">#26A69A</color>             <!-- Teal accent -->
-    <color name="background">#FAFAFA</color>         <!-- Fondo claro -->
-    <color name="surface">#FFFFFF</color>            <!-- Superficie -->
-    <color name="error">#B00020</color>              <!-- Rojo error -->
-    <color name="success">#4CAF50</color>            <!-- Verde éxito -->
-    <color name="warning">#FFA000</color>            <!-- Naranja advertencia -->
-    <color name="on_primary">#FFFFFF</color>         <!-- Texto sobre primary -->
-    <color name="on_background">#212121</color>      <!-- Texto principal -->
-    <color name="on_background_secondary">#757575</color> <!-- Texto secundario -->
-    <color name="divider">#BDBDBD</color>            <!-- Líneas divisoras -->
+- Diseño de interfaces con **XML Views** y **Material Design 3**
+- Implementación del patrón **MVVM** con `ViewModel`, `LiveData` y `Flow`
+- Gestión de base de datos local con **Room / SQLite**
+- Navegación entre pantallas con **Jetpack Navigation Component** y **SafeArgs**
+- Manejo de sesión segura con **EncryptedSharedPreferences**
+- Autenticación biométrica con **BiometricPrompt**
+- Arquitectura por capas: datos, dominio y presentación
+- Control de acceso por **roles de usuario**
 
-    <!-- Colores de estado de pedidos -->
-    <color name="status_pending">#FFA500</color>     <!-- Pendiente: naranja -->
-    <color name="status_paid">#2196F3</color>        <!-- Pagado: azul -->
-    <color name="status_shipped">#9C27B0</color>     <!-- Enviado: morado -->
-    <color name="status_delivered">#4CAF50</color>   <!-- Entregado: verde -->
-    <color name="status_cancelled">#F44336</color>   <!-- Cancelado: rojo -->
-</resources>
-```
-
-**Acción requerida:** El desarrollador debe acceder al proyecto de Figma de TomenAguita, extraer los colores exactos de los mockups y actualizar `colors.xml`. Si se tiene acceso al MCP de Figma, usar `get_design_context` o `get_variable_defs` para obtener los tokens de color.
+> En su estado actual (**Actividad 3 — Capa de presentación**), todos los datos mostrados son simulados y no se realizan operaciones reales sobre la base de datos. La infraestructura de Room, DAOs y repositorios está implementada y lista para ser conectada en una actividad futura.
 
 ---
 
-## Estructura de Paquetes
+## Características principales
+
+### Autenticación
+- Pantalla de inicio de sesión con validación de campos
+- Registro de nuevos usuarios con validación de correo y teléfono colombiano
+- Recuperación de contraseña (flujo de UI)
+- Autenticación biométrica con huella digital (si el dispositivo lo soporta)
+- Sesión persistente cifrada con `EncryptedSharedPreferences`
+
+### Comprador
+- Catálogo de productos con búsqueda
+- Vista detallada de cada producto con selección de cantidad
+- Carrito de compras con control de cantidades
+- Resumen del pedido con dirección de entrega
+- Pasarela de pago simulada (efectivo / tarjeta)
+- Historial de pedidos con filtros por estado
+- Detalle de cada pedido
+- Perfil de usuario con foto y datos editables
+
+### Vendedor
+- Listado de mis productos con estado de disponibilidad
+- Crear y editar productos del catálogo
+- Gestión de pedidos recibidos con avance de estado
+- Detalle del pedido con información del comprador
+- Perfil del vendedor
+
+### Administrador
+- Dashboard con métricas generales (usuarios, productos, pedidos, ventas)
+- Gestión completa de usuarios (crear, editar, desactivar — soft delete)
+- Gestión de productos del catálogo
+- Reporte de ventas
+
+### Generales
+- Splash screen con animación de fade-in
+- Enrutamiento automático por rol al iniciar sesión
+- Navegación hacia atrás consistente en todas las pantallas
+- Numeración de pedidos en formato `TA-YYYYMMDD-XXXX`
+- Formato de precios en pesos colombianos (COP)
+
+---
+
+## Roles de usuario
+
+La aplicación define tres roles con interfaces completamente independientes:
+
+### Comprador (`COMPRADOR`)
+- **Navegación:** `BottomNavigationView` con 5 pestañas
+- **Pantallas:** Inicio · Catálogo · Carrito · Mis Pedidos · Perfil
+- **Acceso:** Explorar productos, agregar al carrito, realizar pedidos, ver historial
+
+### Vendedor (`VENDEDOR`)
+- **Navegación:** `BottomNavigationView` con 3 pestañas
+- **Pantallas:** Mis Productos · Pedidos Recibidos · Perfil
+- **Acceso:** Gestionar su propio catálogo, ver y avanzar el estado de los pedidos
+
+### Administrador (`ADMINISTRADOR`)
+- **Navegación:** `NavigationDrawer` (menú lateral) con Toolbar
+- **Pantallas:** Dashboard · Usuarios · Productos · Reportes
+- **Acceso:** Supervisión global de la plataforma, gestión de usuarios y productos
+
+Cada rol tiene su propia `Activity` principal y su propio grafo de navegación (`NavGraph`). El enrutamiento se realiza automáticamente en el `SplashActivity` según el rol guardado en sesión.
+
+---
+
+## Arquitectura del proyecto
+
+La aplicación sigue el patrón **MVVM** recomendado por Google con separación en tres capas:
 
 ```
-com.example.tomenaguita/
-├── data/
-│   ├── database/
-│   │   ├── AppDatabase.kt              // Room database singleton
-│   │   ├── dao/
-│   │   │   ├── UsuarioDao.kt
-│   │   │   ├── ProductoDao.kt
-│   │   │   ├── CarritoDao.kt
-│   │   │   └── PedidoDao.kt
-│   │   └── entity/
-│   │       ├── Usuario.kt              // @Entity
-│   │       ├── Producto.kt             // @Entity
-│   │       ├── CarritoItem.kt          // @Entity
-│   │       ├── Pedido.kt               // @Entity
-│   │       └── DetallePedido.kt        // @Entity
-│   ├── repository/
-│   │   ├── UsuarioRepository.kt
-│   │   ├── ProductoRepository.kt
-│   │   ├── CarritoRepository.kt
-│   │   └── PedidoRepository.kt
-│   └── model/
-│       └── enums/
-│           ├── Rol.kt                  // enum: COMPRADOR, VENDEDOR, ADMINISTRADOR
-│           └── EstadoPedido.kt         // enum: PENDIENTE, PAGADO, ENVIADO, ENTREGADO, CANCELADO
-├── ui/
-│   ├── splash/
-│   │   └── SplashActivity.kt
-│   ├── auth/
-│   │   ├── LoginActivity.kt
-│   │   ├── RegisterActivity.kt
-│   │   └── ForgotPasswordActivity.kt
-│   ├── comprador/
-│   │   ├── CompradorMainActivity.kt    // Host con BottomNavigationView
-│   │   ├── home/
-│   │   │   └── HomeFragment.kt         // Catálogo de productos
-│   │   ├── producto/
-│   │   │   └── ProductoDetalleFragment.kt
-│   │   ├── carrito/
-│   │   │   └── CarritoFragment.kt
-│   │   ├── pago/
-│   │   │   ├── ResumenPedidoFragment.kt
-│   │   │   └── PasarelaPagoFragment.kt
-│   │   ├── pedidos/
-│   │   │   ├── HistorialPedidosFragment.kt
-│   │   │   └── DetallePedidoFragment.kt
-│   │   └── perfil/
-│   │       ├── PerfilFragment.kt
-│   │       └── EditarPerfilFragment.kt
-│   ├── vendedor/
-│   │   ├── VendedorMainActivity.kt     // Host con BottomNavigationView
-│   │   ├── productos/
-│   │   │   ├── MisProductosFragment.kt
-│   │   │   └── CrearEditarProductoFragment.kt
-│   │   ├── pedidos/
-│   │   │   ├── PedidosRecibidosFragment.kt
-│   │   │   └── DetallePedidoVendedorFragment.kt
-│   │   └── perfil/
-│   │       └── PerfilVendedorFragment.kt
-│   ├── admin/
-│   │   ├── AdminMainActivity.kt        // Host con NavigationDrawer
-│   │   ├── dashboard/
-│   │   │   └── DashboardFragment.kt
-│   │   ├── usuarios/
-│   │   │   ├── ListaUsuariosFragment.kt
-│   │   │   ├── CrearUsuarioFragment.kt
-│   │   │   └── EditarUsuarioFragment.kt
-│   │   ├── productos/
-│   │   │   └── GestionProductosFragment.kt
-│   │   └── reportes/
-│   │       └── ReporteVentasFragment.kt
-│   └── adapter/
-│       ├── ProductoAdapter.kt          // RecyclerView adapter para productos
-│       ├── CarritoAdapter.kt           // RecyclerView adapter para carrito
-│       ├── PedidoAdapter.kt            // RecyclerView adapter para pedidos
-│       └── UsuarioAdapter.kt           // RecyclerView adapter para usuarios (admin)
-├── utils/
-│   ├── SessionManager.kt              // Manejo de sesión con SharedPreferences cifradas
-│   ├── BiometricHelper.kt             // Wrapper para BiometricPrompt
-│   ├── Constants.kt                   // Constantes de la app
-│   └── Extensions.kt                  // Funciones de extensión Kotlin
-└── viewmodel/
-    ├── AuthViewModel.kt
-    ├── ProductoViewModel.kt
-    ├── CarritoViewModel.kt
-    ├── PedidoViewModel.kt
-    └── UsuarioViewModel.kt
+┌─────────────────────────────────────────┐
+│              UI Layer                   │
+│  Activities · Fragments · Adapters      │
+│  (observan LiveData del ViewModel)      │
+├─────────────────────────────────────────┤
+│           ViewModel Layer               │
+│  AndroidViewModel · LiveData · Flow     │
+│  (expone estado, maneja lógica de UI)   │
+├─────────────────────────────────────────┤
+│            Data Layer                   │
+│  Repository → DAO → Room Database       │
+│  (fuente única de verdad)               │
+└─────────────────────────────────────────┘
+```
+
+### Flujo de datos
+```
+Fragment → ViewModel → Repository → DAO → Room DB
+                ↑                              |
+           LiveData  ←──────────── Flow.asLiveData()
 ```
 
 ---
 
-## Pantallas Requeridas por Rol
+## Jerarquía de archivos
 
-### Transversales (Todos los roles)
-
-| # | Pantalla | Activity/Fragment | Layout XML | Componentes Principales |
-|---|---|---|---|---|
-| T-01 | Splash Screen | SplashActivity | activity_splash.xml | ImageView (logo), ProgressBar, animación fade-in |
-| T-02 | Login | LoginActivity | activity_login.xml | TextInputLayout (email, password), Button login, Button biometría (fingerprint icon), links a registro y recuperar contraseña |
-| T-03 | Registro | RegisterActivity | activity_register.xml | TextInputLayout (nombre, email, teléfono, password, confirmar password), CheckBox términos, Button registrarse |
-| T-04 | Recuperar Contraseña | ForgotPasswordActivity | activity_forgot_password.xml | TextInputLayout (email), Button enviar enlace, texto informativo |
-
-### Comprador (BottomNavigationView con 5 ítems: Inicio, Catálogo, Carrito, Pedidos, Perfil)
-
-| # | Pantalla | Fragment | Layout XML | Componentes Principales |
-|---|---|---|---|---|
-| C-01 | Inicio / Home | HomeFragment | fragment_home.xml | ViewPager2 (banners), RecyclerView (productos destacados), SearchView, categorías |
-| C-02 | Detalle de Producto | ProductoDetalleFragment | fragment_producto_detalle.xml | ImageView (foto producto), TextView (nombre, descripción, presentación, precio), NumberPicker (cantidad), Button "Agregar al carrito" |
-| C-03 | Carrito de Compras | CarritoFragment | fragment_carrito.xml | RecyclerView (ítems del carrito con +/- cantidad y eliminar), TextView total, Button "Proceder al pago", Button "Vaciar carrito" |
-| C-04 | Resumen del Pedido | ResumenPedidoFragment | fragment_resumen_pedido.xml | RecyclerView (resumen de productos, solo lectura), TextViews (subtotal, envío, total), dirección de entrega, Button "Confirmar y pagar" |
-| C-05 | Pasarela de Pagos | PasarelaPagoFragment | fragment_pasarela_pago.xml | Selección método de pago (RadioButtons), datos de pago (simulado), Button "Pagar" |
-| C-06 | Historial de Pedidos | HistorialPedidosFragment | fragment_historial_pedidos.xml | RecyclerView (pedidos con Chip de estado color-coded), filtros por estado |
-| C-07 | Detalle de Pedido | DetallePedidoFragment | fragment_detalle_pedido.xml | Timeline de estados, lista de productos, totales, dirección, información de seguimiento |
-| C-08 | Perfil | PerfilFragment | fragment_perfil.xml | CircleImageView (foto), TextViews (datos personales), Button "Editar", mapa con dirección |
-| C-09 | Editar Perfil | EditarPerfilFragment | fragment_editar_perfil.xml | TextInputLayouts editables, ImageView (cambiar foto), Button cámara/galería, mapa para ubicación |
-
-### Vendedor (BottomNavigationView con 3 ítems: Productos, Pedidos, Perfil)
-
-| # | Pantalla | Fragment | Layout XML | Componentes Principales |
-|---|---|---|---|---|
-| V-01 | Mis Productos | MisProductosFragment | fragment_mis_productos.xml | RecyclerView (CardView con imagen, nombre, precio, stock, disponibilidad), FAB "+" para crear, SwipeRefreshLayout |
-| V-02 | Crear/Editar Producto | CrearEditarProductoFragment | fragment_crear_editar_producto.xml | ImageView (foto), Button cámara/galería, TextInputLayouts (nombre, descripción, precio, stock), Spinner (presentación), Switch (disponible), Button guardar |
-| V-03 | Pedidos Recibidos | PedidosRecibidosFragment | fragment_pedidos_recibidos.xml | RecyclerView (pedidos agrupados por estado), Chip filters por estado, badge de nuevos pedidos |
-| V-04 | Detalle de Pedido | DetallePedidoVendedorFragment | fragment_detalle_pedido_vendedor.xml | Datos del comprador (nombre, teléfono), lista de productos, total, dirección, Button "Marcar como enviado/entregado" |
-| V-05 | Perfil Vendedor | PerfilVendedorFragment | fragment_perfil_vendedor.xml | Misma estructura que perfil comprador, con datos del vendedor |
-
-### Administrador (NavigationDrawer con: Dashboard, Usuarios, Productos, Reportes, Perfil)
-
-| # | Pantalla | Fragment | Layout XML | Componentes Principales |
-|---|---|---|---|---|
-| A-01 | Dashboard | DashboardFragment | fragment_dashboard.xml | CardViews con métricas (total usuarios, productos, pedidos, ventas), accesos rápidos |
-| A-02 | Lista de Usuarios | ListaUsuariosFragment | fragment_lista_usuarios.xml | SearchView, RecyclerView (nombre, email, rol con Chip, estado activo/inactivo), FAB crear usuario |
-| A-03 | Crear Usuario | CrearUsuarioFragment | fragment_crear_usuario.xml | TextInputLayouts (nombre, email, teléfono, password), Spinner (rol), Switch (activo), Button crear |
-| A-04 | Editar Usuario | EditarUsuarioFragment | fragment_editar_usuario.xml | Mismos campos que crear prellenados, Spinner rol, Switch activo, Buttons guardar/eliminar |
-| A-05 | Gestión de Productos | GestionProductosFragment | fragment_gestion_productos.xml | RecyclerView de todos los productos (todos los vendedores), filtros, acciones de editar/eliminar |
-| A-06 | Reporte de Ventas | ReporteVentasFragment | fragment_reporte_ventas.xml | CardViews (totales), RecyclerView (últimas ventas), filtros por fecha |
-
-**Total: ~24 pantallas** (4 transversales + 9 comprador + 5 vendedor + 6 administrador)
+```
+app/src/main/
+├── AndroidManifest.xml
+│
+├── java/com/example/tomenaguita/
+│   │
+│   ├── data/
+│   │   ├── database/
+│   │   │   ├── dao/
+│   │   │   │   ├── CarritoDao.kt
+│   │   │   │   ├── PedidoDao.kt
+│   │   │   │   ├── ProductoDao.kt
+│   │   │   │   └── UsuarioDao.kt
+│   │   │   ├── entity/
+│   │   │   │   ├── CarritoItem.kt
+│   │   │   │   ├── DetallePedido.kt
+│   │   │   │   ├── Pedido.kt
+│   │   │   │   ├── Producto.kt
+│   │   │   │   └── Usuario.kt
+│   │   │   └── AppDatabase.kt          ← singleton Room
+│   │   ├── model/
+│   │   │   ├── EstadoPedido.kt         ← enum con transiciones de estado
+│   │   │   └── Rol.kt                  ← enum COMPRADOR / VENDEDOR / ADMINISTRADOR
+│   │   └── repository/
+│   │       ├── CarritoRepository.kt
+│   │       ├── PedidoRepository.kt
+│   │       ├── ProductoRepository.kt
+│   │       └── UsuarioRepository.kt
+│   │
+│   ├── ui/
+│   │   ├── adapter/                    ← adaptadores compartidos entre roles
+│   │   │   ├── CarritoAdapter.kt
+│   │   │   ├── PedidoAdapter.kt
+│   │   │   ├── ProductoAdapter.kt
+│   │   │   └── UsuarioAdapter.kt
+│   │   ├── admin/
+│   │   │   ├── AdminMainActivity.kt    ← DrawerLayout + Toolbar
+│   │   │   ├── dashboard/DashboardFragment.kt
+│   │   │   ├── productos/GestionProductosFragment.kt
+│   │   │   ├── reportes/ReporteVentasFragment.kt
+│   │   │   └── usuarios/
+│   │   │       ├── ListaUsuariosFragment.kt
+│   │   │       ├── CrearUsuarioFragment.kt
+│   │   │       └── EditarUsuarioFragment.kt
+│   │   ├── auth/
+│   │   │   ├── LoginActivity.kt
+│   │   │   ├── RegisterActivity.kt
+│   │   │   └── ForgotPasswordActivity.kt
+│   │   ├── comprador/
+│   │   │   ├── CompradorMainActivity.kt  ← BottomNavigationView (5 tabs)
+│   │   │   ├── carrito/CarritoFragment.kt
+│   │   │   ├── catalogo/CatalogoFragment.kt
+│   │   │   ├── home/HomeFragment.kt
+│   │   │   ├── pago/
+│   │   │   │   ├── ResumenPedidoFragment.kt
+│   │   │   │   └── PasarelaPagoFragment.kt
+│   │   │   ├── pedidos/
+│   │   │   │   ├── HistorialPedidosFragment.kt
+│   │   │   │   └── DetallePedidoFragment.kt
+│   │   │   ├── perfil/
+│   │   │   │   ├── PerfilFragment.kt
+│   │   │   │   └── EditarPerfilFragment.kt
+│   │   │   └── producto/ProductoDetalleFragment.kt
+│   │   ├── splash/SplashActivity.kt
+│   │   └── vendedor/
+│   │       ├── VendedorMainActivity.kt   ← BottomNavigationView (3 tabs)
+│   │       ├── pedidos/
+│   │       │   ├── PedidosRecibidosFragment.kt
+│   │       │   └── DetallePedidoVendedorFragment.kt
+│   │       ├── perfil/PerfilVendedorFragment.kt
+│   │       └── productos/
+│   │           ├── MisProductosFragment.kt
+│   │           └── CrearEditarProductoFragment.kt
+│   │
+│   ├── utils/
+│   │   ├── BiometricHelper.kt          ← wrapper de BiometricPrompt
+│   │   ├── Constants.kt                ← keys, datos demo, presentaciones
+│   │   ├── Extensions.kt               ← toCOP(), showSnackbar(), isValidEmail()…
+│   │   └── SessionManager.kt           ← EncryptedSharedPreferences
+│   │
+│   └── viewmodel/                      ← ViewModels compartidos entre roles
+│       ├── AuthViewModel.kt
+│       ├── CarritoViewModel.kt
+│       ├── PedidoViewModel.kt
+│       ├── ProductoViewModel.kt
+│       └── UsuarioViewModel.kt
+│
+└── res/
+    ├── drawable/       ← íconos SVG, fondos, selectores
+    ├── layout/         ← 7 activities + 20 fragments + 4 items + nav_header
+    ├── menu/           ← bottom_nav_comprador, bottom_nav_vendedor, drawer_admin
+    ├── mipmap-anydpi/          ← ícono de lanzador (API 24–25, vector)
+    ├── mipmap-anydpi-v26/      ← ícono adaptativo (API 26+)
+    ├── navigation/     ← nav_graph_comprador, nav_graph_vendedor, nav_graph_admin
+    └── values/
+        ├── colors.xml
+        ├── dimens.xml
+        ├── strings.xml
+        └── themes.xml
+```
 
 ---
 
-## Modelo de Datos (Room / SQLite)
+## Diseño y paleta de colores
 
-### Tabla: usuarios
-| Campo | Tipo | Restricciones | Descripción |
+El diseño sigue las guías de **Material Design 3** con el tema base `Theme.Material3.DayNight.NoActionBar`.
+
+### Paleta principal
+
+| Rol | Nombre | Hex | Uso |
 |---|---|---|---|
-| id | INTEGER | PK, AUTOINCREMENT | ID único |
-| nombre | TEXT | NOT NULL, min 3, max 80 chars | Nombre completo |
-| email | TEXT | NOT NULL, UNIQUE, formato RFC 5322 | Correo electrónico |
-| password | TEXT | NOT NULL, min 8 chars (hasheado SHA-256) | Contraseña hasheada |
-| telefono | TEXT | NOT NULL, 10 dígitos, regex ^3[0-9]{9}$ | Teléfono colombiano |
-| rol | TEXT | NOT NULL, enum: "comprador","vendedor","administrador" | Rol del usuario |
-| activo | INTEGER | NOT NULL, default 1 (boolean) | Estado activo/inactivo |
-| foto_url | TEXT | NULLABLE | Ruta local de foto de perfil |
-| direccion | TEXT | NULLABLE, max 200 chars | Dirección de entrega |
-| latitud | REAL | NULLABLE, -90 a 90 | Coordenada GPS |
-| longitud | REAL | NULLABLE, -180 a 180 | Coordenada GPS |
-| biometric_enabled | INTEGER | NOT NULL, default 0 (boolean) | Biometría activada |
-| created_at | INTEGER | NOT NULL (epoch ms) | Fecha de creación |
-| updated_at | INTEGER | NOT NULL (epoch ms) | Última modificación |
+| Primario | `primary` | `#1565C0` | Botones principales, AppBar, elementos activos |
+| Primario oscuro | `primary_dark` | `#0D47A1` | StatusBar, fondo splash |
+| Primario claro | `primary_light` | `#42A5F5` | Highlights, iconos secundarios |
+| Secundario | `secondary` | `#00BCD4` | Acento, gradiente splash |
+| Secundario oscuro | `secondary_dark` | `#00838F` | Hover en elementos secundarios |
+| Acento | `accent` | `#26A69A` | Chips, indicadores |
 
-### Tabla: productos
-| Campo | Tipo | Restricciones | Descripción |
-|---|---|---|---|
-| id | INTEGER | PK, AUTOINCREMENT | ID único |
-| nombre | TEXT | NOT NULL, min 3, max 80 chars | Nombre del producto |
-| descripcion | TEXT | NOT NULL, min 10, max 500 chars | Descripción |
-| presentacion | TEXT | NOT NULL, enum: "300ml","500ml","1L","5L","20L" | Presentación |
-| precio | REAL | NOT NULL, > 0, max 9999999.99 | Precio en COP |
-| imagen_url | TEXT | NULLABLE | Ruta local de imagen |
-| disponible | INTEGER | NOT NULL, default 1 (boolean) | Disponibilidad |
-| stock | INTEGER | NOT NULL, >= 0 | Unidades disponibles |
-| vendedor_id | INTEGER | NOT NULL, FK → usuarios.id | ID del vendedor |
-| eliminado | INTEGER | NOT NULL, default 0 (boolean) | Soft delete |
-| created_at | INTEGER | NOT NULL (epoch ms) | Fecha de creación |
-| updated_at | INTEGER | NOT NULL (epoch ms) | Última modificación |
+### Paleta de superficie y fondo
 
-### Tabla: carrito
-| Campo | Tipo | Restricciones | Descripción |
-|---|---|---|---|
-| id | INTEGER | PK, AUTOINCREMENT | ID único |
-| usuario_id | INTEGER | NOT NULL, FK → usuarios.id | ID del comprador |
-| producto_id | INTEGER | NOT NULL, FK → productos.id | ID del producto |
-| cantidad | INTEGER | NOT NULL, min 1, max 99 | Cantidad seleccionada |
-| precio_al_momento | REAL | NOT NULL | Precio capturado al agregar |
-| created_at | INTEGER | NOT NULL (epoch ms) | Fecha de agregado |
-| updated_at | INTEGER | NOT NULL (epoch ms) | Última modificación |
-
-### Tabla: pedidos
-| Campo | Tipo | Restricciones | Descripción |
-|---|---|---|---|
-| id | INTEGER | PK, AUTOINCREMENT | ID único |
-| order_number | TEXT | NOT NULL, UNIQUE, formato "TA-YYYYMMDD-XXXX" | Número de pedido legible |
-| usuario_id | INTEGER | NOT NULL, FK → usuarios.id | ID del comprador |
-| total_productos | REAL | NOT NULL | Subtotal productos |
-| costo_envio | REAL | NOT NULL, default 0 | Costo de envío |
-| total_pedido | REAL | NOT NULL | Total final |
-| direccion_entrega | TEXT | NOT NULL | Dirección de entrega |
-| latitud | REAL | NULLABLE | Coordenada GPS |
-| longitud | REAL | NULLABLE | Coordenada GPS |
-| estado | TEXT | NOT NULL, enum: "pendiente","pagado","enviado","entregado","cancelado" | Estado actual |
-| metodo_pago | TEXT | NOT NULL | Método de pago usado |
-| transaction_id | TEXT | NULLABLE | Referencia de la pasarela |
-| created_at | INTEGER | NOT NULL (epoch ms) | Fecha de creación |
-| updated_at | INTEGER | NOT NULL (epoch ms) | Última modificación |
-
-### Tabla: detalle_pedidos
-| Campo | Tipo | Restricciones | Descripción |
-|---|---|---|---|
-| id | INTEGER | PK, AUTOINCREMENT | ID único |
-| pedido_id | INTEGER | NOT NULL, FK → pedidos.id | ID del pedido |
-| producto_id | INTEGER | NOT NULL, FK → productos.id | ID del producto |
-| nombre_producto | TEXT | NOT NULL | Nombre (snapshot) |
-| presentacion | TEXT | NOT NULL | Presentación (snapshot) |
-| cantidad | INTEGER | NOT NULL, min 1 | Cantidad comprada |
-| precio_unitario | REAL | NOT NULL | Precio al momento de compra |
-| subtotal | REAL | NOT NULL | = cantidad × precio_unitario |
-| vendedor_id | INTEGER | NOT NULL, FK → usuarios.id | ID del vendedor |
-
----
-
-## Catálogo de Productos (Datos de Ejemplo)
-
-| # | Producto | Contenido | Tipo | Precio Sugerido (COP) |
-|---|---|---|---|---|
-| 1 | Botella personal | 300 ml | Unidad | $1.500 |
-| 2 | Botella mediana | 500 ml | Unidad | $2.500 |
-| 3 | Botella familiar | 1 litro | Unidad | $4.000 |
-| 4 | Botellón | 5 litros | Unidad | $12.000 |
-| 5 | Pack personal | 24 × 300 ml | Paquete | $30.000 |
-| 6 | Pack mediano | 12 × 500 ml | Paquete | $25.000 |
-| 7 | Pack familiar | 6 × 1 litro | Paquete | $20.000 |
-| 8 | Garrafón | 20 litros | Unidad | $18.000 |
-
----
-
-## Navegación
-
-### Flujo general:
-```
-SplashActivity → LoginActivity
-                    ├── (Registro) → RegisterActivity → LoginActivity
-                    ├── (Olvidé contraseña) → ForgotPasswordActivity → LoginActivity
-                    └── (Login exitoso) → Según rol:
-                        ├── "comprador"     → CompradorMainActivity (BottomNav)
-                        ├── "vendedor"      → VendedorMainActivity (BottomNav)
-                        └── "administrador" → AdminMainActivity (DrawerLayout)
-```
-
-### Comprador - BottomNavigationView:
-```
-BottomNav Items: Inicio | Catálogo | Carrito | Pedidos | Perfil
-Cada tab tiene su propio NavGraph con fragmentos anidados.
-```
-
-### Vendedor - BottomNavigationView:
-```
-BottomNav Items: Productos | Pedidos | Perfil
-```
-
-### Administrador - NavigationDrawer:
-```
-Drawer Items: Dashboard | Usuarios | Productos | Reportes | Perfil | Cerrar Sesión
-```
-
----
-
-## Dependencias Requeridas (libs.versions.toml)
-
-```toml
-[versions]
-agp = "8.2.0"
-kotlin = "1.9.22"
-coreKtx = "1.12.0"
-appcompat = "1.6.1"
-material = "1.11.0"
-constraintlayout = "2.1.4"
-recyclerview = "1.3.2"
-cardview = "1.0.0"
-navigationFragment = "2.7.7"
-navigationUi = "2.7.7"
-viewpager2 = "1.0.0"
-room = "2.6.1"
-lifecycle = "2.7.0"
-biometric = "1.1.0"
-glide = "4.16.0"
-playServicesLocation = "21.1.0"
-playServicesMaps = "18.2.0"
-securityCrypto = "1.1.0-alpha06"
-
-[libraries]
-androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
-androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
-androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
-androidx-cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" }
-androidx-navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragment" }
-androidx-navigation-ui = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUi" }
-androidx-viewpager2 = { group = "androidx.viewpager2", name = "viewpager2", version.ref = "viewpager2" }
-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
-lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
-lifecycle-livedata = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycle" }
-biometric = { group = "androidx.biometric", name = "biometric", version.ref = "biometric" }
-glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
-play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation" }
-play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
-security-crypto = { group = "androidx.security", name = "security-crypto", version.ref = "securityCrypto" }
-
-[plugins]
-android-application = { id = "com.android.application", version.ref = "agp" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-```
-
----
-
-## Resources XML Requeridos
-
-### res/values/strings.xml
-Todos los textos de la app deben estar en strings.xml, nunca hardcodeados en layouts.
-
-### res/values/dimens.xml
-Dimensiones reutilizables: márgenes, paddings, tamaños de texto, radios de esquinas.
-
-### res/values/themes.xml
-Tema personalizado basado en Theme.Material3.DayNight con los colores del proyecto.
-
-### res/drawable/
-- `bg_rounded_card.xml` — Shape con esquinas redondeadas para CardViews
-- `bg_button_primary.xml` — Selector de estados para botón principal
-- `bg_input_field.xml` — Fondo para campos de texto
-- `bg_splash.xml` — Fondo degradado para splash screen
-- `ic_logo.xml` — Logo vectorial de TomenAguita
-- `ic_water_bottle.xml` — Ícono de botella de agua
-- Íconos de navegación: `ic_home`, `ic_cart`, `ic_orders`, `ic_profile`, `ic_products`, `ic_users`, `ic_dashboard`, `ic_reports`
-
-### res/menu/
-- `menu_bottom_nav_comprador.xml` — 5 ítems para BottomNav del comprador
-- `menu_bottom_nav_vendedor.xml` — 3 ítems para BottomNav del vendedor
-- `menu_drawer_admin.xml` — Ítems del NavigationDrawer del admin
-
-### res/navigation/
-- `nav_graph_comprador.xml` — NavGraph del comprador
-- `nav_graph_vendedor.xml` — NavGraph del vendedor
-- `nav_graph_admin.xml` — NavGraph del administrador
-
----
-
-## Reglas de Negocio Clave
-
-1. **Roles:** Al registrarse, el usuario es "comprador" por defecto. Solo un admin puede cambiar roles.
-2. **Productos:** Solo vendedores y administradores pueden crear/editar productos. Un vendedor solo ve/edita sus propios productos.
-3. **Carrito:** Solo el comprador tiene carrito. No puede agregar productos propios si también es vendedor.
-4. **Pedidos:** El flujo de estados es estricto: pendiente → pagado → enviado → entregado. No se permite retroceso.
-5. **Eliminación:** Siempre soft delete (campo `eliminado = true`). Nunca borrar registros físicamente.
-6. **Biometría:** Opcional. Solo se habilita si el dispositivo tiene sensor y el usuario lo activa en configuración.
-7. **Geolocalización:** Para dirección de entrega del comprador. Permiso en runtime.
-8. **Cámara:** Para foto de producto (vendedor) y foto de perfil (todos). Usar cámara o galería.
-
----
-
-## Datos de Ejemplo para Desarrollo
-
-### Usuarios de prueba:
-| Email | Password | Rol |
+| Nombre | Hex | Uso |
 |---|---|---|
-| admin@tomenaguita.com | Admin123! | administrador |
-| vendedor@tomenaguita.com | Vendedor123! | vendedor |
-| comprador@tomenaguita.com | Comprador123! | comprador |
+| `background` | `#FAFAFA` | Fondo general de pantallas |
+| `surface` | `#FFFFFF` | Tarjetas, diálogos, BottomBar |
+| `on_primary` | `#FFFFFF` | Texto sobre elementos primarios |
+| `on_background` | `#212121` | Texto principal |
+| `on_background_secondary` | `#757575` | Texto secundario / subtítulos |
+| `divider` | `#BDBDBD` | Separadores |
+| `input_background` | `#F5F9FF` | Fondo de campos de texto |
 
-### Nota sobre esta entrega:
-Esta entrega (Actividad 3) se enfoca SOLO en el **frontend** (interfaces gráficas). Los datos deben estar hardcodeados o usar datos de ejemplo en los adaptadores. La lógica de negocio, base de datos funcional y conexión a APIs se implementarán en entregas posteriores. Sin embargo, la estructura de paquetes y clases debe estar preparada para esa integración.
+### Paleta de estados de pedido
+
+| Estado | Color | Hex |
+|---|---|---|
+| Pendiente | Naranja | `#FFA500` |
+| Pagado | Azul | `#2196F3` |
+| Enviado | Morado | `#9C27B0` |
+| Entregado | Verde | `#4CAF50` |
+| Cancelado | Rojo | `#F44336` |
+
+### Gradiente splash
+El splash screen usa un gradiente diagonal (135°) de `#0D47A1` → `#00BCD4`.
+
+### Tipografía
+- Fuente del sistema (`sans-serif`) en todos los tamaños
+- Escala: `text_small` 12sp · `text_body` 14sp · `text_medium` 16sp · `text_large` 18sp · `text_title` 22sp · `text_headline` 28sp
+- Precios en negrita con color `primary`
+
+### Componentes de UI personalizados
+| Estilo | Base Material3 | Personalización |
+|---|---|---|
+| `Widget.TomenAguita.Button` | `Widget.Material3.Button` | Alto 48dp, esquinas 12dp, sin mayúsculas |
+| `Widget.TomenAguita.Button.Outlined` | `Widget.Material3.Button.OutlinedButton` | Alto 48dp, esquinas 12dp |
+| `Widget.TomenAguita.TextInputLayout` | `Widget.Material3.TextInputLayout.OutlinedBox` | Esquinas 8dp, borde primario |
 
 ---
 
-## Requisitos de Estilo (de la actividad académica)
+## Bibliotecas utilizadas
 
-- Se deben utilizar **colores y propiedades diferentes a los que vienen por defecto** en Android Studio.
-- Todo el diseño debe seguir los mockups creados en Figma en la Actividad 2.
-- La interfaz debe seguir lineamientos de **Material Design 3**.
-- Navegación máximo **3 toques** para llegar a cualquier funcionalidad desde el inicio.
-- Mensajes de retroalimentación claros (Snackbar, Toast, TextInputLayout.error).
-- Usar RecyclerView (nunca ListView) con CardView para listas.
-- ConstraintLayout como layout principal en todas las pantallas.
+| Biblioteca | Versión | Propósito |
+|---|---|---|
+| **AndroidX Core KTX** | 1.12.0 | Extensiones Kotlin para Android |
+| **AppCompat** | 1.6.1 | Compatibilidad hacia atrás |
+| **Material Components** | 1.11.0 | Material Design 3 (botones, campos, chips, etc.) |
+| **ConstraintLayout** | 2.1.4 | Layouts de alta complejidad |
+| **RecyclerView** | 1.3.2 | Listas de productos, pedidos y usuarios |
+| **CardView** | 1.0.0 | Tarjetas de productos |
+| **ViewPager2** | 1.0.0 | Banners / carrusel en pantalla de inicio |
+| **Navigation Fragment KTX** | 2.7.7 | Navegación entre fragmentos con back stack |
+| **Navigation UI KTX** | 2.7.7 | Integración con BottomNav y Drawer |
+| **Navigation SafeArgs** | 2.7.7 | Paso de argumentos tipados entre destinos |
+| **Room Runtime** | 2.6.1 | ORM sobre SQLite — entidades y queries |
+| **Room KTX** | 2.6.1 | Soporte de corrutinas en Room |
+| **Room Compiler (KAPT)** | 2.6.1 | Generación de código en tiempo de compilación |
+| **Lifecycle ViewModel KTX** | 2.7.0 | ViewModel con soporte de corrutinas |
+| **Lifecycle LiveData KTX** | 2.7.0 | LiveData + Flow → asLiveData() |
+| **Biometric** | 1.1.0 | Autenticación por huella digital |
+| **Glide** | 4.16.0 | Carga y caché de imágenes |
+| **Play Services Location** | 21.1.0 | Obtención de ubicación GPS |
+| **Play Services Maps** | 18.2.0 | Integración con Google Maps |
+| **Security Crypto** | 1.1.0-alpha06 | `EncryptedSharedPreferences` para sesión segura |
+| **SwipeRefreshLayout** | 1.1.0 | Pull-to-refresh en listas |
+| **CoordinatorLayout** | 1.2.0 | Comportamientos coordinados (FAB + AppBar) |
+
+### Sistema de construcción
+| Herramienta | Versión |
+|---|---|
+| Android Gradle Plugin | 8.2.0 |
+| Kotlin | 1.9.22 |
+| Gradle | 8.2 |
+| KAPT | generación de código Room + SafeArgs |
 
 ---
 
-## Archivos de Referencia
+## Permisos del dispositivo
 
-- Documento técnico completo: `../TomenAguita_DocumentoTecnico.md`
-- Tabla de requerimientos: `../cuadros.xlsx` (hojas: "RF CORREGIDOS" y "RNF CORREGIDOS")
-- Documento Word de la actividad 2: `../VERSION2 actividad 2 Documento técnico de planeación para tienda virtual Android.docx`
-- Mockups: Proyecto de Figma de TomenAguita (acceder vía Figma MCP si disponible)
+| Permiso | Cuándo se usa |
+|---|---|
+| `INTERNET` | Carga de imágenes remotas con Glide, futura integración con API |
+| `CAMERA` | Foto de perfil del usuario (cámara del dispositivo) |
+| `READ_EXTERNAL_STORAGE` | Selección de imagen de galería (Android ≤ 12) |
+| `READ_MEDIA_IMAGES` | Selección de imagen de galería (Android 13+) |
+| `ACCESS_FINE_LOCATION` | Ubicación precisa GPS para dirección de entrega |
+| `ACCESS_COARSE_LOCATION` | Ubicación aproximada como respaldo |
+| `USE_BIOMETRIC` | Autenticación con huella digital en la pantalla de login |
+
+> La cámara es marcada como `android:required="false"` — la app funciona en dispositivos sin cámara.
+
+---
+
+## Credenciales de demostración
+
+Dado que la aplicación usa datos simulados, las credenciales de acceso están hardcodeadas. La contraseña no es validada en Actividad 3 — solo el correo determina el rol.
+
+| Rol | Correo | Contraseña |
+|---|---|---|
+| Administrador | `admin@tomenaguita.com` | `Admin123!` |
+| Vendedor | `vendedor@tomenaguita.com` | `Vendedor123!` |
+| Comprador | `comprador@tomenaguita.com` | `Comprador123!` |
+
+### Productos de demostración
+La tienda incluye 8 productos de muestra:
+
+| Producto | Presentación | Precio |
+|---|---|---|
+| Botella personal | 300 ml | $1.500 COP |
+| Botella mediana | 500 ml | $2.500 COP |
+| Botella familiar | 1 litro | $4.000 COP |
+| Botellón | 5 litros | $12.000 COP |
+| Pack personal | 24 × 300 ml | $30.000 COP |
+| Pack mediano | 12 × 500 ml | $25.000 COP |
+| Pack familiar | 6 × 1 litro | $20.000 COP |
+| Garrafón | 20 litros | $18.000 COP |
+
+---
+
+## Instalación y configuración
+
+### Requisitos
+- Android Studio Hedgehog (2023.1.1) o superior
+- JDK 17
+- Android SDK con API 24–34 instalado
+- Dispositivo o emulador con Android 7.0+
+
+### Pasos
+```bash
+# 1. Clonar el repositorio
+git clone https://github.com/gegitrepo/TomenAguitaTienda.git
+
+# 2. Abrir en Android Studio
+#    File → Open → seleccionar la carpeta clonada
+
+# 3. Esperar el Gradle sync (descarga ~200 MB de dependencias)
+
+# 4. Ejecutar en dispositivo o emulador (API 24+)
+#    Run → Run 'app'
+```
+
+> El primer build puede tardar 3–5 minutos mientras Gradle descarga dependencias y SafeArgs genera las clases de navegación.
+
+---
+
+## Información académica
+
+| Campo | Detalle |
+|---|---|
+| Institución | Fundación Universitaria Compensar |
+| Programa | Desarrollo de Aplicaciones Móviles |
+| Actividad | Actividad 3 — Capa de presentación (UI) |
+| Autor | Gonzalo E. González |
+| Contacto | gegonzalez.1208@gmail.com |
+
+### Aviso legal
+Este proyecto es de carácter **exclusivamente académico**. No constituye un servicio comercial real. Los datos de usuarios, productos, pedidos y transacciones son completamente **ficticios y simulados**. No se realizan cobros ni transacciones financieras reales. Las marcas, nombres y precios mencionados son inventados para fines ilustrativos.
+
+---
+
+*Desarrollado con Kotlin · Android Studio · Material Design 3*
