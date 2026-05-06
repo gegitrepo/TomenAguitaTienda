@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import com.example.tomenaguita.R
 import com.example.tomenaguita.databinding.FragmentDetallePedidoBinding
 import com.example.tomenaguita.utils.toCOP
 
@@ -24,9 +25,9 @@ class DetallePedidoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.tvNumeroPedido.text = "TA-2024050${args.pedidoId}-000${args.pedidoId}"
         binding.tvFecha.text = "01/05/2024"
-        binding.tvDireccion.text = "Calle 123 # 45-67, Bogotá"
+        binding.tvDireccion.text = getString(R.string.demo_address)
         binding.tvTotal.text = 7000.0.toCOP()
-        binding.chipEstado.text = "Pendiente"
+        binding.chipEstado.text = getString(R.string.status_pending)
     }
 
     override fun onDestroyView() {

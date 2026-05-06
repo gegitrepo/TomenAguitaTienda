@@ -51,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Efectivo contra entrega"
+                android:text="@string/payment_cash"
                 android:textColor="@color/on_background"
                 android:buttonTint="@color/primary" />
 
@@ -60,7 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Tarjeta de crédito/débito"
+                android:text="@string/payment_card"
                 android:textColor="@color/on_background"
                 android:buttonTint="@color/primary" />
 
@@ -68,7 +68,7 @@
                 android:id="@+id/rbTransferencia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Transferencia bancaria"
+                android:text="@string/payment_transfer"
                 android:textColor="@color/on_background"
                 android:buttonTint="@color/primary" />
 
@@ -95,7 +95,7 @@
                     style="@style/Widget.TomenAguita.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Número de tarjeta (simulado)">
+                    android:hint="@string/hint_card_number">
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -107,7 +107,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_small"
-                    android:hint="Nombre en la tarjeta">
+                    android:hint="@string/hint_card_name">
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

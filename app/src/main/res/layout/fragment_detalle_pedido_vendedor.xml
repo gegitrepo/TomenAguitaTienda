@@ -28,9 +28,9 @@
                 android:padding="@dimen/padding_medium">
 
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_buyer_info" android:textColor="@color/primary" android:textStyle="bold" android:textSize="@dimen/text_medium" />
-                <TextView android:id="@+id/tvNombreComprador" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="Carlos Comprador" android:textColor="@color/on_background" />
-                <TextView android:id="@+id/tvTelefonoComprador" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="3001234567" android:textColor="@color/on_background_secondary" />
-                <TextView android:id="@+id/tvDireccionComprador" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Calle 123 # 45-67, Bogotá" android:textColor="@color/on_background_secondary" />
+                <TextView android:id="@+id/tvNombreComprador" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="" android:textColor="@color/on_background" />
+                <TextView android:id="@+id/tvTelefonoComprador" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:textColor="@color/on_background_secondary" />
+                <TextView android:id="@+id/tvDireccionComprador" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:textColor="@color/on_background_secondary" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -39,7 +39,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_medium"
-            android:text="Productos del pedido"
+            android:text="@string/label_products_in_order"
             android:textColor="@color/on_background"
             android:textSize="@dimen/text_medium"
             android:textStyle="bold"
@@ -62,7 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_medium"
-            android:text="Total del pedido:"
+            android:text="@string/label_order_total"
             android:textColor="@color/on_background"
             android:textSize="@dimen/text_medium"
             android:textStyle="bold"
@@ -74,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_medium"
-            android:text="$0"
+            android:text=""
             android:textColor="@color/primary"
             android:textSize="@dimen/text_large"
             android:textStyle="bold"

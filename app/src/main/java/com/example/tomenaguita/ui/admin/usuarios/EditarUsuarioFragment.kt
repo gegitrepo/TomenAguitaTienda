@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.tomenaguita.R
 import com.example.tomenaguita.databinding.FragmentEditarUsuarioBinding
 import com.example.tomenaguita.utils.Constants
 import com.example.tomenaguita.utils.showSnackbar
@@ -49,12 +50,12 @@ class EditarUsuarioFragment : Fragment() {
         }
 
         binding.btnGuardar.setOnClickListener {
-            binding.root.showSnackbar("Usuario actualizado")
+            binding.root.showSnackbar(getString(R.string.msg_user_updated))
             findNavController().popBackStack()
         }
 
         binding.btnEliminar.setOnClickListener {
-            binding.root.showSnackbar("Usuario desactivado")
+            binding.root.showSnackbar(getString(R.string.msg_user_deactivated))
             findNavController().popBackStack()
         }
     }

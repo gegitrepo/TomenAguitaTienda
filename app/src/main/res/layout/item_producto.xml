@@ -2,6 +2,7 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/margin_medium"
@@ -14,8 +15,8 @@
 
         <ImageView
             android:id="@+id/ivProducto"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
+            android:layout_width="@dimen/product_thumb_size"
+            android:layout_height="@dimen/product_thumb_size"
             android:scaleType="centerCrop"
             android:src="@drawable/bg_banner_placeholder"
             android:contentDescription="@string/content_desc_product_image"
@@ -30,7 +31,7 @@
             android:layout_marginStart="@dimen/margin_medium"
             android:layout_marginTop="@dimen/margin_medium"
             android:layout_marginEnd="@dimen/margin_small"
-            android:text="Botella personal"
+            tools:text="Botella personal"
             android:textColor="@color/on_background"
             android:textSize="@dimen/text_medium"
             android:textStyle="bold"
@@ -45,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_medium"
             android:layout_marginTop="4dp"
-            android:text="300 ml"
+            tools:text="300 ml"
             android:textColor="@color/on_background_secondary"
             android:textSize="@dimen/text_body"
             app:layout_constraintEnd_toEndOf="parent"
@@ -58,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_medium"
             android:layout_marginBottom="@dimen/margin_medium"
-            android:text="$1.500"
+            tools:text="$1.500"
             android:textColor="@color/primary"
             android:textSize="@dimen/text_large"
             android:textStyle="bold"
@@ -73,8 +74,8 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin_small"
             android:layout_marginBottom="@dimen/margin_small"
-            android:text="+"
-            android:textSize="18sp"
+            android:text="@string/btn_add_plus"
+            android:textSize="@dimen/text_large"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.tomenaguita.R
 import com.example.tomenaguita.databinding.FragmentCrearEditarProductoBinding
 import com.example.tomenaguita.utils.Constants
 import com.example.tomenaguita.utils.showSnackbar
@@ -34,7 +35,7 @@ class CrearEditarProductoFragment : Fragment() {
             val idx = (args.productoId - 1).toInt().coerceIn(0, Constants.PRODUCTOS_DEMO.size - 1)
             val (nombre, presentacion, precio) = Constants.PRODUCTOS_DEMO[idx]
             binding.etNombre.setText(nombre)
-            binding.etDescripcion.setText("Agua purificada de alta calidad")
+            binding.etDescripcion.setText(getString(R.string.demo_product_desc_short))
             binding.etPrecio.setText(precio.toInt().toString())
             binding.etStock.setText("100")
             binding.acPresentacion.setText(presentacion, false)
@@ -42,15 +43,15 @@ class CrearEditarProductoFragment : Fragment() {
 
         binding.btnGuardar.setOnClickListener {
             if (binding.etNombre.text.isNullOrBlank()) {
-                binding.tilNombre.error = "Obligatorio"
+                binding.tilNombre.error = getString(R.string.error_field_required)
                 return@setOnClickListener
             }
-            binding.root.showSnackbar(if (isEditing) "Producto actualizado" else "Producto creado")
+            binding.root.showSnackbar(getString(if (isEditing) R.string.msg_product_updated else R.string.msg_product_created))
             findNavController().popBackStack()
         }
 
-        binding.btnCamara.setOnClickListener { binding.root.showSnackbar("Abrir cámara") }
-        binding.btnGaleria.setOnClickListener { binding.root.showSnackbar("Abrir galería") }
+        binding.btnCamara.setOnClickListener { binding.root.showSnackbar(getString(R.string.msg_open_camera_simple)) }
+        binding.btnGaleria.setOnClickListener { binding.root.showSnackbar(getString(R.string.msg_open_gallery_simple)) }
     }
 
     override fun onDestroyView() {

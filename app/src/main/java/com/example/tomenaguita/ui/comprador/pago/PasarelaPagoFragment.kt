@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.tomenaguita.R
+import com.example.tomenaguita.R
 import com.example.tomenaguita.databinding.FragmentPasarelaPagoBinding
 import com.example.tomenaguita.utils.showSnackbar
 
@@ -25,7 +26,7 @@ class PasarelaPagoFragment : Fragment() {
         binding.rbEfectivo.isChecked = true
 
         binding.btnPagar.setOnClickListener {
-            binding.root.showSnackbar("¡Pedido realizado con éxito!")
+            binding.root.showSnackbar(getString(R.string.msg_order_placed))
             findNavController().navigate(R.id.action_pago_to_historial)
         }
     }

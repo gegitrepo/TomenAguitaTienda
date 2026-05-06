@@ -3,6 +3,7 @@ package com.example.tomenaguita.ui.auth
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.tomenaguita.R
 import com.example.tomenaguita.databinding.ActivityRegisterBinding
 import com.example.tomenaguita.utils.isValidColombian
 import com.example.tomenaguita.utils.isValidEmail
@@ -34,15 +35,15 @@ class RegisterActivity : AppCompatActivity() {
         binding.tilPassword.error = null
         binding.tilConfirmPassword.error = null
 
-        if (nombre.length < 3) { binding.tilNombre.error = "Mínimo 3 caracteres"; return }
-        if (!email.isValidEmail()) { binding.tilEmail.error = "Correo inválido"; return }
-        if (!telefono.isValidColombian()) { binding.tilTelefono.error = "Teléfono inválido (10 dígitos, empieza con 3)"; return }
-        if (password.length < 8) { binding.tilPassword.error = "Mínimo 8 caracteres"; return }
-        if (password != confirmPassword) { binding.tilConfirmPassword.error = "Las contraseñas no coinciden"; return }
-        if (!binding.cbTerminos.isChecked) { binding.root.showSnackbar("Debes aceptar los términos y condiciones"); return }
+        if (nombre.length < 3) { binding.tilNombre.error = getString(R.string.error_name_short); return }
+        if (!email.isValidEmail()) { binding.tilEmail.error = getString(R.string.error_email_invalid); return }
+        if (!telefono.isValidColombian()) { binding.tilTelefono.error = getString(R.string.error_phone_invalid); return }
+        if (password.length < 8) { binding.tilPassword.error = getString(R.string.error_password_short); return }
+        if (password != confirmPassword) { binding.tilConfirmPassword.error = getString(R.string.error_passwords_no_match); return }
+        if (!binding.cbTerminos.isChecked) { binding.root.showSnackbar(getString(R.string.error_terms_required)); return }
 
         // Demo: simular registro exitoso
-        binding.root.showSnackbar("¡Cuenta creada! Ahora inicia sesión.")
+        binding.root.showSnackbar(getString(R.string.msg_account_created))
         startActivity(Intent(this, LoginActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         })

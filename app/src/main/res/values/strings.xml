@@ -9,6 +9,8 @@
     <string name="hint_confirm_password">Confirmar contraseña</string>
     <string name="hint_nombre">Nombre completo</string>
     <string name="hint_telefono">Teléfono (10 dígitos)</string>
+    <string name="hint_card_number">Número de tarjeta (simulado)</string>
+    <string name="hint_card_name">Nombre en la tarjeta</string>
     <string name="btn_login">Iniciar sesión</string>
     <string name="btn_register">Registrarse</string>
     <string name="btn_send_link">Enviar enlace</string>
@@ -41,11 +43,13 @@
     <string name="label_quantity">Cantidad</string>
     <string name="btn_add_to_cart">Agregar al carrito</string>
     <string name="btn_buy_now">Comprar ahora</string>
+    <string name="btn_add_plus">+</string>
 
     <!-- Carrito -->
     <string name="label_subtotal">Subtotal</string>
     <string name="label_shipping">Envío</string>
     <string name="label_total">Total</string>
+    <string name="label_total_colon">Total:</string>
     <string name="btn_proceed_payment">Proceder al pago</string>
     <string name="btn_clear_cart">Vaciar carrito</string>
     <string name="label_empty_cart">Tu carrito está vacío</string>
@@ -61,6 +65,13 @@
     <string name="label_delivery_address">Dirección de entrega</string>
     <string name="label_payment_method">Método de pago</string>
     <string name="label_order_number">N° de pedido</string>
+    <string name="label_products_in_order">Productos del pedido</string>
+    <string name="label_order_total">Total del pedido:</string>
+
+    <!-- Métodos de pago -->
+    <string name="payment_cash">Efectivo contra entrega</string>
+    <string name="payment_card">Tarjeta de crédito/débito</string>
+    <string name="payment_transfer">Transferencia bancaria</string>
 
     <!-- Estados -->
     <string name="status_pending">Pendiente</string>
@@ -76,6 +87,8 @@
     <string name="label_photo_profile">Foto de perfil</string>
     <string name="btn_camera">Cámara</string>
     <string name="btn_gallery">Galería</string>
+    <string name="label_phone">Teléfono</string>
+    <string name="label_address">Dirección</string>
 
     <!-- Vendedor -->
     <string name="title_my_products">Mis productos</string>
@@ -102,6 +115,14 @@
     <string name="label_total_products">Total productos</string>
     <string name="label_total_orders">Total pedidos</string>
     <string name="label_total_sales">Ventas totales</string>
+    <string name="label_quick_access">Accesos rápidos</string>
+    <string name="label_today_sales">Ventas hoy</string>
+    <string name="label_month_sales">Ventas mes</string>
+    <string name="label_recent_sales">Últimas ventas</string>
+    <string name="rol_comprador">Comprador</string>
+
+    <!-- Filtros -->
+    <string name="label_filter_all">Todos</string>
 
     <!-- General -->
     <string name="btn_cancel">Cancelar</string>
@@ -109,17 +130,56 @@
     <string name="btn_confirm">Confirmar</string>
     <string name="label_no_results">Sin resultados</string>
     <string name="label_loading">Cargando…</string>
+    <string name="label_units_format">%d unidades</string>
+
+    <!-- Errores de validación -->
     <string name="error_field_required">Este campo es obligatorio</string>
     <string name="error_email_invalid">Correo electrónico inválido</string>
     <string name="error_password_short">Mínimo 8 caracteres</string>
+    <string name="error_name_short">Mínimo 3 caracteres</string>
     <string name="error_passwords_no_match">Las contraseñas no coinciden</string>
     <string name="error_phone_invalid">Teléfono inválido (10 dígitos, empieza con 3)</string>
+    <string name="error_terms_required">Debes aceptar los términos y condiciones</string>
+
+    <!-- Mensajes de retroalimentación -->
+    <string name="msg_login_failed">Correo o contraseña incorrectos</string>
     <string name="msg_login_success">¡Bienvenido!</string>
     <string name="msg_logout_confirm">¿Deseas cerrar sesión?</string>
     <string name="msg_delete_confirm">¿Estás seguro de eliminar?</string>
     <string name="msg_saved">Guardado correctamente</string>
+    <string name="msg_account_created">¡Cuenta creada! Ahora inicia sesión.</string>
+    <string name="msg_reset_link_sent">Se envió el enlace a %s</string>
     <string name="msg_added_to_cart">Producto agregado al carrito</string>
+    <string name="msg_item_added_to_cart">%s agregado al carrito</string>
+    <string name="msg_item_quantity_cart">%1$s × %2$d agregado al carrito</string>
+    <string name="msg_cart_cleared">Carrito vaciado</string>
     <string name="msg_order_placed">¡Pedido realizado con éxito!</string>
+    <string name="msg_order_shipped">Pedido marcado como enviado</string>
+    <string name="msg_order_delivered">Pedido marcado como entregado</string>
+    <string name="msg_profile_updated">Perfil actualizado</string>
+    <string name="msg_user_created">Usuario %s creado</string>
+    <string name="msg_user_updated">Usuario actualizado</string>
+    <string name="msg_user_deactivated">Usuario desactivado</string>
+    <string name="msg_product_created">Producto creado</string>
+    <string name="msg_product_updated">Producto actualizado</string>
+    <string name="msg_edit_action">Editar: %s</string>
+    <string name="msg_delete_action">Eliminar: %s</string>
+    <string name="msg_open_camera">Abrir cámara (requiere permiso)</string>
+    <string name="msg_open_gallery">Abrir galería (requiere permiso)</string>
+    <string name="msg_open_camera_simple">Abrir cámara</string>
+    <string name="msg_open_gallery_simple">Abrir galería</string>
+
+    <!-- Datos de demostración -->
+    <string name="demo_admin_name">Administrador</string>
+    <string name="demo_admin_email">admin@tomenaguita.com</string>
+    <string name="demo_comprador_name">Carlos Comprador</string>
+    <string name="demo_comprador_email">comprador@tomenaguita.com</string>
+    <string name="demo_phone">3001234567</string>
+    <string name="demo_address">Calle 123 # 45-67, Bogotá</string>
+    <string name="demo_product_desc_short">Agua purificada de alta calidad</string>
+    <string name="demo_product_description">Agua purificada %1$s de %2$s. Proceso de purificación con filtración de 7 etapas. Sin aditivos, 100%% natural.</string>
+
+    <!-- Accesibilidad -->
     <string name="content_desc_product_image">Imagen del producto</string>
     <string name="content_desc_logo">Logo Tomen Agüita</string>
 </resources>

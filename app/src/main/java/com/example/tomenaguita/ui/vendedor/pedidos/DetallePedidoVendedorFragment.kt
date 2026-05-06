@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import com.example.tomenaguita.R
 import com.example.tomenaguita.databinding.FragmentDetallePedidoVendedorBinding
 import com.example.tomenaguita.utils.showSnackbar
 import com.example.tomenaguita.utils.toCOP
@@ -23,17 +24,17 @@ class DetallePedidoVendedorFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.tvNombreComprador.text = "Carlos Comprador"
-        binding.tvTelefonoComprador.text = "3001234567"
-        binding.tvDireccionComprador.text = "Calle 123 # 45-67, Bogotá"
+        binding.tvNombreComprador.text = getString(R.string.demo_comprador_name)
+        binding.tvTelefonoComprador.text = getString(R.string.demo_phone)
+        binding.tvDireccionComprador.text = getString(R.string.demo_address)
         binding.tvTotal.text = 7000.0.toCOP()
 
         binding.btnMarcarEnviado.setOnClickListener {
-            binding.root.showSnackbar("Pedido marcado como enviado")
+            binding.root.showSnackbar(getString(R.string.msg_order_shipped))
             binding.btnMarcarEnviado.isEnabled = false
         }
         binding.btnMarcarEntregado.setOnClickListener {
-            binding.root.showSnackbar("Pedido marcado como entregado")
+            binding.root.showSnackbar(getString(R.string.msg_order_delivered))
             binding.btnMarcarEntregado.isEnabled = false
         }
     }

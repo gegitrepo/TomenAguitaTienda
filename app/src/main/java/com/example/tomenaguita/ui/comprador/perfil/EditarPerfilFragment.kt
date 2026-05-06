@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.tomenaguita.R
 import com.example.tomenaguita.databinding.FragmentEditarPerfilBinding
 import com.example.tomenaguita.utils.showSnackbar
 
@@ -21,16 +22,16 @@ class EditarPerfilFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.etNombre.setText("Carlos Comprador")
-        binding.etTelefono.setText("3001234567")
-        binding.etDireccion.setText("Calle 123 # 45-67, Bogotá")
+        binding.etNombre.setText(getString(R.string.demo_comprador_name))
+        binding.etTelefono.setText(getString(R.string.demo_phone))
+        binding.etDireccion.setText(getString(R.string.demo_address))
 
         binding.btnGuardar.setOnClickListener {
-            binding.root.showSnackbar("Perfil actualizado")
+            binding.root.showSnackbar(getString(R.string.msg_profile_updated))
             findNavController().popBackStack()
         }
-        binding.btnCamara.setOnClickListener { binding.root.showSnackbar("Abrir cámara (requiere permiso)") }
-        binding.btnGaleria.setOnClickListener { binding.root.showSnackbar("Abrir galería (requiere permiso)") }
+        binding.btnCamara.setOnClickListener { binding.root.showSnackbar(getString(R.string.msg_open_camera)) }
+        binding.btnGaleria.setOnClickListener { binding.root.showSnackbar(getString(R.string.msg_open_gallery)) }
     }
 
     override fun onDestroyView() {

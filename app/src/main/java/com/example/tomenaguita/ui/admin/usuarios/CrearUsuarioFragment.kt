@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.tomenaguita.R
 import com.example.tomenaguita.databinding.FragmentCrearUsuarioBinding
 import com.example.tomenaguita.utils.Constants
 import com.example.tomenaguita.utils.isValidColombian
@@ -27,7 +28,7 @@ class CrearUsuarioFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val rolesAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, Constants.ROLES.map { it.replaceFirstChar { c -> c.uppercase() } })
         binding.acRol.setAdapter(rolesAdapter)
-        binding.acRol.setText("Comprador", false)
+        binding.acRol.setText(getString(R.string.rol_comprador), false)
 
         binding.btnCrearUsuario.setOnClickListener { crearUsuario() }
     }
@@ -43,12 +44,12 @@ class CrearUsuarioFragment : Fragment() {
         binding.tilTelefono.error = null
         binding.tilPassword.error = null
 
-        if (nombre.length < 3) { binding.tilNombre.error = "Mínimo 3 caracteres"; return }
-        if (!email.isValidEmail()) { binding.tilEmail.error = "Correo inválido"; return }
-        if (!telefono.isValidColombian()) { binding.tilTelefono.error = "Teléfono inválido"; return }
-        if (password.length < 8) { binding.tilPassword.error = "Mínimo 8 caracteres"; return }
+        if (nombre.length < 3) { binding.tilNombre.error = getString(R.string.error_name_short); return }
+        if (!email.isValidEmail()) { binding.tilEmail.error = getString(R.string.error_email_invalid); return }
+        if (!telefono.isValidColombian()) { binding.tilTelefono.error = getString(R.string.error_phone_invalid); return }
+        if (password.length < 8) { binding.tilPassword.error = getString(R.string.error_password_short); return }
 
-        binding.root.showSnackbar("Usuario $nombre creado")
+        binding.root.showSnackbar(getString(R.string.msg_user_created, nombre))
         findNavController().popBackStack()
     }
 

@@ -37,7 +37,7 @@ class ProductoDetalleFragment : Fragment() {
         producto = Producto(
             id = args.productoId,
             nombre = nombre,
-            descripcion = "Agua purificada $nombre de $presentacion. Proceso de purificación con filtración de 7 etapas. Sin aditivos, 100% natural.",
+            descripcion = getString(R.string.demo_product_description, nombre, presentacion),
             presentacion = presentacion,
             precio = precio,
             stock = 150,
@@ -47,11 +47,11 @@ class ProductoDetalleFragment : Fragment() {
         binding.tvPresentacion.text = presentacion
         binding.tvPrecio.text = precio.toCOP()
         binding.tvDescripcion.text = producto!!.descripcion
-        binding.tvStock.text = "150 unidades"
+        binding.tvStock.text = getString(R.string.label_units_format, producto!!.stock)
         binding.tvCantidad.text = cantidad.toString()
 
         binding.btnAgregarCarrito.setOnClickListener {
-            binding.root.showSnackbar("$nombre × $cantidad agregado al carrito")
+            binding.root.showSnackbar(getString(R.string.msg_item_quantity_cart, nombre, cantidad))
         }
     }
 

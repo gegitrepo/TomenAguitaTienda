@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.tomenaguita.R
+import com.example.tomenaguita.R
 import com.example.tomenaguita.databinding.FragmentResumenPedidoBinding
 import com.example.tomenaguita.utils.toCOP
 
@@ -25,7 +26,7 @@ class ResumenPedidoFragment : Fragment() {
         val subtotal = 7000.0
         binding.tvSubtotal.text = subtotal.toCOP()
         binding.tvTotal.text = subtotal.toCOP()
-        binding.tvDireccion.text = "Calle 123 # 45-67, Bogotá"
+        binding.tvDireccion.text = getString(R.string.demo_address)
 
         binding.btnConfirmar.setOnClickListener {
             findNavController().navigate(R.id.action_resumen_to_pago)

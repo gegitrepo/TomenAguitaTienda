@@ -26,10 +26,10 @@ class PerfilFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val session = SessionManager(requireContext())
-        binding.tvNombre.text = session.getUserNombre() ?: "Carlos Comprador"
-        binding.tvEmail.text = session.getUserEmail() ?: "comprador@tomenaguita.com"
-        binding.tvTelefono.text = "3001234567"
-        binding.tvDireccion.text = "Calle 123 # 45-67, Bogotá"
+        binding.tvNombre.text = session.getUserNombre() ?: getString(R.string.demo_comprador_name)
+        binding.tvEmail.text = session.getUserEmail() ?: getString(R.string.demo_comprador_email)
+        binding.tvTelefono.text = getString(R.string.demo_phone)
+        binding.tvDireccion.text = getString(R.string.demo_address)
 
         binding.btnEditarPerfil.setOnClickListener {
             findNavController().navigate(R.id.action_perfil_to_editar)

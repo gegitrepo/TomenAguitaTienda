@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.tomenaguita.R
 import com.example.tomenaguita.databinding.FragmentGestionProductosBinding
 import com.example.tomenaguita.ui.adapter.ProductoAdapter
 import com.example.tomenaguita.ui.adapter.ProductoItem
@@ -26,8 +27,8 @@ class GestionProductosFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapter = ProductoAdapter(
-            onProductoClick = { binding.root.showSnackbar("Editar: ${it.nombre}") },
-            onAgregarClick = { binding.root.showSnackbar("Eliminar: ${it.nombre}") }
+            onProductoClick = { binding.root.showSnackbar(getString(R.string.msg_edit_action, it.nombre)) },
+            onAgregarClick = { binding.root.showSnackbar(getString(R.string.msg_delete_action, it.nombre)) }
         )
         binding.rvTodosProductos.layoutManager = LinearLayoutManager(requireContext())
         binding.rvTodosProductos.adapter = adapter

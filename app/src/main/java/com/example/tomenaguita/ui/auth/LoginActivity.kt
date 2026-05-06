@@ -3,6 +3,7 @@ package com.example.tomenaguita.ui.auth
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.tomenaguita.R
 import com.example.tomenaguita.databinding.ActivityLoginBinding
 import com.example.tomenaguita.ui.admin.AdminMainActivity
 import com.example.tomenaguita.ui.comprador.CompradorMainActivity
@@ -64,10 +65,10 @@ class LoginActivity : AppCompatActivity() {
         binding.tilEmail.error = null
         binding.tilPassword.error = null
 
-        if (email.isEmpty()) { binding.tilEmail.error = "Obligatorio"; return }
-        if (!email.isValidEmail()) { binding.tilEmail.error = "Correo inválido"; return }
-        if (password.isEmpty()) { binding.tilPassword.error = "Obligatorio"; return }
-        if (password.length < 8) { binding.tilPassword.error = "Mínimo 8 caracteres"; return }
+        if (email.isEmpty()) { binding.tilEmail.error = getString(R.string.error_field_required); return }
+        if (!email.isValidEmail()) { binding.tilEmail.error = getString(R.string.error_email_invalid); return }
+        if (password.isEmpty()) { binding.tilPassword.error = getString(R.string.error_field_required); return }
+        if (password.length < 8) { binding.tilPassword.error = getString(R.string.error_password_short); return }
 
         // Credenciales de demo hardcodeadas para Actividad 3
         val (userId, rol) = when (email) {
@@ -75,7 +76,7 @@ class LoginActivity : AppCompatActivity() {
             "vendedor@tomenaguita.com" -> Pair(2L, "vendedor")
             "comprador@tomenaguita.com" -> Pair(3L, "comprador")
             else -> {
-                binding.root.showSnackbar("Correo o contraseña incorrectos")
+                binding.root.showSnackbar(getString(R.string.msg_login_failed))
                 return
             }
         }

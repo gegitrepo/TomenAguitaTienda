@@ -37,8 +37,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvTitle">
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/padding_medium">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Ventas hoy" android:textColor="#CCFFFFFF" android:textSize="@dimen/text_body" />
-                <TextView android:id="@+id/tvVentasDia" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$85.000" android:textColor="@color/on_primary" android:textSize="20sp" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_today_sales" android:textColor="@color/on_primary_dim" android:textSize="@dimen/text_body" />
+                <TextView android:id="@+id/tvVentasDia" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/on_primary" android:textSize="@dimen/text_card_metric_medium" android:textStyle="bold" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -55,8 +55,8 @@
             app:layout_constraintStart_toEndOf="@id/cardTotalDia"
             app:layout_constraintTop_toBottomOf="@id/tvTitle">
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/padding_medium">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Ventas mes" android:textColor="#CCFFFFFF" android:textSize="@dimen/text_body" />
-                <TextView android:id="@+id/tvVentasMes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$2.4M" android:textColor="@color/on_primary" android:textSize="20sp" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_month_sales" android:textColor="@color/on_primary_dim" android:textSize="@dimen/text_body" />
+                <TextView android:id="@+id/tvVentasMes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/on_primary" android:textSize="@dimen/text_card_metric_medium" android:textStyle="bold" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -65,7 +65,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_large"
-            android:text="Últimas ventas"
+            android:text="@string/label_recent_sales"
             android:textColor="@color/on_background"
             android:textSize="@dimen/text_medium"
             android:textStyle="bold"

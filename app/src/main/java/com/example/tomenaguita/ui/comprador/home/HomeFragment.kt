@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.tomenaguita.R
 import com.example.tomenaguita.databinding.FragmentHomeBinding
 import com.example.tomenaguita.ui.adapter.ProductoAdapter
 import com.example.tomenaguita.ui.adapter.ProductoItem
@@ -37,7 +38,7 @@ class HomeFragment : Fragment() {
                 findNavController().navigate(action)
             },
             onAgregarClick = { item ->
-                binding.root.showSnackbar("${item.nombre} agregado al carrito")
+                binding.root.showSnackbar(getString(R.string.msg_item_added_to_cart, item.nombre))
             }
         )
         binding.rvProductos.layoutManager = LinearLayoutManager(requireContext())

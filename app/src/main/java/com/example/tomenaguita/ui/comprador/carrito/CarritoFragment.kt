@@ -46,7 +46,7 @@ class CarritoFragment : Fragment() {
             demoItems.clear()
             adapter.submitList(emptyList())
             updateTotales()
-            binding.root.showSnackbar("Carrito vaciado")
+            binding.root.showSnackbar(getString(R.string.msg_cart_cleared))
         }
     }
 
