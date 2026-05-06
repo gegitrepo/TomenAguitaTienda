@@ -5,24 +5,23 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tomenaguita.data.database.entity.Producto
 import com.example.tomenaguita.databinding.ItemProductoBinding
 import com.example.tomenaguita.utils.toCOP
 
 class ProductoAdapter(
-    private val onProductoClick: (Producto) -> Unit,
-    private val onAgregarClick: (Producto) -> Unit
-) : ListAdapter<Producto, ProductoAdapter.ViewHolder>(DiffCallback()) {
+    private val onProductoClick: (ProductoItem) -> Unit,
+    private val onAgregarClick: (ProductoItem) -> Unit
+) : ListAdapter<ProductoItem, ProductoAdapter.ViewHolder>(DiffCallback()) {
 
     inner class ViewHolder(private val binding: ItemProductoBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(producto: Producto) {
-            binding.tvNombre.text = producto.nombre
-            binding.tvPresentacion.text = producto.presentacion
-            binding.tvPrecio.text = producto.precio.toCOP()
-            binding.root.setOnClickListener { onProductoClick(producto) }
-            binding.btnAgregar.setOnClickListener { onAgregarClick(producto) }
+        fun bind(item: ProductoItem) {
+            binding.tvNombre.text = item.nombre
+            binding.tvPresentacion.text = item.presentacion
+            binding.tvPrecio.text = item.precio.toCOP()
+            binding.root.setOnClickListener { onProductoClick(item) }
+            binding.btnAgregar.setOnClickListener { onAgregarClick(item) }
         }
     }
 
@@ -35,8 +34,8 @@ class ProductoAdapter(
         holder.bind(getItem(position))
     }
 
-    class DiffCallback : DiffUtil.ItemCallback<Producto>() {
-        override fun areItemsTheSame(old: Producto, new: Producto) = old.id == new.id
-        override fun areContentsTheSame(old: Producto, new: Producto) = old == new
+    class DiffCallback : DiffUtil.ItemCallback<ProductoItem>() {
+        override fun areItemsTheSame(old: ProductoItem, new: ProductoItem) = old.id == new.id
+        override fun areContentsTheSame(old: ProductoItem, new: ProductoItem) = old == new
     }
 }

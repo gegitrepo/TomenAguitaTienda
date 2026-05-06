@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.tomenaguita.data.database.entity.Producto
 import com.example.tomenaguita.databinding.FragmentHomeBinding
 import com.example.tomenaguita.ui.adapter.ProductoAdapter
+import com.example.tomenaguita.ui.adapter.ProductoItem
 import com.example.tomenaguita.utils.Constants
 import com.example.tomenaguita.utils.showSnackbar
 
@@ -32,12 +32,12 @@ class CatalogoFragment : Fragment() {
 
     private fun setupRecyclerView() {
         adapter = ProductoAdapter(
-            onProductoClick = { producto ->
-                val action = CatalogoFragmentDirections.actionCatalogoToDetalle(producto.id)
+            onProductoClick = { item ->
+                val action = CatalogoFragmentDirections.actionCatalogoToDetalle(item.id)
                 findNavController().navigate(action)
             },
-            onAgregarClick = { producto ->
-                binding.root.showSnackbar("${producto.nombre} agregado al carrito")
+            onAgregarClick = { item ->
+                binding.root.showSnackbar("${item.nombre} agregado al carrito")
             }
         )
         binding.rvProductos.layoutManager = LinearLayoutManager(requireContext())
@@ -45,18 +45,17 @@ class CatalogoFragment : Fragment() {
     }
 
     private fun loadDemoProducts() {
-        val productos = Constants.PRODUCTOS_DEMO.mapIndexed { index, (nombre, presentacion, precio) ->
-            Producto(
+        val items = Constants.PRODUCTOS_DEMO.mapIndexed { index, (nombre, presentacion, precio) ->
+            ProductoItem(
                 id = (index + 1).toLong(),
                 nombre = nombre,
-                descripcion = "Agua purificada $nombre. Ideal para hidratación diaria.",
                 presentacion = presentacion,
                 precio = precio,
                 stock = 100 + index * 10,
-                vendedorId = 2L
+                disponible = true
             )
         }
-        adapter.submitList(productos)
+        adapter.submitList(items)
     }
 
     override fun onDestroyView() {

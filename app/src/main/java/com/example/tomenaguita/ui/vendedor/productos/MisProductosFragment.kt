@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.tomenaguita.data.database.entity.Producto
 import com.example.tomenaguita.databinding.FragmentMisProductosBinding
 import com.example.tomenaguita.ui.adapter.ProductoAdapter
+import com.example.tomenaguita.ui.adapter.ProductoItem
 import com.example.tomenaguita.utils.Constants
 
 class MisProductosFragment : Fragment() {
@@ -26,15 +26,15 @@ class MisProductosFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapter = ProductoAdapter(
-            onProductoClick = { producto ->
-                val action = MisProductosFragmentDirections.actionMisProductosToEditar(producto.id)
+            onProductoClick = { item ->
+                val action = MisProductosFragmentDirections.actionMisProductosToEditar(item.id)
                 findNavController().navigate(action)
             },
             onAgregarClick = {}
         )
         binding.rvMisProductos.layoutManager = LinearLayoutManager(requireContext())
         binding.rvMisProductos.adapter = adapter
-        adapter.submitList(getDemoProductos())
+        adapter.submitList(getDemoItems())
 
         binding.fabCrearProducto.setOnClickListener {
             findNavController().navigate(MisProductosFragmentDirections.actionMisProductosToCrear())
@@ -44,8 +44,15 @@ class MisProductosFragment : Fragment() {
         }
     }
 
-    private fun getDemoProductos() = Constants.PRODUCTOS_DEMO.mapIndexed { i, (nombre, presentacion, precio) ->
-        Producto(id = (i + 1).toLong(), nombre = nombre, descripcion = "Agua purificada", presentacion = presentacion, precio = precio, stock = 100, vendedorId = 2L)
+    private fun getDemoItems() = Constants.PRODUCTOS_DEMO.mapIndexed { i, (nombre, presentacion, precio) ->
+        ProductoItem(
+            id = (i + 1).toLong(),
+            nombre = nombre,
+            presentacion = presentacion,
+            precio = precio,
+            stock = 100,
+            disponible = true
+        )
     }
 
     override fun onDestroyView() {
