@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1032720134932",
+    "project_id": "tomenaguita-7154a",
+    "storage_bucket": "tomenaguita-7154a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1032720134932:android:bc75f697383df5ece64801",
+        "android_client_info": {
+          "package_name": "com.example.tomenaguita"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjSmwJeFf-ajcMsbU1RBcZFSmcuz4QTSg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

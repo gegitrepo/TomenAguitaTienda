@@ -4,11 +4,12 @@ package com.example.tomenaguita.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.webkit.WebView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.widget.NestedScrollView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
@@ -21,51 +22,68 @@ import java.lang.String;
 
 public final class FragmentPasarelaPagoBinding implements ViewBinding {
   @NonNull
-  private final NestedScrollView rootView;
+  private final ConstraintLayout rootView;
 
   @NonNull
-  public final MaterialButton btnPagar;
+  public final MaterialButton btnPagarMP;
 
   @NonNull
-  public final MaterialCardView cardDatosPago;
+  public final MaterialCardView cardResumen;
 
   @NonNull
-  public final RadioButton rbEfectivo;
+  public final MaterialCardView cardTestData;
 
   @NonNull
-  public final RadioButton rbTarjeta;
+  public final NestedScrollView containerContent;
 
   @NonNull
-  public final RadioButton rbTransferencia;
+  public final View divider;
 
   @NonNull
-  public final RadioGroup rgMetodoPago;
+  public final ProgressBar progressBar;
 
   @NonNull
-  public final TextView tvMetodoLabel;
+  public final TextView tvOrderLabel;
+
+  @NonNull
+  public final TextView tvOrderNumber;
 
   @NonNull
   public final TextView tvTitle;
 
-  private FragmentPasarelaPagoBinding(@NonNull NestedScrollView rootView,
-      @NonNull MaterialButton btnPagar, @NonNull MaterialCardView cardDatosPago,
-      @NonNull RadioButton rbEfectivo, @NonNull RadioButton rbTarjeta,
-      @NonNull RadioButton rbTransferencia, @NonNull RadioGroup rgMetodoPago,
-      @NonNull TextView tvMetodoLabel, @NonNull TextView tvTitle) {
+  @NonNull
+  public final TextView tvTotalLabel;
+
+  @NonNull
+  public final TextView tvTotalPago;
+
+  @NonNull
+  public final WebView webView;
+
+  private FragmentPasarelaPagoBinding(@NonNull ConstraintLayout rootView,
+      @NonNull MaterialButton btnPagarMP, @NonNull MaterialCardView cardResumen,
+      @NonNull MaterialCardView cardTestData, @NonNull NestedScrollView containerContent,
+      @NonNull View divider, @NonNull ProgressBar progressBar, @NonNull TextView tvOrderLabel,
+      @NonNull TextView tvOrderNumber, @NonNull TextView tvTitle, @NonNull TextView tvTotalLabel,
+      @NonNull TextView tvTotalPago, @NonNull WebView webView) {
     this.rootView = rootView;
-    this.btnPagar = btnPagar;
-    this.cardDatosPago = cardDatosPago;
-    this.rbEfectivo = rbEfectivo;
-    this.rbTarjeta = rbTarjeta;
-    this.rbTransferencia = rbTransferencia;
-    this.rgMetodoPago = rgMetodoPago;
-    this.tvMetodoLabel = tvMetodoLabel;
+    this.btnPagarMP = btnPagarMP;
+    this.cardResumen = cardResumen;
+    this.cardTestData = cardTestData;
+    this.containerContent = containerContent;
+    this.divider = divider;
+    this.progressBar = progressBar;
+    this.tvOrderLabel = tvOrderLabel;
+    this.tvOrderNumber = tvOrderNumber;
     this.tvTitle = tvTitle;
+    this.tvTotalLabel = tvTotalLabel;
+    this.tvTotalPago = tvTotalPago;
+    this.webView = webView;
   }
 
   @Override
   @NonNull
-  public NestedScrollView getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -90,45 +108,51 @@ public final class FragmentPasarelaPagoBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.btnPagar;
-      MaterialButton btnPagar = ViewBindings.findChildViewById(rootView, id);
-      if (btnPagar == null) {
+      id = R.id.btnPagarMP;
+      MaterialButton btnPagarMP = ViewBindings.findChildViewById(rootView, id);
+      if (btnPagarMP == null) {
         break missingId;
       }
 
-      id = R.id.cardDatosPago;
-      MaterialCardView cardDatosPago = ViewBindings.findChildViewById(rootView, id);
-      if (cardDatosPago == null) {
+      id = R.id.cardResumen;
+      MaterialCardView cardResumen = ViewBindings.findChildViewById(rootView, id);
+      if (cardResumen == null) {
         break missingId;
       }
 
-      id = R.id.rbEfectivo;
-      RadioButton rbEfectivo = ViewBindings.findChildViewById(rootView, id);
-      if (rbEfectivo == null) {
+      id = R.id.cardTestData;
+      MaterialCardView cardTestData = ViewBindings.findChildViewById(rootView, id);
+      if (cardTestData == null) {
         break missingId;
       }
 
-      id = R.id.rbTarjeta;
-      RadioButton rbTarjeta = ViewBindings.findChildViewById(rootView, id);
-      if (rbTarjeta == null) {
+      id = R.id.containerContent;
+      NestedScrollView containerContent = ViewBindings.findChildViewById(rootView, id);
+      if (containerContent == null) {
         break missingId;
       }
 
-      id = R.id.rbTransferencia;
-      RadioButton rbTransferencia = ViewBindings.findChildViewById(rootView, id);
-      if (rbTransferencia == null) {
+      id = R.id.divider;
+      View divider = ViewBindings.findChildViewById(rootView, id);
+      if (divider == null) {
         break missingId;
       }
 
-      id = R.id.rgMetodoPago;
-      RadioGroup rgMetodoPago = ViewBindings.findChildViewById(rootView, id);
-      if (rgMetodoPago == null) {
+      id = R.id.progressBar;
+      ProgressBar progressBar = ViewBindings.findChildViewById(rootView, id);
+      if (progressBar == null) {
         break missingId;
       }
 
-      id = R.id.tvMetodoLabel;
-      TextView tvMetodoLabel = ViewBindings.findChildViewById(rootView, id);
-      if (tvMetodoLabel == null) {
+      id = R.id.tvOrderLabel;
+      TextView tvOrderLabel = ViewBindings.findChildViewById(rootView, id);
+      if (tvOrderLabel == null) {
+        break missingId;
+      }
+
+      id = R.id.tvOrderNumber;
+      TextView tvOrderNumber = ViewBindings.findChildViewById(rootView, id);
+      if (tvOrderNumber == null) {
         break missingId;
       }
 
@@ -138,8 +162,27 @@ public final class FragmentPasarelaPagoBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentPasarelaPagoBinding((NestedScrollView) rootView, btnPagar, cardDatosPago,
-          rbEfectivo, rbTarjeta, rbTransferencia, rgMetodoPago, tvMetodoLabel, tvTitle);
+      id = R.id.tvTotalLabel;
+      TextView tvTotalLabel = ViewBindings.findChildViewById(rootView, id);
+      if (tvTotalLabel == null) {
+        break missingId;
+      }
+
+      id = R.id.tvTotalPago;
+      TextView tvTotalPago = ViewBindings.findChildViewById(rootView, id);
+      if (tvTotalPago == null) {
+        break missingId;
+      }
+
+      id = R.id.webView;
+      WebView webView = ViewBindings.findChildViewById(rootView, id);
+      if (webView == null) {
+        break missingId;
+      }
+
+      return new FragmentPasarelaPagoBinding((ConstraintLayout) rootView, btnPagarMP, cardResumen,
+          cardTestData, containerContent, divider, progressBar, tvOrderLabel, tvOrderNumber,
+          tvTitle, tvTotalLabel, tvTotalPago, webView);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

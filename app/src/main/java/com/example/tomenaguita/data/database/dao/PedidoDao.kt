@@ -13,6 +13,14 @@ interface PedidoDao {
     @Query("SELECT * FROM pedidos ORDER BY createdAt DESC")
     fun getAllPedidos(): Flow<List<Pedido>>
 
+    @Query("""
+        SELECT DISTINCT p.* FROM pedidos p
+        INNER JOIN detalle_pedidos d ON d.pedidoId = p.id
+        WHERE d.vendedorId = :vendedorId
+        ORDER BY p.createdAt DESC
+    """)
+    fun getPedidosByVendedor(vendedorId: Long): Flow<List<Pedido>>
+
     @Query("SELECT * FROM pedidos WHERE id = :id")
     suspend fun getPedidoById(id: Long): Pedido?
 
@@ -27,4 +35,7 @@ interface PedidoDao {
 
     @Query("UPDATE pedidos SET estado = :estado, updatedAt = :timestamp WHERE id = :id")
     suspend fun actualizarEstado(id: Long, estado: String, timestamp: Long = System.currentTimeMillis())
+
+    @Query("SELECT * FROM pedidos WHERE orderNumber = :orderNumber LIMIT 1")
+    suspend fun getByOrderNumber(orderNumber: String): Pedido?
 }

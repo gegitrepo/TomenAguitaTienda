@@ -5,23 +5,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tomenaguita.data.database.entity.Pedido
 import com.example.tomenaguita.databinding.FragmentHistorialPedidosBinding
 import com.example.tomenaguita.ui.adapter.PedidoAdapter
+import com.example.tomenaguita.utils.SessionManager
+import com.example.tomenaguita.utils.gone
+import com.example.tomenaguita.utils.visible
+import com.example.tomenaguita.viewmodel.PedidoViewModel
 
 class HistorialPedidosFragment : Fragment() {
 
     private var _binding: FragmentHistorialPedidosBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapter: PedidoAdapter
+    private val viewModel: PedidoViewModel by activityViewModels()
 
-    private val demoPedidos = listOf(
-        Pedido(1L, "TA-20240501-0001", 3L, 7000.0, 0.0, 7000.0, "Calle 123 # 45-67, Bogotá", estado = "pendiente", metodoPago = "Efectivo"),
-        Pedido(2L, "TA-20240430-0012", 3L, 14500.0, 0.0, 14500.0, "Calle 123 # 45-67, Bogotá", estado = "pagado", metodoPago = "Tarjeta"),
-        Pedido(3L, "TA-20240428-0008", 3L, 30000.0, 0.0, 30000.0, "Calle 123 # 45-67, Bogotá", estado = "entregado", metodoPago = "Efectivo"),
-    )
+    private var allPedidos: List<Pedido> = emptyList()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentHistorialPedidosBinding.inflate(inflater, container, false)
@@ -30,13 +32,41 @@ class HistorialPedidosFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         adapter = PedidoAdapter { pedido ->
             val action = HistorialPedidosFragmentDirections.actionHistorialToDetalle(pedido.id)
             findNavController().navigate(action)
         }
         binding.rvPedidos.layoutManager = LinearLayoutManager(requireContext())
         binding.rvPedidos.adapter = adapter
-        adapter.submitList(demoPedidos)
+
+        val session = SessionManager(requireContext())
+        viewModel.getPedidosByUsuario(session.getUserId())
+            .observe(viewLifecycleOwner) { pedidos ->
+                allPedidos = pedidos
+                applyFilter()
+            }
+
+        binding.chipGroupFiltros.setOnCheckedStateChangeListener { _, _ -> applyFilter() }
+    }
+
+    private fun applyFilter() {
+        val filtered = when {
+            binding.chipPendiente.isChecked  -> allPedidos.filter { it.estado == "pendiente" }
+            binding.chipPagado.isChecked     -> allPedidos.filter { it.estado == "pagado" }
+            binding.chipEnviado.isChecked    -> allPedidos.filter { it.estado == "enviado" }
+            binding.chipEntregado.isChecked  -> allPedidos.filter { it.estado == "entregado" }
+            // "Todos" excluye los cancelados — los pedidos cancelados desaparecen del historial
+            else -> allPedidos.filter { it.estado != "cancelado" }
+        }
+        adapter.submitList(filtered)
+        if (filtered.isEmpty()) {
+            binding.tvEmpty.visible()
+            binding.rvPedidos.gone()
+        } else {
+            binding.tvEmpty.gone()
+            binding.rvPedidos.visible()
+        }
     }
 
     override fun onDestroyView() {

@@ -22,6 +22,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TomenAguita">
 
+        <!-- API Key de Google Maps SDK — reemplazar con la clave real desde Google Cloud Console -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDjSmwJeFf-ajcMsbU1RBcZFSmcuz4QTSg" />
+
         <activity
             android:name=".ui.splash.SplashActivity"
             android:exported="true"
@@ -55,6 +60,16 @@
         <activity
             android:name=".ui.admin.AdminMainActivity"
             android:exported="false" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
 
     </application>
 </manifest>

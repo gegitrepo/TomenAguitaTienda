@@ -48,9 +48,11 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="@color/surface"
         app:menu="@menu/menu_drawer_admin"
         app:headerLayout="@layout/nav_header_admin"
         app:itemIconTint="@color/primary"
-        app:itemTextColor="@color/on_background" />
+        app:itemTextColor="@color/on_background"
+        app:itemTextAppearance="@style/TextAppearance.TomenAguita.Body" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

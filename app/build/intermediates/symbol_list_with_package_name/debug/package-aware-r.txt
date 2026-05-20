@@ -1445,6 +1445,10 @@ color bright_foreground_inverse_material_dark
 color bright_foreground_inverse_material_light
 color bright_foreground_material_dark
 color bright_foreground_material_light
+color browser_actions_bg_grey
+color browser_actions_divider_color
+color browser_actions_text_color
+color browser_actions_title_color
 color button_material_dark
 color button_material_light
 color call_notification_answer_color
@@ -2297,6 +2301,8 @@ dimen appcompat_dialog_background_inset
 dimen avatar_size
 dimen banner_height
 dimen bottom_nav_height
+dimen browser_actions_context_menu_max_width
+dimen browser_actions_context_menu_min_padding
 dimen button_height
 dimen card_elevation
 dimen cardview_compat_inset_shadow
@@ -3185,6 +3191,7 @@ drawable ic_home
 drawable ic_keyboard_black_24dp
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable ic_launcher_foreground_logo
 drawable ic_logo
 drawable ic_logout
 drawable ic_m3_chip_check
@@ -3195,12 +3202,14 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_orders
+drawable ic_pin_map
 drawable ic_products
 drawable ic_profile
 drawable ic_reports
 drawable ic_search_black_24
 drawable ic_users
 drawable ic_water_bottle
+drawable logo_splash
 drawable m3_avd_hide_password
 drawable m3_avd_show_password
 drawable m3_bottom_sheet_drag_handle
@@ -3342,6 +3351,7 @@ id action_container
 id action_context_bar
 id action_detalle_to_carrito
 id action_divider
+id action_gestion_to_editar_producto
 id action_historial_to_detalle
 id action_home_to_detalle
 id action_image
@@ -3357,6 +3367,7 @@ id action_mode_bar_stub
 id action_mode_close_button
 id action_pago_to_historial
 id action_pedidos_to_detalle
+id action_perfilVendedor_to_editarPerfil
 id action_perfil_to_editar
 id action_resumen_to_pago
 id action_text
@@ -3365,6 +3376,7 @@ id activity_chooser_view_content
 id add
 id adjust_height
 id adjust_width
+id adminEditarProductoFragment
 id alertTitle
 id aligned
 id all
@@ -3396,10 +3408,18 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
+id browser_actions_header_text
+id browser_actions_menu_item_icon
+id browser_actions_menu_item_text
+id browser_actions_menu_items
+id browser_actions_menu_view
 id btnAgregar
 id btnAgregarCarrito
 id btnBiometric
+id btnBorrarFoto
 id btnCamara
+id btnCancelarPedido
+id btnCompletarPedido
 id btnConfirmar
 id btnCrearUsuario
 id btnEditarPerfil
@@ -3413,7 +3433,7 @@ id btnLogout
 id btnMarcarEntregado
 id btnMarcarEnviado
 id btnMinus
-id btnPagar
+id btnPagarMP
 id btnPlus
 id btnProcederPago
 id btnRegister
@@ -3426,11 +3446,13 @@ id cancel_button
 id cardAddress
 id cardComprador
 id cardContent
-id cardDatosPago
 id cardEstado
+id cardHeaderPedido
 id cardInfo
 id cardPedidos
 id cardProductos
+id cardResumen
+id cardTestData
 id cardTotalDia
 id cardTotalMes
 id cardTotales
@@ -3454,6 +3476,7 @@ id chipActivo
 id chipEntregado
 id chipEnviado
 id chipEstado
+id chipEstadoVendedor
 id chipGroupFiltros
 id chipPagado
 id chipPendiente
@@ -3471,6 +3494,7 @@ id compress
 id confirm_button
 id constraint
 id container
+id containerContent
 id content
 id contentPanel
 id contiguous
@@ -3542,6 +3566,7 @@ id etEmail
 id etNombre
 id etPassword
 id etPrecio
+id etSearch
 id etStock
 id etTelefono
 id exitUntilCollapsed
@@ -3632,6 +3657,8 @@ id llFotoButtons
 id locale
 id ltr
 id m3_side_sheet
+id mapContainer
+id mapView
 id marquee
 id masked
 id match_constraint
@@ -3765,15 +3792,11 @@ id progress_circular
 id progress_horizontal
 id radio
 id ratio
-id rbEfectivo
-id rbTarjeta
-id rbTransferencia
 id rectangles
 id report_drawn
 id reporteVentasFragment
 id resumenPedidoFragment
 id reverseSawtooth
-id rgMetodoPago
 id right
 id rightToLeft
 id right_icon
@@ -3804,8 +3827,6 @@ id scrollIndicatorDown
 id scrollIndicatorUp
 id scrollView
 id scrollable
-id searchBar
-id searchBarUsuarios
 id search_badge
 id search_bar
 id search_button
@@ -3862,7 +3883,6 @@ id supportScrollUp
 id swipeRefresh
 id switchActivo
 id switchDisponible
-id tabIndicator
 id tabMode
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
@@ -3903,6 +3923,7 @@ id tilPassword
 id tilPrecio
 id tilPresentacion
 id tilRol
+id tilSearch
 id tilStock
 id tilTelefono
 id time
@@ -3936,21 +3957,29 @@ id tvDireccionComprador
 id tvDireccionLabel
 id tvEmail
 id tvEmailAdmin
+id tvEmpty
 id tvEmptyCart
 id tvEnvio
 id tvEnvioLabel
+id tvEstadoUbicacion
 id tvFeatured
 id tvFecha
+id tvFechaPedidoVendedor
 id tvForgotPassword
+id tvLocationStatus
 id tvLogin
-id tvMetodoLabel
 id tvNombre
 id tvNombreAdmin
 id tvNombreComprador
+id tvNombreProducto
 id tvNumeroPedido
+id tvNumeroPedidoVendedor
+id tvOrderLabel
+id tvOrderNumber
 id tvPrecio
 id tvPrecioUnitario
 id tvPresentacion
+id tvPresentacionCantidad
 id tvProductosLabel
 id tvRegister
 id tvSlogan
@@ -3964,6 +3993,7 @@ id tvTelefonoComprador
 id tvTitle
 id tvTotal
 id tvTotalLabel
+id tvTotalPago
 id tvTotalPedidos
 id tvTotalProductos
 id tvTotalUsuarios
@@ -3977,7 +4007,6 @@ id unlabeled
 id up
 id useLogo
 id vertical_only
-id viewPagerBanners
 id view_offset_helper
 id view_transition
 id view_tree_lifecycle_owner
@@ -3986,6 +4015,7 @@ id view_tree_saved_state_registry_owner
 id view_tree_view_model_store_owner
 id visible
 id visible_removing_fragment_view_tag
+id webView
 id west
 id wide
 id withText
@@ -4119,6 +4149,8 @@ layout activity_login
 layout activity_register
 layout activity_splash
 layout activity_vendedor_main
+layout browser_actions_context_menu_page
+layout browser_actions_context_menu_row
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -4159,6 +4191,7 @@ layout fragment_resumen_pedido
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
 layout item_carrito
+layout item_detalle_pedido
 layout item_pedido
 layout item_producto
 layout item_usuario
@@ -4233,6 +4266,7 @@ navigation nav_graph_admin
 navigation nav_graph_comprador
 navigation nav_graph_vendedor
 plurals mtrl_badge_content_description
+raw firebase_common_keep
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description
@@ -4276,11 +4310,15 @@ string btn_biometric
 string btn_buy_now
 string btn_camera
 string btn_cancel
+string btn_cancel_order
 string btn_clear_cart
+string btn_complete_order
 string btn_confirm
 string btn_confirm_payment
 string btn_create_user
 string btn_delete
+string btn_delete_photo
+string btn_detect_location
 string btn_edit_profile
 string btn_gallery
 string btn_login
@@ -4325,6 +4363,7 @@ string common_signin_button_text_long
 string confirm_device_credential_password
 string content_desc_logo
 string content_desc_product_image
+string copy_toast_msg
 string default_error_msg
 string demo_address
 string demo_admin_email
@@ -4336,6 +4375,13 @@ string demo_product_desc_short
 string demo_product_description
 string desc_forgot_password
 string dest_title
+string empty_admin_products
+string empty_catalog_products
+string empty_home_products
+string empty_my_products
+string empty_order_history
+string empty_received_orders
+string empty_users
 string error_a11y_label
 string error_email_invalid
 string error_field_required
@@ -4348,6 +4394,9 @@ string error_terms_required
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
+string fallback_menu_item_copy_link
+string fallback_menu_item_open_in_browser
+string fallback_menu_item_share_link
 string fingerprint_dialog_touch_sensor
 string fingerprint_error_hw_not_available
 string fingerprint_error_hw_not_present
@@ -4355,9 +4404,14 @@ string fingerprint_error_lockout
 string fingerprint_error_no_fingerprints
 string fingerprint_error_user_canceled
 string fingerprint_not_recognized
+string gcm_defaultSenderId
 string generic_error_no_device_credential
 string generic_error_no_keyguard
 string generic_error_user_canceled
+string google_api_key
+string google_app_id
+string google_crash_reporting_api_key
+string google_storage_bucket
 string hide_bottom_view_on_scroll_behavior
 string hint_card_name
 string hint_card_number
@@ -4454,19 +4508,24 @@ string msg_added_to_cart
 string msg_cart_cleared
 string msg_delete_action
 string msg_delete_confirm
+string msg_detecting_location
 string msg_edit_action
 string msg_item_added_to_cart
 string msg_item_quantity_cart
+string msg_location_error
 string msg_login_failed
 string msg_login_success
 string msg_logout_confirm
+string msg_no_photo_to_delete
 string msg_open_camera
 string msg_open_camera_simple
 string msg_open_gallery
 string msg_open_gallery_simple
 string msg_order_delivered
+string msg_order_loaded_to_cart
 string msg_order_placed
 string msg_order_shipped
+string msg_photo_deleted
 string msg_product_created
 string msg_product_updated
 string msg_profile_updated
@@ -4547,6 +4606,7 @@ string path_password_strike_through
 string payment_card
 string payment_cash
 string payment_transfer
+string project_id
 string rol_comprador
 string search_menu_title
 string searchbar_scrolling_view_behavior
@@ -5326,6 +5386,7 @@ style ThemeOverlay_MaterialComponents_TimePicker_Display_TextInputEditText
 style ThemeOverlay_MaterialComponents_Toolbar_Popup_Primary
 style ThemeOverlay_MaterialComponents_Toolbar_Primary
 style ThemeOverlay_MaterialComponents_Toolbar_Surface
+style ThemeOverlay_TomenAguita_TextInput
 style Widget_AppCompat_ActionBar
 style Widget_AppCompat_ActionBar_Solid
 style Widget_AppCompat_ActionBar_TabBar
@@ -5880,3 +5941,5 @@ styleable ViewPager2 android_orientation
 styleable ViewStubCompat android_id android_layout android_inflatedId
 styleable ViewTransition android_id SharedValue SharedValueId clearsTag duration ifTagNotSet ifTagSet motionInterpolator motionTarget onStateTransition pathMotionArc setsTag transitionDisable upDuration viewTransitionMode
 styleable include constraintSet
+xml file_paths
+xml image_share_filepaths

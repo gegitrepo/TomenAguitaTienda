@@ -4,6 +4,7 @@ package com.example.tomenaguita.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
@@ -12,7 +13,8 @@ import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.tomenaguita.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.search.SearchBar;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -22,21 +24,30 @@ public final class FragmentListaUsuariosBinding implements ViewBinding {
   private final CoordinatorLayout rootView;
 
   @NonNull
+  public final TextInputEditText etSearch;
+
+  @NonNull
   public final FloatingActionButton fabCrearUsuario;
 
   @NonNull
   public final RecyclerView rvUsuarios;
 
   @NonNull
-  public final SearchBar searchBarUsuarios;
+  public final TextInputLayout tilSearch;
+
+  @NonNull
+  public final TextView tvEmpty;
 
   private FragmentListaUsuariosBinding(@NonNull CoordinatorLayout rootView,
-      @NonNull FloatingActionButton fabCrearUsuario, @NonNull RecyclerView rvUsuarios,
-      @NonNull SearchBar searchBarUsuarios) {
+      @NonNull TextInputEditText etSearch, @NonNull FloatingActionButton fabCrearUsuario,
+      @NonNull RecyclerView rvUsuarios, @NonNull TextInputLayout tilSearch,
+      @NonNull TextView tvEmpty) {
     this.rootView = rootView;
+    this.etSearch = etSearch;
     this.fabCrearUsuario = fabCrearUsuario;
     this.rvUsuarios = rvUsuarios;
-    this.searchBarUsuarios = searchBarUsuarios;
+    this.tilSearch = tilSearch;
+    this.tvEmpty = tvEmpty;
   }
 
   @Override
@@ -66,6 +77,12 @@ public final class FragmentListaUsuariosBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.etSearch;
+      TextInputEditText etSearch = ViewBindings.findChildViewById(rootView, id);
+      if (etSearch == null) {
+        break missingId;
+      }
+
       id = R.id.fabCrearUsuario;
       FloatingActionButton fabCrearUsuario = ViewBindings.findChildViewById(rootView, id);
       if (fabCrearUsuario == null) {
@@ -78,14 +95,20 @@ public final class FragmentListaUsuariosBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.searchBarUsuarios;
-      SearchBar searchBarUsuarios = ViewBindings.findChildViewById(rootView, id);
-      if (searchBarUsuarios == null) {
+      id = R.id.tilSearch;
+      TextInputLayout tilSearch = ViewBindings.findChildViewById(rootView, id);
+      if (tilSearch == null) {
         break missingId;
       }
 
-      return new FragmentListaUsuariosBinding((CoordinatorLayout) rootView, fabCrearUsuario,
-          rvUsuarios, searchBarUsuarios);
+      id = R.id.tvEmpty;
+      TextView tvEmpty = ViewBindings.findChildViewById(rootView, id);
+      if (tvEmpty == null) {
+        break missingId;
+      }
+
+      return new FragmentListaUsuariosBinding((CoordinatorLayout) rootView, etSearch,
+          fabCrearUsuario, rvUsuarios, tilSearch, tvEmpty);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

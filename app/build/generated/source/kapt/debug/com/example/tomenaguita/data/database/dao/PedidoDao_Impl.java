@@ -407,6 +407,113 @@ public final class PedidoDao_Impl implements PedidoDao {
   }
 
   @Override
+  public Flow<List<Pedido>> getPedidosByVendedor(final long vendedorId) {
+    final String _sql = "\n"
+            + "        SELECT DISTINCT p.* FROM pedidos p\n"
+            + "        INNER JOIN detalle_pedidos d ON d.pedidoId = p.id\n"
+            + "        WHERE d.vendedorId = ?\n"
+            + "        ORDER BY p.createdAt DESC\n"
+            + "    ";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
+    int _argIndex = 1;
+    _statement.bindLong(_argIndex, vendedorId);
+    return CoroutinesRoom.createFlow(__db, false, new String[] {"pedidos",
+        "detalle_pedidos"}, new Callable<List<Pedido>>() {
+      @Override
+      @NonNull
+      public List<Pedido> call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
+          final int _cursorIndexOfOrderNumber = CursorUtil.getColumnIndexOrThrow(_cursor, "orderNumber");
+          final int _cursorIndexOfUsuarioId = CursorUtil.getColumnIndexOrThrow(_cursor, "usuarioId");
+          final int _cursorIndexOfTotalProductos = CursorUtil.getColumnIndexOrThrow(_cursor, "totalProductos");
+          final int _cursorIndexOfCostoEnvio = CursorUtil.getColumnIndexOrThrow(_cursor, "costoEnvio");
+          final int _cursorIndexOfTotalPedido = CursorUtil.getColumnIndexOrThrow(_cursor, "totalPedido");
+          final int _cursorIndexOfDireccionEntrega = CursorUtil.getColumnIndexOrThrow(_cursor, "direccionEntrega");
+          final int _cursorIndexOfLatitud = CursorUtil.getColumnIndexOrThrow(_cursor, "latitud");
+          final int _cursorIndexOfLongitud = CursorUtil.getColumnIndexOrThrow(_cursor, "longitud");
+          final int _cursorIndexOfEstado = CursorUtil.getColumnIndexOrThrow(_cursor, "estado");
+          final int _cursorIndexOfMetodoPago = CursorUtil.getColumnIndexOrThrow(_cursor, "metodoPago");
+          final int _cursorIndexOfTransactionId = CursorUtil.getColumnIndexOrThrow(_cursor, "transactionId");
+          final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
+          final int _cursorIndexOfUpdatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "updatedAt");
+          final List<Pedido> _result = new ArrayList<Pedido>(_cursor.getCount());
+          while (_cursor.moveToNext()) {
+            final Pedido _item;
+            final long _tmpId;
+            _tmpId = _cursor.getLong(_cursorIndexOfId);
+            final String _tmpOrderNumber;
+            if (_cursor.isNull(_cursorIndexOfOrderNumber)) {
+              _tmpOrderNumber = null;
+            } else {
+              _tmpOrderNumber = _cursor.getString(_cursorIndexOfOrderNumber);
+            }
+            final long _tmpUsuarioId;
+            _tmpUsuarioId = _cursor.getLong(_cursorIndexOfUsuarioId);
+            final double _tmpTotalProductos;
+            _tmpTotalProductos = _cursor.getDouble(_cursorIndexOfTotalProductos);
+            final double _tmpCostoEnvio;
+            _tmpCostoEnvio = _cursor.getDouble(_cursorIndexOfCostoEnvio);
+            final double _tmpTotalPedido;
+            _tmpTotalPedido = _cursor.getDouble(_cursorIndexOfTotalPedido);
+            final String _tmpDireccionEntrega;
+            if (_cursor.isNull(_cursorIndexOfDireccionEntrega)) {
+              _tmpDireccionEntrega = null;
+            } else {
+              _tmpDireccionEntrega = _cursor.getString(_cursorIndexOfDireccionEntrega);
+            }
+            final Double _tmpLatitud;
+            if (_cursor.isNull(_cursorIndexOfLatitud)) {
+              _tmpLatitud = null;
+            } else {
+              _tmpLatitud = _cursor.getDouble(_cursorIndexOfLatitud);
+            }
+            final Double _tmpLongitud;
+            if (_cursor.isNull(_cursorIndexOfLongitud)) {
+              _tmpLongitud = null;
+            } else {
+              _tmpLongitud = _cursor.getDouble(_cursorIndexOfLongitud);
+            }
+            final String _tmpEstado;
+            if (_cursor.isNull(_cursorIndexOfEstado)) {
+              _tmpEstado = null;
+            } else {
+              _tmpEstado = _cursor.getString(_cursorIndexOfEstado);
+            }
+            final String _tmpMetodoPago;
+            if (_cursor.isNull(_cursorIndexOfMetodoPago)) {
+              _tmpMetodoPago = null;
+            } else {
+              _tmpMetodoPago = _cursor.getString(_cursorIndexOfMetodoPago);
+            }
+            final String _tmpTransactionId;
+            if (_cursor.isNull(_cursorIndexOfTransactionId)) {
+              _tmpTransactionId = null;
+            } else {
+              _tmpTransactionId = _cursor.getString(_cursorIndexOfTransactionId);
+            }
+            final long _tmpCreatedAt;
+            _tmpCreatedAt = _cursor.getLong(_cursorIndexOfCreatedAt);
+            final long _tmpUpdatedAt;
+            _tmpUpdatedAt = _cursor.getLong(_cursorIndexOfUpdatedAt);
+            _item = new Pedido(_tmpId,_tmpOrderNumber,_tmpUsuarioId,_tmpTotalProductos,_tmpCostoEnvio,_tmpTotalPedido,_tmpDireccionEntrega,_tmpLatitud,_tmpLongitud,_tmpEstado,_tmpMetodoPago,_tmpTransactionId,_tmpCreatedAt,_tmpUpdatedAt);
+            _result.add(_item);
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+        }
+      }
+
+      @Override
+      protected void finalize() {
+        _statement.release();
+      }
+    });
+  }
+
+  @Override
   public Object getPedidoById(final long id, final Continuation<? super Pedido> $completion) {
     final String _sql = "SELECT * FROM pedidos WHERE id = ?";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
@@ -558,6 +665,109 @@ public final class PedidoDao_Impl implements PedidoDao {
             _tmpVendedorId = _cursor.getLong(_cursorIndexOfVendedorId);
             _item = new DetallePedido(_tmpId,_tmpPedidoId,_tmpProductoId,_tmpNombreProducto,_tmpPresentacion,_tmpCantidad,_tmpPrecioUnitario,_tmpSubtotal,_tmpVendedorId);
             _result.add(_item);
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+          _statement.release();
+        }
+      }
+    }, $completion);
+  }
+
+  @Override
+  public Object getByOrderNumber(final String orderNumber,
+      final Continuation<? super Pedido> $completion) {
+    final String _sql = "SELECT * FROM pedidos WHERE orderNumber = ? LIMIT 1";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
+    int _argIndex = 1;
+    if (orderNumber == null) {
+      _statement.bindNull(_argIndex);
+    } else {
+      _statement.bindString(_argIndex, orderNumber);
+    }
+    final CancellationSignal _cancellationSignal = DBUtil.createCancellationSignal();
+    return CoroutinesRoom.execute(__db, false, _cancellationSignal, new Callable<Pedido>() {
+      @Override
+      @Nullable
+      public Pedido call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
+          final int _cursorIndexOfOrderNumber = CursorUtil.getColumnIndexOrThrow(_cursor, "orderNumber");
+          final int _cursorIndexOfUsuarioId = CursorUtil.getColumnIndexOrThrow(_cursor, "usuarioId");
+          final int _cursorIndexOfTotalProductos = CursorUtil.getColumnIndexOrThrow(_cursor, "totalProductos");
+          final int _cursorIndexOfCostoEnvio = CursorUtil.getColumnIndexOrThrow(_cursor, "costoEnvio");
+          final int _cursorIndexOfTotalPedido = CursorUtil.getColumnIndexOrThrow(_cursor, "totalPedido");
+          final int _cursorIndexOfDireccionEntrega = CursorUtil.getColumnIndexOrThrow(_cursor, "direccionEntrega");
+          final int _cursorIndexOfLatitud = CursorUtil.getColumnIndexOrThrow(_cursor, "latitud");
+          final int _cursorIndexOfLongitud = CursorUtil.getColumnIndexOrThrow(_cursor, "longitud");
+          final int _cursorIndexOfEstado = CursorUtil.getColumnIndexOrThrow(_cursor, "estado");
+          final int _cursorIndexOfMetodoPago = CursorUtil.getColumnIndexOrThrow(_cursor, "metodoPago");
+          final int _cursorIndexOfTransactionId = CursorUtil.getColumnIndexOrThrow(_cursor, "transactionId");
+          final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
+          final int _cursorIndexOfUpdatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "updatedAt");
+          final Pedido _result;
+          if (_cursor.moveToFirst()) {
+            final long _tmpId;
+            _tmpId = _cursor.getLong(_cursorIndexOfId);
+            final String _tmpOrderNumber;
+            if (_cursor.isNull(_cursorIndexOfOrderNumber)) {
+              _tmpOrderNumber = null;
+            } else {
+              _tmpOrderNumber = _cursor.getString(_cursorIndexOfOrderNumber);
+            }
+            final long _tmpUsuarioId;
+            _tmpUsuarioId = _cursor.getLong(_cursorIndexOfUsuarioId);
+            final double _tmpTotalProductos;
+            _tmpTotalProductos = _cursor.getDouble(_cursorIndexOfTotalProductos);
+            final double _tmpCostoEnvio;
+            _tmpCostoEnvio = _cursor.getDouble(_cursorIndexOfCostoEnvio);
+            final double _tmpTotalPedido;
+            _tmpTotalPedido = _cursor.getDouble(_cursorIndexOfTotalPedido);
+            final String _tmpDireccionEntrega;
+            if (_cursor.isNull(_cursorIndexOfDireccionEntrega)) {
+              _tmpDireccionEntrega = null;
+            } else {
+              _tmpDireccionEntrega = _cursor.getString(_cursorIndexOfDireccionEntrega);
+            }
+            final Double _tmpLatitud;
+            if (_cursor.isNull(_cursorIndexOfLatitud)) {
+              _tmpLatitud = null;
+            } else {
+              _tmpLatitud = _cursor.getDouble(_cursorIndexOfLatitud);
+            }
+            final Double _tmpLongitud;
+            if (_cursor.isNull(_cursorIndexOfLongitud)) {
+              _tmpLongitud = null;
+            } else {
+              _tmpLongitud = _cursor.getDouble(_cursorIndexOfLongitud);
+            }
+            final String _tmpEstado;
+            if (_cursor.isNull(_cursorIndexOfEstado)) {
+              _tmpEstado = null;
+            } else {
+              _tmpEstado = _cursor.getString(_cursorIndexOfEstado);
+            }
+            final String _tmpMetodoPago;
+            if (_cursor.isNull(_cursorIndexOfMetodoPago)) {
+              _tmpMetodoPago = null;
+            } else {
+              _tmpMetodoPago = _cursor.getString(_cursorIndexOfMetodoPago);
+            }
+            final String _tmpTransactionId;
+            if (_cursor.isNull(_cursorIndexOfTransactionId)) {
+              _tmpTransactionId = null;
+            } else {
+              _tmpTransactionId = _cursor.getString(_cursorIndexOfTransactionId);
+            }
+            final long _tmpCreatedAt;
+            _tmpCreatedAt = _cursor.getLong(_cursorIndexOfCreatedAt);
+            final long _tmpUpdatedAt;
+            _tmpUpdatedAt = _cursor.getLong(_cursorIndexOfUpdatedAt);
+            _result = new Pedido(_tmpId,_tmpOrderNumber,_tmpUsuarioId,_tmpTotalProductos,_tmpCostoEnvio,_tmpTotalPedido,_tmpDireccionEntrega,_tmpLatitud,_tmpLongitud,_tmpEstado,_tmpMetodoPago,_tmpTransactionId,_tmpCreatedAt,_tmpUpdatedAt);
+          } else {
+            _result = null;
           }
           return _result;
         } finally {

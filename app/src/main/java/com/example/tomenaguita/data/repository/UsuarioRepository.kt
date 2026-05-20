@@ -20,4 +20,6 @@ class UsuarioRepository(private val dao: UsuarioDao) {
     suspend fun update(usuario: Usuario) = dao.update(usuario)
 
     suspend fun desactivar(id: Long) = dao.desactivar(id)
+
+    suspend fun getByFirestoreDocId(docId: String): Usuario? = dao.getByFirestoreDocId(docId)
 }

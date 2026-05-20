@@ -54,6 +54,16 @@
         android:id="@+id/perfilVendedorFragment"
         android:name="com.example.tomenaguita.ui.vendedor.perfil.PerfilVendedorFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_perfil_vendedor" />
+        tools:layout="@layout/fragment_perfil_vendedor">
+        <action
+            android:id="@+id/action_perfilVendedor_to_editarPerfil"
+            app:destination="@id/editarPerfilFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editarPerfilFragment"
+        android:name="com.example.tomenaguita.ui.comprador.perfil.EditarPerfilFragment"
+        android:label="Editar perfil"
+        tools:layout="@layout/fragment_editar_perfil" />
 
 </navigation>

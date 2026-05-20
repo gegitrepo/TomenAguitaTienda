@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.tomenaguita.R;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
 import java.lang.NullPointerException;
@@ -21,6 +22,12 @@ import java.lang.String;
 public final class FragmentDetallePedidoBinding implements ViewBinding {
   @NonNull
   private final NestedScrollView rootView;
+
+  @NonNull
+  public final MaterialButton btnCancelarPedido;
+
+  @NonNull
+  public final MaterialButton btnCompletarPedido;
 
   @NonNull
   public final MaterialCardView cardEstado;
@@ -53,12 +60,15 @@ public final class FragmentDetallePedidoBinding implements ViewBinding {
   public final TextView tvTotalLabel;
 
   private FragmentDetallePedidoBinding(@NonNull NestedScrollView rootView,
+      @NonNull MaterialButton btnCancelarPedido, @NonNull MaterialButton btnCompletarPedido,
       @NonNull MaterialCardView cardEstado, @NonNull Chip chipEstado,
       @NonNull RecyclerView rvProductosPedido, @NonNull TextView tvDireccion,
       @NonNull TextView tvDireccionLabel, @NonNull TextView tvFecha,
       @NonNull TextView tvNumeroPedido, @NonNull TextView tvProductosLabel,
       @NonNull TextView tvTotal, @NonNull TextView tvTotalLabel) {
     this.rootView = rootView;
+    this.btnCancelarPedido = btnCancelarPedido;
+    this.btnCompletarPedido = btnCompletarPedido;
     this.cardEstado = cardEstado;
     this.chipEstado = chipEstado;
     this.rvProductosPedido = rvProductosPedido;
@@ -98,6 +108,18 @@ public final class FragmentDetallePedidoBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btnCancelarPedido;
+      MaterialButton btnCancelarPedido = ViewBindings.findChildViewById(rootView, id);
+      if (btnCancelarPedido == null) {
+        break missingId;
+      }
+
+      id = R.id.btnCompletarPedido;
+      MaterialButton btnCompletarPedido = ViewBindings.findChildViewById(rootView, id);
+      if (btnCompletarPedido == null) {
+        break missingId;
+      }
+
       id = R.id.cardEstado;
       MaterialCardView cardEstado = ViewBindings.findChildViewById(rootView, id);
       if (cardEstado == null) {
@@ -158,9 +180,9 @@ public final class FragmentDetallePedidoBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentDetallePedidoBinding((NestedScrollView) rootView, cardEstado, chipEstado,
-          rvProductosPedido, tvDireccion, tvDireccionLabel, tvFecha, tvNumeroPedido,
-          tvProductosLabel, tvTotal, tvTotalLabel);
+      return new FragmentDetallePedidoBinding((NestedScrollView) rootView, btnCancelarPedido,
+          btnCompletarPedido, cardEstado, chipEstado, rvProductosPedido, tvDireccion,
+          tvDireccionLabel, tvFecha, tvNumeroPedido, tvProductosLabel, tvTotal, tvTotalLabel);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

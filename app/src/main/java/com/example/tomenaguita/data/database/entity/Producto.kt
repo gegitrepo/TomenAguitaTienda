@@ -15,6 +15,7 @@ data class Producto(
     val stock: Int,
     val vendedorId: Long,
     val eliminado: Int = 0,
+    val firestoreDocId: String? = null,
     val createdAt: Long = System.currentTimeMillis(),
     val updatedAt: Long = System.currentTimeMillis()
 )

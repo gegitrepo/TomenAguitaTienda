@@ -17,6 +17,7 @@ data class Usuario(
     val latitud: Double? = null,
     val longitud: Double? = null,
     val biometricEnabled: Int = 0,
+    val firestoreDocId: String? = null,
     val createdAt: Long = System.currentTimeMillis(),
     val updatedAt: Long = System.currentTimeMillis()
 )

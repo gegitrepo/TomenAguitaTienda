@@ -14,6 +14,10 @@
         <item name="android:statusBarColor">@color/primary_dark</item>
         <item name="android:navigationBarColor">@color/surface</item>
         <item name="android:fontFamily">sans-serif</item>
+        <!-- Fija el color de texto por defecto para EditText/TextInputEditText en toda la app.
+             DayNight puede resolver textColorPrimary en blanco; aquí lo forzamos a oscuro. -->
+        <item name="android:textColorPrimary">@color/on_background</item>
+        <item name="android:textColorSecondary">@color/on_background_secondary</item>
     </style>
 
     <style name="Theme.TomenAguita.Splash" parent="Theme.TomenAguita">
@@ -42,6 +46,14 @@
         <item name="boxCornerRadiusBottomStart">@dimen/corner_radius_small</item>
         <item name="boxCornerRadiusBottomEnd">@dimen/corner_radius_small</item>
         <item name="boxStrokeColor">@color/primary</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.TomenAguita.TextInput</item>
+    </style>
+
+    <!-- Fuerza colores de texto en todos los TextInputLayout de la app,
+         independiente del modo claro/oscuro del sistema -->
+    <style name="ThemeOverlay.TomenAguita.TextInput" parent="">
+        <item name="colorOnSurface">@color/primary</item>
+        <item name="colorOnSurfaceVariant">@color/on_background_secondary</item>
     </style>
 
     <style name="Widget.TomenAguita.EditText" parent="Widget.AppCompat.EditText">

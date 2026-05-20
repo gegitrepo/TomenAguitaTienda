@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,6 +14,7 @@ import androidx.core.widget.NestedScrollView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.tomenaguita.R;
+import com.google.android.gms.maps.MapView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -33,6 +36,9 @@ public final class ActivityRegisterBinding implements ViewBinding {
   public final TextInputEditText etConfirmPassword;
 
   @NonNull
+  public final TextInputEditText etDireccion;
+
+  @NonNull
   public final TextInputEditText etEmail;
 
   @NonNull
@@ -45,7 +51,19 @@ public final class ActivityRegisterBinding implements ViewBinding {
   public final TextInputEditText etTelefono;
 
   @NonNull
+  public final ImageView ivLogo;
+
+  @NonNull
+  public final FrameLayout mapContainer;
+
+  @NonNull
+  public final MapView mapView;
+
+  @NonNull
   public final TextInputLayout tilConfirmPassword;
+
+  @NonNull
+  public final TextInputLayout tilDireccion;
 
   @NonNull
   public final TextInputLayout tilEmail;
@@ -60,6 +78,9 @@ public final class ActivityRegisterBinding implements ViewBinding {
   public final TextInputLayout tilTelefono;
 
   @NonNull
+  public final TextView tvLocationStatus;
+
+  @NonNull
   public final TextView tvLogin;
 
   @NonNull
@@ -67,25 +88,33 @@ public final class ActivityRegisterBinding implements ViewBinding {
 
   private ActivityRegisterBinding(@NonNull NestedScrollView rootView,
       @NonNull MaterialButton btnRegister, @NonNull CheckBox cbTerminos,
-      @NonNull TextInputEditText etConfirmPassword, @NonNull TextInputEditText etEmail,
-      @NonNull TextInputEditText etNombre, @NonNull TextInputEditText etPassword,
-      @NonNull TextInputEditText etTelefono, @NonNull TextInputLayout tilConfirmPassword,
+      @NonNull TextInputEditText etConfirmPassword, @NonNull TextInputEditText etDireccion,
+      @NonNull TextInputEditText etEmail, @NonNull TextInputEditText etNombre,
+      @NonNull TextInputEditText etPassword, @NonNull TextInputEditText etTelefono,
+      @NonNull ImageView ivLogo, @NonNull FrameLayout mapContainer, @NonNull MapView mapView,
+      @NonNull TextInputLayout tilConfirmPassword, @NonNull TextInputLayout tilDireccion,
       @NonNull TextInputLayout tilEmail, @NonNull TextInputLayout tilNombre,
       @NonNull TextInputLayout tilPassword, @NonNull TextInputLayout tilTelefono,
-      @NonNull TextView tvLogin, @NonNull TextView tvTitle) {
+      @NonNull TextView tvLocationStatus, @NonNull TextView tvLogin, @NonNull TextView tvTitle) {
     this.rootView = rootView;
     this.btnRegister = btnRegister;
     this.cbTerminos = cbTerminos;
     this.etConfirmPassword = etConfirmPassword;
+    this.etDireccion = etDireccion;
     this.etEmail = etEmail;
     this.etNombre = etNombre;
     this.etPassword = etPassword;
     this.etTelefono = etTelefono;
+    this.ivLogo = ivLogo;
+    this.mapContainer = mapContainer;
+    this.mapView = mapView;
     this.tilConfirmPassword = tilConfirmPassword;
+    this.tilDireccion = tilDireccion;
     this.tilEmail = tilEmail;
     this.tilNombre = tilNombre;
     this.tilPassword = tilPassword;
     this.tilTelefono = tilTelefono;
+    this.tvLocationStatus = tvLocationStatus;
     this.tvLogin = tvLogin;
     this.tvTitle = tvTitle;
   }
@@ -135,6 +164,12 @@ public final class ActivityRegisterBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.etDireccion;
+      TextInputEditText etDireccion = ViewBindings.findChildViewById(rootView, id);
+      if (etDireccion == null) {
+        break missingId;
+      }
+
       id = R.id.etEmail;
       TextInputEditText etEmail = ViewBindings.findChildViewById(rootView, id);
       if (etEmail == null) {
@@ -159,9 +194,33 @@ public final class ActivityRegisterBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.ivLogo;
+      ImageView ivLogo = ViewBindings.findChildViewById(rootView, id);
+      if (ivLogo == null) {
+        break missingId;
+      }
+
+      id = R.id.mapContainer;
+      FrameLayout mapContainer = ViewBindings.findChildViewById(rootView, id);
+      if (mapContainer == null) {
+        break missingId;
+      }
+
+      id = R.id.mapView;
+      MapView mapView = ViewBindings.findChildViewById(rootView, id);
+      if (mapView == null) {
+        break missingId;
+      }
+
       id = R.id.tilConfirmPassword;
       TextInputLayout tilConfirmPassword = ViewBindings.findChildViewById(rootView, id);
       if (tilConfirmPassword == null) {
+        break missingId;
+      }
+
+      id = R.id.tilDireccion;
+      TextInputLayout tilDireccion = ViewBindings.findChildViewById(rootView, id);
+      if (tilDireccion == null) {
         break missingId;
       }
 
@@ -189,6 +248,12 @@ public final class ActivityRegisterBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvLocationStatus;
+      TextView tvLocationStatus = ViewBindings.findChildViewById(rootView, id);
+      if (tvLocationStatus == null) {
+        break missingId;
+      }
+
       id = R.id.tvLogin;
       TextView tvLogin = ViewBindings.findChildViewById(rootView, id);
       if (tvLogin == null) {
@@ -202,8 +267,9 @@ public final class ActivityRegisterBinding implements ViewBinding {
       }
 
       return new ActivityRegisterBinding((NestedScrollView) rootView, btnRegister, cbTerminos,
-          etConfirmPassword, etEmail, etNombre, etPassword, etTelefono, tilConfirmPassword,
-          tilEmail, tilNombre, tilPassword, tilTelefono, tvLogin, tvTitle);
+          etConfirmPassword, etDireccion, etEmail, etNombre, etPassword, etTelefono, ivLogo,
+          mapContainer, mapView, tilConfirmPassword, tilDireccion, tilEmail, tilNombre, tilPassword,
+          tilTelefono, tvLocationStatus, tvLogin, tvTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

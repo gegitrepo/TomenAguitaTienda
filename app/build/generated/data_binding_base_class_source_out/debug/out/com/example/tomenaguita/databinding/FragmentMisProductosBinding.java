@@ -32,15 +32,20 @@ public final class FragmentMisProductosBinding implements ViewBinding {
   public final SwipeRefreshLayout swipeRefresh;
 
   @NonNull
+  public final TextView tvEmpty;
+
+  @NonNull
   public final TextView tvTitle;
 
   private FragmentMisProductosBinding(@NonNull CoordinatorLayout rootView,
       @NonNull FloatingActionButton fabCrearProducto, @NonNull RecyclerView rvMisProductos,
-      @NonNull SwipeRefreshLayout swipeRefresh, @NonNull TextView tvTitle) {
+      @NonNull SwipeRefreshLayout swipeRefresh, @NonNull TextView tvEmpty,
+      @NonNull TextView tvTitle) {
     this.rootView = rootView;
     this.fabCrearProducto = fabCrearProducto;
     this.rvMisProductos = rvMisProductos;
     this.swipeRefresh = swipeRefresh;
+    this.tvEmpty = tvEmpty;
     this.tvTitle = tvTitle;
   }
 
@@ -89,6 +94,12 @@ public final class FragmentMisProductosBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvEmpty;
+      TextView tvEmpty = ViewBindings.findChildViewById(rootView, id);
+      if (tvEmpty == null) {
+        break missingId;
+      }
+
       id = R.id.tvTitle;
       TextView tvTitle = ViewBindings.findChildViewById(rootView, id);
       if (tvTitle == null) {
@@ -96,7 +107,7 @@ public final class FragmentMisProductosBinding implements ViewBinding {
       }
 
       return new FragmentMisProductosBinding((CoordinatorLayout) rootView, fabCrearProducto,
-          rvMisProductos, swipeRefresh, tvTitle);
+          rvMisProductos, swipeRefresh, tvEmpty, tvTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

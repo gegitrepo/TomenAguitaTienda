@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.tomenaguita.R
 import com.example.tomenaguita.databinding.ItemProductoBinding
 import com.example.tomenaguita.utils.toCOP
 
@@ -20,6 +22,14 @@ class ProductoAdapter(
             binding.tvNombre.text = item.nombre
             binding.tvPresentacion.text = item.presentacion
             binding.tvPrecio.text = item.precio.toCOP()
+
+            Glide.with(binding.root)
+                .load(item.imagenUrl?.takeIf { it.isNotEmpty() })
+                .placeholder(R.drawable.bg_banner_placeholder)
+                .error(R.drawable.bg_banner_placeholder)
+                .centerCrop()
+                .into(binding.ivProducto)
+
             binding.root.setOnClickListener { onProductoClick(item) }
             binding.btnAgregar.setOnClickListener { onAgregarClick(item) }
         }

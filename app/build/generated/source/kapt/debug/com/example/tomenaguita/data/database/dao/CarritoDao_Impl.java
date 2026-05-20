@@ -1,7 +1,9 @@
 package com.example.tomenaguita.data.database.dao;
 
 import android.database.Cursor;
+import android.os.CancellationSignal;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.room.CoroutinesRoom;
 import androidx.room.EntityDeletionOrUpdateAdapter;
 import androidx.room.EntityInsertionAdapter;
@@ -272,6 +274,107 @@ public final class CarritoDao_Impl implements CarritoDao {
         _statement.release();
       }
     });
+  }
+
+  @Override
+  public Object getById(final long id, final Continuation<? super CarritoItem> $completion) {
+    final String _sql = "SELECT * FROM carrito WHERE id = ? LIMIT 1";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
+    int _argIndex = 1;
+    _statement.bindLong(_argIndex, id);
+    final CancellationSignal _cancellationSignal = DBUtil.createCancellationSignal();
+    return CoroutinesRoom.execute(__db, false, _cancellationSignal, new Callable<CarritoItem>() {
+      @Override
+      @Nullable
+      public CarritoItem call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
+          final int _cursorIndexOfUsuarioId = CursorUtil.getColumnIndexOrThrow(_cursor, "usuarioId");
+          final int _cursorIndexOfProductoId = CursorUtil.getColumnIndexOrThrow(_cursor, "productoId");
+          final int _cursorIndexOfCantidad = CursorUtil.getColumnIndexOrThrow(_cursor, "cantidad");
+          final int _cursorIndexOfPrecioAlMomento = CursorUtil.getColumnIndexOrThrow(_cursor, "precioAlMomento");
+          final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
+          final int _cursorIndexOfUpdatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "updatedAt");
+          final CarritoItem _result;
+          if (_cursor.moveToFirst()) {
+            final long _tmpId;
+            _tmpId = _cursor.getLong(_cursorIndexOfId);
+            final long _tmpUsuarioId;
+            _tmpUsuarioId = _cursor.getLong(_cursorIndexOfUsuarioId);
+            final long _tmpProductoId;
+            _tmpProductoId = _cursor.getLong(_cursorIndexOfProductoId);
+            final int _tmpCantidad;
+            _tmpCantidad = _cursor.getInt(_cursorIndexOfCantidad);
+            final double _tmpPrecioAlMomento;
+            _tmpPrecioAlMomento = _cursor.getDouble(_cursorIndexOfPrecioAlMomento);
+            final long _tmpCreatedAt;
+            _tmpCreatedAt = _cursor.getLong(_cursorIndexOfCreatedAt);
+            final long _tmpUpdatedAt;
+            _tmpUpdatedAt = _cursor.getLong(_cursorIndexOfUpdatedAt);
+            _result = new CarritoItem(_tmpId,_tmpUsuarioId,_tmpProductoId,_tmpCantidad,_tmpPrecioAlMomento,_tmpCreatedAt,_tmpUpdatedAt);
+          } else {
+            _result = null;
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+          _statement.release();
+        }
+      }
+    }, $completion);
+  }
+
+  @Override
+  public Object getByUsuarioAndProducto(final long usuarioId, final long productoId,
+      final Continuation<? super CarritoItem> $completion) {
+    final String _sql = "SELECT * FROM carrito WHERE usuarioId = ? AND productoId = ? LIMIT 1";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 2);
+    int _argIndex = 1;
+    _statement.bindLong(_argIndex, usuarioId);
+    _argIndex = 2;
+    _statement.bindLong(_argIndex, productoId);
+    final CancellationSignal _cancellationSignal = DBUtil.createCancellationSignal();
+    return CoroutinesRoom.execute(__db, false, _cancellationSignal, new Callable<CarritoItem>() {
+      @Override
+      @Nullable
+      public CarritoItem call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
+          final int _cursorIndexOfUsuarioId = CursorUtil.getColumnIndexOrThrow(_cursor, "usuarioId");
+          final int _cursorIndexOfProductoId = CursorUtil.getColumnIndexOrThrow(_cursor, "productoId");
+          final int _cursorIndexOfCantidad = CursorUtil.getColumnIndexOrThrow(_cursor, "cantidad");
+          final int _cursorIndexOfPrecioAlMomento = CursorUtil.getColumnIndexOrThrow(_cursor, "precioAlMomento");
+          final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
+          final int _cursorIndexOfUpdatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "updatedAt");
+          final CarritoItem _result;
+          if (_cursor.moveToFirst()) {
+            final long _tmpId;
+            _tmpId = _cursor.getLong(_cursorIndexOfId);
+            final long _tmpUsuarioId;
+            _tmpUsuarioId = _cursor.getLong(_cursorIndexOfUsuarioId);
+            final long _tmpProductoId;
+            _tmpProductoId = _cursor.getLong(_cursorIndexOfProductoId);
+            final int _tmpCantidad;
+            _tmpCantidad = _cursor.getInt(_cursorIndexOfCantidad);
+            final double _tmpPrecioAlMomento;
+            _tmpPrecioAlMomento = _cursor.getDouble(_cursorIndexOfPrecioAlMomento);
+            final long _tmpCreatedAt;
+            _tmpCreatedAt = _cursor.getLong(_cursorIndexOfCreatedAt);
+            final long _tmpUpdatedAt;
+            _tmpUpdatedAt = _cursor.getLong(_cursorIndexOfUpdatedAt);
+            _result = new CarritoItem(_tmpId,_tmpUsuarioId,_tmpProductoId,_tmpCantidad,_tmpPrecioAlMomento,_tmpCreatedAt,_tmpUpdatedAt);
+          } else {
+            _result = null;
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+          _statement.release();
+        }
+      }
+    }, $completion);
   }
 
   @NonNull

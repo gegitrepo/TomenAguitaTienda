@@ -1,22 +1,21 @@
 package com.example.tomenaguita.utils
 
 import android.content.Context
+import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 
-class SessionManager(context: Context) {
+class SessionManager(private val context: Context) {
 
-    private val masterKey = MasterKey.Builder(context)
-        .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
-        .build()
-
-    private val prefs = EncryptedSharedPreferences.create(
-        context,
-        "tomenaguita_session",
-        masterKey,
-        EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-        EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-    )
+    private val prefs: SharedPreferences = try {
+        buildPrefs(context)
+    } catch (_: Exception) {
+        // La clave del Keystore se invalidó (reinstalación en dispositivos que conservan
+        // el archivo de prefs entre desinstalaciones, como algunos Huawei/Honor).
+        // Se borra el archivo cifrado corrupto para que el usuario inicie sesión de nuevo.
+        context.deleteSharedPreferences(PREFS_NAME)
+        buildPrefs(context)
+    }
 
     fun saveSession(userId: Long, rol: String, email: String, nombre: String) {
         prefs.edit()
@@ -41,5 +40,22 @@ class SessionManager(context: Context) {
 
     fun clearSession() {
         prefs.edit().clear().apply()
+    }
+
+    companion object {
+        private const val PREFS_NAME = "tomenaguita_session"
+
+        private fun buildPrefs(context: Context): SharedPreferences {
+            val masterKey = MasterKey.Builder(context)
+                .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
+                .build()
+            return EncryptedSharedPreferences.create(
+                context,
+                PREFS_NAME,
+                masterKey,
+                EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+            )
+        }
     }
 }

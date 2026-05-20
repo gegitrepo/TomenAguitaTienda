@@ -4,14 +4,17 @@ package com.example.tomenaguita.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.widget.NestedScrollView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.tomenaguita.R;
+import com.google.android.gms.maps.MapView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -22,6 +25,9 @@ import java.lang.String;
 public final class FragmentEditarPerfilBinding implements ViewBinding {
   @NonNull
   private final NestedScrollView rootView;
+
+  @NonNull
+  public final MaterialButton btnBorrarFoto;
 
   @NonNull
   public final MaterialButton btnCamara;
@@ -48,6 +54,12 @@ public final class FragmentEditarPerfilBinding implements ViewBinding {
   public final LinearLayout llFotoButtons;
 
   @NonNull
+  public final FrameLayout mapContainer;
+
+  @NonNull
+  public final MapView mapView;
+
+  @NonNull
   public final TextInputLayout tilDireccion;
 
   @NonNull
@@ -56,14 +68,20 @@ public final class FragmentEditarPerfilBinding implements ViewBinding {
   @NonNull
   public final TextInputLayout tilTelefono;
 
+  @NonNull
+  public final TextView tvLocationStatus;
+
   private FragmentEditarPerfilBinding(@NonNull NestedScrollView rootView,
-      @NonNull MaterialButton btnCamara, @NonNull MaterialButton btnGaleria,
-      @NonNull MaterialButton btnGuardar, @NonNull TextInputEditText etDireccion,
-      @NonNull TextInputEditText etNombre, @NonNull TextInputEditText etTelefono,
-      @NonNull ImageView ivAvatar, @NonNull LinearLayout llFotoButtons,
-      @NonNull TextInputLayout tilDireccion, @NonNull TextInputLayout tilNombre,
-      @NonNull TextInputLayout tilTelefono) {
+      @NonNull MaterialButton btnBorrarFoto, @NonNull MaterialButton btnCamara,
+      @NonNull MaterialButton btnGaleria, @NonNull MaterialButton btnGuardar,
+      @NonNull TextInputEditText etDireccion, @NonNull TextInputEditText etNombre,
+      @NonNull TextInputEditText etTelefono, @NonNull ImageView ivAvatar,
+      @NonNull LinearLayout llFotoButtons, @NonNull FrameLayout mapContainer,
+      @NonNull MapView mapView, @NonNull TextInputLayout tilDireccion,
+      @NonNull TextInputLayout tilNombre, @NonNull TextInputLayout tilTelefono,
+      @NonNull TextView tvLocationStatus) {
     this.rootView = rootView;
+    this.btnBorrarFoto = btnBorrarFoto;
     this.btnCamara = btnCamara;
     this.btnGaleria = btnGaleria;
     this.btnGuardar = btnGuardar;
@@ -72,9 +90,12 @@ public final class FragmentEditarPerfilBinding implements ViewBinding {
     this.etTelefono = etTelefono;
     this.ivAvatar = ivAvatar;
     this.llFotoButtons = llFotoButtons;
+    this.mapContainer = mapContainer;
+    this.mapView = mapView;
     this.tilDireccion = tilDireccion;
     this.tilNombre = tilNombre;
     this.tilTelefono = tilTelefono;
+    this.tvLocationStatus = tvLocationStatus;
   }
 
   @Override
@@ -104,6 +125,12 @@ public final class FragmentEditarPerfilBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btnBorrarFoto;
+      MaterialButton btnBorrarFoto = ViewBindings.findChildViewById(rootView, id);
+      if (btnBorrarFoto == null) {
+        break missingId;
+      }
+
       id = R.id.btnCamara;
       MaterialButton btnCamara = ViewBindings.findChildViewById(rootView, id);
       if (btnCamara == null) {
@@ -152,6 +179,18 @@ public final class FragmentEditarPerfilBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.mapContainer;
+      FrameLayout mapContainer = ViewBindings.findChildViewById(rootView, id);
+      if (mapContainer == null) {
+        break missingId;
+      }
+
+      id = R.id.mapView;
+      MapView mapView = ViewBindings.findChildViewById(rootView, id);
+      if (mapView == null) {
+        break missingId;
+      }
+
       id = R.id.tilDireccion;
       TextInputLayout tilDireccion = ViewBindings.findChildViewById(rootView, id);
       if (tilDireccion == null) {
@@ -170,9 +209,15 @@ public final class FragmentEditarPerfilBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentEditarPerfilBinding((NestedScrollView) rootView, btnCamara, btnGaleria,
-          btnGuardar, etDireccion, etNombre, etTelefono, ivAvatar, llFotoButtons, tilDireccion,
-          tilNombre, tilTelefono);
+      id = R.id.tvLocationStatus;
+      TextView tvLocationStatus = ViewBindings.findChildViewById(rootView, id);
+      if (tvLocationStatus == null) {
+        break missingId;
+      }
+
+      return new FragmentEditarPerfilBinding((NestedScrollView) rootView, btnBorrarFoto, btnCamara,
+          btnGaleria, btnGuardar, etDireccion, etNombre, etTelefono, ivAvatar, llFotoButtons,
+          mapContainer, mapView, tilDireccion, tilNombre, tilTelefono, tvLocationStatus);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

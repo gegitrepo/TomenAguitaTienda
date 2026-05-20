@@ -26,4 +26,7 @@ interface UsuarioDao {
 
     @Query("UPDATE usuarios SET activo = 0, updatedAt = :timestamp WHERE id = :id")
     suspend fun desactivar(id: Long, timestamp: Long = System.currentTimeMillis())
+
+    @Query("SELECT * FROM usuarios WHERE firestoreDocId = :docId LIMIT 1")
+    suspend fun getByFirestoreDocId(docId: String): Usuario?
 }

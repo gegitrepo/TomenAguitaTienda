@@ -14,6 +14,7 @@ import androidx.viewbinding.ViewBindings;
 import com.example.tomenaguita.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.chip.Chip;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -32,13 +33,25 @@ public final class FragmentDetallePedidoVendedorBinding implements ViewBinding {
   public final MaterialCardView cardComprador;
 
   @NonNull
+  public final MaterialCardView cardHeaderPedido;
+
+  @NonNull
+  public final Chip chipEstadoVendedor;
+
+  @NonNull
   public final RecyclerView rvProductosPedido;
 
   @NonNull
   public final TextView tvDireccionComprador;
 
   @NonNull
+  public final TextView tvFechaPedidoVendedor;
+
+  @NonNull
   public final TextView tvNombreComprador;
+
+  @NonNull
+  public final TextView tvNumeroPedidoVendedor;
 
   @NonNull
   public final TextView tvProductosLabel;
@@ -54,17 +67,23 @@ public final class FragmentDetallePedidoVendedorBinding implements ViewBinding {
 
   private FragmentDetallePedidoVendedorBinding(@NonNull NestedScrollView rootView,
       @NonNull MaterialButton btnMarcarEntregado, @NonNull MaterialButton btnMarcarEnviado,
-      @NonNull MaterialCardView cardComprador, @NonNull RecyclerView rvProductosPedido,
-      @NonNull TextView tvDireccionComprador, @NonNull TextView tvNombreComprador,
+      @NonNull MaterialCardView cardComprador, @NonNull MaterialCardView cardHeaderPedido,
+      @NonNull Chip chipEstadoVendedor, @NonNull RecyclerView rvProductosPedido,
+      @NonNull TextView tvDireccionComprador, @NonNull TextView tvFechaPedidoVendedor,
+      @NonNull TextView tvNombreComprador, @NonNull TextView tvNumeroPedidoVendedor,
       @NonNull TextView tvProductosLabel, @NonNull TextView tvTelefonoComprador,
       @NonNull TextView tvTotal, @NonNull TextView tvTotalLabel) {
     this.rootView = rootView;
     this.btnMarcarEntregado = btnMarcarEntregado;
     this.btnMarcarEnviado = btnMarcarEnviado;
     this.cardComprador = cardComprador;
+    this.cardHeaderPedido = cardHeaderPedido;
+    this.chipEstadoVendedor = chipEstadoVendedor;
     this.rvProductosPedido = rvProductosPedido;
     this.tvDireccionComprador = tvDireccionComprador;
+    this.tvFechaPedidoVendedor = tvFechaPedidoVendedor;
     this.tvNombreComprador = tvNombreComprador;
+    this.tvNumeroPedidoVendedor = tvNumeroPedidoVendedor;
     this.tvProductosLabel = tvProductosLabel;
     this.tvTelefonoComprador = tvTelefonoComprador;
     this.tvTotal = tvTotal;
@@ -116,6 +135,18 @@ public final class FragmentDetallePedidoVendedorBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.cardHeaderPedido;
+      MaterialCardView cardHeaderPedido = ViewBindings.findChildViewById(rootView, id);
+      if (cardHeaderPedido == null) {
+        break missingId;
+      }
+
+      id = R.id.chipEstadoVendedor;
+      Chip chipEstadoVendedor = ViewBindings.findChildViewById(rootView, id);
+      if (chipEstadoVendedor == null) {
+        break missingId;
+      }
+
       id = R.id.rvProductosPedido;
       RecyclerView rvProductosPedido = ViewBindings.findChildViewById(rootView, id);
       if (rvProductosPedido == null) {
@@ -128,9 +159,21 @@ public final class FragmentDetallePedidoVendedorBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvFechaPedidoVendedor;
+      TextView tvFechaPedidoVendedor = ViewBindings.findChildViewById(rootView, id);
+      if (tvFechaPedidoVendedor == null) {
+        break missingId;
+      }
+
       id = R.id.tvNombreComprador;
       TextView tvNombreComprador = ViewBindings.findChildViewById(rootView, id);
       if (tvNombreComprador == null) {
+        break missingId;
+      }
+
+      id = R.id.tvNumeroPedidoVendedor;
+      TextView tvNumeroPedidoVendedor = ViewBindings.findChildViewById(rootView, id);
+      if (tvNumeroPedidoVendedor == null) {
         break missingId;
       }
 
@@ -159,9 +202,9 @@ public final class FragmentDetallePedidoVendedorBinding implements ViewBinding {
       }
 
       return new FragmentDetallePedidoVendedorBinding((NestedScrollView) rootView,
-          btnMarcarEntregado, btnMarcarEnviado, cardComprador, rvProductosPedido,
-          tvDireccionComprador, tvNombreComprador, tvProductosLabel, tvTelefonoComprador, tvTotal,
-          tvTotalLabel);
+          btnMarcarEntregado, btnMarcarEnviado, cardComprador, cardHeaderPedido, chipEstadoVendedor,
+          rvProductosPedido, tvDireccionComprador, tvFechaPedidoVendedor, tvNombreComprador,
+          tvNumeroPedidoVendedor, tvProductosLabel, tvTelefonoComprador, tvTotal, tvTotalLabel);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

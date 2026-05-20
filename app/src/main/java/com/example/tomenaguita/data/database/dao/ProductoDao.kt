@@ -23,4 +23,7 @@ interface ProductoDao {
 
     @Query("UPDATE productos SET eliminado = 1, updatedAt = :timestamp WHERE id = :id")
     suspend fun softDelete(id: Long, timestamp: Long = System.currentTimeMillis())
+
+    @Query("SELECT * FROM productos WHERE firestoreDocId = :docId LIMIT 1")
+    suspend fun getByFirestoreDocId(docId: String): Producto?
 }

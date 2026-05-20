@@ -28,6 +28,21 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/tvEmpty"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_medium"
+                android:gravity="center"
+                android:text="@string/empty_my_products"
+                android:textColor="@color/on_background_secondary"
+                android:textSize="@dimen/text_body"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvMisProductos"
                 android:layout_width="0dp"

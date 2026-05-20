@@ -12,8 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.tomenaguita.R;
+import com.google.android.gms.maps.MapView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -35,16 +38,37 @@ public final class FragmentResumenPedidoBinding implements ViewBinding {
   public final View divider;
 
   @NonNull
+  public final TextInputEditText etDireccion;
+
+  @NonNull
+  public final TextInputEditText etNombre;
+
+  @NonNull
+  public final TextInputEditText etTelefono;
+
+  @NonNull
+  public final MapView mapView;
+
+  @NonNull
   public final RecyclerView rvResumen;
 
   @NonNull
-  public final TextView tvDireccion;
+  public final TextInputLayout tilDireccion;
+
+  @NonNull
+  public final TextInputLayout tilNombre;
+
+  @NonNull
+  public final TextInputLayout tilTelefono;
 
   @NonNull
   public final TextView tvEnvio;
 
   @NonNull
   public final TextView tvEnvioLabel;
+
+  @NonNull
+  public final TextView tvEstadoUbicacion;
 
   @NonNull
   public final TextView tvSubtotal;
@@ -63,19 +87,31 @@ public final class FragmentResumenPedidoBinding implements ViewBinding {
 
   private FragmentResumenPedidoBinding(@NonNull NestedScrollView rootView,
       @NonNull MaterialButton btnConfirmar, @NonNull MaterialCardView cardAddress,
-      @NonNull MaterialCardView cardTotales, @NonNull View divider, @NonNull RecyclerView rvResumen,
-      @NonNull TextView tvDireccion, @NonNull TextView tvEnvio, @NonNull TextView tvEnvioLabel,
-      @NonNull TextView tvSubtotal, @NonNull TextView tvSubtotalLabel, @NonNull TextView tvTitle,
-      @NonNull TextView tvTotal, @NonNull TextView tvTotalLabel) {
+      @NonNull MaterialCardView cardTotales, @NonNull View divider,
+      @NonNull TextInputEditText etDireccion, @NonNull TextInputEditText etNombre,
+      @NonNull TextInputEditText etTelefono, @NonNull MapView mapView,
+      @NonNull RecyclerView rvResumen, @NonNull TextInputLayout tilDireccion,
+      @NonNull TextInputLayout tilNombre, @NonNull TextInputLayout tilTelefono,
+      @NonNull TextView tvEnvio, @NonNull TextView tvEnvioLabel,
+      @NonNull TextView tvEstadoUbicacion, @NonNull TextView tvSubtotal,
+      @NonNull TextView tvSubtotalLabel, @NonNull TextView tvTitle, @NonNull TextView tvTotal,
+      @NonNull TextView tvTotalLabel) {
     this.rootView = rootView;
     this.btnConfirmar = btnConfirmar;
     this.cardAddress = cardAddress;
     this.cardTotales = cardTotales;
     this.divider = divider;
+    this.etDireccion = etDireccion;
+    this.etNombre = etNombre;
+    this.etTelefono = etTelefono;
+    this.mapView = mapView;
     this.rvResumen = rvResumen;
-    this.tvDireccion = tvDireccion;
+    this.tilDireccion = tilDireccion;
+    this.tilNombre = tilNombre;
+    this.tilTelefono = tilTelefono;
     this.tvEnvio = tvEnvio;
     this.tvEnvioLabel = tvEnvioLabel;
+    this.tvEstadoUbicacion = tvEstadoUbicacion;
     this.tvSubtotal = tvSubtotal;
     this.tvSubtotalLabel = tvSubtotalLabel;
     this.tvTitle = tvTitle;
@@ -134,15 +170,51 @@ public final class FragmentResumenPedidoBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.etDireccion;
+      TextInputEditText etDireccion = ViewBindings.findChildViewById(rootView, id);
+      if (etDireccion == null) {
+        break missingId;
+      }
+
+      id = R.id.etNombre;
+      TextInputEditText etNombre = ViewBindings.findChildViewById(rootView, id);
+      if (etNombre == null) {
+        break missingId;
+      }
+
+      id = R.id.etTelefono;
+      TextInputEditText etTelefono = ViewBindings.findChildViewById(rootView, id);
+      if (etTelefono == null) {
+        break missingId;
+      }
+
+      id = R.id.mapView;
+      MapView mapView = ViewBindings.findChildViewById(rootView, id);
+      if (mapView == null) {
+        break missingId;
+      }
+
       id = R.id.rvResumen;
       RecyclerView rvResumen = ViewBindings.findChildViewById(rootView, id);
       if (rvResumen == null) {
         break missingId;
       }
 
-      id = R.id.tvDireccion;
-      TextView tvDireccion = ViewBindings.findChildViewById(rootView, id);
-      if (tvDireccion == null) {
+      id = R.id.tilDireccion;
+      TextInputLayout tilDireccion = ViewBindings.findChildViewById(rootView, id);
+      if (tilDireccion == null) {
+        break missingId;
+      }
+
+      id = R.id.tilNombre;
+      TextInputLayout tilNombre = ViewBindings.findChildViewById(rootView, id);
+      if (tilNombre == null) {
+        break missingId;
+      }
+
+      id = R.id.tilTelefono;
+      TextInputLayout tilTelefono = ViewBindings.findChildViewById(rootView, id);
+      if (tilTelefono == null) {
         break missingId;
       }
 
@@ -155,6 +227,12 @@ public final class FragmentResumenPedidoBinding implements ViewBinding {
       id = R.id.tvEnvioLabel;
       TextView tvEnvioLabel = ViewBindings.findChildViewById(rootView, id);
       if (tvEnvioLabel == null) {
+        break missingId;
+      }
+
+      id = R.id.tvEstadoUbicacion;
+      TextView tvEstadoUbicacion = ViewBindings.findChildViewById(rootView, id);
+      if (tvEstadoUbicacion == null) {
         break missingId;
       }
 
@@ -189,7 +267,8 @@ public final class FragmentResumenPedidoBinding implements ViewBinding {
       }
 
       return new FragmentResumenPedidoBinding((NestedScrollView) rootView, btnConfirmar,
-          cardAddress, cardTotales, divider, rvResumen, tvDireccion, tvEnvio, tvEnvioLabel,
+          cardAddress, cardTotales, divider, etDireccion, etNombre, etTelefono, mapView, rvResumen,
+          tilDireccion, tilNombre, tilTelefono, tvEnvio, tvEnvioLabel, tvEstadoUbicacion,
           tvSubtotal, tvSubtotalLabel, tvTitle, tvTotal, tvTotalLabel);
     }
     String missingId = rootView.getResources().getResourceName(id);

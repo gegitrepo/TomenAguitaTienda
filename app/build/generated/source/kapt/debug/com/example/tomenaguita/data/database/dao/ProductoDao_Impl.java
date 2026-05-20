@@ -45,7 +45,7 @@ public final class ProductoDao_Impl implements ProductoDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR REPLACE INTO `productos` (`id`,`nombre`,`descripcion`,`presentacion`,`precio`,`imagenUrl`,`disponible`,`stock`,`vendedorId`,`eliminado`,`createdAt`,`updatedAt`) VALUES (nullif(?, 0),?,?,?,?,?,?,?,?,?,?,?)";
+        return "INSERT OR REPLACE INTO `productos` (`id`,`nombre`,`descripcion`,`presentacion`,`precio`,`imagenUrl`,`disponible`,`stock`,`vendedorId`,`eliminado`,`firestoreDocId`,`createdAt`,`updatedAt`) VALUES (nullif(?, 0),?,?,?,?,?,?,?,?,?,?,?,?)";
       }
 
       @Override
@@ -77,15 +77,20 @@ public final class ProductoDao_Impl implements ProductoDao {
         statement.bindLong(8, entity.getStock());
         statement.bindLong(9, entity.getVendedorId());
         statement.bindLong(10, entity.getEliminado());
-        statement.bindLong(11, entity.getCreatedAt());
-        statement.bindLong(12, entity.getUpdatedAt());
+        if (entity.getFirestoreDocId() == null) {
+          statement.bindNull(11);
+        } else {
+          statement.bindString(11, entity.getFirestoreDocId());
+        }
+        statement.bindLong(12, entity.getCreatedAt());
+        statement.bindLong(13, entity.getUpdatedAt());
       }
     };
     this.__updateAdapterOfProducto = new EntityDeletionOrUpdateAdapter<Producto>(__db) {
       @Override
       @NonNull
       protected String createQuery() {
-        return "UPDATE OR ABORT `productos` SET `id` = ?,`nombre` = ?,`descripcion` = ?,`presentacion` = ?,`precio` = ?,`imagenUrl` = ?,`disponible` = ?,`stock` = ?,`vendedorId` = ?,`eliminado` = ?,`createdAt` = ?,`updatedAt` = ? WHERE `id` = ?";
+        return "UPDATE OR ABORT `productos` SET `id` = ?,`nombre` = ?,`descripcion` = ?,`presentacion` = ?,`precio` = ?,`imagenUrl` = ?,`disponible` = ?,`stock` = ?,`vendedorId` = ?,`eliminado` = ?,`firestoreDocId` = ?,`createdAt` = ?,`updatedAt` = ? WHERE `id` = ?";
       }
 
       @Override
@@ -117,9 +122,14 @@ public final class ProductoDao_Impl implements ProductoDao {
         statement.bindLong(8, entity.getStock());
         statement.bindLong(9, entity.getVendedorId());
         statement.bindLong(10, entity.getEliminado());
-        statement.bindLong(11, entity.getCreatedAt());
-        statement.bindLong(12, entity.getUpdatedAt());
-        statement.bindLong(13, entity.getId());
+        if (entity.getFirestoreDocId() == null) {
+          statement.bindNull(11);
+        } else {
+          statement.bindString(11, entity.getFirestoreDocId());
+        }
+        statement.bindLong(12, entity.getCreatedAt());
+        statement.bindLong(13, entity.getUpdatedAt());
+        statement.bindLong(14, entity.getId());
       }
     };
     this.__preparedStmtOfSoftDelete = new SharedSQLiteStatement(__db) {
@@ -216,6 +226,7 @@ public final class ProductoDao_Impl implements ProductoDao {
           final int _cursorIndexOfStock = CursorUtil.getColumnIndexOrThrow(_cursor, "stock");
           final int _cursorIndexOfVendedorId = CursorUtil.getColumnIndexOrThrow(_cursor, "vendedorId");
           final int _cursorIndexOfEliminado = CursorUtil.getColumnIndexOrThrow(_cursor, "eliminado");
+          final int _cursorIndexOfFirestoreDocId = CursorUtil.getColumnIndexOrThrow(_cursor, "firestoreDocId");
           final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
           final int _cursorIndexOfUpdatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "updatedAt");
           final List<Producto> _result = new ArrayList<Producto>(_cursor.getCount());
@@ -257,11 +268,17 @@ public final class ProductoDao_Impl implements ProductoDao {
             _tmpVendedorId = _cursor.getLong(_cursorIndexOfVendedorId);
             final int _tmpEliminado;
             _tmpEliminado = _cursor.getInt(_cursorIndexOfEliminado);
+            final String _tmpFirestoreDocId;
+            if (_cursor.isNull(_cursorIndexOfFirestoreDocId)) {
+              _tmpFirestoreDocId = null;
+            } else {
+              _tmpFirestoreDocId = _cursor.getString(_cursorIndexOfFirestoreDocId);
+            }
             final long _tmpCreatedAt;
             _tmpCreatedAt = _cursor.getLong(_cursorIndexOfCreatedAt);
             final long _tmpUpdatedAt;
             _tmpUpdatedAt = _cursor.getLong(_cursorIndexOfUpdatedAt);
-            _item = new Producto(_tmpId,_tmpNombre,_tmpDescripcion,_tmpPresentacion,_tmpPrecio,_tmpImagenUrl,_tmpDisponible,_tmpStock,_tmpVendedorId,_tmpEliminado,_tmpCreatedAt,_tmpUpdatedAt);
+            _item = new Producto(_tmpId,_tmpNombre,_tmpDescripcion,_tmpPresentacion,_tmpPrecio,_tmpImagenUrl,_tmpDisponible,_tmpStock,_tmpVendedorId,_tmpEliminado,_tmpFirestoreDocId,_tmpCreatedAt,_tmpUpdatedAt);
             _result.add(_item);
           }
           return _result;
@@ -299,6 +316,7 @@ public final class ProductoDao_Impl implements ProductoDao {
           final int _cursorIndexOfStock = CursorUtil.getColumnIndexOrThrow(_cursor, "stock");
           final int _cursorIndexOfVendedorId = CursorUtil.getColumnIndexOrThrow(_cursor, "vendedorId");
           final int _cursorIndexOfEliminado = CursorUtil.getColumnIndexOrThrow(_cursor, "eliminado");
+          final int _cursorIndexOfFirestoreDocId = CursorUtil.getColumnIndexOrThrow(_cursor, "firestoreDocId");
           final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
           final int _cursorIndexOfUpdatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "updatedAt");
           final List<Producto> _result = new ArrayList<Producto>(_cursor.getCount());
@@ -340,11 +358,17 @@ public final class ProductoDao_Impl implements ProductoDao {
             _tmpVendedorId = _cursor.getLong(_cursorIndexOfVendedorId);
             final int _tmpEliminado;
             _tmpEliminado = _cursor.getInt(_cursorIndexOfEliminado);
+            final String _tmpFirestoreDocId;
+            if (_cursor.isNull(_cursorIndexOfFirestoreDocId)) {
+              _tmpFirestoreDocId = null;
+            } else {
+              _tmpFirestoreDocId = _cursor.getString(_cursorIndexOfFirestoreDocId);
+            }
             final long _tmpCreatedAt;
             _tmpCreatedAt = _cursor.getLong(_cursorIndexOfCreatedAt);
             final long _tmpUpdatedAt;
             _tmpUpdatedAt = _cursor.getLong(_cursorIndexOfUpdatedAt);
-            _item = new Producto(_tmpId,_tmpNombre,_tmpDescripcion,_tmpPresentacion,_tmpPrecio,_tmpImagenUrl,_tmpDisponible,_tmpStock,_tmpVendedorId,_tmpEliminado,_tmpCreatedAt,_tmpUpdatedAt);
+            _item = new Producto(_tmpId,_tmpNombre,_tmpDescripcion,_tmpPresentacion,_tmpPrecio,_tmpImagenUrl,_tmpDisponible,_tmpStock,_tmpVendedorId,_tmpEliminado,_tmpFirestoreDocId,_tmpCreatedAt,_tmpUpdatedAt);
             _result.add(_item);
           }
           return _result;
@@ -383,6 +407,7 @@ public final class ProductoDao_Impl implements ProductoDao {
           final int _cursorIndexOfStock = CursorUtil.getColumnIndexOrThrow(_cursor, "stock");
           final int _cursorIndexOfVendedorId = CursorUtil.getColumnIndexOrThrow(_cursor, "vendedorId");
           final int _cursorIndexOfEliminado = CursorUtil.getColumnIndexOrThrow(_cursor, "eliminado");
+          final int _cursorIndexOfFirestoreDocId = CursorUtil.getColumnIndexOrThrow(_cursor, "firestoreDocId");
           final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
           final int _cursorIndexOfUpdatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "updatedAt");
           final Producto _result;
@@ -423,11 +448,109 @@ public final class ProductoDao_Impl implements ProductoDao {
             _tmpVendedorId = _cursor.getLong(_cursorIndexOfVendedorId);
             final int _tmpEliminado;
             _tmpEliminado = _cursor.getInt(_cursorIndexOfEliminado);
+            final String _tmpFirestoreDocId;
+            if (_cursor.isNull(_cursorIndexOfFirestoreDocId)) {
+              _tmpFirestoreDocId = null;
+            } else {
+              _tmpFirestoreDocId = _cursor.getString(_cursorIndexOfFirestoreDocId);
+            }
             final long _tmpCreatedAt;
             _tmpCreatedAt = _cursor.getLong(_cursorIndexOfCreatedAt);
             final long _tmpUpdatedAt;
             _tmpUpdatedAt = _cursor.getLong(_cursorIndexOfUpdatedAt);
-            _result = new Producto(_tmpId,_tmpNombre,_tmpDescripcion,_tmpPresentacion,_tmpPrecio,_tmpImagenUrl,_tmpDisponible,_tmpStock,_tmpVendedorId,_tmpEliminado,_tmpCreatedAt,_tmpUpdatedAt);
+            _result = new Producto(_tmpId,_tmpNombre,_tmpDescripcion,_tmpPresentacion,_tmpPrecio,_tmpImagenUrl,_tmpDisponible,_tmpStock,_tmpVendedorId,_tmpEliminado,_tmpFirestoreDocId,_tmpCreatedAt,_tmpUpdatedAt);
+          } else {
+            _result = null;
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+          _statement.release();
+        }
+      }
+    }, $completion);
+  }
+
+  @Override
+  public Object getByFirestoreDocId(final String docId,
+      final Continuation<? super Producto> $completion) {
+    final String _sql = "SELECT * FROM productos WHERE firestoreDocId = ? LIMIT 1";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
+    int _argIndex = 1;
+    if (docId == null) {
+      _statement.bindNull(_argIndex);
+    } else {
+      _statement.bindString(_argIndex, docId);
+    }
+    final CancellationSignal _cancellationSignal = DBUtil.createCancellationSignal();
+    return CoroutinesRoom.execute(__db, false, _cancellationSignal, new Callable<Producto>() {
+      @Override
+      @Nullable
+      public Producto call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
+          final int _cursorIndexOfNombre = CursorUtil.getColumnIndexOrThrow(_cursor, "nombre");
+          final int _cursorIndexOfDescripcion = CursorUtil.getColumnIndexOrThrow(_cursor, "descripcion");
+          final int _cursorIndexOfPresentacion = CursorUtil.getColumnIndexOrThrow(_cursor, "presentacion");
+          final int _cursorIndexOfPrecio = CursorUtil.getColumnIndexOrThrow(_cursor, "precio");
+          final int _cursorIndexOfImagenUrl = CursorUtil.getColumnIndexOrThrow(_cursor, "imagenUrl");
+          final int _cursorIndexOfDisponible = CursorUtil.getColumnIndexOrThrow(_cursor, "disponible");
+          final int _cursorIndexOfStock = CursorUtil.getColumnIndexOrThrow(_cursor, "stock");
+          final int _cursorIndexOfVendedorId = CursorUtil.getColumnIndexOrThrow(_cursor, "vendedorId");
+          final int _cursorIndexOfEliminado = CursorUtil.getColumnIndexOrThrow(_cursor, "eliminado");
+          final int _cursorIndexOfFirestoreDocId = CursorUtil.getColumnIndexOrThrow(_cursor, "firestoreDocId");
+          final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
+          final int _cursorIndexOfUpdatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "updatedAt");
+          final Producto _result;
+          if (_cursor.moveToFirst()) {
+            final long _tmpId;
+            _tmpId = _cursor.getLong(_cursorIndexOfId);
+            final String _tmpNombre;
+            if (_cursor.isNull(_cursorIndexOfNombre)) {
+              _tmpNombre = null;
+            } else {
+              _tmpNombre = _cursor.getString(_cursorIndexOfNombre);
+            }
+            final String _tmpDescripcion;
+            if (_cursor.isNull(_cursorIndexOfDescripcion)) {
+              _tmpDescripcion = null;
+            } else {
+              _tmpDescripcion = _cursor.getString(_cursorIndexOfDescripcion);
+            }
+            final String _tmpPresentacion;
+            if (_cursor.isNull(_cursorIndexOfPresentacion)) {
+              _tmpPresentacion = null;
+            } else {
+              _tmpPresentacion = _cursor.getString(_cursorIndexOfPresentacion);
+            }
+            final double _tmpPrecio;
+            _tmpPrecio = _cursor.getDouble(_cursorIndexOfPrecio);
+            final String _tmpImagenUrl;
+            if (_cursor.isNull(_cursorIndexOfImagenUrl)) {
+              _tmpImagenUrl = null;
+            } else {
+              _tmpImagenUrl = _cursor.getString(_cursorIndexOfImagenUrl);
+            }
+            final int _tmpDisponible;
+            _tmpDisponible = _cursor.getInt(_cursorIndexOfDisponible);
+            final int _tmpStock;
+            _tmpStock = _cursor.getInt(_cursorIndexOfStock);
+            final long _tmpVendedorId;
+            _tmpVendedorId = _cursor.getLong(_cursorIndexOfVendedorId);
+            final int _tmpEliminado;
+            _tmpEliminado = _cursor.getInt(_cursorIndexOfEliminado);
+            final String _tmpFirestoreDocId;
+            if (_cursor.isNull(_cursorIndexOfFirestoreDocId)) {
+              _tmpFirestoreDocId = null;
+            } else {
+              _tmpFirestoreDocId = _cursor.getString(_cursorIndexOfFirestoreDocId);
+            }
+            final long _tmpCreatedAt;
+            _tmpCreatedAt = _cursor.getLong(_cursorIndexOfCreatedAt);
+            final long _tmpUpdatedAt;
+            _tmpUpdatedAt = _cursor.getLong(_cursorIndexOfUpdatedAt);
+            _result = new Producto(_tmpId,_tmpNombre,_tmpDescripcion,_tmpPresentacion,_tmpPrecio,_tmpImagenUrl,_tmpDisponible,_tmpStock,_tmpVendedorId,_tmpEliminado,_tmpFirestoreDocId,_tmpCreatedAt,_tmpUpdatedAt);
           } else {
             _result = null;
           }

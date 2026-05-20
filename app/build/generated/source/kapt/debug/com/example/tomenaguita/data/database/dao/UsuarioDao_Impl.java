@@ -46,7 +46,7 @@ public final class UsuarioDao_Impl implements UsuarioDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR REPLACE INTO `usuarios` (`id`,`nombre`,`email`,`password`,`telefono`,`rol`,`activo`,`fotoUrl`,`direccion`,`latitud`,`longitud`,`biometricEnabled`,`createdAt`,`updatedAt`) VALUES (nullif(?, 0),?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        return "INSERT OR REPLACE INTO `usuarios` (`id`,`nombre`,`email`,`password`,`telefono`,`rol`,`activo`,`fotoUrl`,`direccion`,`latitud`,`longitud`,`biometricEnabled`,`firestoreDocId`,`createdAt`,`updatedAt`) VALUES (nullif(?, 0),?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
       }
 
       @Override
@@ -100,15 +100,20 @@ public final class UsuarioDao_Impl implements UsuarioDao {
           statement.bindDouble(11, entity.getLongitud());
         }
         statement.bindLong(12, entity.getBiometricEnabled());
-        statement.bindLong(13, entity.getCreatedAt());
-        statement.bindLong(14, entity.getUpdatedAt());
+        if (entity.getFirestoreDocId() == null) {
+          statement.bindNull(13);
+        } else {
+          statement.bindString(13, entity.getFirestoreDocId());
+        }
+        statement.bindLong(14, entity.getCreatedAt());
+        statement.bindLong(15, entity.getUpdatedAt());
       }
     };
     this.__updateAdapterOfUsuario = new EntityDeletionOrUpdateAdapter<Usuario>(__db) {
       @Override
       @NonNull
       protected String createQuery() {
-        return "UPDATE OR ABORT `usuarios` SET `id` = ?,`nombre` = ?,`email` = ?,`password` = ?,`telefono` = ?,`rol` = ?,`activo` = ?,`fotoUrl` = ?,`direccion` = ?,`latitud` = ?,`longitud` = ?,`biometricEnabled` = ?,`createdAt` = ?,`updatedAt` = ? WHERE `id` = ?";
+        return "UPDATE OR ABORT `usuarios` SET `id` = ?,`nombre` = ?,`email` = ?,`password` = ?,`telefono` = ?,`rol` = ?,`activo` = ?,`fotoUrl` = ?,`direccion` = ?,`latitud` = ?,`longitud` = ?,`biometricEnabled` = ?,`firestoreDocId` = ?,`createdAt` = ?,`updatedAt` = ? WHERE `id` = ?";
       }
 
       @Override
@@ -162,9 +167,14 @@ public final class UsuarioDao_Impl implements UsuarioDao {
           statement.bindDouble(11, entity.getLongitud());
         }
         statement.bindLong(12, entity.getBiometricEnabled());
-        statement.bindLong(13, entity.getCreatedAt());
-        statement.bindLong(14, entity.getUpdatedAt());
-        statement.bindLong(15, entity.getId());
+        if (entity.getFirestoreDocId() == null) {
+          statement.bindNull(13);
+        } else {
+          statement.bindString(13, entity.getFirestoreDocId());
+        }
+        statement.bindLong(14, entity.getCreatedAt());
+        statement.bindLong(15, entity.getUpdatedAt());
+        statement.bindLong(16, entity.getId());
       }
     };
     this.__preparedStmtOfDesactivar = new SharedSQLiteStatement(__db) {
@@ -263,6 +273,7 @@ public final class UsuarioDao_Impl implements UsuarioDao {
           final int _cursorIndexOfLatitud = CursorUtil.getColumnIndexOrThrow(_cursor, "latitud");
           final int _cursorIndexOfLongitud = CursorUtil.getColumnIndexOrThrow(_cursor, "longitud");
           final int _cursorIndexOfBiometricEnabled = CursorUtil.getColumnIndexOrThrow(_cursor, "biometricEnabled");
+          final int _cursorIndexOfFirestoreDocId = CursorUtil.getColumnIndexOrThrow(_cursor, "firestoreDocId");
           final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
           final int _cursorIndexOfUpdatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "updatedAt");
           final List<Usuario> _result = new ArrayList<Usuario>(_cursor.getCount());
@@ -328,11 +339,17 @@ public final class UsuarioDao_Impl implements UsuarioDao {
             }
             final int _tmpBiometricEnabled;
             _tmpBiometricEnabled = _cursor.getInt(_cursorIndexOfBiometricEnabled);
+            final String _tmpFirestoreDocId;
+            if (_cursor.isNull(_cursorIndexOfFirestoreDocId)) {
+              _tmpFirestoreDocId = null;
+            } else {
+              _tmpFirestoreDocId = _cursor.getString(_cursorIndexOfFirestoreDocId);
+            }
             final long _tmpCreatedAt;
             _tmpCreatedAt = _cursor.getLong(_cursorIndexOfCreatedAt);
             final long _tmpUpdatedAt;
             _tmpUpdatedAt = _cursor.getLong(_cursorIndexOfUpdatedAt);
-            _item = new Usuario(_tmpId,_tmpNombre,_tmpEmail,_tmpPassword,_tmpTelefono,_tmpRol,_tmpActivo,_tmpFotoUrl,_tmpDireccion,_tmpLatitud,_tmpLongitud,_tmpBiometricEnabled,_tmpCreatedAt,_tmpUpdatedAt);
+            _item = new Usuario(_tmpId,_tmpNombre,_tmpEmail,_tmpPassword,_tmpTelefono,_tmpRol,_tmpActivo,_tmpFotoUrl,_tmpDireccion,_tmpLatitud,_tmpLongitud,_tmpBiometricEnabled,_tmpFirestoreDocId,_tmpCreatedAt,_tmpUpdatedAt);
             _result.add(_item);
           }
           return _result;
@@ -373,6 +390,7 @@ public final class UsuarioDao_Impl implements UsuarioDao {
           final int _cursorIndexOfLatitud = CursorUtil.getColumnIndexOrThrow(_cursor, "latitud");
           final int _cursorIndexOfLongitud = CursorUtil.getColumnIndexOrThrow(_cursor, "longitud");
           final int _cursorIndexOfBiometricEnabled = CursorUtil.getColumnIndexOrThrow(_cursor, "biometricEnabled");
+          final int _cursorIndexOfFirestoreDocId = CursorUtil.getColumnIndexOrThrow(_cursor, "firestoreDocId");
           final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
           final int _cursorIndexOfUpdatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "updatedAt");
           final Usuario _result;
@@ -437,11 +455,17 @@ public final class UsuarioDao_Impl implements UsuarioDao {
             }
             final int _tmpBiometricEnabled;
             _tmpBiometricEnabled = _cursor.getInt(_cursorIndexOfBiometricEnabled);
+            final String _tmpFirestoreDocId;
+            if (_cursor.isNull(_cursorIndexOfFirestoreDocId)) {
+              _tmpFirestoreDocId = null;
+            } else {
+              _tmpFirestoreDocId = _cursor.getString(_cursorIndexOfFirestoreDocId);
+            }
             final long _tmpCreatedAt;
             _tmpCreatedAt = _cursor.getLong(_cursorIndexOfCreatedAt);
             final long _tmpUpdatedAt;
             _tmpUpdatedAt = _cursor.getLong(_cursorIndexOfUpdatedAt);
-            _result = new Usuario(_tmpId,_tmpNombre,_tmpEmail,_tmpPassword,_tmpTelefono,_tmpRol,_tmpActivo,_tmpFotoUrl,_tmpDireccion,_tmpLatitud,_tmpLongitud,_tmpBiometricEnabled,_tmpCreatedAt,_tmpUpdatedAt);
+            _result = new Usuario(_tmpId,_tmpNombre,_tmpEmail,_tmpPassword,_tmpTelefono,_tmpRol,_tmpActivo,_tmpFotoUrl,_tmpDireccion,_tmpLatitud,_tmpLongitud,_tmpBiometricEnabled,_tmpFirestoreDocId,_tmpCreatedAt,_tmpUpdatedAt);
           } else {
             _result = null;
           }
@@ -484,6 +508,7 @@ public final class UsuarioDao_Impl implements UsuarioDao {
           final int _cursorIndexOfLatitud = CursorUtil.getColumnIndexOrThrow(_cursor, "latitud");
           final int _cursorIndexOfLongitud = CursorUtil.getColumnIndexOrThrow(_cursor, "longitud");
           final int _cursorIndexOfBiometricEnabled = CursorUtil.getColumnIndexOrThrow(_cursor, "biometricEnabled");
+          final int _cursorIndexOfFirestoreDocId = CursorUtil.getColumnIndexOrThrow(_cursor, "firestoreDocId");
           final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
           final int _cursorIndexOfUpdatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "updatedAt");
           final Usuario _result;
@@ -548,11 +573,17 @@ public final class UsuarioDao_Impl implements UsuarioDao {
             }
             final int _tmpBiometricEnabled;
             _tmpBiometricEnabled = _cursor.getInt(_cursorIndexOfBiometricEnabled);
+            final String _tmpFirestoreDocId;
+            if (_cursor.isNull(_cursorIndexOfFirestoreDocId)) {
+              _tmpFirestoreDocId = null;
+            } else {
+              _tmpFirestoreDocId = _cursor.getString(_cursorIndexOfFirestoreDocId);
+            }
             final long _tmpCreatedAt;
             _tmpCreatedAt = _cursor.getLong(_cursorIndexOfCreatedAt);
             final long _tmpUpdatedAt;
             _tmpUpdatedAt = _cursor.getLong(_cursorIndexOfUpdatedAt);
-            _result = new Usuario(_tmpId,_tmpNombre,_tmpEmail,_tmpPassword,_tmpTelefono,_tmpRol,_tmpActivo,_tmpFotoUrl,_tmpDireccion,_tmpLatitud,_tmpLongitud,_tmpBiometricEnabled,_tmpCreatedAt,_tmpUpdatedAt);
+            _result = new Usuario(_tmpId,_tmpNombre,_tmpEmail,_tmpPassword,_tmpTelefono,_tmpRol,_tmpActivo,_tmpFotoUrl,_tmpDireccion,_tmpLatitud,_tmpLongitud,_tmpBiometricEnabled,_tmpFirestoreDocId,_tmpCreatedAt,_tmpUpdatedAt);
           } else {
             _result = null;
           }
@@ -601,6 +632,7 @@ public final class UsuarioDao_Impl implements UsuarioDao {
           final int _cursorIndexOfLatitud = CursorUtil.getColumnIndexOrThrow(_cursor, "latitud");
           final int _cursorIndexOfLongitud = CursorUtil.getColumnIndexOrThrow(_cursor, "longitud");
           final int _cursorIndexOfBiometricEnabled = CursorUtil.getColumnIndexOrThrow(_cursor, "biometricEnabled");
+          final int _cursorIndexOfFirestoreDocId = CursorUtil.getColumnIndexOrThrow(_cursor, "firestoreDocId");
           final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
           final int _cursorIndexOfUpdatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "updatedAt");
           final Usuario _result;
@@ -665,11 +697,135 @@ public final class UsuarioDao_Impl implements UsuarioDao {
             }
             final int _tmpBiometricEnabled;
             _tmpBiometricEnabled = _cursor.getInt(_cursorIndexOfBiometricEnabled);
+            final String _tmpFirestoreDocId;
+            if (_cursor.isNull(_cursorIndexOfFirestoreDocId)) {
+              _tmpFirestoreDocId = null;
+            } else {
+              _tmpFirestoreDocId = _cursor.getString(_cursorIndexOfFirestoreDocId);
+            }
             final long _tmpCreatedAt;
             _tmpCreatedAt = _cursor.getLong(_cursorIndexOfCreatedAt);
             final long _tmpUpdatedAt;
             _tmpUpdatedAt = _cursor.getLong(_cursorIndexOfUpdatedAt);
-            _result = new Usuario(_tmpId,_tmpNombre,_tmpEmail,_tmpPassword,_tmpTelefono,_tmpRol,_tmpActivo,_tmpFotoUrl,_tmpDireccion,_tmpLatitud,_tmpLongitud,_tmpBiometricEnabled,_tmpCreatedAt,_tmpUpdatedAt);
+            _result = new Usuario(_tmpId,_tmpNombre,_tmpEmail,_tmpPassword,_tmpTelefono,_tmpRol,_tmpActivo,_tmpFotoUrl,_tmpDireccion,_tmpLatitud,_tmpLongitud,_tmpBiometricEnabled,_tmpFirestoreDocId,_tmpCreatedAt,_tmpUpdatedAt);
+          } else {
+            _result = null;
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+          _statement.release();
+        }
+      }
+    }, $completion);
+  }
+
+  @Override
+  public Object getByFirestoreDocId(final String docId,
+      final Continuation<? super Usuario> $completion) {
+    final String _sql = "SELECT * FROM usuarios WHERE firestoreDocId = ? LIMIT 1";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
+    int _argIndex = 1;
+    if (docId == null) {
+      _statement.bindNull(_argIndex);
+    } else {
+      _statement.bindString(_argIndex, docId);
+    }
+    final CancellationSignal _cancellationSignal = DBUtil.createCancellationSignal();
+    return CoroutinesRoom.execute(__db, false, _cancellationSignal, new Callable<Usuario>() {
+      @Override
+      @Nullable
+      public Usuario call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
+          final int _cursorIndexOfNombre = CursorUtil.getColumnIndexOrThrow(_cursor, "nombre");
+          final int _cursorIndexOfEmail = CursorUtil.getColumnIndexOrThrow(_cursor, "email");
+          final int _cursorIndexOfPassword = CursorUtil.getColumnIndexOrThrow(_cursor, "password");
+          final int _cursorIndexOfTelefono = CursorUtil.getColumnIndexOrThrow(_cursor, "telefono");
+          final int _cursorIndexOfRol = CursorUtil.getColumnIndexOrThrow(_cursor, "rol");
+          final int _cursorIndexOfActivo = CursorUtil.getColumnIndexOrThrow(_cursor, "activo");
+          final int _cursorIndexOfFotoUrl = CursorUtil.getColumnIndexOrThrow(_cursor, "fotoUrl");
+          final int _cursorIndexOfDireccion = CursorUtil.getColumnIndexOrThrow(_cursor, "direccion");
+          final int _cursorIndexOfLatitud = CursorUtil.getColumnIndexOrThrow(_cursor, "latitud");
+          final int _cursorIndexOfLongitud = CursorUtil.getColumnIndexOrThrow(_cursor, "longitud");
+          final int _cursorIndexOfBiometricEnabled = CursorUtil.getColumnIndexOrThrow(_cursor, "biometricEnabled");
+          final int _cursorIndexOfFirestoreDocId = CursorUtil.getColumnIndexOrThrow(_cursor, "firestoreDocId");
+          final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "createdAt");
+          final int _cursorIndexOfUpdatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "updatedAt");
+          final Usuario _result;
+          if (_cursor.moveToFirst()) {
+            final long _tmpId;
+            _tmpId = _cursor.getLong(_cursorIndexOfId);
+            final String _tmpNombre;
+            if (_cursor.isNull(_cursorIndexOfNombre)) {
+              _tmpNombre = null;
+            } else {
+              _tmpNombre = _cursor.getString(_cursorIndexOfNombre);
+            }
+            final String _tmpEmail;
+            if (_cursor.isNull(_cursorIndexOfEmail)) {
+              _tmpEmail = null;
+            } else {
+              _tmpEmail = _cursor.getString(_cursorIndexOfEmail);
+            }
+            final String _tmpPassword;
+            if (_cursor.isNull(_cursorIndexOfPassword)) {
+              _tmpPassword = null;
+            } else {
+              _tmpPassword = _cursor.getString(_cursorIndexOfPassword);
+            }
+            final String _tmpTelefono;
+            if (_cursor.isNull(_cursorIndexOfTelefono)) {
+              _tmpTelefono = null;
+            } else {
+              _tmpTelefono = _cursor.getString(_cursorIndexOfTelefono);
+            }
+            final String _tmpRol;
+            if (_cursor.isNull(_cursorIndexOfRol)) {
+              _tmpRol = null;
+            } else {
+              _tmpRol = _cursor.getString(_cursorIndexOfRol);
+            }
+            final int _tmpActivo;
+            _tmpActivo = _cursor.getInt(_cursorIndexOfActivo);
+            final String _tmpFotoUrl;
+            if (_cursor.isNull(_cursorIndexOfFotoUrl)) {
+              _tmpFotoUrl = null;
+            } else {
+              _tmpFotoUrl = _cursor.getString(_cursorIndexOfFotoUrl);
+            }
+            final String _tmpDireccion;
+            if (_cursor.isNull(_cursorIndexOfDireccion)) {
+              _tmpDireccion = null;
+            } else {
+              _tmpDireccion = _cursor.getString(_cursorIndexOfDireccion);
+            }
+            final Double _tmpLatitud;
+            if (_cursor.isNull(_cursorIndexOfLatitud)) {
+              _tmpLatitud = null;
+            } else {
+              _tmpLatitud = _cursor.getDouble(_cursorIndexOfLatitud);
+            }
+            final Double _tmpLongitud;
+            if (_cursor.isNull(_cursorIndexOfLongitud)) {
+              _tmpLongitud = null;
+            } else {
+              _tmpLongitud = _cursor.getDouble(_cursorIndexOfLongitud);
+            }
+            final int _tmpBiometricEnabled;
+            _tmpBiometricEnabled = _cursor.getInt(_cursorIndexOfBiometricEnabled);
+            final String _tmpFirestoreDocId;
+            if (_cursor.isNull(_cursorIndexOfFirestoreDocId)) {
+              _tmpFirestoreDocId = null;
+            } else {
+              _tmpFirestoreDocId = _cursor.getString(_cursorIndexOfFirestoreDocId);
+            }
+            final long _tmpCreatedAt;
+            _tmpCreatedAt = _cursor.getLong(_cursorIndexOfCreatedAt);
+            final long _tmpUpdatedAt;
+            _tmpUpdatedAt = _cursor.getLong(_cursorIndexOfUpdatedAt);
+            _result = new Usuario(_tmpId,_tmpNombre,_tmpEmail,_tmpPassword,_tmpTelefono,_tmpRol,_tmpActivo,_tmpFotoUrl,_tmpDireccion,_tmpLatitud,_tmpLongitud,_tmpBiometricEnabled,_tmpFirestoreDocId,_tmpCreatedAt,_tmpUpdatedAt);
           } else {
             _result = null;
           }

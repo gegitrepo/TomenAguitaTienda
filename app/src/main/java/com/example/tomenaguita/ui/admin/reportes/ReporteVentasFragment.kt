@@ -5,23 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.tomenaguita.data.database.entity.Pedido
 import com.example.tomenaguita.databinding.FragmentReporteVentasBinding
 import com.example.tomenaguita.ui.adapter.PedidoAdapter
+import com.example.tomenaguita.utils.toCOP
+import com.example.tomenaguita.viewmodel.PedidoViewModel
+import java.util.Calendar
 
 class ReporteVentasFragment : Fragment() {
 
     private var _binding: FragmentReporteVentasBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapter: PedidoAdapter
-
-    private val demoVentas = listOf(
-        Pedido(1L, "TA-20240501-0001", 3L, 7000.0, 0.0, 7000.0, "Calle 123 # 45-67", estado = "entregado", metodoPago = "Efectivo"),
-        Pedido(2L, "TA-20240430-0012", 3L, 14500.0, 0.0, 14500.0, "Cra 7 # 89-12", estado = "entregado", metodoPago = "Tarjeta"),
-        Pedido(3L, "TA-20240429-0009", 4L, 30000.0, 0.0, 30000.0, "Av 68 # 32-11", estado = "entregado", metodoPago = "Transferencia"),
-        Pedido(4L, "TA-20240428-0007", 5L, 12000.0, 0.0, 12000.0, "Calle 80 # 20-30", estado = "enviado", metodoPago = "Efectivo"),
-    )
+    private val viewModel: PedidoViewModel by activityViewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentReporteVentasBinding.inflate(inflater, container, false)
@@ -30,13 +27,36 @@ class ReporteVentasFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.tvVentasDia.text = "$85.000"
-        binding.tvVentasMes.text = "$2.4M"
 
         adapter = PedidoAdapter { }
         binding.rvUltimasVentas.layoutManager = LinearLayoutManager(requireContext())
         binding.rvUltimasVentas.adapter = adapter
-        adapter.submitList(demoVentas)
+
+        viewModel.getAllPedidos().observe(viewLifecycleOwner) { pedidos ->
+            val hoy = Calendar.getInstance()
+
+            val ventasDia = pedidos
+                .filter { pedido ->
+                    val cal = Calendar.getInstance().apply { timeInMillis = pedido.createdAt }
+                    cal.get(Calendar.DAY_OF_YEAR) == hoy.get(Calendar.DAY_OF_YEAR) &&
+                    cal.get(Calendar.YEAR) == hoy.get(Calendar.YEAR)
+                }
+                .sumOf { it.totalPedido }
+
+            val ventasMes = pedidos
+                .filter { pedido ->
+                    val cal = Calendar.getInstance().apply { timeInMillis = pedido.createdAt }
+                    cal.get(Calendar.MONTH) == hoy.get(Calendar.MONTH) &&
+                    cal.get(Calendar.YEAR) == hoy.get(Calendar.YEAR)
+                }
+                .sumOf { it.totalPedido }
+
+            binding.tvVentasDia.text = ventasDia.toCOP()
+            binding.tvVentasMes.text = ventasMes.toCOP()
+
+            // Mostrar pedidos recientes (máximo los últimos 20 para el reporte)
+            adapter.submitList(pedidos.take(20))
+        }
     }
 
     override fun onDestroyView() {

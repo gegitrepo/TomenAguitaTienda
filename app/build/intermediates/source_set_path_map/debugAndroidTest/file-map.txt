@@ -1,4 +1,0 @@
-com.example.tomenaguita.test.app-androidTest-0 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\build\generated\res\resValues\androidTest\debug
-com.example.tomenaguita.test.app-mergeDebugAndroidTestResources-1 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
-com.example.tomenaguita.test.app-mergeDebugAndroidTestResources-2 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
-com.example.tomenaguita.test.app-merged_res-3 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\build\intermediates\merged_res\debugAndroidTest

@@ -17,4 +17,9 @@ class CarritoRepository(private val dao: CarritoDao) {
     suspend fun delete(id: Long) = dao.delete(id)
 
     suspend fun vaciar(usuarioId: Long) = dao.vaciarCarrito(usuarioId)
+
+    suspend fun getById(id: Long): CarritoItem? = dao.getById(id)
+
+    suspend fun getByUsuarioAndProducto(usuarioId: Long, productoId: Long): CarritoItem? =
+        dao.getByUsuarioAndProducto(usuarioId, productoId)
 }

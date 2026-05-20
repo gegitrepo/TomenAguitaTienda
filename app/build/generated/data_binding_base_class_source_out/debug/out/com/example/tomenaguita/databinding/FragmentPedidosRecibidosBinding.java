@@ -41,12 +41,16 @@ public final class FragmentPedidosRecibidosBinding implements ViewBinding {
   public final RecyclerView rvPedidosRecibidos;
 
   @NonNull
+  public final TextView tvEmpty;
+
+  @NonNull
   public final TextView tvTitle;
 
   private FragmentPedidosRecibidosBinding(@NonNull ConstraintLayout rootView,
       @NonNull Chip chipEnviado, @NonNull ChipGroup chipGroupFiltros, @NonNull Chip chipPagado,
       @NonNull Chip chipPendiente, @NonNull Chip chipTodos,
-      @NonNull RecyclerView rvPedidosRecibidos, @NonNull TextView tvTitle) {
+      @NonNull RecyclerView rvPedidosRecibidos, @NonNull TextView tvEmpty,
+      @NonNull TextView tvTitle) {
     this.rootView = rootView;
     this.chipEnviado = chipEnviado;
     this.chipGroupFiltros = chipGroupFiltros;
@@ -54,6 +58,7 @@ public final class FragmentPedidosRecibidosBinding implements ViewBinding {
     this.chipPendiente = chipPendiente;
     this.chipTodos = chipTodos;
     this.rvPedidosRecibidos = rvPedidosRecibidos;
+    this.tvEmpty = tvEmpty;
     this.tvTitle = tvTitle;
   }
 
@@ -120,6 +125,12 @@ public final class FragmentPedidosRecibidosBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvEmpty;
+      TextView tvEmpty = ViewBindings.findChildViewById(rootView, id);
+      if (tvEmpty == null) {
+        break missingId;
+      }
+
       id = R.id.tvTitle;
       TextView tvTitle = ViewBindings.findChildViewById(rootView, id);
       if (tvTitle == null) {
@@ -127,7 +138,8 @@ public final class FragmentPedidosRecibidosBinding implements ViewBinding {
       }
 
       return new FragmentPedidosRecibidosBinding((ConstraintLayout) rootView, chipEnviado,
-          chipGroupFiltros, chipPagado, chipPendiente, chipTodos, rvPedidosRecibidos, tvTitle);
+          chipGroupFiltros, chipPagado, chipPendiente, chipTodos, rvPedidosRecibidos, tvEmpty,
+          tvTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

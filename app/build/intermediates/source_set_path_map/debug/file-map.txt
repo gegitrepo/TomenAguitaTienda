@@ -1,63 +1,66 @@
-com.example.tomenaguita.app-coordinatorlayout-1.2.0-0 C:\Users\ASUS\.gradle\caches\transforms-3\0486dc227ba5aae9d6f03e0495003b32\transformed\coordinatorlayout-1.2.0\res
-com.example.tomenaguita.app-material-1.11.0-1 C:\Users\ASUS\.gradle\caches\transforms-3\09af5b4b60f7cf50ffcde510ff0958f0\transformed\material-1.11.0\res
-com.example.tomenaguita.app-sqlite-framework-2.4.0-2 C:\Users\ASUS\.gradle\caches\transforms-3\0a0aba353b4cb72c7fb0fadad32cfbe0\transformed\sqlite-framework-2.4.0\res
-com.example.tomenaguita.app-lifecycle-process-2.7.0-3 C:\Users\ASUS\.gradle\caches\transforms-3\10e9087bf8ae862fac8a9847e6fe54a1\transformed\lifecycle-process-2.7.0\res
-com.example.tomenaguita.app-room-runtime-2.6.1-4 C:\Users\ASUS\.gradle\caches\transforms-3\2021dc4e18a04ab7c17586bfc89320e9\transformed\room-runtime-2.6.1\res
-com.example.tomenaguita.app-lifecycle-runtime-2.7.0-5 C:\Users\ASUS\.gradle\caches\transforms-3\24b3fe101a847eedd9fe862ee656bab6\transformed\lifecycle-runtime-2.7.0\res
-com.example.tomenaguita.app-activity-1.8.0-6 C:\Users\ASUS\.gradle\caches\transforms-3\3814be74b4fe1bdfd8744b13ab49220e\transformed\activity-1.8.0\res
-com.example.tomenaguita.app-navigation-common-2.7.7-7 C:\Users\ASUS\.gradle\caches\transforms-3\388e85145c3dd5454c86d0d323633616\transformed\navigation-common-2.7.7\res
-com.example.tomenaguita.app-lifecycle-viewmodel-ktx-2.7.0-8 C:\Users\ASUS\.gradle\caches\transforms-3\40964a4221445923ce9c532f7df334c0\transformed\lifecycle-viewmodel-ktx-2.7.0\res
-com.example.tomenaguita.app-glide-4.16.0-9 C:\Users\ASUS\.gradle\caches\transforms-3\436af0f9294238031df0f5c6b86296aa\transformed\glide-4.16.0\res
-com.example.tomenaguita.app-core-ktx-1.12.0-10 C:\Users\ASUS\.gradle\caches\transforms-3\43bfad7a100ea6bd69d3c74431e0162f\transformed\core-ktx-1.12.0\res
-com.example.tomenaguita.app-play-services-base-18.1.0-11 C:\Users\ASUS\.gradle\caches\transforms-3\4d5a67d91c1b11f27fa1ec9bc966c2c5\transformed\play-services-base-18.1.0\res
-com.example.tomenaguita.app-biometric-1.1.0-12 C:\Users\ASUS\.gradle\caches\transforms-3\53551905b735d3f8eb1e67836d8bef32\transformed\biometric-1.1.0\res
-com.example.tomenaguita.app-viewpager2-1.1.0-beta02-13 C:\Users\ASUS\.gradle\caches\transforms-3\543916713886017b857b1213adf69d19\transformed\viewpager2-1.1.0-beta02\res
-com.example.tomenaguita.app-room-ktx-2.6.1-14 C:\Users\ASUS\.gradle\caches\transforms-3\5738cbc200cf3a09279a00a2860d4d11\transformed\room-ktx-2.6.1\res
-com.example.tomenaguita.app-savedstate-1.2.1-15 C:\Users\ASUS\.gradle\caches\transforms-3\5753f3b6479fc44d4d7391488ff10f6e\transformed\savedstate-1.2.1\res
-com.example.tomenaguita.app-savedstate-ktx-1.2.1-16 C:\Users\ASUS\.gradle\caches\transforms-3\58171291e701ca08053419ac4ae49287\transformed\savedstate-ktx-1.2.1\res
-com.example.tomenaguita.app-lifecycle-livedata-ktx-2.7.0-17 C:\Users\ASUS\.gradle\caches\transforms-3\5aba34fb06432a6baa45121e5863cc5e\transformed\lifecycle-livedata-ktx-2.7.0\res
-com.example.tomenaguita.app-appcompat-1.6.1-18 C:\Users\ASUS\.gradle\caches\transforms-3\5adfdac40de86f28eb8cb4f03eb3a23d\transformed\appcompat-1.6.1\res
-com.example.tomenaguita.app-window-1.0.0-19 C:\Users\ASUS\.gradle\caches\transforms-3\5c678ea6a31b213b660be27c9a2b8f49\transformed\window-1.0.0\res
-com.example.tomenaguita.app-lifecycle-livedata-core-ktx-2.7.0-20 C:\Users\ASUS\.gradle\caches\transforms-3\5d5ec1aa71d9b03e3b9e708634a499e6\transformed\lifecycle-livedata-core-ktx-2.7.0\res
-com.example.tomenaguita.app-sqlite-2.4.0-21 C:\Users\ASUS\.gradle\caches\transforms-3\5e7d0ede7b0dcd34404b373e6ecaf8a8\transformed\sqlite-2.4.0\res
-com.example.tomenaguita.app-emoji2-1.2.0-22 C:\Users\ASUS\.gradle\caches\transforms-3\6849082b343040986521cfc636401c2d\transformed\emoji2-1.2.0\res
-com.example.tomenaguita.app-navigation-ui-2.7.7-23 C:\Users\ASUS\.gradle\caches\transforms-3\6ad596845b2d9f202061b9711e67504f\transformed\navigation-ui-2.7.7\res
-com.example.tomenaguita.app-startup-runtime-1.1.1-24 C:\Users\ASUS\.gradle\caches\transforms-3\6d72978e58004a4dac5e87bcc009ab45\transformed\startup-runtime-1.1.1\res
-com.example.tomenaguita.app-navigation-ui-ktx-2.7.7-25 C:\Users\ASUS\.gradle\caches\transforms-3\6df5002dbcf7d22a9599172969731ff0\transformed\navigation-ui-ktx-2.7.7\res
-com.example.tomenaguita.app-navigation-fragment-2.7.7-26 C:\Users\ASUS\.gradle\caches\transforms-3\73fd2a142e1ff0e09c9df1d0217324f7\transformed\navigation-fragment-2.7.7\res
-com.example.tomenaguita.app-core-runtime-2.2.0-27 C:\Users\ASUS\.gradle\caches\transforms-3\74c6835f0662d1f3b805778cae9a8313\transformed\core-runtime-2.2.0\res
-com.example.tomenaguita.app-fragment-ktx-1.6.2-28 C:\Users\ASUS\.gradle\caches\transforms-3\7bef34b470440f4dd881b752890a3d60\transformed\fragment-ktx-1.6.2\res
-com.example.tomenaguita.app-slidingpanelayout-1.2.0-29 C:\Users\ASUS\.gradle\caches\transforms-3\86f865692e48aa0dfb856a2aa44d485e\transformed\slidingpanelayout-1.2.0\res
-com.example.tomenaguita.app-cardview-1.0.0-30 C:\Users\ASUS\.gradle\caches\transforms-3\8bb3c6380b32aac935426300dd6ce81b\transformed\cardview-1.0.0\res
-com.example.tomenaguita.app-play-services-basement-18.1.0-31 C:\Users\ASUS\.gradle\caches\transforms-3\8e2dad1d8bd825731c27112e0d6b271d\transformed\play-services-basement-18.1.0\res
-com.example.tomenaguita.app-swiperefreshlayout-1.1.0-32 C:\Users\ASUS\.gradle\caches\transforms-3\8f23ea2366f62a3a0228139aa89cb1eb\transformed\swiperefreshlayout-1.1.0\res
-com.example.tomenaguita.app-lifecycle-livedata-core-2.7.0-33 C:\Users\ASUS\.gradle\caches\transforms-3\90bb1a35fb4f22e7d1abd5588d6c9ee4\transformed\lifecycle-livedata-core-2.7.0\res
-com.example.tomenaguita.app-navigation-runtime-ktx-2.7.7-34 C:\Users\ASUS\.gradle\caches\transforms-3\97f12486de41fa2113217e92260f7c91\transformed\navigation-runtime-ktx-2.7.7\res
-com.example.tomenaguita.app-lifecycle-runtime-ktx-2.7.0-35 C:\Users\ASUS\.gradle\caches\transforms-3\9c4a5c152c031bb4665e0cc7c98b8807\transformed\lifecycle-runtime-ktx-2.7.0\res
-com.example.tomenaguita.app-annotation-experimental-1.3.0-36 C:\Users\ASUS\.gradle\caches\transforms-3\a1cff368ca195c4db55e0e89b259de9d\transformed\annotation-experimental-1.3.0\res
-com.example.tomenaguita.app-constraintlayout-2.1.4-37 C:\Users\ASUS\.gradle\caches\transforms-3\ae41d57ca587d54d6178b7bde119e786\transformed\constraintlayout-2.1.4\res
-com.example.tomenaguita.app-navigation-fragment-ktx-2.7.7-38 C:\Users\ASUS\.gradle\caches\transforms-3\b78ca7b613a010ad037373871acfa4ef\transformed\navigation-fragment-ktx-2.7.7\res
-com.example.tomenaguita.app-fragment-1.6.2-39 C:\Users\ASUS\.gradle\caches\transforms-3\bb7db53dd17ca52bd7eda0aad8e896b8\transformed\fragment-1.6.2\res
-com.example.tomenaguita.app-recyclerview-1.3.2-40 C:\Users\ASUS\.gradle\caches\transforms-3\bbd7d8ac2761fa615beed4b3b5154230\transformed\recyclerview-1.3.2\res
-com.example.tomenaguita.app-lifecycle-viewmodel-2.7.0-41 C:\Users\ASUS\.gradle\caches\transforms-3\bfe85e9310400c56d7de8ef7c8642891\transformed\lifecycle-viewmodel-2.7.0\res
-com.example.tomenaguita.app-lifecycle-livedata-2.7.0-42 C:\Users\ASUS\.gradle\caches\transforms-3\cd1268b7aecd594556dad988f2751db3\transformed\lifecycle-livedata-2.7.0\res
-com.example.tomenaguita.app-activity-ktx-1.8.0-43 C:\Users\ASUS\.gradle\caches\transforms-3\cd8309936c3719dbf51c1cd984ed0566\transformed\activity-ktx-1.8.0\res
-com.example.tomenaguita.app-lifecycle-viewmodel-savedstate-2.7.0-44 C:\Users\ASUS\.gradle\caches\transforms-3\d20349713ff34db3eeac422d48a638bb\transformed\lifecycle-viewmodel-savedstate-2.7.0\res
-com.example.tomenaguita.app-navigation-common-ktx-2.7.7-45 C:\Users\ASUS\.gradle\caches\transforms-3\d3b5d636111efa63c87d8a110c34a448\transformed\navigation-common-ktx-2.7.7\res
-com.example.tomenaguita.app-security-crypto-1.1.0-alpha06-46 C:\Users\ASUS\.gradle\caches\transforms-3\d77e3fc831ceb64b204541bb794333e0\transformed\security-crypto-1.1.0-alpha06\res
-com.example.tomenaguita.app-core-1.12.0-47 C:\Users\ASUS\.gradle\caches\transforms-3\de71e3f45159754251e1e1892a6e84fc\transformed\core-1.12.0\res
-com.example.tomenaguita.app-profileinstaller-1.3.0-48 C:\Users\ASUS\.gradle\caches\transforms-3\dfbc84bfb845f79887f86d7996eac63f\transformed\profileinstaller-1.3.0\res
-com.example.tomenaguita.app-customview-poolingcontainer-1.0.0-49 C:\Users\ASUS\.gradle\caches\transforms-3\e0cb408b0dcaa56ce621e86a234bbacf\transformed\customview-poolingcontainer-1.0.0\res
-com.example.tomenaguita.app-play-services-maps-18.2.0-50 C:\Users\ASUS\.gradle\caches\transforms-3\e35c30cf1b384ba23908bf7bbba7e950\transformed\play-services-maps-18.2.0\res
-com.example.tomenaguita.app-drawerlayout-1.1.1-51 C:\Users\ASUS\.gradle\caches\transforms-3\e7c0b80d3d5fe257f1d837a9bce42f57\transformed\drawerlayout-1.1.1\res
-com.example.tomenaguita.app-navigation-runtime-2.7.7-52 C:\Users\ASUS\.gradle\caches\transforms-3\e972ea4760731843ba4e829c2ef23ab8\transformed\navigation-runtime-2.7.7\res
-com.example.tomenaguita.app-emoji2-views-helper-1.2.0-53 C:\Users\ASUS\.gradle\caches\transforms-3\ead132f9145ddce78b920d9f902ae5a5\transformed\emoji2-views-helper-1.2.0\res
-com.example.tomenaguita.app-transition-1.4.1-54 C:\Users\ASUS\.gradle\caches\transforms-3\f3f61bdb676932ea2e092ab508461c12\transformed\transition-1.4.1\res
-com.example.tomenaguita.app-appcompat-resources-1.6.1-55 C:\Users\ASUS\.gradle\caches\transforms-3\fd6c36cd55a7b1c4d8fee8e95f3b12ed\transformed\appcompat-resources-1.6.1\res
-com.example.tomenaguita.app-pngs-56 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\build\generated\res\pngs\debug
-com.example.tomenaguita.app-resValues-57 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\build\generated\res\resValues\debug
-com.example.tomenaguita.app-packageDebugResources-58 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
-com.example.tomenaguita.app-packageDebugResources-59 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
-com.example.tomenaguita.app-merged_res-60 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\build\intermediates\merged_res\debug
-com.example.tomenaguita.app-debug-61 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\src\debug\res
-com.example.tomenaguita.app-main-62 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\src\main\res
+com.example.tomenaguita.app-transition-1.4.1-0 C:\Users\ASUS\.gradle\caches\transforms-3\0189274479327e7e351cd7037d157ba4\transformed\transition-1.4.1\res
+com.example.tomenaguita.app-core-ktx-1.12.0-1 C:\Users\ASUS\.gradle\caches\transforms-3\04e25a8381b55166a6bbd880e0451ebd\transformed\core-ktx-1.12.0\res
+com.example.tomenaguita.app-lifecycle-runtime-ktx-2.7.0-2 C:\Users\ASUS\.gradle\caches\transforms-3\0775d48a35171f92baa31ab2d618a2a8\transformed\lifecycle-runtime-ktx-2.7.0\res
+com.example.tomenaguita.app-biometric-1.1.0-3 C:\Users\ASUS\.gradle\caches\transforms-3\0c7f88c1bcd4b95195d17f5c3b0d5bbb\transformed\biometric-1.1.0\res
+com.example.tomenaguita.app-browser-1.4.0-4 C:\Users\ASUS\.gradle\caches\transforms-3\0d745238cf92297f8d89008dfe517a0c\transformed\browser-1.4.0\res
+com.example.tomenaguita.app-security-crypto-1.1.0-alpha06-5 C:\Users\ASUS\.gradle\caches\transforms-3\1bafd580e4ea21f8ea1147810c9ca161\transformed\security-crypto-1.1.0-alpha06\res
+com.example.tomenaguita.app-window-1.0.0-6 C:\Users\ASUS\.gradle\caches\transforms-3\1c41cb5cf2a0a5b74ca8da1cba908051\transformed\window-1.0.0\res
+com.example.tomenaguita.app-profileinstaller-1.3.0-7 C:\Users\ASUS\.gradle\caches\transforms-3\1e4b3ed3c7d735d9344ec61a915ff387\transformed\profileinstaller-1.3.0\res
+com.example.tomenaguita.app-room-ktx-2.6.1-8 C:\Users\ASUS\.gradle\caches\transforms-3\1f412e3f12e7ccd3341ab0037c6838c6\transformed\room-ktx-2.6.1\res
+com.example.tomenaguita.app-lifecycle-viewmodel-ktx-2.7.0-9 C:\Users\ASUS\.gradle\caches\transforms-3\2053b8aac83dd64d2aabbb9d17b0bba5\transformed\lifecycle-viewmodel-ktx-2.7.0\res
+com.example.tomenaguita.app-activity-ktx-1.8.0-10 C:\Users\ASUS\.gradle\caches\transforms-3\20ea371855924fbdacec88243c05a506\transformed\activity-ktx-1.8.0\res
+com.example.tomenaguita.app-navigation-ui-ktx-2.7.7-11 C:\Users\ASUS\.gradle\caches\transforms-3\2b0d9967af2fa3a53bca4e146109e42b\transformed\navigation-ui-ktx-2.7.7\res
+com.example.tomenaguita.app-navigation-runtime-2.7.7-12 C:\Users\ASUS\.gradle\caches\transforms-3\2f42f6784af43c52d1aee4e54506bcab\transformed\navigation-runtime-2.7.7\res
+com.example.tomenaguita.app-material-1.11.0-13 C:\Users\ASUS\.gradle\caches\transforms-3\38a11095f46183fb9ad94e2de7d5bb95\transformed\material-1.11.0\res
+com.example.tomenaguita.app-navigation-fragment-ktx-2.7.7-14 C:\Users\ASUS\.gradle\caches\transforms-3\39937a6c3b8de05446711b2cea908f19\transformed\navigation-fragment-ktx-2.7.7\res
+com.example.tomenaguita.app-play-services-basement-18.1.0-15 C:\Users\ASUS\.gradle\caches\transforms-3\413f74adbfdadc1ee09ee48bc76a5d1c\transformed\play-services-basement-18.1.0\res
+com.example.tomenaguita.app-savedstate-1.2.1-16 C:\Users\ASUS\.gradle\caches\transforms-3\42a16c4fa392a2c0c46942e640a8e136\transformed\savedstate-1.2.1\res
+com.example.tomenaguita.app-customview-poolingcontainer-1.0.0-17 C:\Users\ASUS\.gradle\caches\transforms-3\45c5751de4443cbd0fbcd090722763aa\transformed\customview-poolingcontainer-1.0.0\res
+com.example.tomenaguita.app-lifecycle-process-2.7.0-18 C:\Users\ASUS\.gradle\caches\transforms-3\49041c4c2b2a67f89d4852d221cd65d5\transformed\lifecycle-process-2.7.0\res
+com.example.tomenaguita.app-play-services-base-18.1.0-19 C:\Users\ASUS\.gradle\caches\transforms-3\4d5f41bac31a68e81f11e45c8cff7bf6\transformed\play-services-base-18.1.0\res
+com.example.tomenaguita.app-cardview-1.0.0-20 C:\Users\ASUS\.gradle\caches\transforms-3\55cc950db03d27c929fd2001feb787ed\transformed\cardview-1.0.0\res
+com.example.tomenaguita.app-room-runtime-2.6.1-21 C:\Users\ASUS\.gradle\caches\transforms-3\55f60f455fb7a1ee886515f2fb412f87\transformed\room-runtime-2.6.1\res
+com.example.tomenaguita.app-startup-runtime-1.1.1-22 C:\Users\ASUS\.gradle\caches\transforms-3\59db25b72303bf97142939b2771ce886\transformed\startup-runtime-1.1.1\res
+com.example.tomenaguita.app-lifecycle-viewmodel-savedstate-2.7.0-23 C:\Users\ASUS\.gradle\caches\transforms-3\600b0625051c7c4dd5537133f0012887\transformed\lifecycle-viewmodel-savedstate-2.7.0\res
+com.example.tomenaguita.app-lifecycle-livedata-core-ktx-2.7.0-24 C:\Users\ASUS\.gradle\caches\transforms-3\6279b281cbd182693cdadbd7d1f4d68b\transformed\lifecycle-livedata-core-ktx-2.7.0\res
+com.example.tomenaguita.app-activity-1.8.0-25 C:\Users\ASUS\.gradle\caches\transforms-3\738fd3500465086adde6fe30c0bffc97\transformed\activity-1.8.0\res
+com.example.tomenaguita.app-glide-4.16.0-26 C:\Users\ASUS\.gradle\caches\transforms-3\75cdbbffa89f4657e43166e95060962a\transformed\glide-4.16.0\res
+com.example.tomenaguita.app-savedstate-ktx-1.2.1-27 C:\Users\ASUS\.gradle\caches\transforms-3\789a3c03660b19ffc8d6666b55064144\transformed\savedstate-ktx-1.2.1\res
+com.example.tomenaguita.app-lifecycle-livedata-core-2.7.0-28 C:\Users\ASUS\.gradle\caches\transforms-3\7d1e1004e1ad56625c6e305f10cf9b30\transformed\lifecycle-livedata-core-2.7.0\res
+com.example.tomenaguita.app-appcompat-1.6.1-29 C:\Users\ASUS\.gradle\caches\transforms-3\7fdeebeb68f2a73bc61687c4458bbbf2\transformed\appcompat-1.6.1\res
+com.example.tomenaguita.app-lifecycle-runtime-2.7.0-30 C:\Users\ASUS\.gradle\caches\transforms-3\7fe85df25aa120b45ffa6585c4cad06c\transformed\lifecycle-runtime-2.7.0\res
+com.example.tomenaguita.app-navigation-runtime-ktx-2.7.7-31 C:\Users\ASUS\.gradle\caches\transforms-3\8067ebaedb19f8ea7fa1fec72f3a670e\transformed\navigation-runtime-ktx-2.7.7\res
+com.example.tomenaguita.app-emoji2-1.2.0-32 C:\Users\ASUS\.gradle\caches\transforms-3\80b3909b05115e58e4d5e85109cbd0a7\transformed\emoji2-1.2.0\res
+com.example.tomenaguita.app-lifecycle-viewmodel-2.7.0-33 C:\Users\ASUS\.gradle\caches\transforms-3\8265f4181e56c9cbdadb5e7605aa47d0\transformed\lifecycle-viewmodel-2.7.0\res
+com.example.tomenaguita.app-appcompat-resources-1.6.1-34 C:\Users\ASUS\.gradle\caches\transforms-3\83bb13e6c10eb5ca117c3d237a7ee39c\transformed\appcompat-resources-1.6.1\res
+com.example.tomenaguita.app-navigation-ui-2.7.7-35 C:\Users\ASUS\.gradle\caches\transforms-3\8cef5c42da62d52c3d93b495b60d7e97\transformed\navigation-ui-2.7.7\res
+com.example.tomenaguita.app-firebase-common-20.4.2-36 C:\Users\ASUS\.gradle\caches\transforms-3\991a9412341a08c919a8a6ef35c0caeb\transformed\firebase-common-20.4.2\res
+com.example.tomenaguita.app-core-runtime-2.2.0-37 C:\Users\ASUS\.gradle\caches\transforms-3\9985059eb4c8501f679b2f1cb56b4f12\transformed\core-runtime-2.2.0\res
+com.example.tomenaguita.app-sqlite-2.4.0-38 C:\Users\ASUS\.gradle\caches\transforms-3\a43ad7068c0bf1fa2755a9ded48bc564\transformed\sqlite-2.4.0\res
+com.example.tomenaguita.app-lifecycle-livedata-2.7.0-39 C:\Users\ASUS\.gradle\caches\transforms-3\a7b5b99d4a0cbd1612b282820be3ccb8\transformed\lifecycle-livedata-2.7.0\res
+com.example.tomenaguita.app-core-1.12.0-40 C:\Users\ASUS\.gradle\caches\transforms-3\a8dc64a2c10110c253434f74a48aa6fa\transformed\core-1.12.0\res
+com.example.tomenaguita.app-play-services-maps-18.2.0-41 C:\Users\ASUS\.gradle\caches\transforms-3\a960fe4f9aaf9fd9f7aacb48dac7bb73\transformed\play-services-maps-18.2.0\res
+com.example.tomenaguita.app-navigation-common-ktx-2.7.7-42 C:\Users\ASUS\.gradle\caches\transforms-3\ac35829c42e5ffefc579a4f8c1ca4d96\transformed\navigation-common-ktx-2.7.7\res
+com.example.tomenaguita.app-lifecycle-livedata-ktx-2.7.0-43 C:\Users\ASUS\.gradle\caches\transforms-3\b0266c7e99b442c4e3a85147bb711a59\transformed\lifecycle-livedata-ktx-2.7.0\res
+com.example.tomenaguita.app-emoji2-views-helper-1.2.0-44 C:\Users\ASUS\.gradle\caches\transforms-3\b23127f3fd4a458aea38205df65fa080\transformed\emoji2-views-helper-1.2.0\res
+com.example.tomenaguita.app-navigation-common-2.7.7-45 C:\Users\ASUS\.gradle\caches\transforms-3\b523b9b255c73a029ddf61ea99c40a5f\transformed\navigation-common-2.7.7\res
+com.example.tomenaguita.app-recyclerview-1.3.2-46 C:\Users\ASUS\.gradle\caches\transforms-3\bc68337bdecba8835727c18387bb9064\transformed\recyclerview-1.3.2\res
+com.example.tomenaguita.app-drawerlayout-1.1.1-47 C:\Users\ASUS\.gradle\caches\transforms-3\c4c2fb2ecfaad899ac1dc187d670a832\transformed\drawerlayout-1.1.1\res
+com.example.tomenaguita.app-fragment-ktx-1.6.2-48 C:\Users\ASUS\.gradle\caches\transforms-3\cf4667c451eabc792c638027f6eb87b0\transformed\fragment-ktx-1.6.2\res
+com.example.tomenaguita.app-sqlite-framework-2.4.0-49 C:\Users\ASUS\.gradle\caches\transforms-3\d0fe456e1c596d24a3390e0d9da6e1e7\transformed\sqlite-framework-2.4.0\res
+com.example.tomenaguita.app-fragment-1.6.2-50 C:\Users\ASUS\.gradle\caches\transforms-3\d10c4181051d0d41f72e4031bfd57360\transformed\fragment-1.6.2\res
+com.example.tomenaguita.app-swiperefreshlayout-1.1.0-51 C:\Users\ASUS\.gradle\caches\transforms-3\d2f2770ea10b9b72e9455c30316bfc01\transformed\swiperefreshlayout-1.1.0\res
+com.example.tomenaguita.app-viewpager2-1.1.0-beta02-52 C:\Users\ASUS\.gradle\caches\transforms-3\d3d3aa23b3922d1a2f9a95590d87f476\transformed\viewpager2-1.1.0-beta02\res
+com.example.tomenaguita.app-annotation-experimental-1.3.0-53 C:\Users\ASUS\.gradle\caches\transforms-3\e188ab2be61aae4b8ae5e27d8ca51135\transformed\annotation-experimental-1.3.0\res
+com.example.tomenaguita.app-slidingpanelayout-1.2.0-54 C:\Users\ASUS\.gradle\caches\transforms-3\e58c6f6b16759b1f0d49bbeabbe47f56\transformed\slidingpanelayout-1.2.0\res
+com.example.tomenaguita.app-constraintlayout-2.1.4-55 C:\Users\ASUS\.gradle\caches\transforms-3\f2f9c33fe54fb76a35cab4388f5970b9\transformed\constraintlayout-2.1.4\res
+com.example.tomenaguita.app-coordinatorlayout-1.2.0-56 C:\Users\ASUS\.gradle\caches\transforms-3\f55595e94ce9ffee1d6e4d1ce846d887\transformed\coordinatorlayout-1.2.0\res
+com.example.tomenaguita.app-navigation-fragment-2.7.7-57 C:\Users\ASUS\.gradle\caches\transforms-3\f64d3560211597e5240bd7ebea9b8441\transformed\navigation-fragment-2.7.7\res
+com.example.tomenaguita.app-pngs-58 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\build\generated\res\pngs\debug
+com.example.tomenaguita.app-res-59 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\build\generated\res\processDebugGoogleServices
+com.example.tomenaguita.app-resValues-60 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\build\generated\res\resValues\debug
+com.example.tomenaguita.app-packageDebugResources-61 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.example.tomenaguita.app-packageDebugResources-62 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.example.tomenaguita.app-merged_res-63 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\build\intermediates\merged_res\debug
+com.example.tomenaguita.app-debug-64 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\src\debug\res
+com.example.tomenaguita.app-main-65 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\src\main\res

@@ -44,12 +44,15 @@ public final class FragmentHistorialPedidosBinding implements ViewBinding {
   public final RecyclerView rvPedidos;
 
   @NonNull
+  public final TextView tvEmpty;
+
+  @NonNull
   public final TextView tvTitle;
 
   private FragmentHistorialPedidosBinding(@NonNull ConstraintLayout rootView,
       @NonNull Chip chipEntregado, @NonNull Chip chipEnviado, @NonNull ChipGroup chipGroupFiltros,
       @NonNull Chip chipPagado, @NonNull Chip chipPendiente, @NonNull Chip chipTodos,
-      @NonNull RecyclerView rvPedidos, @NonNull TextView tvTitle) {
+      @NonNull RecyclerView rvPedidos, @NonNull TextView tvEmpty, @NonNull TextView tvTitle) {
     this.rootView = rootView;
     this.chipEntregado = chipEntregado;
     this.chipEnviado = chipEnviado;
@@ -58,6 +61,7 @@ public final class FragmentHistorialPedidosBinding implements ViewBinding {
     this.chipPendiente = chipPendiente;
     this.chipTodos = chipTodos;
     this.rvPedidos = rvPedidos;
+    this.tvEmpty = tvEmpty;
     this.tvTitle = tvTitle;
   }
 
@@ -130,6 +134,12 @@ public final class FragmentHistorialPedidosBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvEmpty;
+      TextView tvEmpty = ViewBindings.findChildViewById(rootView, id);
+      if (tvEmpty == null) {
+        break missingId;
+      }
+
       id = R.id.tvTitle;
       TextView tvTitle = ViewBindings.findChildViewById(rootView, id);
       if (tvTitle == null) {
@@ -137,7 +147,8 @@ public final class FragmentHistorialPedidosBinding implements ViewBinding {
       }
 
       return new FragmentHistorialPedidosBinding((ConstraintLayout) rootView, chipEntregado,
-          chipEnviado, chipGroupFiltros, chipPagado, chipPendiente, chipTodos, rvPedidos, tvTitle);
+          chipEnviado, chipGroupFiltros, chipPagado, chipPendiente, chipTodos, rvPedidos, tvEmpty,
+          tvTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

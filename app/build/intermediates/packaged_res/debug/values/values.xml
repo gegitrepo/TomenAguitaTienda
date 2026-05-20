@@ -71,11 +71,15 @@
     <string name="btn_buy_now">Comprar ahora</string>
     <string name="btn_camera">Cámara</string>
     <string name="btn_cancel">Cancelar</string>
+    <string name="btn_cancel_order">Cancelar pedido</string>
     <string name="btn_clear_cart">Vaciar carrito</string>
+    <string name="btn_complete_order">Completar este pedido</string>
     <string name="btn_confirm">Confirmar</string>
     <string name="btn_confirm_payment">Confirmar y pagar</string>
     <string name="btn_create_user">Crear usuario</string>
     <string name="btn_delete">Eliminar</string>
+    <string name="btn_delete_photo">Borrar foto</string>
+    <string name="btn_detect_location">Detectar ubicación</string>
     <string name="btn_edit_profile">Editar perfil</string>
     <string name="btn_gallery">Galería</string>
     <string name="btn_login">Iniciar sesión</string>
@@ -99,6 +103,13 @@
     <string name="demo_product_desc_short">Agua purificada de alta calidad</string>
     <string name="demo_product_description">Agua purificada %1$s de %2$s. Proceso de purificación con filtración de 7 etapas. Sin aditivos, 100%% natural.</string>
     <string name="desc_forgot_password">Ingresa tu correo y te enviaremos un enlace para restablecer tu contraseña.</string>
+    <string name="empty_admin_products">No hay productos registrados</string>
+    <string name="empty_catalog_products">No se encontraron productos</string>
+    <string name="empty_home_products">No hay productos disponibles</string>
+    <string name="empty_my_products">Aún no tienes productos.\nToca + para crear uno</string>
+    <string name="empty_order_history">No tienes pedidos en este estado</string>
+    <string name="empty_received_orders">No tienes pedidos recibidos aún</string>
+    <string name="empty_users">No se encontraron usuarios</string>
     <string name="error_email_invalid">Correo electrónico inválido</string>
     <string name="error_field_required">Este campo es obligatorio</string>
     <string name="error_name_short">Mínimo 3 caracteres</string>
@@ -106,6 +117,11 @@
     <string name="error_passwords_no_match">Las contraseñas no coinciden</string>
     <string name="error_phone_invalid">Teléfono inválido (10 dígitos, empieza con 3)</string>
     <string name="error_terms_required">Debes aceptar los términos y condiciones</string>
+    <string name="gcm_defaultSenderId" translatable="false">1032720134932</string>
+    <string name="google_api_key" translatable="false">AIzaSyDjSmwJeFf-ajcMsbU1RBcZFSmcuz4QTSg</string>
+    <string name="google_app_id" translatable="false">1:1032720134932:android:bc75f697383df5ece64801</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDjSmwJeFf-ajcMsbU1RBcZFSmcuz4QTSg</string>
+    <string name="google_storage_bucket" translatable="false">tomenaguita-7154a.firebasestorage.app</string>
     <string name="hint_card_name">Nombre en la tarjeta</string>
     <string name="hint_card_number">Número de tarjeta (simulado)</string>
     <string name="hint_confirm_password">Confirmar contraseña</string>
@@ -161,19 +177,24 @@
     <string name="msg_cart_cleared">Carrito vaciado</string>
     <string name="msg_delete_action">Eliminar: %s</string>
     <string name="msg_delete_confirm">¿Estás seguro de eliminar?</string>
+    <string name="msg_detecting_location">Detectando ubicación…</string>
     <string name="msg_edit_action">Editar: %s</string>
     <string name="msg_item_added_to_cart">%s agregado al carrito</string>
     <string name="msg_item_quantity_cart">%1$s × %2$d agregado al carrito</string>
+    <string name="msg_location_error">No se pudo detectar la ubicación</string>
     <string name="msg_login_failed">Correo o contraseña incorrectos</string>
     <string name="msg_login_success">¡Bienvenido!</string>
     <string name="msg_logout_confirm">¿Deseas cerrar sesión?</string>
+    <string name="msg_no_photo_to_delete">No hay foto de perfil para borrar</string>
     <string name="msg_open_camera">Abrir cámara (requiere permiso)</string>
     <string name="msg_open_camera_simple">Abrir cámara</string>
     <string name="msg_open_gallery">Abrir galería (requiere permiso)</string>
     <string name="msg_open_gallery_simple">Abrir galería</string>
     <string name="msg_order_delivered">Pedido marcado como entregado</string>
+    <string name="msg_order_loaded_to_cart">Productos cargados al carrito</string>
     <string name="msg_order_placed">¡Pedido realizado con éxito!</string>
     <string name="msg_order_shipped">Pedido marcado como enviado</string>
+    <string name="msg_photo_deleted">Foto de perfil eliminada</string>
     <string name="msg_product_created">Producto creado</string>
     <string name="msg_product_updated">Producto actualizado</string>
     <string name="msg_profile_updated">Perfil actualizado</string>
@@ -185,6 +206,7 @@
     <string name="payment_card">Tarjeta de crédito/débito</string>
     <string name="payment_cash">Efectivo contra entrega</string>
     <string name="payment_transfer">Transferencia bancaria</string>
+    <string name="project_id" translatable="false">tomenaguita-7154a</string>
     <string name="rol_comprador">Comprador</string>
     <string name="status_cancelled">Cancelado</string>
     <string name="status_delivered">Entregado</string>
@@ -240,10 +262,17 @@
         <item name="android:statusBarColor">@color/primary_dark</item>
         <item name="android:navigationBarColor">@color/surface</item>
         <item name="android:fontFamily">sans-serif</item>
+        
+        <item name="android:textColorPrimary">@color/on_background</item>
+        <item name="android:textColorSecondary">@color/on_background_secondary</item>
     </style>
     <style name="Theme.TomenAguita.Splash" parent="Theme.TomenAguita">
         <item name="android:statusBarColor">@color/splash_start</item>
         <item name="android:windowFullscreen">false</item>
+    </style>
+    <style name="ThemeOverlay.TomenAguita.TextInput" parent="">
+        <item name="colorOnSurface">@color/primary</item>
+        <item name="colorOnSurfaceVariant">@color/on_background_secondary</item>
     </style>
     <style name="Widget.TomenAguita.Button" parent="Widget.Material3.Button">
         <item name="android:minHeight">@dimen/button_height</item>
@@ -275,5 +304,6 @@
         <item name="boxCornerRadiusBottomStart">@dimen/corner_radius_small</item>
         <item name="boxCornerRadiusBottomEnd">@dimen/corner_radius_small</item>
         <item name="boxStrokeColor">@color/primary</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.TomenAguita.TextInput</item>
     </style>
 </resources>

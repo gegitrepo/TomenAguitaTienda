@@ -17,4 +17,6 @@ class ProductoRepository(private val dao: ProductoDao) {
     suspend fun update(producto: Producto) = dao.update(producto)
 
     suspend fun delete(id: Long) = dao.softDelete(id)
+
+    suspend fun getByFirestoreDocId(docId: String): Producto? = dao.getByFirestoreDocId(docId)
 }

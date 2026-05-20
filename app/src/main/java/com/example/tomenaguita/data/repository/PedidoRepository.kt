@@ -11,6 +11,8 @@ class PedidoRepository(private val dao: PedidoDao) {
 
     fun getAllPedidos(): Flow<List<Pedido>> = dao.getAllPedidos()
 
+    fun getPedidosByVendedor(vendedorId: Long): Flow<List<Pedido>> = dao.getPedidosByVendedor(vendedorId)
+
     suspend fun getById(id: Long): Pedido? = dao.getPedidoById(id)
 
     suspend fun getDetalles(pedidoId: Long): List<DetallePedido> = dao.getDetallesByPedido(pedidoId)
@@ -22,4 +24,6 @@ class PedidoRepository(private val dao: PedidoDao) {
     }
 
     suspend fun actualizarEstado(id: Long, estado: String) = dao.actualizarEstado(id, estado)
+
+    suspend fun getByOrderNumber(orderNumber: String): Pedido? = dao.getByOrderNumber(orderNumber)
 }

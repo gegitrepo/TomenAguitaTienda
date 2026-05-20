@@ -4,6 +4,7 @@ package com.example.tomenaguita.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,10 +12,9 @@ import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
-import androidx.viewpager2.widget.ViewPager2;
 import com.example.tomenaguita.R;
-import com.google.android.material.search.SearchBar;
-import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -24,29 +24,34 @@ public final class FragmentHomeBinding implements ViewBinding {
   private final NestedScrollView rootView;
 
   @NonNull
+  public final TextInputEditText etSearch;
+
+  @NonNull
+  public final ImageView ivLogo;
+
+  @NonNull
   public final RecyclerView rvProductos;
 
   @NonNull
-  public final SearchBar searchBar;
+  public final TextInputLayout tilSearch;
 
   @NonNull
-  public final TabLayout tabIndicator;
+  public final TextView tvEmpty;
 
   @NonNull
   public final TextView tvFeatured;
 
-  @NonNull
-  public final ViewPager2 viewPagerBanners;
-
-  private FragmentHomeBinding(@NonNull NestedScrollView rootView, @NonNull RecyclerView rvProductos,
-      @NonNull SearchBar searchBar, @NonNull TabLayout tabIndicator, @NonNull TextView tvFeatured,
-      @NonNull ViewPager2 viewPagerBanners) {
+  private FragmentHomeBinding(@NonNull NestedScrollView rootView,
+      @NonNull TextInputEditText etSearch, @NonNull ImageView ivLogo,
+      @NonNull RecyclerView rvProductos, @NonNull TextInputLayout tilSearch,
+      @NonNull TextView tvEmpty, @NonNull TextView tvFeatured) {
     this.rootView = rootView;
+    this.etSearch = etSearch;
+    this.ivLogo = ivLogo;
     this.rvProductos = rvProductos;
-    this.searchBar = searchBar;
-    this.tabIndicator = tabIndicator;
+    this.tilSearch = tilSearch;
+    this.tvEmpty = tvEmpty;
     this.tvFeatured = tvFeatured;
-    this.viewPagerBanners = viewPagerBanners;
   }
 
   @Override
@@ -76,21 +81,33 @@ public final class FragmentHomeBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.etSearch;
+      TextInputEditText etSearch = ViewBindings.findChildViewById(rootView, id);
+      if (etSearch == null) {
+        break missingId;
+      }
+
+      id = R.id.ivLogo;
+      ImageView ivLogo = ViewBindings.findChildViewById(rootView, id);
+      if (ivLogo == null) {
+        break missingId;
+      }
+
       id = R.id.rvProductos;
       RecyclerView rvProductos = ViewBindings.findChildViewById(rootView, id);
       if (rvProductos == null) {
         break missingId;
       }
 
-      id = R.id.searchBar;
-      SearchBar searchBar = ViewBindings.findChildViewById(rootView, id);
-      if (searchBar == null) {
+      id = R.id.tilSearch;
+      TextInputLayout tilSearch = ViewBindings.findChildViewById(rootView, id);
+      if (tilSearch == null) {
         break missingId;
       }
 
-      id = R.id.tabIndicator;
-      TabLayout tabIndicator = ViewBindings.findChildViewById(rootView, id);
-      if (tabIndicator == null) {
+      id = R.id.tvEmpty;
+      TextView tvEmpty = ViewBindings.findChildViewById(rootView, id);
+      if (tvEmpty == null) {
         break missingId;
       }
 
@@ -100,14 +117,8 @@ public final class FragmentHomeBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.viewPagerBanners;
-      ViewPager2 viewPagerBanners = ViewBindings.findChildViewById(rootView, id);
-      if (viewPagerBanners == null) {
-        break missingId;
-      }
-
-      return new FragmentHomeBinding((NestedScrollView) rootView, rvProductos, searchBar,
-          tabIndicator, tvFeatured, viewPagerBanners);
+      return new FragmentHomeBinding((NestedScrollView) rootView, etSearch, ivLogo, rvProductos,
+          tilSearch, tvEmpty, tvFeatured);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

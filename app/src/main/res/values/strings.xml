@@ -124,6 +124,22 @@
     <!-- Filtros -->
     <string name="label_filter_all">Todos</string>
 
+    <!-- Editar perfil -->
+    <string name="btn_delete_photo">Borrar foto</string>
+    <string name="btn_detect_location">Detectar ubicación</string>
+    <string name="msg_no_photo_to_delete">No hay foto de perfil para borrar</string>
+    <string name="msg_photo_deleted">Foto de perfil eliminada</string>
+    <string name="msg_location_error">No se pudo detectar la ubicación</string>
+
+    <!-- Estados vacíos -->
+    <string name="empty_home_products">No hay productos disponibles</string>
+    <string name="empty_catalog_products">No se encontraron productos</string>
+    <string name="empty_my_products">Aún no tienes productos.\nToca + para crear uno</string>
+    <string name="empty_received_orders">No tienes pedidos recibidos aún</string>
+    <string name="empty_order_history">No tienes pedidos en este estado</string>
+    <string name="empty_admin_products">No hay productos registrados</string>
+    <string name="empty_users">No se encontraron usuarios</string>
+
     <!-- General -->
     <string name="btn_cancel">Cancelar</string>
     <string name="btn_delete">Eliminar</string>
@@ -156,6 +172,9 @@
     <string name="msg_order_placed">¡Pedido realizado con éxito!</string>
     <string name="msg_order_shipped">Pedido marcado como enviado</string>
     <string name="msg_order_delivered">Pedido marcado como entregado</string>
+    <string name="btn_complete_order">Completar este pedido</string>
+    <string name="btn_cancel_order">Cancelar pedido</string>
+    <string name="msg_order_loaded_to_cart">Productos cargados al carrito</string>
     <string name="msg_profile_updated">Perfil actualizado</string>
     <string name="msg_user_created">Usuario %s creado</string>
     <string name="msg_user_updated">Usuario actualizado</string>
@@ -182,4 +201,5 @@
     <!-- Accesibilidad -->
     <string name="content_desc_product_image">Imagen del producto</string>
     <string name="content_desc_logo">Logo Tomen Agüita</string>
+    <string name="msg_detecting_location">Detectando ubicación…</string>
 </resources>

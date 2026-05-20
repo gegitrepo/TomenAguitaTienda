@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/padding_medium">
 
+        <!-- Título -->
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="0dp"
@@ -23,6 +24,49 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- Nombre del contacto (pre-llenado desde sesión, editable solo para este pedido) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilNombre"
+            style="@style/Widget.TomenAguita.TextInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:hint="Nombre del contacto"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName|textCapWords"
+                android:textColor="@color/on_background"
+                android:textColorHint="@color/on_background_secondary" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Teléfono de contacto (editable, no modifica el perfil del usuario) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilTelefono"
+            style="@style/Widget.TomenAguita.TextInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:hint="Teléfono de contacto"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tilNombre">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etTelefono"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:textColor="@color/on_background"
+                android:textColorHint="@color/on_background_secondary" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Items del pedido -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvResumen"
             android:layout_width="0dp"
@@ -31,8 +75,9 @@
             android:nestedScrollingEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+            app:layout_constraintTop_toBottomOf="@id/tilTelefono" />
 
+        <!-- Card de dirección + mapa -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardAddress"
             android:layout_width="0dp"
@@ -58,15 +103,58 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tvDireccion"
+                    android:id="@+id/tvEstadoUbicacion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text=""
-                    android:textColor="@color/on_background_secondary" />
+                    android:text="Detectando ubicación…"
+                    android:textColor="@color/on_background_secondary"
+                    android:textSize="@dimen/text_body"
+                    android:visibility="visible" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilDireccion"
+                    style="@style/Widget.TomenAguita.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="Dirección de entrega"
+                    android:visibility="visible">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etDireccion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPostalAddress"
+                        android:textColor="@color/on_background"
+                        android:textColorHint="@color/on_background_secondary" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Mapa interactivo: pin fijo, mapa se mueve debajo -->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="12dp">
+
+                    <com.google.android.gms.maps.MapView
+                        android:id="@+id/mapView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_gravity="center"
+                        android:translationY="-14dp"
+                        android:src="@drawable/ic_pin_map"
+                        android:elevation="4dp"
+                        android:contentDescription="@null" />
+                </FrameLayout>
+
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
+        <!-- Totales -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardTotales"
             android:layout_width="0dp"

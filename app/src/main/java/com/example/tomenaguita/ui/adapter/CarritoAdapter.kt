@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.tomenaguita.R
 import com.example.tomenaguita.data.database.entity.CarritoItem
 import com.example.tomenaguita.databinding.ItemCarritoBinding
 import com.example.tomenaguita.utils.toCOP
@@ -12,7 +14,8 @@ import com.example.tomenaguita.utils.toCOP
 data class CarritoItemUI(
     val item: CarritoItem,
     val nombreProducto: String,
-    val presentacion: String
+    val presentacion: String,
+    val imagenUrl: String? = null
 )
 
 class CarritoAdapter(
@@ -29,6 +32,14 @@ class CarritoAdapter(
             binding.tvPrecioUnitario.text = "${ui.item.precioAlMomento.toCOP()} c/u"
             binding.tvCantidad.text = ui.item.cantidad.toString()
             binding.tvSubtotal.text = (ui.item.precioAlMomento * ui.item.cantidad).toCOP()
+
+            Glide.with(binding.root)
+                .load(ui.imagenUrl?.takeIf { it.isNotEmpty() })
+                .placeholder(R.drawable.bg_banner_placeholder)
+                .error(R.drawable.bg_banner_placeholder)
+                .centerCrop()
+                .into(binding.ivProducto)
+
             binding.btnMinus.setOnClickListener { onMinus(ui.item) }
             binding.btnPlus.setOnClickListener { onPlus(ui.item) }
             binding.btnEliminar.setOnClickListener { onEliminar(ui.item) }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="gcm_defaultSenderId" translatable="false">1032720134932</string>
+    <string name="google_api_key" translatable="false">AIzaSyDjSmwJeFf-ajcMsbU1RBcZFSmcuz4QTSg</string>
+    <string name="google_app_id" translatable="false">1:1032720134932:android:bc75f697383df5ece64801</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDjSmwJeFf-ajcMsbU1RBcZFSmcuz4QTSg</string>
+    <string name="google_storage_bucket" translatable="false">tomenaguita-7154a.firebasestorage.app</string>
+    <string name="project_id" translatable="false">tomenaguita-7154a</string>
+</resources>

@@ -45,7 +45,23 @@
         android:id="@+id/gestionProductosFragment"
         android:name="com.example.tomenaguita.ui.admin.productos.GestionProductosFragment"
         android:label="@string/title_products"
-        tools:layout="@layout/fragment_gestion_productos" />
+        tools:layout="@layout/fragment_gestion_productos">
+        <action
+            android:id="@+id/action_gestion_to_editar_producto"
+            app:destination="@id/adminEditarProductoFragment" />
+    </fragment>
+
+    <!-- Reutiliza el mismo formulario del vendedor para editar productos desde admin -->
+    <fragment
+        android:id="@+id/adminEditarProductoFragment"
+        android:name="com.example.tomenaguita.ui.vendedor.productos.CrearEditarProductoFragment"
+        android:label="Gestionar Producto"
+        tools:layout="@layout/fragment_crear_editar_producto">
+        <argument
+            android:name="productoId"
+            app:argType="long"
+            android:defaultValue="-1L" />
+    </fragment>
 
     <fragment
         android:id="@+id/reporteVentasFragment"

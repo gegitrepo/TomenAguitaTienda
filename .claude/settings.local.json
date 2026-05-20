@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(New-Item -ItemType Directory -Force \"C:\\\\Users\\\\ASUS\\\\Desktop\\\\appMovil\\\\Tomen aguita\\\\app\\\\src\\\\main\\\\res\\\\xml\")",
+      "Bash(Out-Null)",
+      "Bash(Write-Output \"OK\")",
+      "PowerShell(New-Item *)",
+      "Bash(adb logcat *)",
+      "PowerShell(Get-ChildItem *)",
+      "PowerShell($adb = \"C:\\\\Users\\\\ASUS\\\\AppData\\\\Local\\\\Android\\\\Sdk\\\\platform-tools\\\\adb.exe\"; & $adb logcat -d 2>&1 | Select-String -Pattern \"FATAL|AndroidRuntime|com.example.tomenaguita\" | Select-Object -Last 80 | ForEach-Object { $_.Line })",
+      "PowerShell($adb = \"C:\\\\Users\\\\ASUS\\\\AppData\\\\Local\\\\Android\\\\Sdk\\\\platform-tools\\\\adb.exe\"; & $adb devices)"
+    ]
+  }
+}
