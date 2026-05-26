@@ -4,21 +4,45 @@ package com.example.tomenaguita.data.database.dao;
 @androidx.room.Dao()
 public abstract interface UsuarioDao {
     
+    /**
+     * Devuelve todos los usuarios activos e inactivos ordenados alfabeticamente por nombre.
+     * Emite una nueva lista cada vez que hay cambios en la tabla (Flow reactivo).
+     */
     @androidx.room.Query(value = "SELECT * FROM usuarios ORDER BY nombre ASC")
     @org.jetbrains.annotations.NotNull()
     public abstract kotlinx.coroutines.flow.Flow<java.util.List<com.example.tomenaguita.data.database.entity.Usuario>> getAllUsuarios();
     
+    /**
+     * Busca un usuario por su ID local de Room.
+     *
+     * Consume: id — identificador primario del usuario.
+     * Devuelve: el Usuario encontrado, o null si no existe.
+     */
     @androidx.room.Query(value = "SELECT * FROM usuarios WHERE id = :id")
     @org.jetbrains.annotations.Nullable()
     public abstract java.lang.Object getUsuarioById(long id, @org.jetbrains.annotations.NotNull()
     kotlin.coroutines.Continuation<? super com.example.tomenaguita.data.database.entity.Usuario> $completion);
     
+    /**
+     * Busca un usuario por su correo electronico.
+     *
+     * Consume: email — correo electronico del usuario.
+     * Devuelve: el primer Usuario con ese correo, o null si no existe.
+     */
     @androidx.room.Query(value = "SELECT * FROM usuarios WHERE email = :email LIMIT 1")
     @org.jetbrains.annotations.Nullable()
     public abstract java.lang.Object getUsuarioByEmail(@org.jetbrains.annotations.NotNull()
     java.lang.String email, @org.jetbrains.annotations.NotNull()
     kotlin.coroutines.Continuation<? super com.example.tomenaguita.data.database.entity.Usuario> $completion);
     
+    /**
+     * Verifica las credenciales del usuario para el inicio de sesion local.
+     *
+     * Consume:
+     *  - email: correo electronico ingresado.
+     *  - password: contrasena ingresada.
+     * Devuelve: el Usuario si las credenciales coinciden, o null si son incorrectas.
+     */
     @androidx.room.Query(value = "SELECT * FROM usuarios WHERE email = :email AND password = :password LIMIT 1")
     @org.jetbrains.annotations.Nullable()
     public abstract java.lang.Object login(@org.jetbrains.annotations.NotNull()
@@ -26,23 +50,49 @@ public abstract interface UsuarioDao {
     java.lang.String password, @org.jetbrains.annotations.NotNull()
     kotlin.coroutines.Continuation<? super com.example.tomenaguita.data.database.entity.Usuario> $completion);
     
+    /**
+     * Inserta un nuevo usuario o lo reemplaza si ya existe un conflicto de clave primaria.
+     *
+     * Consume: usuario — entidad Usuario a insertar o actualizar.
+     * Devuelve: el ID local asignado por Room al usuario insertado.
+     */
     @androidx.room.Insert(onConflict = 1)
     @org.jetbrains.annotations.Nullable()
     public abstract java.lang.Object insert(@org.jetbrains.annotations.NotNull()
     com.example.tomenaguita.data.database.entity.Usuario usuario, @org.jetbrains.annotations.NotNull()
     kotlin.coroutines.Continuation<? super java.lang.Long> $completion);
     
+    /**
+     * Actualiza todos los campos de un usuario existente en la base de datos.
+     *
+     * Consume: usuario — entidad Usuario con los datos actualizados (debe tener id valido).
+     */
     @androidx.room.Update()
     @org.jetbrains.annotations.Nullable()
     public abstract java.lang.Object update(@org.jetbrains.annotations.NotNull()
     com.example.tomenaguita.data.database.entity.Usuario usuario, @org.jetbrains.annotations.NotNull()
     kotlin.coroutines.Continuation<? super kotlin.Unit> $completion);
     
+    /**
+     * Desactiva logicamente un usuario poniendo su campo activo en 0.
+     * Actualiza tambien el campo updatedAt con el timestamp actual.
+     *
+     * Consume:
+     *  - id: identificador del usuario a desactivar.
+     *  - timestamp: momento de la desactivacion; por defecto el instante actual.
+     */
     @androidx.room.Query(value = "UPDATE usuarios SET activo = 0, updatedAt = :timestamp WHERE id = :id")
     @org.jetbrains.annotations.Nullable()
     public abstract java.lang.Object desactivar(long id, long timestamp, @org.jetbrains.annotations.NotNull()
     kotlin.coroutines.Continuation<? super kotlin.Unit> $completion);
     
+    /**
+     * Busca un usuario por su ID de documento en Firestore.
+     * Util para sincronizar datos entre Room y la nube sin duplicar registros.
+     *
+     * Consume: docId — ID del documento en Firestore.
+     * Devuelve: el Usuario local vinculado a ese documento, o null si no existe.
+     */
     @androidx.room.Query(value = "SELECT * FROM usuarios WHERE firestoreDocId = :docId LIMIT 1")
     @org.jetbrains.annotations.Nullable()
     public abstract java.lang.Object getByFirestoreDocId(@org.jetbrains.annotations.NotNull()

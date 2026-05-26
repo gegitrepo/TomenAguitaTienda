@@ -15,12 +15,20 @@ import com.example.tomenaguita.utils.isValidEmail
 import com.example.tomenaguita.utils.showSnackbar
 import com.example.tomenaguita.viewmodel.AuthViewModel
 
+// Pantalla de inicio de sesión de la app TomenAgüita.
+// Permite al usuario autenticarse con correo y contraseña, o mediante biometría
+// si el dispositivo lo soporta y el usuario lo tiene habilitado.
+// Tras un login exitoso redirige a la pantalla principal según el rol del usuario.
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private lateinit var session: SessionManager
+
+    // ViewModel que gestiona las operaciones de autenticación con Firebase Auth
     private val viewModel: AuthViewModel by viewModels()
 
+    // Infla el layout, inicializa el SessionManager y configura observadores,
+    // listeners de UI y autenticación biométrica.
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -32,6 +40,9 @@ class LoginActivity : AppCompatActivity() {
         setupBiometric()
     }
 
+    // Observa el resultado del login emitido por el ViewModel.
+    // En caso de éxito navega al destino correspondiente al rol del usuario.
+    // En caso de error muestra un Snackbar con el mensaje de la excepción.
     private fun setupObservers() {
         viewModel.loginResult.observe(this) { result ->
             binding.btnLogin.isEnabled = true
@@ -42,6 +53,8 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    // Asigna los listeners de los botones y enlaces de la pantalla:
+    // botón de login, enlace de registro y enlace de contraseña olvidada.
     private fun setupListeners() {
         binding.btnLogin.setOnClickListener { doLogin() }
         binding.tvRegister.setOnClickListener {
@@ -52,6 +65,9 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    // Configura el botón de autenticación biométrica.
+    // Solo se habilita si el hardware está disponible y el usuario
+    // tiene la biometría activada en la sesión guardada.
     private fun setupBiometric() {
         val helper = BiometricHelper(this,
             onSuccess = { navigateTo(session.getUserRol()) },
@@ -65,6 +81,10 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    // Valida los campos de correo y contraseña y, si son correctos,
+    // deshabilita el botón para evitar envíos duplicados y llama al ViewModel.
+    // Consume: texto de los campos etEmail y etPassword.
+    // No devuelve valor; el resultado llega por el LiveData loginResult.
     private fun doLogin() {
         val email = binding.etEmail.text.toString().trim()
         val password = binding.etPassword.text.toString()
@@ -81,6 +101,9 @@ class LoginActivity : AppCompatActivity() {
         viewModel.login(email, password)
     }
 
+    // Construye el Intent de la actividad principal según el rol y navega hacia ella.
+    // Limpia el back stack para que el usuario no pueda volver al login con el botón atrás.
+    // Consume: el rol del usuario (String nullable).
     private fun navigateTo(rol: String?) {
         val intent = when (rol) {
             "vendedor" -> Intent(this, VendedorMainActivity::class.java)

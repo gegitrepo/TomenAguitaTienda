@@ -16,6 +16,15 @@ public final class SessionManager {
         super();
     }
     
+    /**
+     * Guarda los datos de sesion del usuario en las preferencias cifradas.
+     *
+     * Consume:
+     *  - userId: identificador local (Room) del usuario.
+     *  - rol: rol del usuario ("comprador", "vendedor" o "administrador").
+     *  - email: correo electronico del usuario.
+     *  - nombre: nombre completo del usuario.
+     */
     public final void saveSession(long userId, @org.jetbrains.annotations.NotNull()
     java.lang.String rol, @org.jetbrains.annotations.NotNull()
     java.lang.String email, @org.jetbrains.annotations.NotNull()
@@ -45,6 +54,11 @@ public final class SessionManager {
         return false;
     }
     
+    /**
+     * Activa o desactiva la autenticacion biometrica para el usuario actual.
+     *
+     * Consume: enabled — true para habilitar, false para deshabilitar.
+     */
     public final void setBiometricEnabled(boolean enabled) {
     }
     
@@ -62,6 +76,13 @@ public final class SessionManager {
             super();
         }
         
+        /**
+         * Construye la instancia de EncryptedSharedPreferences usando una MasterKey
+         * generada con el esquema AES-256-GCM del Keystore del sistema.
+         *
+         * Consume: context — contexto de Android para acceder al Keystore y al sistema de archivos.
+         * Devuelve: SharedPreferences cifradas listas para usar.
+         */
         private final android.content.SharedPreferences buildPrefs(android.content.Context context) {
             return null;
         }

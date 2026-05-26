@@ -25,13 +25,29 @@ import com.google.android.gms.maps.model.LatLng
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
+/*
+ * Pantalla de registro de nuevos usuarios compradores en TomenAgüita.
+ * Muestra un formulario con nombre, correo, teléfono, contraseña y un mapa
+ * interactivo donde el usuario elige su dirección de entrega por defecto.
+ * Al registrarse exitosamente navega directamente a CompradorMainActivity.
+ */
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
+
+    // ViewModel compartido que gestiona las operaciones de autenticación (registro)
     private val viewModel: AuthViewModel by viewModels()
+
+    // Referencia al mapa de Google Maps para controlar la cámara y escuchar eventos
     private var googleMap: GoogleMap? = null
+
+    // Job que permite cancelar una geocodificación en curso si el usuario mueve el mapa
     private var geocodingJob: Job? = null
 
+    /*
+     * Launcher que solicita el permiso de ubicación precisa al usuario.
+     * Si se concede, centra el mapa en la ubicación actual; si se deniega, muestra un aviso.
+     */
     private val locationPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
             if (granted) centrarEnUbicacion()
@@ -40,6 +56,10 @@ class RegisterActivity : AppCompatActivity() {
 
     // ─── Ciclo de vida ───────────────────────────────────────────────────────
 
+    /*
+     * Infla el layout, inicializa el MapView, configura los gestos táctiles del mapa,
+     * registra los observadores y asigna los listeners de los controles de la pantalla.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
@@ -69,8 +89,11 @@ class RegisterActivity : AppCompatActivity() {
             map.uiSettings.isZoomGesturesEnabled = true
             map.uiSettings.isRotateGesturesEnabled = true
 
-            map.moveCamera(CameraUpdateFactory.newLatLngZoom(BOGOTA_DEFAULT, 12f))
+            // HARDCODED: centro inicial del mapa en Bogotá — mercado objetivo del negocio (Colombia)
+            // esta parte no supe como moverla sin romper el codigo asi que la dejo funcional aca
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(BOGOTA_DEFAULT, 700f))
 
+            // Cada vez que el mapa se detiene de mover, geocodifica la posición central
             map.setOnCameraIdleListener {
                 val target = map.cameraPosition.target
                 geocodearCentro(target.latitude, target.longitude)
@@ -83,26 +106,31 @@ class RegisterActivity : AppCompatActivity() {
         binding.tilDireccion.setEndIconOnClickListener { solicitarCentrarUbicacion() }
     }
 
+    // Delega el evento onResume al MapView para que el mapa siga funcionando correctamente
     override fun onResume() {
         super.onResume()
         binding.mapView.onResume()
     }
 
+    // Delega el evento onPause al MapView para liberar recursos de renderizado
     override fun onPause() {
         binding.mapView.onPause()
         super.onPause()
     }
 
+    // Notifica al MapView de baja memoria para que libere caché de teselas
     override fun onLowMemory() {
         super.onLowMemory()
         binding.mapView.onLowMemory()
     }
 
+    // Guarda el estado del MapView para restaurarlo en caso de recreación de la Activity
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         binding.mapView.onSaveInstanceState(outState)
     }
 
+    // Destruye el MapView para evitar fugas de memoria al cerrar la Activity
     override fun onDestroy() {
         binding.mapView.onDestroy()
         super.onDestroy()
@@ -110,6 +138,11 @@ class RegisterActivity : AppCompatActivity() {
 
     // ─── Observadores ────────────────────────────────────────────────────────
 
+    /*
+     * Observa el resultado del registro emitido por el ViewModel.
+     * En caso de éxito navega a CompradorMainActivity limpiando el back stack.
+     * En caso de error muestra un Snackbar con el mensaje de la excepción.
+     */
     private fun setupObservers() {
         viewModel.registerResult.observe(this) { result ->
             binding.btnRegister.isEnabled = true
@@ -126,6 +159,10 @@ class RegisterActivity : AppCompatActivity() {
 
     // ─── Ubicación ──────────────────────────────────────────────────────────
 
+    /*
+     * Verifica si el permiso de ubicación precisa ya está concedido.
+     * Si lo está, centra el mapa; si no, lanza el launcher para solicitarlo.
+     */
     private fun solicitarCentrarUbicacion() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
             == PackageManager.PERMISSION_GRANTED) {
@@ -135,6 +172,11 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
+    /*
+     * Obtiene la última ubicación conocida del dispositivo y anima la cámara del mapa
+     * hacia esa posición con zoom de calle. Si no se puede obtener la ubicación,
+     * muestra un mensaje de error en el indicador de estado.
+     */
     private fun centrarEnUbicacion() {
         binding.tvLocationStatus.text = getString(R.string.msg_detecting_location)
         binding.tvLocationStatus.visible()
@@ -157,6 +199,12 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
+    /*
+     * Convierte las coordenadas del centro del mapa a una dirección legible usando
+     * geocodificación inversa y la muestra en el campo de dirección.
+     * Cancela cualquier job de geocodificación anterior antes de iniciar uno nuevo.
+     * Consume: latitud y longitud como Double.
+     */
     private fun geocodearCentro(lat: Double, lng: Double) {
         geocodingJob?.cancel()
         geocodingJob = lifecycleScope.launch {
@@ -172,6 +220,12 @@ class RegisterActivity : AppCompatActivity() {
 
     // ─── Registro ────────────────────────────────────────────────────────────
 
+    /*
+     * Valida todos los campos del formulario de registro y, si son correctos,
+     * deshabilita el botón para evitar envíos duplicados y llama al ViewModel.
+     * Campos validados: nombre (>=3 chars), email, teléfono colombiano,
+     * contraseña (>=8 chars), coincidencia de contraseñas y aceptación de términos.
+     */
     private fun doRegister() {
         val nombre = binding.etNombre.text.toString().trim()
         val email = binding.etEmail.text.toString().trim()
@@ -180,6 +234,7 @@ class RegisterActivity : AppCompatActivity() {
         val password = binding.etPassword.text.toString()
         val confirmPassword = binding.etConfirmPassword.text.toString()
 
+        // Limpiar errores previos en todos los campos antes de revalidar
         binding.tilNombre.error = null
         binding.tilEmail.error = null
         binding.tilTelefono.error = null
@@ -193,11 +248,17 @@ class RegisterActivity : AppCompatActivity() {
         if (password != confirmPassword) { binding.tilConfirmPassword.error = getString(R.string.error_passwords_no_match); return }
         if (!binding.cbTerminos.isChecked) { binding.root.showSnackbar(getString(R.string.error_terms_required)); return }
 
+        // Deshabilitar botón para evitar múltiples envíos mientras se procesa el registro
         binding.btnRegister.isEnabled = false
         viewModel.register(nombre, email, telefono, direccion, password)
     }
 
     companion object {
+        /*
+         * HARDCODED: coordenadas del centro de Bogotá como posición inicial del mapa.
+         * Valor geográfico fijo justificado por el mercado objetivo del negocio (Colombia)
+         * igual si lo muevo no carga el mapa en la app.
+         */
         private val BOGOTA_DEFAULT = LatLng(4.7110, -74.0721)
     }
 }

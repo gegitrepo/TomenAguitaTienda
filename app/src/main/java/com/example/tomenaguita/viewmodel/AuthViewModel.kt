@@ -15,28 +15,46 @@ import com.google.firebase.Timestamp
 import kotlinx.coroutines.launch
 import java.security.MessageDigest
 
+// ViewModel de autenticación. Gestiona el inicio de sesión, registro y recuperación
+// de contraseña coordinando Firebase Auth, Firestore y el caché local de Room.
+// Expone LiveData con el resultado de cada operación para que los fragments reaccionen.
 class AuthViewModel(app: Application) : AndroidViewModel(app) {
 
+    // Repositorio local Room para consultar y guardar usuarios en la BD del dispositivo
     private val repo = UsuarioRepository(AppDatabase.getInstance(app).usuarioDao())
+
+    // Repositorio local Room para limpiar el carrito al iniciar sesión
     private val carritoRepo = CarritoRepository(AppDatabase.getInstance(app).carritoDao())
+
+    // Repositorio de Firebase Auth y Firestore para autenticación en la nube
     private val firebaseAuthRepo = FirebaseAuthRepository()
+
+    // Gestiona la sesión activa del usuario en SharedPreferences
     private val session = SessionManager(app)
 
+    // Resultado del intento de login; contiene el Usuario autenticado o el error producido
     private val _loginResult = MutableLiveData<Result<Usuario>>()
     val loginResult: LiveData<Result<Usuario>> = _loginResult
 
+    // Resultado del registro; contiene el ID local generado por Room o el error producido
     private val _registerResult = MutableLiveData<Result<Long>>()
     val registerResult: LiveData<Result<Long>> = _registerResult
 
+    // Resultado del envío del correo de recuperación de contraseña
     private val _resetResult = MutableLiveData<Result<Unit>>()
     val resetResult: LiveData<Result<Unit>> = _resetResult
 
+    // Al inicializarse, carga datos de demostración en Firestore si está vacío
     init {
         viewModelScope.launch {
             try { firebaseAuthRepo.seedDemoDataIfEmpty() } catch (_: Exception) { }
         }
     }
 
+    // Autentica al usuario contra Firebase Auth, obtiene su perfil de Firestore,
+    // lo guarda en Room como caché y persiste la sesión local.
+    // Parámetros: email y password ingresados por el usuario.
+    // Publica en _loginResult el usuario autenticado o un error descriptivo.
     fun login(email: String, password: String) = viewModelScope.launch {
         // 1. Autenticar con Firebase Auth
         val firebaseResult = firebaseAuthRepo.login(email, password)
@@ -62,6 +80,7 @@ class AuthViewModel(app: Application) : AndroidViewModel(app) {
         val telefono = data["telefono"] as? String ?: ""
         val activo = data["activo"] as? Boolean ?: true
 
+        // Verificar que la cuenta esté habilitada por el administrador
         if (!activo) {
             firebaseAuthRepo.logout()
             _loginResult.value = Result.failure(Exception("Usuario inactivo. Contacta al administrador"))
@@ -93,6 +112,10 @@ class AuthViewModel(app: Application) : AndroidViewModel(app) {
         _loginResult.value = Result.success(localUser)
     }
 
+    // Registra un nuevo usuario: crea la cuenta en Firebase Auth, guarda el perfil
+    // en Firestore con rol "comprador" e inserta el registro en Room.
+    // Parámetros: datos del formulario de registro (nombre, email, telefono, direccion, password).
+    // Publica en _registerResult el ID local del nuevo usuario o un error.
     fun register(nombre: String, email: String, telefono: String, direccion: String, password: String) =
         viewModelScope.launch {
             // 1. Crear en Firebase Auth
@@ -125,6 +148,7 @@ class AuthViewModel(app: Application) : AndroidViewModel(app) {
                 email = email,
                 telefono = telefono,
                 password = sha256(password),
+                // HARDCODED: todo registro desde la app pública es siempre comprador
                 rol = "comprador",
                 direccion = direccion.takeIf { it.isNotEmpty() }
             )
@@ -136,15 +160,24 @@ class AuthViewModel(app: Application) : AndroidViewModel(app) {
             _registerResult.value = Result.success(id)
         }
 
+    // Envía un correo de recuperación de contraseña a través de Firebase Auth.
+    // Parámetros: email al que se enviará el enlace de recuperación.
+    // Publica en _resetResult el resultado de la operación (éxito o error).
     fun sendPasswordReset(email: String) = viewModelScope.launch {
         _resetResult.value = firebaseAuthRepo.sendPasswordReset(email)
     }
 
+    // Genera el hash SHA-256 de la contraseña para almacenarla en Room sin texto plano.
+    // Parámetros: input es la contraseña en texto plano.
+    // Devuelve la representación hexadecimal del hash.
     private fun sha256(input: String): String {
         val bytes = MessageDigest.getInstance("SHA-256").digest(input.toByteArray())
         return bytes.joinToString("") { "%02x".format(it) }
     }
 
+    // Traduce los mensajes de error de Firebase Auth al español para mostrarlos al usuario.
+    // Parámetros: message es el mensaje de error original de Firebase (puede ser nulo).
+    // Devuelve un mensaje amigable en español listo para mostrarse en la UI.
     private fun mapFirebaseAuthError(message: String?): String = when {
         message == null -> "Error de autenticación"
         "no user record" in message || "user-not-found" in message -> "Correo o contraseña incorrectos"

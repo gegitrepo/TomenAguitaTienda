@@ -202,4 +202,59 @@
     <string name="content_desc_product_image">Imagen del producto</string>
     <string name="content_desc_logo">Logo Tomen Agüita</string>
     <string name="msg_detecting_location">Detectando ubicación…</string>
+
+    <!-- Permisos y ubicación -->
+    <string name="msg_location_permission_denied">Permiso de ubicación denegado</string>
+    <string name="msg_location_permission_denied_map">Permiso denegado. Mueve el mapa para seleccionar tu dirección.</string>
+    <string name="msg_camera_permission_denied">Permiso de cámara denegado</string>
+    <string name="msg_location_not_found_map">No se detectó ubicación. Mueve el mapa para seleccionar tu dirección.</string>
+    <string name="msg_location_error_map">Error de ubicación. Mueve el mapa para seleccionar tu dirección.</string>
+    <string name="msg_getting_address">Obteniendo dirección…</string>
+    <string name="msg_select_address_on_map">Mueve el mapa para seleccionar tu dirección de entrega</string>
+    <string name="msg_location_cannot_detect">No se pudo detectar la ubicación</string>
+
+    <!-- Carrito y pedido (checkout) -->
+    <string name="hint_contact_name">Nombre del contacto</string>
+    <string name="hint_contact_phone">Teléfono de contacto</string>
+    <string name="hint_delivery_address">Dirección de entrega</string>
+    <string name="hint_address">Dirección</string>
+    <string name="label_order_number_panel">Número de pedido</string>
+    <string name="label_total_to_pay">Total a pagar</string>
+    <string name="msg_cart_empty_checkout">El carrito está vacío</string>
+    <string name="msg_cart_items_error">No se pudieron procesar los productos del carrito</string>
+    <string name="label_payment_stripe">Stripe</string>
+
+    <!-- Pasarela de pagos -->
+    <string name="btn_pay_card">Pagar con tarjeta</string>
+    <string name="merchant_display_name">TomenAgüita</string>
+    <string name="msg_payment_start_error">Error al iniciar el pago: %s</string>
+    <string name="msg_payment_failed">El pago falló: %s</string>
+    <string name="msg_payment_success">¡Pago exitoso! Pedido %s confirmado.</string>
+    <string name="label_stripe_test_title">Tarjetas de prueba (Stripe test)</string>
+    <string name="label_stripe_test_numbers">✓ Visa exitosa:   4242 4242 4242 4242\n✗ Visa declinada: 4000 0000 0000 0002</string>
+    <string name="label_stripe_test_instructions">Fecha: cualquier fecha futura (ej. 12/34)\nCVC: cualquier 3 dígitos (ej. 123)</string>
+
+    <!-- Imágenes y media -->
+    <string name="msg_image_upload_error">Error al subir imagen: %s</string>
+
+    <!-- Admin — usuarios -->
+    <string name="msg_user_activated">Usuario activado correctamente</string>
+
+    <!-- Admin — reportes y dashboard -->
+    <string name="label_pending_metric">Pendientes</string>
+    <string name="label_cancelled_metric">Cancelados</string>
+    <string name="label_today_sales_paid">Ventas hoy (pagadas)</string>
+    <string name="label_month_sales_paid">Ventas mes (pagadas)</string>
+    <string name="label_total_sales_paid">Ventas totales (pagadas)</string>
+    <string name="label_pending_sales">Ventas pendientes</string>
+    <string name="label_cancelled_sales">Ventas canceladas</string>
+    <string name="chip_paid">Pagados</string>
+    <string name="chip_pending_filter">Pendientes</string>
+    <string name="chip_cancelled_filter">Cancelados</string>
+
+    <!-- Admin — productos -->
+    <string name="title_delete_product">Eliminar producto</string>
+    <string name="msg_delete_product_confirm">¿Eliminar &#34;%s&#34;? Esta acción no se puede deshacer.</string>
+    <string name="menu_edit_product">✏  Editar</string>
+    <string name="menu_delete_product">🗑  Eliminar</string>
 </resources>

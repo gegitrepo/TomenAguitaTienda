@@ -1,66 +1,101 @@
 com.example.tomenaguita.app-transition-1.4.1-0 C:\Users\ASUS\.gradle\caches\transforms-3\0189274479327e7e351cd7037d157ba4\transformed\transition-1.4.1\res
-com.example.tomenaguita.app-core-ktx-1.12.0-1 C:\Users\ASUS\.gradle\caches\transforms-3\04e25a8381b55166a6bbd880e0451ebd\transformed\core-ktx-1.12.0\res
-com.example.tomenaguita.app-lifecycle-runtime-ktx-2.7.0-2 C:\Users\ASUS\.gradle\caches\transforms-3\0775d48a35171f92baa31ab2d618a2a8\transformed\lifecycle-runtime-ktx-2.7.0\res
-com.example.tomenaguita.app-biometric-1.1.0-3 C:\Users\ASUS\.gradle\caches\transforms-3\0c7f88c1bcd4b95195d17f5c3b0d5bbb\transformed\biometric-1.1.0\res
-com.example.tomenaguita.app-browser-1.4.0-4 C:\Users\ASUS\.gradle\caches\transforms-3\0d745238cf92297f8d89008dfe517a0c\transformed\browser-1.4.0\res
-com.example.tomenaguita.app-security-crypto-1.1.0-alpha06-5 C:\Users\ASUS\.gradle\caches\transforms-3\1bafd580e4ea21f8ea1147810c9ca161\transformed\security-crypto-1.1.0-alpha06\res
-com.example.tomenaguita.app-window-1.0.0-6 C:\Users\ASUS\.gradle\caches\transforms-3\1c41cb5cf2a0a5b74ca8da1cba908051\transformed\window-1.0.0\res
-com.example.tomenaguita.app-profileinstaller-1.3.0-7 C:\Users\ASUS\.gradle\caches\transforms-3\1e4b3ed3c7d735d9344ec61a915ff387\transformed\profileinstaller-1.3.0\res
-com.example.tomenaguita.app-room-ktx-2.6.1-8 C:\Users\ASUS\.gradle\caches\transforms-3\1f412e3f12e7ccd3341ab0037c6838c6\transformed\room-ktx-2.6.1\res
-com.example.tomenaguita.app-lifecycle-viewmodel-ktx-2.7.0-9 C:\Users\ASUS\.gradle\caches\transforms-3\2053b8aac83dd64d2aabbb9d17b0bba5\transformed\lifecycle-viewmodel-ktx-2.7.0\res
-com.example.tomenaguita.app-activity-ktx-1.8.0-10 C:\Users\ASUS\.gradle\caches\transforms-3\20ea371855924fbdacec88243c05a506\transformed\activity-ktx-1.8.0\res
-com.example.tomenaguita.app-navigation-ui-ktx-2.7.7-11 C:\Users\ASUS\.gradle\caches\transforms-3\2b0d9967af2fa3a53bca4e146109e42b\transformed\navigation-ui-ktx-2.7.7\res
-com.example.tomenaguita.app-navigation-runtime-2.7.7-12 C:\Users\ASUS\.gradle\caches\transforms-3\2f42f6784af43c52d1aee4e54506bcab\transformed\navigation-runtime-2.7.7\res
-com.example.tomenaguita.app-material-1.11.0-13 C:\Users\ASUS\.gradle\caches\transforms-3\38a11095f46183fb9ad94e2de7d5bb95\transformed\material-1.11.0\res
-com.example.tomenaguita.app-navigation-fragment-ktx-2.7.7-14 C:\Users\ASUS\.gradle\caches\transforms-3\39937a6c3b8de05446711b2cea908f19\transformed\navigation-fragment-ktx-2.7.7\res
-com.example.tomenaguita.app-play-services-basement-18.1.0-15 C:\Users\ASUS\.gradle\caches\transforms-3\413f74adbfdadc1ee09ee48bc76a5d1c\transformed\play-services-basement-18.1.0\res
-com.example.tomenaguita.app-savedstate-1.2.1-16 C:\Users\ASUS\.gradle\caches\transforms-3\42a16c4fa392a2c0c46942e640a8e136\transformed\savedstate-1.2.1\res
-com.example.tomenaguita.app-customview-poolingcontainer-1.0.0-17 C:\Users\ASUS\.gradle\caches\transforms-3\45c5751de4443cbd0fbcd090722763aa\transformed\customview-poolingcontainer-1.0.0\res
-com.example.tomenaguita.app-lifecycle-process-2.7.0-18 C:\Users\ASUS\.gradle\caches\transforms-3\49041c4c2b2a67f89d4852d221cd65d5\transformed\lifecycle-process-2.7.0\res
-com.example.tomenaguita.app-play-services-base-18.1.0-19 C:\Users\ASUS\.gradle\caches\transforms-3\4d5f41bac31a68e81f11e45c8cff7bf6\transformed\play-services-base-18.1.0\res
-com.example.tomenaguita.app-cardview-1.0.0-20 C:\Users\ASUS\.gradle\caches\transforms-3\55cc950db03d27c929fd2001feb787ed\transformed\cardview-1.0.0\res
-com.example.tomenaguita.app-room-runtime-2.6.1-21 C:\Users\ASUS\.gradle\caches\transforms-3\55f60f455fb7a1ee886515f2fb412f87\transformed\room-runtime-2.6.1\res
-com.example.tomenaguita.app-startup-runtime-1.1.1-22 C:\Users\ASUS\.gradle\caches\transforms-3\59db25b72303bf97142939b2771ce886\transformed\startup-runtime-1.1.1\res
-com.example.tomenaguita.app-lifecycle-viewmodel-savedstate-2.7.0-23 C:\Users\ASUS\.gradle\caches\transforms-3\600b0625051c7c4dd5537133f0012887\transformed\lifecycle-viewmodel-savedstate-2.7.0\res
-com.example.tomenaguita.app-lifecycle-livedata-core-ktx-2.7.0-24 C:\Users\ASUS\.gradle\caches\transforms-3\6279b281cbd182693cdadbd7d1f4d68b\transformed\lifecycle-livedata-core-ktx-2.7.0\res
-com.example.tomenaguita.app-activity-1.8.0-25 C:\Users\ASUS\.gradle\caches\transforms-3\738fd3500465086adde6fe30c0bffc97\transformed\activity-1.8.0\res
-com.example.tomenaguita.app-glide-4.16.0-26 C:\Users\ASUS\.gradle\caches\transforms-3\75cdbbffa89f4657e43166e95060962a\transformed\glide-4.16.0\res
-com.example.tomenaguita.app-savedstate-ktx-1.2.1-27 C:\Users\ASUS\.gradle\caches\transforms-3\789a3c03660b19ffc8d6666b55064144\transformed\savedstate-ktx-1.2.1\res
-com.example.tomenaguita.app-lifecycle-livedata-core-2.7.0-28 C:\Users\ASUS\.gradle\caches\transforms-3\7d1e1004e1ad56625c6e305f10cf9b30\transformed\lifecycle-livedata-core-2.7.0\res
-com.example.tomenaguita.app-appcompat-1.6.1-29 C:\Users\ASUS\.gradle\caches\transforms-3\7fdeebeb68f2a73bc61687c4458bbbf2\transformed\appcompat-1.6.1\res
-com.example.tomenaguita.app-lifecycle-runtime-2.7.0-30 C:\Users\ASUS\.gradle\caches\transforms-3\7fe85df25aa120b45ffa6585c4cad06c\transformed\lifecycle-runtime-2.7.0\res
-com.example.tomenaguita.app-navigation-runtime-ktx-2.7.7-31 C:\Users\ASUS\.gradle\caches\transforms-3\8067ebaedb19f8ea7fa1fec72f3a670e\transformed\navigation-runtime-ktx-2.7.7\res
-com.example.tomenaguita.app-emoji2-1.2.0-32 C:\Users\ASUS\.gradle\caches\transforms-3\80b3909b05115e58e4d5e85109cbd0a7\transformed\emoji2-1.2.0\res
-com.example.tomenaguita.app-lifecycle-viewmodel-2.7.0-33 C:\Users\ASUS\.gradle\caches\transforms-3\8265f4181e56c9cbdadb5e7605aa47d0\transformed\lifecycle-viewmodel-2.7.0\res
-com.example.tomenaguita.app-appcompat-resources-1.6.1-34 C:\Users\ASUS\.gradle\caches\transforms-3\83bb13e6c10eb5ca117c3d237a7ee39c\transformed\appcompat-resources-1.6.1\res
-com.example.tomenaguita.app-navigation-ui-2.7.7-35 C:\Users\ASUS\.gradle\caches\transforms-3\8cef5c42da62d52c3d93b495b60d7e97\transformed\navigation-ui-2.7.7\res
-com.example.tomenaguita.app-firebase-common-20.4.2-36 C:\Users\ASUS\.gradle\caches\transforms-3\991a9412341a08c919a8a6ef35c0caeb\transformed\firebase-common-20.4.2\res
-com.example.tomenaguita.app-core-runtime-2.2.0-37 C:\Users\ASUS\.gradle\caches\transforms-3\9985059eb4c8501f679b2f1cb56b4f12\transformed\core-runtime-2.2.0\res
-com.example.tomenaguita.app-sqlite-2.4.0-38 C:\Users\ASUS\.gradle\caches\transforms-3\a43ad7068c0bf1fa2755a9ded48bc564\transformed\sqlite-2.4.0\res
-com.example.tomenaguita.app-lifecycle-livedata-2.7.0-39 C:\Users\ASUS\.gradle\caches\transforms-3\a7b5b99d4a0cbd1612b282820be3ccb8\transformed\lifecycle-livedata-2.7.0\res
-com.example.tomenaguita.app-core-1.12.0-40 C:\Users\ASUS\.gradle\caches\transforms-3\a8dc64a2c10110c253434f74a48aa6fa\transformed\core-1.12.0\res
-com.example.tomenaguita.app-play-services-maps-18.2.0-41 C:\Users\ASUS\.gradle\caches\transforms-3\a960fe4f9aaf9fd9f7aacb48dac7bb73\transformed\play-services-maps-18.2.0\res
-com.example.tomenaguita.app-navigation-common-ktx-2.7.7-42 C:\Users\ASUS\.gradle\caches\transforms-3\ac35829c42e5ffefc579a4f8c1ca4d96\transformed\navigation-common-ktx-2.7.7\res
-com.example.tomenaguita.app-lifecycle-livedata-ktx-2.7.0-43 C:\Users\ASUS\.gradle\caches\transforms-3\b0266c7e99b442c4e3a85147bb711a59\transformed\lifecycle-livedata-ktx-2.7.0\res
-com.example.tomenaguita.app-emoji2-views-helper-1.2.0-44 C:\Users\ASUS\.gradle\caches\transforms-3\b23127f3fd4a458aea38205df65fa080\transformed\emoji2-views-helper-1.2.0\res
-com.example.tomenaguita.app-navigation-common-2.7.7-45 C:\Users\ASUS\.gradle\caches\transforms-3\b523b9b255c73a029ddf61ea99c40a5f\transformed\navigation-common-2.7.7\res
-com.example.tomenaguita.app-recyclerview-1.3.2-46 C:\Users\ASUS\.gradle\caches\transforms-3\bc68337bdecba8835727c18387bb9064\transformed\recyclerview-1.3.2\res
-com.example.tomenaguita.app-drawerlayout-1.1.1-47 C:\Users\ASUS\.gradle\caches\transforms-3\c4c2fb2ecfaad899ac1dc187d670a832\transformed\drawerlayout-1.1.1\res
-com.example.tomenaguita.app-fragment-ktx-1.6.2-48 C:\Users\ASUS\.gradle\caches\transforms-3\cf4667c451eabc792c638027f6eb87b0\transformed\fragment-ktx-1.6.2\res
-com.example.tomenaguita.app-sqlite-framework-2.4.0-49 C:\Users\ASUS\.gradle\caches\transforms-3\d0fe456e1c596d24a3390e0d9da6e1e7\transformed\sqlite-framework-2.4.0\res
-com.example.tomenaguita.app-fragment-1.6.2-50 C:\Users\ASUS\.gradle\caches\transforms-3\d10c4181051d0d41f72e4031bfd57360\transformed\fragment-1.6.2\res
-com.example.tomenaguita.app-swiperefreshlayout-1.1.0-51 C:\Users\ASUS\.gradle\caches\transforms-3\d2f2770ea10b9b72e9455c30316bfc01\transformed\swiperefreshlayout-1.1.0\res
-com.example.tomenaguita.app-viewpager2-1.1.0-beta02-52 C:\Users\ASUS\.gradle\caches\transforms-3\d3d3aa23b3922d1a2f9a95590d87f476\transformed\viewpager2-1.1.0-beta02\res
-com.example.tomenaguita.app-annotation-experimental-1.3.0-53 C:\Users\ASUS\.gradle\caches\transforms-3\e188ab2be61aae4b8ae5e27d8ca51135\transformed\annotation-experimental-1.3.0\res
-com.example.tomenaguita.app-slidingpanelayout-1.2.0-54 C:\Users\ASUS\.gradle\caches\transforms-3\e58c6f6b16759b1f0d49bbeabbe47f56\transformed\slidingpanelayout-1.2.0\res
-com.example.tomenaguita.app-constraintlayout-2.1.4-55 C:\Users\ASUS\.gradle\caches\transforms-3\f2f9c33fe54fb76a35cab4388f5970b9\transformed\constraintlayout-2.1.4\res
-com.example.tomenaguita.app-coordinatorlayout-1.2.0-56 C:\Users\ASUS\.gradle\caches\transforms-3\f55595e94ce9ffee1d6e4d1ce846d887\transformed\coordinatorlayout-1.2.0\res
-com.example.tomenaguita.app-navigation-fragment-2.7.7-57 C:\Users\ASUS\.gradle\caches\transforms-3\f64d3560211597e5240bd7ebea9b8441\transformed\navigation-fragment-2.7.7\res
-com.example.tomenaguita.app-pngs-58 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\build\generated\res\pngs\debug
-com.example.tomenaguita.app-res-59 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\build\generated\res\processDebugGoogleServices
-com.example.tomenaguita.app-resValues-60 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\build\generated\res\resValues\debug
-com.example.tomenaguita.app-packageDebugResources-61 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
-com.example.tomenaguita.app-packageDebugResources-62 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
-com.example.tomenaguita.app-merged_res-63 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\build\intermediates\merged_res\debug
-com.example.tomenaguita.app-debug-64 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\src\debug\res
-com.example.tomenaguita.app-main-65 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\src\main\res
+com.example.tomenaguita.app-jetified-activity-1.8.0-1 C:\Users\ASUS\.gradle\caches\transforms-3\03b19e717533a2bb4288d4268f8768d8\transformed\jetified-activity-1.8.0\res
+com.example.tomenaguita.app-jetified-ui-unit-release-2 C:\Users\ASUS\.gradle\caches\transforms-3\076d3f19f46f29cc3e260035ece19b94\transformed\jetified-ui-unit-release\res
+com.example.tomenaguita.app-jetified-glide-4.16.0-3 C:\Users\ASUS\.gradle\caches\transforms-3\0ae5711508b348d4ba57699e0c16fc9d\transformed\jetified-glide-4.16.0\res
+com.example.tomenaguita.app-biometric-1.1.0-4 C:\Users\ASUS\.gradle\caches\transforms-3\0c7f88c1bcd4b95195d17f5c3b0d5bbb\transformed\biometric-1.1.0\res
+com.example.tomenaguita.app-jetified-profileinstaller-1.3.0-5 C:\Users\ASUS\.gradle\caches\transforms-3\0d8713d73178926c6c5bb1ca6332d562\transformed\jetified-profileinstaller-1.3.0\res
+com.example.tomenaguita.app-jetified-ui-geometry-release-6 C:\Users\ASUS\.gradle\caches\transforms-3\13e9e01b823a6269c42b33e7c34316c5\transformed\jetified-ui-geometry-release\res
+com.example.tomenaguita.app-jetified-core-ktx-1.12.0-7 C:\Users\ASUS\.gradle\caches\transforms-3\1af11ddb262a72922f4c22799e9ea3cd\transformed\jetified-core-ktx-1.12.0\res
+com.example.tomenaguita.app-jetified-ui-tooling-preview-release-8 C:\Users\ASUS\.gradle\caches\transforms-3\1cfed1808ae0c17ac84a2f2fcea0c42d\transformed\jetified-ui-tooling-preview-release\res
+com.example.tomenaguita.app-jetified-emoji2-views-helper-1.4.0-9 C:\Users\ASUS\.gradle\caches\transforms-3\1e14971d3cfa0e33f94c2b547d291580\transformed\jetified-emoji2-views-helper-1.4.0\res
+com.example.tomenaguita.app-navigation-ui-ktx-2.7.7-10 C:\Users\ASUS\.gradle\caches\transforms-3\2b0d9967af2fa3a53bca4e146109e42b\transformed\navigation-ui-ktx-2.7.7\res
+com.example.tomenaguita.app-jetified-savedstate-ktx-1.2.1-11 C:\Users\ASUS\.gradle\caches\transforms-3\2b7c2a170ed1437ab04ac75cb464c6d1\transformed\jetified-savedstate-ktx-1.2.1\res
+com.example.tomenaguita.app-jetified-startup-runtime-1.1.1-12 C:\Users\ASUS\.gradle\caches\transforms-3\2ce5a5e72f94a0947d6df7daef76ceaf\transformed\jetified-startup-runtime-1.1.1\res
+com.example.tomenaguita.app-jetified-material-release-13 C:\Users\ASUS\.gradle\caches\transforms-3\2e535f4d123fc4b722fb1efc63928aa0\transformed\jetified-material-release\res
+com.example.tomenaguita.app-navigation-runtime-2.7.7-14 C:\Users\ASUS\.gradle\caches\transforms-3\2f42f6784af43c52d1aee4e54506bcab\transformed\navigation-runtime-2.7.7\res
+com.example.tomenaguita.app-jetified-stripe-core-20.36.0-15 C:\Users\ASUS\.gradle\caches\transforms-3\31f8ef076a456cb6b19ae44ec4197afe\transformed\jetified-stripe-core-20.36.0\res
+com.example.tomenaguita.app-jetified-runtime-livedata-1.5.3-16 C:\Users\ASUS\.gradle\caches\transforms-3\333562e5c5734c4c2f108eeec5a3f60d\transformed\jetified-runtime-livedata-1.5.3\res
+com.example.tomenaguita.app-jetified-paymentsheet-20.36.0-17 C:\Users\ASUS\.gradle\caches\transforms-3\3899c534b4d4dd2c29e06bfd7d6101d2\transformed\jetified-paymentsheet-20.36.0\res
+com.example.tomenaguita.app-material-1.11.0-18 C:\Users\ASUS\.gradle\caches\transforms-3\38a11095f46183fb9ad94e2de7d5bb95\transformed\material-1.11.0\res
+com.example.tomenaguita.app-navigation-fragment-ktx-2.7.7-19 C:\Users\ASUS\.gradle\caches\transforms-3\39937a6c3b8de05446711b2cea908f19\transformed\navigation-fragment-ktx-2.7.7\res
+com.example.tomenaguita.app-jetified-accompanist-themeadapter-material3-0.32.0-20 C:\Users\ASUS\.gradle\caches\transforms-3\3f027e565125a48f2346c2db2924c827\transformed\jetified-accompanist-themeadapter-material3-0.32.0\res
+com.example.tomenaguita.app-jetified-payments-model-20.36.0-21 C:\Users\ASUS\.gradle\caches\transforms-3\45cb4a7801d38b05a178cbb246694e57\transformed\jetified-payments-model-20.36.0\res
+com.example.tomenaguita.app-jetified-appcompat-resources-1.6.1-22 C:\Users\ASUS\.gradle\caches\transforms-3\4dd27dd5a19b5e9a378d9e92c2aefe4d\transformed\jetified-appcompat-resources-1.6.1\res
+com.example.tomenaguita.app-jetified-security-crypto-1.1.0-alpha06-23 C:\Users\ASUS\.gradle\caches\transforms-3\500b9e1976eb772cb4a3429221d8786a\transformed\jetified-security-crypto-1.1.0-alpha06\res
+com.example.tomenaguita.app-jetified-ui-release-24 C:\Users\ASUS\.gradle\caches\transforms-3\52e3c00cddd8c325b65c9d969249ed96\transformed\jetified-ui-release\res
+com.example.tomenaguita.app-jetified-activity-ktx-1.8.0-25 C:\Users\ASUS\.gradle\caches\transforms-3\53ef3854224fda8d16255f5dc7cb3869\transformed\jetified-activity-ktx-1.8.0\res
+com.example.tomenaguita.app-jetified-animation-core-release-26 C:\Users\ASUS\.gradle\caches\transforms-3\5456b8c8280b36a78ad2df22fabed55e\transformed\jetified-animation-core-release\res
+com.example.tomenaguita.app-cardview-1.0.0-27 C:\Users\ASUS\.gradle\caches\transforms-3\55cc950db03d27c929fd2001feb787ed\transformed\cardview-1.0.0\res
+com.example.tomenaguita.app-room-runtime-2.6.1-28 C:\Users\ASUS\.gradle\caches\transforms-3\55f60f455fb7a1ee886515f2fb412f87\transformed\room-runtime-2.6.1\res
+com.example.tomenaguita.app-jetified-firebase-common-20.4.2-29 C:\Users\ASUS\.gradle\caches\transforms-3\5680c7049a16a428796163e4b769c4c3\transformed\jetified-firebase-common-20.4.2\res
+com.example.tomenaguita.app-jetified-lifecycle-viewmodel-savedstate-2.7.0-30 C:\Users\ASUS\.gradle\caches\transforms-3\5a53d91e6abd76f82bef740d126f052e\transformed\jetified-lifecycle-viewmodel-savedstate-2.7.0\res
+com.example.tomenaguita.app-jetified-payments-ui-core-20.36.0-31 C:\Users\ASUS\.gradle\caches\transforms-3\5b70c17d07cb2a49e4133728d5b9a5c4\transformed\jetified-payments-ui-core-20.36.0\res
+com.example.tomenaguita.app-jetified-ui-graphics-release-32 C:\Users\ASUS\.gradle\caches\transforms-3\62181d3f2b1762b2914eb8b6caa5e0bb\transformed\jetified-ui-graphics-release\res
+com.example.tomenaguita.app-jetified-material3-1.0.1-33 C:\Users\ASUS\.gradle\caches\transforms-3\6431a8936f7a4731f1a5889d3336498a\transformed\jetified-material3-1.0.1\res
+com.example.tomenaguita.app-jetified-accompanist-themeadapter-appcompat-0.32.0-34 C:\Users\ASUS\.gradle\caches\transforms-3\65e9a733ca1e1329c52d5b9c46e877b4\transformed\jetified-accompanist-themeadapter-appcompat-0.32.0\res
+com.example.tomenaguita.app-jetified-viewpager2-1.1.0-beta02-35 C:\Users\ASUS\.gradle\caches\transforms-3\67222b68f52664fc2f9684293076ee51\transformed\jetified-viewpager2-1.1.0-beta02\res
+com.example.tomenaguita.app-jetified-runtime-release-36 C:\Users\ASUS\.gradle\caches\transforms-3\70b317f46c924772c16b94564c3d39e3\transformed\jetified-runtime-release\res
+com.example.tomenaguita.app-jetified-lifecycle-process-2.7.0-37 C:\Users\ASUS\.gradle\caches\transforms-3\7679d576d9cd6cb637ecea435702f43b\transformed\jetified-lifecycle-process-2.7.0\res
+com.example.tomenaguita.app-browser-1.5.0-38 C:\Users\ASUS\.gradle\caches\transforms-3\77968c16f663304fb32340d3f1cdca7f\transformed\browser-1.5.0\res
+com.example.tomenaguita.app-jetified-foundation-layout-release-39 C:\Users\ASUS\.gradle\caches\transforms-3\78425d2fb58d7b8dc3343ffe70703e55\transformed\jetified-foundation-layout-release\res
+com.example.tomenaguita.app-jetified-emoji2-1.4.0-40 C:\Users\ASUS\.gradle\caches\transforms-3\7a9aea1aa7a0fe8eb9eace1580fab293\transformed\jetified-emoji2-1.4.0\res
+com.example.tomenaguita.app-lifecycle-livedata-core-2.7.0-41 C:\Users\ASUS\.gradle\caches\transforms-3\7d1e1004e1ad56625c6e305f10cf9b30\transformed\lifecycle-livedata-core-2.7.0\res
+com.example.tomenaguita.app-appcompat-1.6.1-42 C:\Users\ASUS\.gradle\caches\transforms-3\7fdeebeb68f2a73bc61687c4458bbbf2\transformed\appcompat-1.6.1\res
+com.example.tomenaguita.app-lifecycle-runtime-2.7.0-43 C:\Users\ASUS\.gradle\caches\transforms-3\7fe85df25aa120b45ffa6585c4cad06c\transformed\lifecycle-runtime-2.7.0\res
+com.example.tomenaguita.app-navigation-runtime-ktx-2.7.7-44 C:\Users\ASUS\.gradle\caches\transforms-3\8067ebaedb19f8ea7fa1fec72f3a670e\transformed\navigation-runtime-ktx-2.7.7\res
+com.example.tomenaguita.app-jetified-stripe-3ds2-android-6.1.7-45 C:\Users\ASUS\.gradle\caches\transforms-3\8193da0ff3e4751a31a7a43f528b12a2\transformed\jetified-stripe-3ds2-android-6.1.7\res
+com.example.tomenaguita.app-lifecycle-viewmodel-2.7.0-46 C:\Users\ASUS\.gradle\caches\transforms-3\8265f4181e56c9cbdadb5e7605aa47d0\transformed\lifecycle-viewmodel-2.7.0\res
+com.example.tomenaguita.app-jetified-activity-compose-1.8.0-47 C:\Users\ASUS\.gradle\caches\transforms-3\826678b832f968163c52ff3ecd0b9ccf\transformed\jetified-activity-compose-1.8.0\res
+com.example.tomenaguita.app-jetified-foundation-release-48 C:\Users\ASUS\.gradle\caches\transforms-3\83a4bd3684c038ea38fe7ce99e261ba0\transformed\jetified-foundation-release\res
+com.example.tomenaguita.app-jetified-ui-text-release-49 C:\Users\ASUS\.gradle\caches\transforms-3\8877ad13b83cab86e90130025d53202b\transformed\jetified-ui-text-release\res
+com.example.tomenaguita.app-jetified-room-ktx-2.6.1-50 C:\Users\ASUS\.gradle\caches\transforms-3\8c0fabd9b1ee1b032e685ef844ccb9b7\transformed\jetified-room-ktx-2.6.1\res
+com.example.tomenaguita.app-navigation-ui-2.7.7-51 C:\Users\ASUS\.gradle\caches\transforms-3\8cef5c42da62d52c3d93b495b60d7e97\transformed\navigation-ui-2.7.7\res
+com.example.tomenaguita.app-jetified-material-ripple-release-52 C:\Users\ASUS\.gradle\caches\transforms-3\8d72da251e00a68f12c0b67c85c46b27\transformed\jetified-material-ripple-release\res
+com.example.tomenaguita.app-jetified-accompanist-themeadapter-core-0.32.0-53 C:\Users\ASUS\.gradle\caches\transforms-3\9571f4346c922fe3554d3b419bb51525\transformed\jetified-accompanist-themeadapter-core-0.32.0\res
+com.example.tomenaguita.app-jetified-play-services-basement-18.1.0-54 C:\Users\ASUS\.gradle\caches\transforms-3\95d1e9bed38b93f7e5733b26cba55856\transformed\jetified-play-services-basement-18.1.0\res
+com.example.tomenaguita.app-jetified-annotation-experimental-1.3.0-55 C:\Users\ASUS\.gradle\caches\transforms-3\982619255f91e9eb308b53e7a6bea56b\transformed\jetified-annotation-experimental-1.3.0\res
+com.example.tomenaguita.app-core-runtime-2.2.0-56 C:\Users\ASUS\.gradle\caches\transforms-3\9985059eb4c8501f679b2f1cb56b4f12\transformed\core-runtime-2.2.0\res
+com.example.tomenaguita.app-jetified-savedstate-1.2.1-57 C:\Users\ASUS\.gradle\caches\transforms-3\9e4c61997f3d1b73e5cc10a8e0edf121\transformed\jetified-savedstate-1.2.1\res
+com.example.tomenaguita.app-sqlite-2.4.0-58 C:\Users\ASUS\.gradle\caches\transforms-3\a43ad7068c0bf1fa2755a9ded48bc564\transformed\sqlite-2.4.0\res
+com.example.tomenaguita.app-lifecycle-livedata-2.7.0-59 C:\Users\ASUS\.gradle\caches\transforms-3\a7b5b99d4a0cbd1612b282820be3ccb8\transformed\lifecycle-livedata-2.7.0\res
+com.example.tomenaguita.app-core-1.12.0-60 C:\Users\ASUS\.gradle\caches\transforms-3\a8dc64a2c10110c253434f74a48aa6fa\transformed\core-1.12.0\res
+com.example.tomenaguita.app-jetified-animation-release-61 C:\Users\ASUS\.gradle\caches\transforms-3\a9591daf5a79ff4aef0db54be3a4ffab\transformed\jetified-animation-release\res
+com.example.tomenaguita.app-jetified-accompanist-themeadapter-material-0.32.0-62 C:\Users\ASUS\.gradle\caches\transforms-3\aa95d4eb60486fff2bfbda10598c806a\transformed\jetified-accompanist-themeadapter-material-0.32.0\res
+com.example.tomenaguita.app-jetified-navigation-compose-2.7.7-63 C:\Users\ASUS\.gradle\caches\transforms-3\ab1402cea26aa6628518df3fdff1d0fa\transformed\jetified-navigation-compose-2.7.7\res
+com.example.tomenaguita.app-navigation-common-ktx-2.7.7-64 C:\Users\ASUS\.gradle\caches\transforms-3\ac35829c42e5ffefc579a4f8c1ca4d96\transformed\navigation-common-ktx-2.7.7\res
+com.example.tomenaguita.app-jetified-link-20.36.0-65 C:\Users\ASUS\.gradle\caches\transforms-3\b2691cf132b5d71efc8fcfd4561e9b84\transformed\jetified-link-20.36.0\res
+com.example.tomenaguita.app-navigation-common-2.7.7-66 C:\Users\ASUS\.gradle\caches\transforms-3\b523b9b255c73a029ddf61ea99c40a5f\transformed\navigation-common-2.7.7\res
+com.example.tomenaguita.app-jetified-payments-core-20.36.0-67 C:\Users\ASUS\.gradle\caches\transforms-3\b9fac45aa9e244458149ff01517a7c33\transformed\jetified-payments-core-20.36.0\res
+com.example.tomenaguita.app-recyclerview-1.3.2-68 C:\Users\ASUS\.gradle\caches\transforms-3\bc68337bdecba8835727c18387bb9064\transformed\recyclerview-1.3.2\res
+com.example.tomenaguita.app-jetified-window-1.0.0-69 C:\Users\ASUS\.gradle\caches\transforms-3\bd9d2aa94bf66f353a02a588b13af89e\transformed\jetified-window-1.0.0\res
+com.example.tomenaguita.app-jetified-lifecycle-livedata-core-ktx-2.7.0-70 C:\Users\ASUS\.gradle\caches\transforms-3\c06a2419a66f492f3c235e04ee4c8bf6\transformed\jetified-lifecycle-livedata-core-ktx-2.7.0\res
+com.example.tomenaguita.app-jetified-play-services-wallet-19.2.1-71 C:\Users\ASUS\.gradle\caches\transforms-3\c4944e4fe7df760c32874cd5c19093ac\transformed\jetified-play-services-wallet-19.2.1\res
+com.example.tomenaguita.app-drawerlayout-1.1.1-72 C:\Users\ASUS\.gradle\caches\transforms-3\c4c2fb2ecfaad899ac1dc187d670a832\transformed\drawerlayout-1.1.1\res
+com.example.tomenaguita.app-jetified-fragment-ktx-1.6.2-73 C:\Users\ASUS\.gradle\caches\transforms-3\c91ea691a9b59318f6facb4e10f3bc11\transformed\jetified-fragment-ktx-1.6.2\res
+com.example.tomenaguita.app-jetified-ui-util-release-74 C:\Users\ASUS\.gradle\caches\transforms-3\cde0b834b24109a4bb186d002a60d104\transformed\jetified-ui-util-release\res
+com.example.tomenaguita.app-jetified-play-services-maps-18.2.0-75 C:\Users\ASUS\.gradle\caches\transforms-3\cedbec77ed64b7e0771cba42788402be\transformed\jetified-play-services-maps-18.2.0\res
+com.example.tomenaguita.app-sqlite-framework-2.4.0-76 C:\Users\ASUS\.gradle\caches\transforms-3\d0fe456e1c596d24a3390e0d9da6e1e7\transformed\sqlite-framework-2.4.0\res
+com.example.tomenaguita.app-fragment-1.6.2-77 C:\Users\ASUS\.gradle\caches\transforms-3\d10c4181051d0d41f72e4031bfd57360\transformed\fragment-1.6.2\res
+com.example.tomenaguita.app-jetified-lifecycle-viewmodel-compose-2.7.0-78 C:\Users\ASUS\.gradle\caches\transforms-3\d1beff2a6a1ab72fe360e0989db072c5\transformed\jetified-lifecycle-viewmodel-compose-2.7.0\res
+com.example.tomenaguita.app-swiperefreshlayout-1.1.0-79 C:\Users\ASUS\.gradle\caches\transforms-3\d2f2770ea10b9b72e9455c30316bfc01\transformed\swiperefreshlayout-1.1.0\res
+com.example.tomenaguita.app-jetified-customview-poolingcontainer-1.0.0-80 C:\Users\ASUS\.gradle\caches\transforms-3\d6a15ecc65aabe0710de557039cb0b15\transformed\jetified-customview-poolingcontainer-1.0.0\res
+com.example.tomenaguita.app-jetified-stripe-ui-core-20.36.0-81 C:\Users\ASUS\.gradle\caches\transforms-3\d881e8640405bfe8450190ae7fa45841\transformed\jetified-stripe-ui-core-20.36.0\res
+com.example.tomenaguita.app-jetified-lifecycle-livedata-ktx-2.7.0-82 C:\Users\ASUS\.gradle\caches\transforms-3\d8a57fb2c0751698497fc730c276aec7\transformed\jetified-lifecycle-livedata-ktx-2.7.0\res
+com.example.tomenaguita.app-jetified-material-icons-core-release-83 C:\Users\ASUS\.gradle\caches\transforms-3\de4d946e432da5e5d32dc0f4865b3f9e\transformed\jetified-material-icons-core-release\res
+com.example.tomenaguita.app-jetified-runtime-saveable-release-84 C:\Users\ASUS\.gradle\caches\transforms-3\de5d4aa524c0d1ee57e674cb7545c6bd\transformed\jetified-runtime-saveable-release\res
+com.example.tomenaguita.app-jetified-lifecycle-viewmodel-ktx-2.7.0-85 C:\Users\ASUS\.gradle\caches\transforms-3\e48267e5b9922a40f6e1cae6ab2e325a\transformed\jetified-lifecycle-viewmodel-ktx-2.7.0\res
+com.example.tomenaguita.app-slidingpanelayout-1.2.0-86 C:\Users\ASUS\.gradle\caches\transforms-3\e58c6f6b16759b1f0d49bbeabbe47f56\transformed\slidingpanelayout-1.2.0\res
+com.example.tomenaguita.app-jetified-lifecycle-runtime-ktx-2.7.0-87 C:\Users\ASUS\.gradle\caches\transforms-3\f1b3e6947250a7a5cf78206d8c57461f\transformed\jetified-lifecycle-runtime-ktx-2.7.0\res
+com.example.tomenaguita.app-constraintlayout-2.1.4-88 C:\Users\ASUS\.gradle\caches\transforms-3\f2f9c33fe54fb76a35cab4388f5970b9\transformed\constraintlayout-2.1.4\res
+com.example.tomenaguita.app-coordinatorlayout-1.2.0-89 C:\Users\ASUS\.gradle\caches\transforms-3\f55595e94ce9ffee1d6e4d1ce846d887\transformed\coordinatorlayout-1.2.0\res
+com.example.tomenaguita.app-navigation-fragment-2.7.7-90 C:\Users\ASUS\.gradle\caches\transforms-3\f64d3560211597e5240bd7ebea9b8441\transformed\navigation-fragment-2.7.7\res
+com.example.tomenaguita.app-jetified-ui-viewbinding-1.5.3-91 C:\Users\ASUS\.gradle\caches\transforms-3\f73b5d9a1ba81700a5641f26a9532e16\transformed\jetified-ui-viewbinding-1.5.3\res
+com.example.tomenaguita.app-jetified-play-services-base-18.1.0-92 C:\Users\ASUS\.gradle\caches\transforms-3\fa7904a2120c5c1a34c3dcd04adcf5cd\transformed\jetified-play-services-base-18.1.0\res
+com.example.tomenaguita.app-pngs-93 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\build\generated\res\pngs\debug
+com.example.tomenaguita.app-res-94 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\build\generated\res\processDebugGoogleServices
+com.example.tomenaguita.app-resValues-95 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\build\generated\res\resValues\debug
+com.example.tomenaguita.app-packageDebugResources-96 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.example.tomenaguita.app-packageDebugResources-97 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.example.tomenaguita.app-merged_res-98 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\build\intermediates\merged_res\debug
+com.example.tomenaguita.app-debug-99 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\src\debug\res
+com.example.tomenaguita.app-main-100 C:\Users\ASUS\Desktop\appMovil\Tomen aguita\app\src\main\res

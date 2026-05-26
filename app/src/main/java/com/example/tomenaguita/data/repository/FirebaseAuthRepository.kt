@@ -1,5 +1,6 @@
 package com.example.tomenaguita.data.repository
 
+import com.example.tomenaguita.utils.Constants
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -31,18 +32,18 @@ class FirebaseAuthRepository {
     fun getCurrentUser(): FirebaseUser? = auth.currentUser
 
     suspend fun getUserData(uid: String): Map<String, Any>? {
-        val snap = firestore.collection("usuarios").document(uid).get().await()
+        val snap = firestore.collection(Constants.FS_USUARIOS).document(uid).get().await()
         return if (snap.exists()) snap.data else null
     }
 
     suspend fun saveUserData(uid: String, data: Map<String, Any>) {
-        firestore.collection("usuarios").document(uid)
+        firestore.collection(Constants.FS_USUARIOS).document(uid)
             .set(data, SetOptions.merge()).await()
     }
 
     /** Crea los 3 usuarios demo en Firebase Auth y Firestore si la coleccion esta vacia. */
     suspend fun seedDemoDataIfEmpty() {
-        val snap = firestore.collection("usuarios").limit(1).get().await()
+        val snap = firestore.collection(Constants.FS_USUARIOS).limit(1).get().await()
         if (!snap.isEmpty) return
 
         val demoUsers = listOf(
@@ -88,7 +89,7 @@ class FirebaseAuthRepository {
             try {
                 val result = auth.createUserWithEmailAndPassword(email, password).await()
                 val uid = result.user?.uid ?: continue
-                firestore.collection("usuarios").document(uid).set(data).await()
+                firestore.collection(Constants.FS_USUARIOS).document(uid).set(data).await()
             } catch (_: Exception) { }
         }
         // Dejar sin sesion activa tras el seed

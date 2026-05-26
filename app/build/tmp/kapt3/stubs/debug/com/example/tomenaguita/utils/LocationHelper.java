@@ -10,7 +10,12 @@ public final class LocationHelper {
     }
     
     /**
-     * Obtiene la última ubicación conocida del dispositivo usando FusedLocationProviderClient.
+     * Obtiene la ultima ubicacion conocida del dispositivo mediante FusedLocationProviderClient.
+     *
+     * Consume: context — contexto de Android necesario para acceder al servicio de ubicacion.
+     * Devuelve: el objeto Location con las coordenadas, o null si no hay ubicacion disponible
+     *          o si el permiso de ubicacion no ha sido concedido en tiempo de ejecucion.
+     *
      * Requiere permiso ACCESS_FINE_LOCATION o ACCESS_COARSE_LOCATION concedido en runtime.
      */
     @org.jetbrains.annotations.Nullable()
@@ -21,8 +26,17 @@ public final class LocationHelper {
     }
     
     /**
-     * Convierte coordenadas geográficas a una dirección legible usando Geocoder.
-     * Maneja la API síncrona (< API 33) y la nueva API con callback (>= API 33).
+     * Convierte coordenadas geograficas (latitud/longitud) en una direccion postal legible.
+     *
+     * Consume:
+     *  - context: contexto de Android para instanciar el Geocoder.
+     *  - lat: latitud en grados decimales.
+     *  - lng: longitud en grados decimales.
+     *
+     * Devuelve: cadena de texto con la direccion formateada. Si el geocoder falla,
+     *          devuelve las coordenadas en formato "Lat: X, Lng: Y".
+     *
+     * Maneja la API sincrona (Android < 13) y la nueva API con callback (Android >= 13 / API 33).
      */
     @org.jetbrains.annotations.Nullable()
     public final java.lang.Object getAddressFromLocation(@org.jetbrains.annotations.NotNull()
@@ -31,6 +45,16 @@ public final class LocationHelper {
         return null;
     }
     
+    /**
+     * Construye una cadena de direccion legible a partir de un objeto Address del Geocoder.
+     *
+     * Consume:
+     *  - address: objeto Address con los componentes de la direccion (puede ser null).
+     *  - lat / lng: coordenadas de respaldo si address es null o esta vacio.
+     *
+     * Devuelve: cadena con calle, numero, localidad y departamento separados por comas,
+     *          o las coordenadas si no se puede armar la direccion.
+     */
     private final java.lang.String formatAddress(android.location.Address address, double lat, double lng) {
         return null;
     }

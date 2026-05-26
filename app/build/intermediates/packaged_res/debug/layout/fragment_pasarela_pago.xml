@@ -54,7 +54,7 @@
                         android:id="@+id/tvOrderLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Número de pedido"
+                        android:text="@string/label_order_number_panel"
                         android:textColor="@color/on_background_secondary"
                         android:textSize="@dimen/text_body"
                         app:layout_constraintStart_toStartOf="parent"
@@ -85,7 +85,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_small"
-                        android:text="Total a pagar"
+                        android:text="@string/label_total_to_pay"
                         android:textColor="@color/on_background_secondary"
                         android:textSize="@dimen/text_body"
                         app:layout_constraintStart_toStartOf="parent"
@@ -106,18 +106,15 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Botón Mercado Pago (azul celeste oficial #009EE3) -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnPagarMP"
+                style="@style/Widget.TomenAguita.Button"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/button_height"
                 android:layout_marginTop="@dimen/margin_large"
-                android:backgroundTint="#009EE3"
-                android:text="Pagar con Mercado Pago"
-                android:textColor="@color/on_primary"
+                android:text="@string/btn_pay_card"
                 android:textAllCaps="false"
                 android:textSize="@dimen/text_medium"
-                app:cornerRadius="@dimen/corner_radius_button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cardResumen" />
@@ -129,7 +126,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_large"
                 android:layout_marginBottom="@dimen/margin_large"
-                app:cardBackgroundColor="#FFF3E0"
+                app:cardBackgroundColor="@color/sandbox_card_bg"
                 app:cardCornerRadius="@dimen/corner_radius_medium"
                 app:cardElevation="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -146,8 +143,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Datos de prueba (sandbox)"
-                        android:textColor="#E65100"
+                        android:text="@string/label_stripe_test_title"
+                        android:textColor="@color/sandbox_card_title"
                         android:textStyle="bold"
                         android:textSize="@dimen/text_body" />
 
@@ -155,34 +152,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
-                        android:text="① Iniciar sesión en el checkout con:"
-                        android:textColor="#BF360C"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/text_body" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:text="Usuario: TESTUSER1685...\nContraseña: 9FzRrFjciM"
-                        android:textColor="#BF360C"
+                        android:text="@string/label_stripe_test_numbers"
+                        android:textColor="@color/sandbox_card_text"
                         android:textSize="@dimen/text_body" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="② Usar una de estas tarjetas:"
-                        android:textColor="#BF360C"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/text_body" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:text="Mastercard:   5254 1336 7440 3564\nVisa crédito: 4013 5406 8274 6260\nVisa débito:  4915 1120 5524 6507\n\nCVV: 123 · Venc: 11/30 · DNI: 123456789\nTitular: APRO (aprobado) / OTHE (rechazado)"
-                        android:textColor="#BF360C"
+                        android:text="@string/label_stripe_test_instructions"
+                        android:textColor="@color/sandbox_card_text"
                         android:textSize="@dimen/text_body" />
 
                 </LinearLayout>
@@ -191,18 +170,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <!-- WebView del checkout de Mercado Pago — GONE hasta que el usuario inicie el pago -->
-    <WebView
-        android:id="@+id/webView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- ProgressBar centrado (carga de la preferencia MP y del WebView) -->
+    <!-- ProgressBar centrado — visible durante la llamada a la API de Stripe -->
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"

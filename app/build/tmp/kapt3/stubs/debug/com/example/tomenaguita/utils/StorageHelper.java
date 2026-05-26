@@ -11,6 +11,17 @@ public final class StorageHelper {
         super();
     }
     
+    /**
+     * Sube la imagen de un producto a Firebase Storage en la ruta productos/{productoId}/imagen.jpg.
+     *
+     * Consume:
+     *  - productoId: identificador unico del producto (usado como nombre de carpeta en Storage).
+     *  - imageUri: URI local de la imagen seleccionada por el usuario.
+     *  - context: contexto de Android para acceder al ContentResolver.
+     *
+     * Devuelve: URL publica de descarga de la imagen subida.
+     * Lanza Exception si el stream de la imagen no puede abrirse.
+     */
     @org.jetbrains.annotations.Nullable()
     public final java.lang.Object uploadProductImage(@org.jetbrains.annotations.NotNull()
     java.lang.String productoId, @org.jetbrains.annotations.NotNull()
@@ -20,6 +31,17 @@ public final class StorageHelper {
         return null;
     }
     
+    /**
+     * Sube la foto de perfil de un usuario a Firebase Storage en la ruta perfiles/{userId}/foto.jpg.
+     *
+     * Consume:
+     *  - userId: identificador unico del usuario (UID de Firebase Auth).
+     *  - imageUri: URI local de la imagen seleccionada por el usuario.
+     *  - context: contexto de Android para acceder al ContentResolver.
+     *
+     * Devuelve: URL publica de descarga de la foto de perfil subida.
+     * Lanza Exception si el stream de la imagen no puede abrirse.
+     */
     @org.jetbrains.annotations.Nullable()
     public final java.lang.Object uploadProfileImage(@org.jetbrains.annotations.NotNull()
     java.lang.String userId, @org.jetbrains.annotations.NotNull()
@@ -29,6 +51,12 @@ public final class StorageHelper {
         return null;
     }
     
+    /**
+     * Elimina un archivo almacenado en Firebase Storage.
+     *
+     * Consume: storagePath — ruta relativa dentro del bucket de Storage
+     *         (por ejemplo, "productos/abc123/imagen.jpg").
+     */
     @org.jetbrains.annotations.Nullable()
     public final java.lang.Object deleteImage(@org.jetbrains.annotations.NotNull()
     java.lang.String storagePath, @org.jetbrains.annotations.NotNull()
@@ -36,12 +64,29 @@ public final class StorageHelper {
         return null;
     }
     
+    /**
+     * Crea un archivo temporal vacio en la cache y devuelve su URI compatible con la camara.
+     * Usa FileProvider para exponer el archivo de forma segura a otras apps (Intent de camara).
+     *
+     * Consume: context — contexto de Android para acceder al directorio de cache y al FileProvider.
+     * Devuelve: URI del archivo temporal listo para pasarlo como extra en un Intent de camara.
+     */
     @org.jetbrains.annotations.NotNull()
     public final android.net.Uri createImageUri(@org.jetbrains.annotations.NotNull()
     android.content.Context context) {
         return null;
     }
     
+    /**
+     * Convierte un Bitmap en memoria a un archivo JPEG temporal en la cache
+     * y devuelve su URI para poder usarla en operaciones de subida.
+     *
+     * Consume:
+     *  - bitmap: imagen en memoria que se desea persistir temporalmente.
+     *  - context: contexto de Android para acceder al directorio de cache.
+     *
+     * Devuelve: URI del archivo JPEG temporal (calidad 85 %).
+     */
     @org.jetbrains.annotations.NotNull()
     public final android.net.Uri bitmapToUri(@org.jetbrains.annotations.NotNull()
     android.graphics.Bitmap bitmap, @org.jetbrains.annotations.NotNull()

@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -12,6 +14,7 @@ import androidx.core.widget.NestedScrollView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.tomenaguita.R;
+import com.google.android.gms.maps.MapView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.textfield.TextInputEditText;
@@ -31,6 +34,9 @@ public final class FragmentCrearUsuarioBinding implements ViewBinding {
   public final MaterialButton btnCrearUsuario;
 
   @NonNull
+  public final TextInputEditText etDireccion;
+
+  @NonNull
   public final TextInputEditText etEmail;
 
   @NonNull
@@ -43,10 +49,19 @@ public final class FragmentCrearUsuarioBinding implements ViewBinding {
   public final TextInputEditText etTelefono;
 
   @NonNull
+  public final FrameLayout mapContainer;
+
+  @NonNull
+  public final MapView mapView;
+
+  @NonNull
   public final ConstraintLayout rowActivo;
 
   @NonNull
   public final SwitchMaterial switchActivo;
+
+  @NonNull
+  public final TextInputLayout tilDireccion;
 
   @NonNull
   public final TextInputLayout tilEmail;
@@ -63,28 +78,38 @@ public final class FragmentCrearUsuarioBinding implements ViewBinding {
   @NonNull
   public final TextInputLayout tilTelefono;
 
+  @NonNull
+  public final TextView tvLocationStatus;
+
   private FragmentCrearUsuarioBinding(@NonNull NestedScrollView rootView,
       @NonNull AutoCompleteTextView acRol, @NonNull MaterialButton btnCrearUsuario,
-      @NonNull TextInputEditText etEmail, @NonNull TextInputEditText etNombre,
-      @NonNull TextInputEditText etPassword, @NonNull TextInputEditText etTelefono,
-      @NonNull ConstraintLayout rowActivo, @NonNull SwitchMaterial switchActivo,
+      @NonNull TextInputEditText etDireccion, @NonNull TextInputEditText etEmail,
+      @NonNull TextInputEditText etNombre, @NonNull TextInputEditText etPassword,
+      @NonNull TextInputEditText etTelefono, @NonNull FrameLayout mapContainer,
+      @NonNull MapView mapView, @NonNull ConstraintLayout rowActivo,
+      @NonNull SwitchMaterial switchActivo, @NonNull TextInputLayout tilDireccion,
       @NonNull TextInputLayout tilEmail, @NonNull TextInputLayout tilNombre,
       @NonNull TextInputLayout tilPassword, @NonNull TextInputLayout tilRol,
-      @NonNull TextInputLayout tilTelefono) {
+      @NonNull TextInputLayout tilTelefono, @NonNull TextView tvLocationStatus) {
     this.rootView = rootView;
     this.acRol = acRol;
     this.btnCrearUsuario = btnCrearUsuario;
+    this.etDireccion = etDireccion;
     this.etEmail = etEmail;
     this.etNombre = etNombre;
     this.etPassword = etPassword;
     this.etTelefono = etTelefono;
+    this.mapContainer = mapContainer;
+    this.mapView = mapView;
     this.rowActivo = rowActivo;
     this.switchActivo = switchActivo;
+    this.tilDireccion = tilDireccion;
     this.tilEmail = tilEmail;
     this.tilNombre = tilNombre;
     this.tilPassword = tilPassword;
     this.tilRol = tilRol;
     this.tilTelefono = tilTelefono;
+    this.tvLocationStatus = tvLocationStatus;
   }
 
   @Override
@@ -126,6 +151,12 @@ public final class FragmentCrearUsuarioBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.etDireccion;
+      TextInputEditText etDireccion = ViewBindings.findChildViewById(rootView, id);
+      if (etDireccion == null) {
+        break missingId;
+      }
+
       id = R.id.etEmail;
       TextInputEditText etEmail = ViewBindings.findChildViewById(rootView, id);
       if (etEmail == null) {
@@ -150,6 +181,18 @@ public final class FragmentCrearUsuarioBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.mapContainer;
+      FrameLayout mapContainer = ViewBindings.findChildViewById(rootView, id);
+      if (mapContainer == null) {
+        break missingId;
+      }
+
+      id = R.id.mapView;
+      MapView mapView = ViewBindings.findChildViewById(rootView, id);
+      if (mapView == null) {
+        break missingId;
+      }
+
       id = R.id.rowActivo;
       ConstraintLayout rowActivo = ViewBindings.findChildViewById(rootView, id);
       if (rowActivo == null) {
@@ -159,6 +202,12 @@ public final class FragmentCrearUsuarioBinding implements ViewBinding {
       id = R.id.switchActivo;
       SwitchMaterial switchActivo = ViewBindings.findChildViewById(rootView, id);
       if (switchActivo == null) {
+        break missingId;
+      }
+
+      id = R.id.tilDireccion;
+      TextInputLayout tilDireccion = ViewBindings.findChildViewById(rootView, id);
+      if (tilDireccion == null) {
         break missingId;
       }
 
@@ -192,9 +241,16 @@ public final class FragmentCrearUsuarioBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvLocationStatus;
+      TextView tvLocationStatus = ViewBindings.findChildViewById(rootView, id);
+      if (tvLocationStatus == null) {
+        break missingId;
+      }
+
       return new FragmentCrearUsuarioBinding((NestedScrollView) rootView, acRol, btnCrearUsuario,
-          etEmail, etNombre, etPassword, etTelefono, rowActivo, switchActivo, tilEmail, tilNombre,
-          tilPassword, tilRol, tilTelefono);
+          etDireccion, etEmail, etNombre, etPassword, etTelefono, mapContainer, mapView, rowActivo,
+          switchActivo, tilDireccion, tilEmail, tilNombre, tilPassword, tilRol, tilTelefono,
+          tvLocationStatus);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

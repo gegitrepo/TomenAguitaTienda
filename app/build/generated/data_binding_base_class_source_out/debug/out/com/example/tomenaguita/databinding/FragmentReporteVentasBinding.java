@@ -13,6 +13,8 @@ import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.tomenaguita.R;
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -22,10 +24,34 @@ public final class FragmentReporteVentasBinding implements ViewBinding {
   private final NestedScrollView rootView;
 
   @NonNull
+  public final MaterialCardView cardCanceladosCount;
+
+  @NonNull
+  public final MaterialCardView cardPendientesCount;
+
+  @NonNull
   public final MaterialCardView cardTotalDia;
 
   @NonNull
   public final MaterialCardView cardTotalMes;
+
+  @NonNull
+  public final MaterialCardView cardVentasTotales;
+
+  @NonNull
+  public final Chip chipCancelados;
+
+  @NonNull
+  public final ChipGroup chipGroupEstado;
+
+  @NonNull
+  public final Chip chipPagados;
+
+  @NonNull
+  public final Chip chipPendientes;
+
+  @NonNull
+  public final Chip chipTodos;
 
   @NonNull
   public final RecyclerView rvUltimasVentas;
@@ -37,24 +63,48 @@ public final class FragmentReporteVentasBinding implements ViewBinding {
   public final TextView tvUltimasVentasLabel;
 
   @NonNull
+  public final TextView tvVentasCanceladas;
+
+  @NonNull
   public final TextView tvVentasDia;
 
   @NonNull
   public final TextView tvVentasMes;
 
+  @NonNull
+  public final TextView tvVentasPendientes;
+
+  @NonNull
+  public final TextView tvVentasTotales;
+
   private FragmentReporteVentasBinding(@NonNull NestedScrollView rootView,
+      @NonNull MaterialCardView cardCanceladosCount, @NonNull MaterialCardView cardPendientesCount,
       @NonNull MaterialCardView cardTotalDia, @NonNull MaterialCardView cardTotalMes,
-      @NonNull RecyclerView rvUltimasVentas, @NonNull TextView tvTitle,
-      @NonNull TextView tvUltimasVentasLabel, @NonNull TextView tvVentasDia,
-      @NonNull TextView tvVentasMes) {
+      @NonNull MaterialCardView cardVentasTotales, @NonNull Chip chipCancelados,
+      @NonNull ChipGroup chipGroupEstado, @NonNull Chip chipPagados, @NonNull Chip chipPendientes,
+      @NonNull Chip chipTodos, @NonNull RecyclerView rvUltimasVentas, @NonNull TextView tvTitle,
+      @NonNull TextView tvUltimasVentasLabel, @NonNull TextView tvVentasCanceladas,
+      @NonNull TextView tvVentasDia, @NonNull TextView tvVentasMes,
+      @NonNull TextView tvVentasPendientes, @NonNull TextView tvVentasTotales) {
     this.rootView = rootView;
+    this.cardCanceladosCount = cardCanceladosCount;
+    this.cardPendientesCount = cardPendientesCount;
     this.cardTotalDia = cardTotalDia;
     this.cardTotalMes = cardTotalMes;
+    this.cardVentasTotales = cardVentasTotales;
+    this.chipCancelados = chipCancelados;
+    this.chipGroupEstado = chipGroupEstado;
+    this.chipPagados = chipPagados;
+    this.chipPendientes = chipPendientes;
+    this.chipTodos = chipTodos;
     this.rvUltimasVentas = rvUltimasVentas;
     this.tvTitle = tvTitle;
     this.tvUltimasVentasLabel = tvUltimasVentasLabel;
+    this.tvVentasCanceladas = tvVentasCanceladas;
     this.tvVentasDia = tvVentasDia;
     this.tvVentasMes = tvVentasMes;
+    this.tvVentasPendientes = tvVentasPendientes;
+    this.tvVentasTotales = tvVentasTotales;
   }
 
   @Override
@@ -84,6 +134,18 @@ public final class FragmentReporteVentasBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.cardCanceladosCount;
+      MaterialCardView cardCanceladosCount = ViewBindings.findChildViewById(rootView, id);
+      if (cardCanceladosCount == null) {
+        break missingId;
+      }
+
+      id = R.id.cardPendientesCount;
+      MaterialCardView cardPendientesCount = ViewBindings.findChildViewById(rootView, id);
+      if (cardPendientesCount == null) {
+        break missingId;
+      }
+
       id = R.id.cardTotalDia;
       MaterialCardView cardTotalDia = ViewBindings.findChildViewById(rootView, id);
       if (cardTotalDia == null) {
@@ -93,6 +155,42 @@ public final class FragmentReporteVentasBinding implements ViewBinding {
       id = R.id.cardTotalMes;
       MaterialCardView cardTotalMes = ViewBindings.findChildViewById(rootView, id);
       if (cardTotalMes == null) {
+        break missingId;
+      }
+
+      id = R.id.cardVentasTotales;
+      MaterialCardView cardVentasTotales = ViewBindings.findChildViewById(rootView, id);
+      if (cardVentasTotales == null) {
+        break missingId;
+      }
+
+      id = R.id.chipCancelados;
+      Chip chipCancelados = ViewBindings.findChildViewById(rootView, id);
+      if (chipCancelados == null) {
+        break missingId;
+      }
+
+      id = R.id.chipGroupEstado;
+      ChipGroup chipGroupEstado = ViewBindings.findChildViewById(rootView, id);
+      if (chipGroupEstado == null) {
+        break missingId;
+      }
+
+      id = R.id.chipPagados;
+      Chip chipPagados = ViewBindings.findChildViewById(rootView, id);
+      if (chipPagados == null) {
+        break missingId;
+      }
+
+      id = R.id.chipPendientes;
+      Chip chipPendientes = ViewBindings.findChildViewById(rootView, id);
+      if (chipPendientes == null) {
+        break missingId;
+      }
+
+      id = R.id.chipTodos;
+      Chip chipTodos = ViewBindings.findChildViewById(rootView, id);
+      if (chipTodos == null) {
         break missingId;
       }
 
@@ -114,6 +212,12 @@ public final class FragmentReporteVentasBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvVentasCanceladas;
+      TextView tvVentasCanceladas = ViewBindings.findChildViewById(rootView, id);
+      if (tvVentasCanceladas == null) {
+        break missingId;
+      }
+
       id = R.id.tvVentasDia;
       TextView tvVentasDia = ViewBindings.findChildViewById(rootView, id);
       if (tvVentasDia == null) {
@@ -126,8 +230,23 @@ public final class FragmentReporteVentasBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentReporteVentasBinding((NestedScrollView) rootView, cardTotalDia,
-          cardTotalMes, rvUltimasVentas, tvTitle, tvUltimasVentasLabel, tvVentasDia, tvVentasMes);
+      id = R.id.tvVentasPendientes;
+      TextView tvVentasPendientes = ViewBindings.findChildViewById(rootView, id);
+      if (tvVentasPendientes == null) {
+        break missingId;
+      }
+
+      id = R.id.tvVentasTotales;
+      TextView tvVentasTotales = ViewBindings.findChildViewById(rootView, id);
+      if (tvVentasTotales == null) {
+        break missingId;
+      }
+
+      return new FragmentReporteVentasBinding((NestedScrollView) rootView, cardCanceladosCount,
+          cardPendientesCount, cardTotalDia, cardTotalMes, cardVentasTotales, chipCancelados,
+          chipGroupEstado, chipPagados, chipPendientes, chipTodos, rvUltimasVentas, tvTitle,
+          tvUltimasVentasLabel, tvVentasCanceladas, tvVentasDia, tvVentasMes, tvVentasPendientes,
+          tvVentasTotales);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

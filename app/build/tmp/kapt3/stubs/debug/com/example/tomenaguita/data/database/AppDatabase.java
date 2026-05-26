@@ -34,6 +34,15 @@ public abstract class AppDatabase extends androidx.room.RoomDatabase {
             super();
         }
         
+        /**
+         * Devuelve la instancia unica de AppDatabase, creandola si no existe.
+         * Usa doble verificacion con bloqueo (double-checked locking) para
+         * garantizar que solo se cree una instancia incluso bajo concurrencia.
+         *
+         * Consume: context — contexto de Android; se usa applicationContext
+         *         para evitar fugas de memoria.
+         * Devuelve: la instancia unica de AppDatabase.
+         */
         @org.jetbrains.annotations.NotNull()
         public final com.example.tomenaguita.data.database.AppDatabase getInstance(@org.jetbrains.annotations.NotNull()
         android.content.Context context) {

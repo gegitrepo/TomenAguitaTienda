@@ -4,36 +4,81 @@ package com.example.tomenaguita.data.database.dao;
 @androidx.room.Dao()
 public abstract interface ProductoDao {
     
+    /**
+     * Devuelve todos los productos disponibles y no eliminados, ordenados por nombre.
+     * Emite una nueva lista cada vez que hay cambios en la tabla (Flow reactivo).
+     * Usado por el catalogo visible al comprador.
+     */
     @androidx.room.Query(value = "SELECT * FROM productos WHERE eliminado = 0 AND disponible = 1 ORDER BY nombre ASC")
     @org.jetbrains.annotations.NotNull()
     public abstract kotlinx.coroutines.flow.Flow<java.util.List<com.example.tomenaguita.data.database.entity.Producto>> getAllProductosDisponibles();
     
+    /**
+     * Devuelve todos los productos no eliminados de un vendedor especifico, ordenados por nombre.
+     * Emite una nueva lista cada vez que hay cambios en la tabla (Flow reactivo).
+     * Usado por el panel de gestion del vendedor.
+     *
+     * Consume: vendedorId — ID del usuario vendedor dueno de los productos.
+     */
     @androidx.room.Query(value = "SELECT * FROM productos WHERE vendedorId = :vendedorId AND eliminado = 0 ORDER BY nombre ASC")
     @org.jetbrains.annotations.NotNull()
     public abstract kotlinx.coroutines.flow.Flow<java.util.List<com.example.tomenaguita.data.database.entity.Producto>> getProductosByVendedor(long vendedorId);
     
+    /**
+     * Busca un producto no eliminado por su ID local de Room.
+     *
+     * Consume: id — identificador primario del producto.
+     * Devuelve: el Producto encontrado, o null si no existe o fue eliminado logicamente.
+     */
     @androidx.room.Query(value = "SELECT * FROM productos WHERE id = :id AND eliminado = 0")
     @org.jetbrains.annotations.Nullable()
     public abstract java.lang.Object getProductoById(long id, @org.jetbrains.annotations.NotNull()
     kotlin.coroutines.Continuation<? super com.example.tomenaguita.data.database.entity.Producto> $completion);
     
+    /**
+     * Inserta un nuevo producto o lo reemplaza si ya existe un conflicto de clave primaria.
+     *
+     * Consume: producto — entidad Producto a insertar o actualizar.
+     * Devuelve: el ID local asignado por Room al producto insertado.
+     */
     @androidx.room.Insert(onConflict = 1)
     @org.jetbrains.annotations.Nullable()
     public abstract java.lang.Object insert(@org.jetbrains.annotations.NotNull()
     com.example.tomenaguita.data.database.entity.Producto producto, @org.jetbrains.annotations.NotNull()
     kotlin.coroutines.Continuation<? super java.lang.Long> $completion);
     
+    /**
+     * Actualiza todos los campos de un producto existente en la base de datos.
+     *
+     * Consume: producto — entidad Producto con los datos actualizados (debe tener id valido).
+     */
     @androidx.room.Update()
     @org.jetbrains.annotations.Nullable()
     public abstract java.lang.Object update(@org.jetbrains.annotations.NotNull()
     com.example.tomenaguita.data.database.entity.Producto producto, @org.jetbrains.annotations.NotNull()
     kotlin.coroutines.Continuation<? super kotlin.Unit> $completion);
     
+    /**
+     * Realiza un borrado logico del producto poniendo su campo eliminado en 1.
+     * El producto deja de aparecer en consultas pero su historial en pedidos se conserva.
+     * Actualiza tambien el campo updatedAt con el timestamp actual.
+     *
+     * Consume:
+     *  - id: identificador del producto a eliminar logicamente.
+     *  - timestamp: momento del borrado; por defecto el instante actual.
+     */
     @androidx.room.Query(value = "UPDATE productos SET eliminado = 1, updatedAt = :timestamp WHERE id = :id")
     @org.jetbrains.annotations.Nullable()
     public abstract java.lang.Object softDelete(long id, long timestamp, @org.jetbrains.annotations.NotNull()
     kotlin.coroutines.Continuation<? super kotlin.Unit> $completion);
     
+    /**
+     * Busca un producto por su ID de documento en Firestore.
+     * Util para sincronizar datos entre Room y la nube sin duplicar registros.
+     *
+     * Consume: docId — ID del documento en Firestore.
+     * Devuelve: el Producto local vinculado a ese documento, o null si no existe.
+     */
     @androidx.room.Query(value = "SELECT * FROM productos WHERE firestoreDocId = :docId LIMIT 1")
     @org.jetbrains.annotations.Nullable()
     public abstract java.lang.Object getByFirestoreDocId(@org.jetbrains.annotations.NotNull()

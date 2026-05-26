@@ -29,7 +29,13 @@ public final class FragmentDashboardBinding implements ViewBinding {
   public final MaterialButton btnGestionUsuarios;
 
   @NonNull
+  public final MaterialCardView cardCanceladas;
+
+  @NonNull
   public final MaterialCardView cardPedidos;
+
+  @NonNull
+  public final MaterialCardView cardPendientes;
 
   @NonNull
   public final MaterialCardView cardProductos;
@@ -50,6 +56,12 @@ public final class FragmentDashboardBinding implements ViewBinding {
   public final TextView tvBienvenido;
 
   @NonNull
+  public final TextView tvPedidosCancelados;
+
+  @NonNull
+  public final TextView tvPedidosPendientes;
+
+  @NonNull
   public final TextView tvTotalPedidos;
 
   @NonNull
@@ -63,22 +75,28 @@ public final class FragmentDashboardBinding implements ViewBinding {
 
   private FragmentDashboardBinding(@NonNull NestedScrollView rootView,
       @NonNull MaterialButton btnGestionProductos, @NonNull MaterialButton btnGestionUsuarios,
-      @NonNull MaterialCardView cardPedidos, @NonNull MaterialCardView cardProductos,
+      @NonNull MaterialCardView cardCanceladas, @NonNull MaterialCardView cardPedidos,
+      @NonNull MaterialCardView cardPendientes, @NonNull MaterialCardView cardProductos,
       @NonNull MaterialCardView cardUsuarios, @NonNull MaterialCardView cardVentas,
       @NonNull LinearLayout llAccesos, @NonNull TextView tvAccesosLabel,
-      @NonNull TextView tvBienvenido, @NonNull TextView tvTotalPedidos,
+      @NonNull TextView tvBienvenido, @NonNull TextView tvPedidosCancelados,
+      @NonNull TextView tvPedidosPendientes, @NonNull TextView tvTotalPedidos,
       @NonNull TextView tvTotalProductos, @NonNull TextView tvTotalUsuarios,
       @NonNull TextView tvTotalVentas) {
     this.rootView = rootView;
     this.btnGestionProductos = btnGestionProductos;
     this.btnGestionUsuarios = btnGestionUsuarios;
+    this.cardCanceladas = cardCanceladas;
     this.cardPedidos = cardPedidos;
+    this.cardPendientes = cardPendientes;
     this.cardProductos = cardProductos;
     this.cardUsuarios = cardUsuarios;
     this.cardVentas = cardVentas;
     this.llAccesos = llAccesos;
     this.tvAccesosLabel = tvAccesosLabel;
     this.tvBienvenido = tvBienvenido;
+    this.tvPedidosCancelados = tvPedidosCancelados;
+    this.tvPedidosPendientes = tvPedidosPendientes;
     this.tvTotalPedidos = tvTotalPedidos;
     this.tvTotalProductos = tvTotalProductos;
     this.tvTotalUsuarios = tvTotalUsuarios;
@@ -124,9 +142,21 @@ public final class FragmentDashboardBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.cardCanceladas;
+      MaterialCardView cardCanceladas = ViewBindings.findChildViewById(rootView, id);
+      if (cardCanceladas == null) {
+        break missingId;
+      }
+
       id = R.id.cardPedidos;
       MaterialCardView cardPedidos = ViewBindings.findChildViewById(rootView, id);
       if (cardPedidos == null) {
+        break missingId;
+      }
+
+      id = R.id.cardPendientes;
+      MaterialCardView cardPendientes = ViewBindings.findChildViewById(rootView, id);
+      if (cardPendientes == null) {
         break missingId;
       }
 
@@ -166,6 +196,18 @@ public final class FragmentDashboardBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvPedidosCancelados;
+      TextView tvPedidosCancelados = ViewBindings.findChildViewById(rootView, id);
+      if (tvPedidosCancelados == null) {
+        break missingId;
+      }
+
+      id = R.id.tvPedidosPendientes;
+      TextView tvPedidosPendientes = ViewBindings.findChildViewById(rootView, id);
+      if (tvPedidosPendientes == null) {
+        break missingId;
+      }
+
       id = R.id.tvTotalPedidos;
       TextView tvTotalPedidos = ViewBindings.findChildViewById(rootView, id);
       if (tvTotalPedidos == null) {
@@ -191,9 +233,9 @@ public final class FragmentDashboardBinding implements ViewBinding {
       }
 
       return new FragmentDashboardBinding((NestedScrollView) rootView, btnGestionProductos,
-          btnGestionUsuarios, cardPedidos, cardProductos, cardUsuarios, cardVentas, llAccesos,
-          tvAccesosLabel, tvBienvenido, tvTotalPedidos, tvTotalProductos, tvTotalUsuarios,
-          tvTotalVentas);
+          btnGestionUsuarios, cardCanceladas, cardPedidos, cardPendientes, cardProductos,
+          cardUsuarios, cardVentas, llAccesos, tvAccesosLabel, tvBienvenido, tvPedidosCancelados,
+          tvPedidosPendientes, tvTotalPedidos, tvTotalProductos, tvTotalUsuarios, tvTotalVentas);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

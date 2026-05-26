@@ -16,10 +16,23 @@ public final class BiometricHelper {
         super();
     }
     
+    /**
+     * Verifica si el dispositivo soporta autenticacion biometrica fuerte (BIOMETRIC_STRONG)
+     * y si el usuario tiene al menos una huella registrada.
+     *
+     * Devuelve: true si la autenticacion biometrica esta disponible y lista para usarse.
+     */
     public final boolean isAvailable() {
         return false;
     }
     
+    /**
+     * Lanza el dialogo de autenticacion biometrica del sistema.
+     * Los resultados se entregan a traves de los callbacks onSuccess y onError
+     * proporcionados al construir la instancia.
+     *
+     * Muestra el titulo "Tomen Aguita" y el subtitulo "Ingresa con tu huella digital".
+     */
     public final void authenticate() {
     }
 }

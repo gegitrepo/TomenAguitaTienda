@@ -4,7 +4,6 @@ package com.example.tomenaguita.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -57,15 +56,12 @@ public final class FragmentPasarelaPagoBinding implements ViewBinding {
   @NonNull
   public final TextView tvTotalPago;
 
-  @NonNull
-  public final WebView webView;
-
   private FragmentPasarelaPagoBinding(@NonNull ConstraintLayout rootView,
       @NonNull MaterialButton btnPagarMP, @NonNull MaterialCardView cardResumen,
       @NonNull MaterialCardView cardTestData, @NonNull NestedScrollView containerContent,
       @NonNull View divider, @NonNull ProgressBar progressBar, @NonNull TextView tvOrderLabel,
       @NonNull TextView tvOrderNumber, @NonNull TextView tvTitle, @NonNull TextView tvTotalLabel,
-      @NonNull TextView tvTotalPago, @NonNull WebView webView) {
+      @NonNull TextView tvTotalPago) {
     this.rootView = rootView;
     this.btnPagarMP = btnPagarMP;
     this.cardResumen = cardResumen;
@@ -78,7 +74,6 @@ public final class FragmentPasarelaPagoBinding implements ViewBinding {
     this.tvTitle = tvTitle;
     this.tvTotalLabel = tvTotalLabel;
     this.tvTotalPago = tvTotalPago;
-    this.webView = webView;
   }
 
   @Override
@@ -174,15 +169,9 @@ public final class FragmentPasarelaPagoBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.webView;
-      WebView webView = ViewBindings.findChildViewById(rootView, id);
-      if (webView == null) {
-        break missingId;
-      }
-
       return new FragmentPasarelaPagoBinding((ConstraintLayout) rootView, btnPagarMP, cardResumen,
           cardTestData, containerContent, divider, progressBar, tvOrderLabel, tvOrderNumber,
-          tvTitle, tvTotalLabel, tvTotalPago, webView);
+          tvTitle, tvTotalLabel, tvTotalPago);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

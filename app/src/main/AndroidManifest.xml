@@ -25,7 +25,7 @@
         <!-- API Key de Google Maps SDK — reemplazar con la clave real desde Google Cloud Console -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDjSmwJeFf-ajcMsbU1RBcZFSmcuz4QTSg" />
+            android:value="AIzaSyDt56JPnWnQ-1shIVnXNKo0iGO9ulO_y1o" />
 
         <activity
             android:name=".ui.splash.SplashActivity"

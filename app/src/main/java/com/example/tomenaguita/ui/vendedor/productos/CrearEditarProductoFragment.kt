@@ -29,23 +29,43 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.UUID
 
+// Fragmento compartido entre el vendedor y el administrador para crear o editar un producto.
+// Determina el modo de operacion segun el argumento de navegacion productoId:
+//   - productoId == -1L → modo creacion (producto nuevo)
+//   - productoId != -1L → modo edicion (carga el producto existente)
+// Permite seleccionar una imagen desde la galeria o tomarla con la camara,
+// subir la imagen a Firebase Storage y guardar los datos del producto via ProductoViewModel.
 class CrearEditarProductoFragment : Fragment() {
 
+    // Binding para acceder a las vistas del layout fragment_crear_editar_producto.xml
     private var _binding: FragmentCrearEditarProductoBinding? = null
     private val binding get() = _binding!!
+
+    // Argumentos de navegacion que contienen el ID del producto (o -1L si es creacion)
     private val args: CrearEditarProductoFragmentArgs by navArgs()
+
+    // Indica si el fragmento esta en modo edicion; es false cuando productoId es -1L
     private val isEditing get() = args.productoId != -1L
+
+    // ViewModel compartido a nivel de actividad que gestiona las operaciones sobre productos
     private val viewModel: com.example.tomenaguita.viewmodel.ProductoViewModel by activityViewModels()
 
+    // URI de la imagen seleccionada por el usuario (galeria o camara); null si no se selecciono ninguna
     private var selectedImageUri: Uri? = null
+
+    // URI temporal generada antes de abrir la camara; se preserva en savedInstanceState para sobrevivir rotaciones
     private var pendingCameraUri: Uri? = null
 
+    // Launcher para solicitar el permiso de camara al usuario
+    // Si se concede, abre la camara; si se deniega, muestra un mensaje informativo
     private val cameraPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
             if (granted) abrirCamara()
-            else binding.root.showSnackbar("Permiso de cámara denegado")
+            else binding.root.showSnackbar(getString(R.string.msg_camera_permission_denied))
         }
 
+    // Launcher para seleccionar una imagen de la galeria del dispositivo
+    // Al obtener la URI actualiza selectedImageUri y muestra la imagen en la vista previa
     private val galleryLauncher =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
             uri ?: return@registerForActivityResult
@@ -53,6 +73,8 @@ class CrearEditarProductoFragment : Fragment() {
             Glide.with(this).load(uri).centerCrop().into(binding.ivFotoProducto)
         }
 
+    // Launcher para capturar una foto con la camara del dispositivo
+    // Usa pendingCameraUri como destino del archivo; si la captura fue exitosa muestra la imagen
     private val cameraLauncher =
         registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
             val uri = pendingCameraUri ?: return@registerForActivityResult
@@ -61,20 +83,28 @@ class CrearEditarProductoFragment : Fragment() {
             Glide.with(this).load(uri).skipMemoryCache(true).centerCrop().into(binding.ivFotoProducto)
         }
 
+    // Guarda la URI pendiente de camara en el estado de la instancia para sobrevivir rotaciones de pantalla
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         pendingCameraUri?.let { outState.putString(KEY_CAMERA_URI, it.toString()) }
     }
 
+    // Infla el layout del fragmento y retorna la vista raiz
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentCrearEditarProductoBinding.inflate(inflater, container, false)
         return binding.root
     }
 
+    // Configura el formulario, el desplegable de presentaciones, los observadores del ViewModel
+    // y los listeners de los botones de imagen y guardado.
+    // Si esta en modo edicion, solicita al ViewModel que cargue los datos del producto existente.
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Restaura la URI de camara pendiente si la actividad fue recreada (p.ej. por rotacion)
         pendingCameraUri = savedInstanceState?.getString(KEY_CAMERA_URI)?.let { Uri.parse(it) }
 
+        // Configura el adaptador del campo de presentacion con la lista de opciones predefinidas
         val presentacionesAdapter = ArrayAdapter(
             requireContext(),
             android.R.layout.simple_dropdown_item_1line,
@@ -82,8 +112,10 @@ class CrearEditarProductoFragment : Fragment() {
         )
         binding.acPresentacion.setAdapter(presentacionesAdapter)
 
+        // En modo edicion, indica al ViewModel el ID del producto que se debe cargar
         if (isEditing) viewModel.selectProducto(args.productoId)
 
+        // Observa el producto seleccionado y rellena los campos del formulario con sus datos
         viewModel.productoSeleccionado.observe(viewLifecycleOwner) { producto ->
             producto ?: return@observe
             binding.etNombre.setText(producto.nombre)
@@ -92,17 +124,21 @@ class CrearEditarProductoFragment : Fragment() {
             binding.etStock.setText(producto.stock.toString())
             binding.acPresentacion.setText(producto.presentacion, false)
             binding.switchDisponible.isChecked = producto.disponible == 1
+            // Carga la imagen actual del producto con Glide si existe una URL valida
             producto.imagenUrl?.takeIf { it.isNotEmpty() }?.let { url ->
                 Glide.with(this).load(url).centerCrop().placeholder(R.drawable.bg_banner_placeholder).into(binding.ivFotoProducto)
             }
         }
 
+        // Observa el resultado de la operacion de guardado (exito o error)
+        // Consume el evento inmediatamente para evitar que sea re-entregado tras rotacion
         viewModel.operationResult.observe(viewLifecycleOwner) { result ->
             result ?: return@observe  // Ignorar el null inicial o el reset post-consumo
             viewModel.clearOperationResult()  // Consumir el evento para evitar re-entrega
             binding.btnGuardar.isEnabled = true
             result.fold(
                 onSuccess = {
+                    // Muestra mensaje de exito segun si se creo o edito el producto, y regresa al listado
                     val msg = if (isEditing) R.string.msg_product_updated else R.string.msg_product_created
                     binding.root.showSnackbar(getString(msg))
                     findNavController().popBackStack()
@@ -111,11 +147,14 @@ class CrearEditarProductoFragment : Fragment() {
             )
         }
 
+        // Registra los listeners de los botones de seleccion de imagen y guardado
         binding.btnCamara.setOnClickListener { solicitarCamara() }
         binding.btnGaleria.setOnClickListener { galleryLauncher.launch("image/*") }
         binding.btnGuardar.setOnClickListener { guardar() }
     }
 
+    // Verifica si el permiso de camara esta concedido antes de abrirla.
+    // Si no esta concedido, lanza el launcher de solicitud de permiso.
     private fun solicitarCamara() {
         if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
             == PackageManager.PERMISSION_GRANTED) {
@@ -125,11 +164,17 @@ class CrearEditarProductoFragment : Fragment() {
         }
     }
 
+    // Crea un URI temporal en el almacenamiento del dispositivo y lanza la camara apuntando a ese URI.
+    // La URI queda almacenada en pendingCameraUri para recuperarla cuando la camara retorne el resultado.
     private fun abrirCamara() {
         pendingCameraUri = StorageHelper.createImageUri(requireContext())
         cameraLauncher.launch(pendingCameraUri!!)
     }
 
+    // Lee los campos del formulario, valida que el nombre no este vacio y construye el objeto Producto.
+    // Si el usuario selecciono una imagen nueva, la sube a Firebase Storage en un hilo de IO
+    // antes de llamar a saveProducto en el ViewModel.
+    // En modo edicion se preserva el vendedorId original para que el admin no reasigne el producto.
     private fun guardar() {
         val nombre = binding.etNombre.text.toString().trim()
         val descripcion = binding.etDescripcion.text.toString().trim()
@@ -138,6 +183,7 @@ class CrearEditarProductoFragment : Fragment() {
         val presentacion = binding.acPresentacion.text.toString().trim()
         val disponible = if (binding.switchDisponible.isChecked) 1 else 0
 
+        // Limpia el error previo del campo nombre antes de validar
         binding.tilNombre.error = null
         if (nombre.isBlank()) {
             binding.tilNombre.error = getString(R.string.error_field_required)
@@ -146,6 +192,8 @@ class CrearEditarProductoFragment : Fragment() {
 
         val session = SessionManager(requireContext())
         val productoActual = viewModel.productoSeleccionado.value
+
+        // Construye el objeto base del producto con los datos del formulario
         val productoBase = Producto(
             id = if (isEditing) args.productoId else 0L,
             nombre = nombre,
@@ -161,10 +209,12 @@ class CrearEditarProductoFragment : Fragment() {
             firestoreDocId = productoActual?.firestoreDocId
         )
 
+        // Deshabilita el boton para evitar multiples envios mientras se procesa la operacion
         binding.btnGuardar.isEnabled = false
 
         val uri = selectedImageUri
         if (uri != null) {
+            // Si hay una imagen nueva seleccionada, la sube a Storage antes de guardar el producto
             lifecycleScope.launch {
                 try {
                     val imageId = productoActual?.firestoreDocId ?: UUID.randomUUID().toString()
@@ -172,23 +222,27 @@ class CrearEditarProductoFragment : Fragment() {
                     val imageUrl = withContext(Dispatchers.IO) {
                         StorageHelper.uploadProductImage(imageId, uri, requireContext())
                     }
+                    // Guarda el producto con la URL de la imagen recien subida
                     viewModel.saveProducto(productoBase.copy(imagenUrl = imageUrl))
                 } catch (e: Exception) {
                     binding.btnGuardar.isEnabled = true
-                    binding.root.showSnackbar("Error al subir imagen: ${e.message}")
+                    binding.root.showSnackbar(getString(R.string.msg_image_upload_error, e.message))
                 }
             }
         } else {
+            // No hay imagen nueva: guarda el producto conservando la URL anterior
             viewModel.saveProducto(productoBase)
         }
     }
 
+    // Libera la referencia al binding para evitar fugas de memoria cuando la vista es destruida
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
     companion object {
+        // Clave usada para persistir la URI de camara pendiente en el Bundle de estado
         private const val KEY_CAMERA_URI = "pending_camera_uri"
     }
 }

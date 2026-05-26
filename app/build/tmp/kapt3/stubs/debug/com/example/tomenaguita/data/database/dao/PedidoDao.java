@@ -4,46 +4,108 @@ package com.example.tomenaguita.data.database.dao;
 @androidx.room.Dao()
 public abstract interface PedidoDao {
     
+    /**
+     * Devuelve todos los pedidos de un comprador especifico, del mas reciente al mas antiguo.
+     * Emite una nueva lista cada vez que hay cambios en la tabla (Flow reactivo).
+     * Usado en el historial de compras del comprador.
+     *
+     * Consume: usuarioId — ID del usuario comprador.
+     */
     @androidx.room.Query(value = "SELECT * FROM pedidos WHERE usuarioId = :usuarioId ORDER BY createdAt DESC")
     @org.jetbrains.annotations.NotNull()
     public abstract kotlinx.coroutines.flow.Flow<java.util.List<com.example.tomenaguita.data.database.entity.Pedido>> getPedidosByUsuario(long usuarioId);
     
+    /**
+     * Devuelve todos los pedidos de todos los usuarios, del mas reciente al mas antiguo.
+     * Emite una nueva lista cada vez que hay cambios en la tabla (Flow reactivo).
+     * Usado en el panel de administrador.
+     */
     @androidx.room.Query(value = "SELECT * FROM pedidos ORDER BY createdAt DESC")
     @org.jetbrains.annotations.NotNull()
     public abstract kotlinx.coroutines.flow.Flow<java.util.List<com.example.tomenaguita.data.database.entity.Pedido>> getAllPedidos();
     
+    /**
+     * Devuelve los pedidos que contienen al menos un producto del vendedor indicado.
+     * Usa un JOIN con detalle_pedidos para filtrar por vendedorId y DISTINCT para
+     * evitar duplicados cuando el pedido tiene varios productos del mismo vendedor.
+     * Emite una nueva lista cada vez que hay cambios (Flow reactivo).
+     * Usado en el panel de ventas del vendedor.
+     *
+     * Consume: vendedorId — ID del usuario vendedor.
+     */
     @androidx.room.Query(value = "\n        SELECT DISTINCT p.* FROM pedidos p\n        INNER JOIN detalle_pedidos d ON d.pedidoId = p.id\n        WHERE d.vendedorId = :vendedorId\n        ORDER BY p.createdAt DESC\n    ")
     @org.jetbrains.annotations.NotNull()
     public abstract kotlinx.coroutines.flow.Flow<java.util.List<com.example.tomenaguita.data.database.entity.Pedido>> getPedidosByVendedor(long vendedorId);
     
+    /**
+     * Busca un pedido por su ID local de Room.
+     *
+     * Consume: id — identificador primario del Pedido.
+     * Devuelve: el Pedido encontrado, o null si no existe.
+     */
     @androidx.room.Query(value = "SELECT * FROM pedidos WHERE id = :id")
     @org.jetbrains.annotations.Nullable()
     public abstract java.lang.Object getPedidoById(long id, @org.jetbrains.annotations.NotNull()
     kotlin.coroutines.Continuation<? super com.example.tomenaguita.data.database.entity.Pedido> $completion);
     
+    /**
+     * Devuelve todos los DetallePedido asociados a un pedido especifico.
+     * Usado para mostrar el desglose de productos al ver el detalle de un pedido.
+     *
+     * Consume: pedidoId — ID del pedido del que se quieren los detalles.
+     * Devuelve: lista de DetallePedido del pedido; puede estar vacia si no hay detalles.
+     */
     @androidx.room.Query(value = "SELECT * FROM detalle_pedidos WHERE pedidoId = :pedidoId")
     @org.jetbrains.annotations.Nullable()
     public abstract java.lang.Object getDetallesByPedido(long pedidoId, @org.jetbrains.annotations.NotNull()
     kotlin.coroutines.Continuation<? super java.util.List<com.example.tomenaguita.data.database.entity.DetallePedido>> $completion);
     
+    /**
+     * Inserta un nuevo pedido en la base de datos.
+     *
+     * Consume: pedido — entidad Pedido a insertar.
+     * Devuelve: el ID local asignado por Room al pedido insertado.
+     */
     @androidx.room.Insert()
     @org.jetbrains.annotations.Nullable()
     public abstract java.lang.Object insertPedido(@org.jetbrains.annotations.NotNull()
     com.example.tomenaguita.data.database.entity.Pedido pedido, @org.jetbrains.annotations.NotNull()
     kotlin.coroutines.Continuation<? super java.lang.Long> $completion);
     
+    /**
+     * Inserta un DetallePedido (linea de producto) asociado a un pedido existente.
+     *
+     * Consume: detalle — entidad DetallePedido a insertar.
+     */
     @androidx.room.Insert()
     @org.jetbrains.annotations.Nullable()
     public abstract java.lang.Object insertDetalle(@org.jetbrains.annotations.NotNull()
     com.example.tomenaguita.data.database.entity.DetallePedido detalle, @org.jetbrains.annotations.NotNull()
     kotlin.coroutines.Continuation<? super kotlin.Unit> $completion);
     
+    /**
+     * Actualiza el estado de un pedido y su marca de tiempo de modificacion.
+     * Usado por vendedor y administrador para avanzar el pedido en el flujo
+     * definido por EstadoPedido.
+     *
+     * Consume:
+     *  - id: identificador del pedido a actualizar.
+     *  - estado: nuevo estado del pedido (valor de cadena de EstadoPedido).
+     *  - timestamp: momento del cambio de estado; por defecto el instante actual.
+     */
     @androidx.room.Query(value = "UPDATE pedidos SET estado = :estado, updatedAt = :timestamp WHERE id = :id")
     @org.jetbrains.annotations.Nullable()
     public abstract java.lang.Object actualizarEstado(long id, @org.jetbrains.annotations.NotNull()
     java.lang.String estado, long timestamp, @org.jetbrains.annotations.NotNull()
     kotlin.coroutines.Continuation<? super kotlin.Unit> $completion);
     
+    /**
+     * Busca un pedido por su numero de orden legible (orderNumber).
+     * Util para verificar si un pedido ya fue registrado antes de duplicarlo.
+     *
+     * Consume: orderNumber — numero de orden generado por la app (ej. "ORD-20240521-0001").
+     * Devuelve: el Pedido encontrado, o null si no existe ese numero de orden.
+     */
     @androidx.room.Query(value = "SELECT * FROM pedidos WHERE orderNumber = :orderNumber LIMIT 1")
     @org.jetbrains.annotations.Nullable()
     public abstract java.lang.Object getByOrderNumber(@org.jetbrains.annotations.NotNull()

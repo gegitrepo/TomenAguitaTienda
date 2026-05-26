@@ -22,33 +22,57 @@ import com.example.tomenaguita.utils.visible
 import com.example.tomenaguita.viewmodel.CarritoViewModel
 import com.example.tomenaguita.viewmodel.ProductoViewModel
 
+/*
+ * Pantalla de catálogo completo de productos disponibles.
+ * A diferencia de HomeFragment, muestra todos los productos sin filtro de destacados.
+ * Permite buscar en tiempo real por nombre o presentación del producto.
+ * El comprador puede agregar productos al carrito directamente desde esta vista.
+ * Reutiliza el layout FragmentHomeBinding del fragmento de inicio.
+ */
 class CatalogoFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+
+    // Adaptador que muestra la lista completa de productos en el RecyclerView
     private lateinit var adapter: ProductoAdapter
+
+    // ViewModel que provee la lista de productos disponibles desde Firestore/Room
     private val productoViewModel: ProductoViewModel by activityViewModels()
+
+    // ViewModel que gestiona las operaciones del carrito de compras
     private val carritoViewModel: CarritoViewModel by activityViewModels()
 
+    // Lista completa de productos disponibles, usada para aplicar el filtro de búsqueda
     private var allProductos: List<Producto> = emptyList()
 
+    // Infla el layout reutilizado del fragmento de inicio
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
+    /*
+     * Configura el adaptador, el RecyclerView, los observadores del ViewModel
+     * y el listener de búsqueda en tiempo real.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val session = SessionManager(requireContext())
+
+        // Personalizar textos del layout reutilizado para el contexto del catálogo
         binding.tvFeatured.text = getString(R.string.title_catalog)
         binding.tvEmpty.text = getString(R.string.empty_catalog_products)
 
+        // Configurar el adaptador con los callbacks de clic en producto y en "Agregar al carrito"
         adapter = ProductoAdapter(
             onProductoClick = { item ->
+                // Navegar al detalle del producto seleccionado
                 findNavController().navigate(CatalogoFragmentDirections.actionCatalogoToDetalle(item.id))
             },
             onAgregarClick = { item ->
+                // Crear un ítem de carrito con cantidad 1 al precio actual del producto
                 val nuevoItem = CarritoItem(
                     usuarioId = session.getUserId(),
                     productoId = item.id,
@@ -62,16 +86,25 @@ class CatalogoFragment : Fragment() {
         binding.rvProductos.layoutManager = LinearLayoutManager(requireContext())
         binding.rvProductos.adapter = adapter
 
+        // Observar todos los productos disponibles y aplicar el filtro actual
         productoViewModel.productosDisponibles.observe(viewLifecycleOwner) { productos ->
             allProductos = productos
             applySearch(binding.etSearch.text?.toString() ?: "")
         }
 
+        // Actualizar la lista cada vez que el usuario escribe en el buscador
         binding.etSearch.doOnTextChanged { text, _, _, _ ->
             applySearch(text?.toString() ?: "")
         }
     }
 
+    /*
+     * Filtra la lista de productos según el texto de búsqueda introducido.
+     * Si la búsqueda está vacía, muestra todos los productos del catálogo.
+     * Si hay texto, filtra por coincidencia en nombre o presentación (sin distinción de mayúsculas).
+     * Muestra u oculta el mensaje de lista vacía según el resultado.
+     * Consume: query (String) con el texto de búsqueda actual.
+     */
     private fun applySearch(query: String) {
         val lista = if (query.isBlank()) {
             allProductos
@@ -92,6 +125,7 @@ class CatalogoFragment : Fragment() {
         }
     }
 
+    // Libera el binding al destruir la vista para evitar fugas de memoria
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

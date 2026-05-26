@@ -20,6 +20,12 @@ public enum EstadoPedido {
         return null;
     }
     
+    /**
+     * Devuelve el siguiente estado logico en el flujo del pedido.
+     *
+     * Devuelve: el EstadoPedido siguiente, o null si el estado actual es terminal
+     *          (ENTREGADO o CANCELADO no tienen estado siguiente).
+     */
     @org.jetbrains.annotations.Nullable()
     public final com.example.tomenaguita.data.model.EstadoPedido siguiente() {
         return null;
@@ -37,6 +43,12 @@ public enum EstadoPedido {
             super();
         }
         
+        /**
+         * Convierte una cadena de texto en el EstadoPedido correspondiente.
+         *
+         * Consume: valor — cadena con el estado (ej. "pagado", "enviado").
+         * Devuelve: el EstadoPedido que coincide con el valor, o PENDIENTE si no hay coincidencia.
+         */
         @org.jetbrains.annotations.NotNull()
         public final com.example.tomenaguita.data.model.EstadoPedido fromString(@org.jetbrains.annotations.NotNull()
         java.lang.String valor) {

@@ -97,6 +97,43 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
+        <!-- Fila 3: Pedidos pendientes + Pedidos cancelados -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardPendientes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_small"
+            app:cardCornerRadius="@dimen/corner_radius_medium"
+            app:cardElevation="@dimen/card_elevation"
+            app:cardBackgroundColor="@color/warning"
+            app:layout_constraintEnd_toStartOf="@id/cardCanceladas"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardPedidos">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/padding_medium">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_pending_metric" android:textColor="@color/on_primary_dim" android:textSize="@dimen/text_body" />
+                <TextView android:id="@+id/tvPedidosPendientes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textColor="@color/on_primary" android:textSize="@dimen/text_card_metric" android:textStyle="bold" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardCanceladas"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginStart="@dimen/margin_small"
+            app:cardCornerRadius="@dimen/corner_radius_medium"
+            app:cardElevation="@dimen/card_elevation"
+            app:cardBackgroundColor="@color/error"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/cardPendientes"
+            app:layout_constraintTop_toBottomOf="@id/cardVentas">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/padding_medium">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_cancelled_metric" android:textColor="@color/on_primary_dim" android:textSize="@dimen/text_body" />
+                <TextView android:id="@+id/tvPedidosCancelados" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textColor="@color/on_primary" android:textSize="@dimen/text_card_metric" android:textStyle="bold" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
         <!-- Accesos rápidos -->
         <TextView
             android:id="@+id/tvAccesosLabel"
@@ -109,7 +146,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardPedidos" />
+            app:layout_constraintTop_toBottomOf="@id/cardPendientes" />
 
         <LinearLayout
             android:id="@+id/llAccesos"

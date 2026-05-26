@@ -104,29 +104,6 @@
                 app:layout_constraintTop_toBottomOf="@id/tvDescLabel" />
 
             <TextView
-                android:id="@+id/tvStockLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_medium"
-                android:text="@string/label_stock"
-                android:textColor="@color/on_background"
-                android:textSize="@dimen/text_body"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvDescripcion" />
-
-            <TextView
-                android:id="@+id/tvStock"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_medium"
-                android:text="150 unidades"
-                android:textColor="@color/success"
-                android:textSize="@dimen/text_body"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvDescripcion" />
-
-            <TextView
                 android:id="@+id/tvCantidadLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -136,7 +113,7 @@
                 android:textSize="@dimen/text_body"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvStockLabel" />
+                app:layout_constraintTop_toBottomOf="@id/tvDescripcion" />
 
             <ImageButton
                 android:id="@+id/btnMinus"

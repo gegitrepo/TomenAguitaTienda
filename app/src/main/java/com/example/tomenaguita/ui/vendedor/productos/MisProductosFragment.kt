@@ -12,26 +12,39 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tomenaguita.databinding.FragmentMisProductosBinding
 import com.example.tomenaguita.ui.adapter.ProductoAdapter
 import com.example.tomenaguita.ui.adapter.ProductoItem
-import com.example.tomenaguita.utils.SessionManager
 import com.example.tomenaguita.utils.gone
 import com.example.tomenaguita.utils.visible
 import com.example.tomenaguita.viewmodel.ProductoViewModel
 
+// Fragmento del modulo vendedor que muestra el catalogo completo de productos disponibles.
+// Permite al vendedor crear, editar y eliminar productos.
+// Nota: muestra TODOS los productos del catalogo global (productosDisponibles), no solo los del
+// vendedor en sesion, porque los productos demo tienen vendedorId="demo" en Firestore y se
+// comparten entre vendedores.
 class MisProductosFragment : Fragment() {
 
+    // Binding para acceder a las vistas del layout fragment_mis_productos.xml
     private var _binding: FragmentMisProductosBinding? = null
     private val binding get() = _binding!!
+
+    // Adaptador del RecyclerView de productos
     private lateinit var adapter: ProductoAdapter
+
+    // ViewModel compartido a nivel de actividad para acceder al catalogo de productos
     private val viewModel: ProductoViewModel by activityViewModels()
 
+    // Infla el layout del fragmento y retorna la vista raiz
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentMisProductosBinding.inflate(inflater, container, false)
         return binding.root
     }
 
+    // Configura el adaptador, el RecyclerView, los observadores del ViewModel y los listeners de UI.
+    // Se llama despues de que la vista ha sido creada.
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Inicializa el adaptador con callbacks para clic en la card y clic en el boton "+"
         adapter = ProductoAdapter(
             onProductoClick = { item ->
                 // Clic en la card → editar directamente
@@ -47,28 +60,32 @@ class MisProductosFragment : Fragment() {
         binding.rvMisProductos.layoutManager = LinearLayoutManager(requireContext())
         binding.rvMisProductos.adapter = adapter
 
-        val session = SessionManager(requireContext())
-        viewModel.getProductosByVendedor(session.getUserId())
-            .observe(viewLifecycleOwner) { productos ->
-                val items = productos.map { ProductoItem.from(it) }
-                adapter.submitList(items)
-                if (items.isEmpty()) {
-                    binding.tvEmpty.visible()
-                    binding.rvMisProductos.gone()
-                } else {
-                    binding.tvEmpty.gone()
-                    binding.rvMisProductos.visible()
-                }
+        // Observa el catalogo global de productos y actualiza la lista; muestra mensaje vacio si no hay productos.
+        // Muestra todo el catálogo disponible — el vendedor puede editar precio y stock de cualquier producto
+        viewModel.productosDisponibles.observe(viewLifecycleOwner) { productos ->
+            val items = productos.map { ProductoItem.from(it) }
+            adapter.submitList(items)
+            if (items.isEmpty()) {
+                binding.tvEmpty.visible()
+                binding.rvMisProductos.gone()
+            } else {
+                binding.tvEmpty.gone()
+                binding.rvMisProductos.visible()
             }
+        }
 
+        // Navega al formulario de creacion de producto al pulsar el FAB
         binding.fabCrearProducto.setOnClickListener {
             findNavController().navigate(MisProductosFragmentDirections.actionMisProductosToCrear())
         }
+        // El swipe-to-refresh solo detiene la animacion; la carga es reactiva via LiveData
         binding.swipeRefresh.setOnRefreshListener {
             binding.swipeRefresh.isRefreshing = false
         }
     }
 
+    // Muestra un dialogo contextual con las opciones Editar y Eliminar para el producto seleccionado.
+    // Recibe el ProductoItem sobre el que se actuo.
     private fun mostrarMenuProducto(item: ProductoItem) {
         AlertDialog.Builder(requireContext())
             .setTitle(item.nombre)
@@ -83,6 +100,9 @@ class MisProductosFragment : Fragment() {
             .show()
     }
 
+    // Muestra un dialogo de confirmacion antes de eliminar el producto.
+    // Si el usuario confirma, delega la eliminacion al ViewModel.
+    // Recibe el ProductoItem que se desea eliminar.
     private fun confirmarEliminacion(item: ProductoItem) {
         AlertDialog.Builder(requireContext())
             .setTitle("Eliminar producto")
@@ -92,6 +112,7 @@ class MisProductosFragment : Fragment() {
             .show()
     }
 
+    // Libera la referencia al binding para evitar fugas de memoria cuando la vista es destruida
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

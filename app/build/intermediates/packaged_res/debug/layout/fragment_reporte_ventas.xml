@@ -23,7 +23,50 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Cards de totales -->
+        <!-- Chips de filtro por estado -->
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroupEstado"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            app:singleSelection="true"
+            app:selectionRequired="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipTodos"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_filter_all"
+                android:checked="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipPagados"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chip_paid" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipPendientes"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chip_pending_filter" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCancelados"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chip_cancelled_filter" />
+
+        </com.google.android.material.chip.ChipGroup>
+
+        <!-- Fila 1: Ventas del día + Ventas del mes (solo pagados) -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardTotalDia"
             android:layout_width="0dp"
@@ -35,10 +78,10 @@
             app:cardBackgroundColor="@color/primary"
             app:layout_constraintEnd_toStartOf="@id/cardTotalMes"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTitle">
+            app:layout_constraintTop_toBottomOf="@id/chipGroupEstado">
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/padding_medium">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_today_sales" android:textColor="@color/on_primary_dim" android:textSize="@dimen/text_body" />
-                <TextView android:id="@+id/tvVentasDia" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/on_primary" android:textSize="@dimen/text_card_metric_medium" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_today_sales_paid" android:textColor="@color/on_primary_dim" android:textSize="@dimen/text_body" />
+                <TextView android:id="@+id/tvVentasDia" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$0" android:textColor="@color/on_primary" android:textSize="@dimen/text_card_metric_medium" android:textStyle="bold" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -53,10 +96,65 @@
             app:cardBackgroundColor="@color/secondary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/cardTotalDia"
-            app:layout_constraintTop_toBottomOf="@id/tvTitle">
+            app:layout_constraintTop_toBottomOf="@id/chipGroupEstado">
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/padding_medium">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_month_sales" android:textColor="@color/on_primary_dim" android:textSize="@dimen/text_body" />
-                <TextView android:id="@+id/tvVentasMes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/on_primary" android:textSize="@dimen/text_card_metric_medium" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_month_sales_paid" android:textColor="@color/on_primary_dim" android:textSize="@dimen/text_body" />
+                <TextView android:id="@+id/tvVentasMes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$0" android:textColor="@color/on_primary" android:textSize="@dimen/text_card_metric_medium" android:textStyle="bold" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Fila 2: Ventas totales (solo pagados) — ancho completo -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardVentasTotales"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            app:cardCornerRadius="@dimen/corner_radius_medium"
+            app:cardElevation="@dimen/card_elevation"
+            app:cardBackgroundColor="@color/success"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardTotalDia">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/padding_medium">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_total_sales_paid" android:textColor="@color/on_primary_dim" android:textSize="@dimen/text_body" />
+                <TextView android:id="@+id/tvVentasTotales" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$0" android:textColor="@color/on_primary" android:textSize="@dimen/text_card_metric_large" android:textStyle="bold" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Fila 3: Pedidos pendientes + cancelados -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardPendientesCount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_small"
+            app:cardCornerRadius="@dimen/corner_radius_medium"
+            app:cardElevation="@dimen/card_elevation"
+            app:cardBackgroundColor="@color/warning"
+            app:layout_constraintEnd_toStartOf="@id/cardCanceladosCount"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardVentasTotales">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/padding_medium">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_pending_sales" android:textColor="@color/on_primary_dim" android:textSize="@dimen/text_body" />
+                <TextView android:id="@+id/tvVentasPendientes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textColor="@color/on_primary" android:textSize="@dimen/text_card_metric" android:textStyle="bold" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardCanceladosCount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginStart="@dimen/margin_small"
+            app:cardCornerRadius="@dimen/corner_radius_medium"
+            app:cardElevation="@dimen/card_elevation"
+            app:cardBackgroundColor="@color/error"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/cardPendientesCount"
+            app:layout_constraintTop_toBottomOf="@id/cardVentasTotales">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/padding_medium">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_cancelled_sales" android:textColor="@color/on_primary_dim" android:textSize="@dimen/text_body" />
+                <TextView android:id="@+id/tvVentasCanceladas" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textColor="@color/on_primary" android:textSize="@dimen/text_card_metric" android:textStyle="bold" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -71,7 +169,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardTotalDia" />
+            app:layout_constraintTop_toBottomOf="@id/cardPendientesCount" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvUltimasVentas"

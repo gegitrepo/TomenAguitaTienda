@@ -62,19 +62,13 @@ public final class FragmentProductoDetalleBinding implements ViewBinding {
   @NonNull
   public final TextView tvPresentacion;
 
-  @NonNull
-  public final TextView tvStock;
-
-  @NonNull
-  public final TextView tvStockLabel;
-
   private FragmentProductoDetalleBinding(@NonNull NestedScrollView rootView,
       @NonNull MaterialButton btnAgregarCarrito, @NonNull ImageButton btnMinus,
       @NonNull ImageButton btnPlus, @NonNull ConstraintLayout cardContent, @NonNull View divider,
       @NonNull ImageView ivProducto, @NonNull TextView tvCantidad,
       @NonNull TextView tvCantidadLabel, @NonNull TextView tvDescLabel,
       @NonNull TextView tvDescripcion, @NonNull TextView tvNombre, @NonNull TextView tvPrecio,
-      @NonNull TextView tvPresentacion, @NonNull TextView tvStock, @NonNull TextView tvStockLabel) {
+      @NonNull TextView tvPresentacion) {
     this.rootView = rootView;
     this.btnAgregarCarrito = btnAgregarCarrito;
     this.btnMinus = btnMinus;
@@ -89,8 +83,6 @@ public final class FragmentProductoDetalleBinding implements ViewBinding {
     this.tvNombre = tvNombre;
     this.tvPrecio = tvPrecio;
     this.tvPresentacion = tvPresentacion;
-    this.tvStock = tvStock;
-    this.tvStockLabel = tvStockLabel;
   }
 
   @Override
@@ -198,21 +190,9 @@ public final class FragmentProductoDetalleBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.tvStock;
-      TextView tvStock = ViewBindings.findChildViewById(rootView, id);
-      if (tvStock == null) {
-        break missingId;
-      }
-
-      id = R.id.tvStockLabel;
-      TextView tvStockLabel = ViewBindings.findChildViewById(rootView, id);
-      if (tvStockLabel == null) {
-        break missingId;
-      }
-
       return new FragmentProductoDetalleBinding((NestedScrollView) rootView, btnAgregarCarrito,
           btnMinus, btnPlus, cardContent, divider, ivProducto, tvCantidad, tvCantidadLabel,
-          tvDescLabel, tvDescripcion, tvNombre, tvPrecio, tvPresentacion, tvStock, tvStockLabel);
+          tvDescLabel, tvDescripcion, tvNombre, tvPrecio, tvPresentacion);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

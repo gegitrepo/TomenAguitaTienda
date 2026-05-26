@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.tomenaguita.app-mergeDebugResources-61:/values-hdpi-v4/values-hdpi-v4.xml",
+            "outputFile": "com.example.tomenaguita.app-mergeDebugResources-96:/values-hdpi-v4/values-hdpi-v4.xml",
             "map": [
                 {
                     "source": "C:\\Users\\ASUS\\.gradle\\caches\\transforms-3\\7fdeebeb68f2a73bc61687c4458bbbf2\\transformed\\appcompat-1.6.1\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
@@ -12,6 +12,24 @@
                         "endLines": "6",
                         "endColumns": "13",
                         "endOffsets": "327"
+                    },
+                    "to": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "119",
+                        "endLines": "7",
+                        "endColumns": "13",
+                        "endOffsets": "391"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ASUS\\.gradle\\caches\\transforms-3\\b9fac45aa9e244458149ff01517a7c33\\transformed\\jetified-payments-core-20.36.0\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "63",
+                        "endOffsets": "114"
                     }
                 }
             ]

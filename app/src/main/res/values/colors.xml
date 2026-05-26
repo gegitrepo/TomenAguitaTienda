@@ -27,4 +27,8 @@
     <color name="input_background">#F5F9FF</color>
     <color name="on_primary_dim">#CCFFFFFF</color>
     <color name="on_primary_soft">#BBFFFFFF</color>
+    <!-- Colores para tarjeta de datos de prueba sandbox -->
+    <color name="sandbox_card_bg">#FFF3E0</color>
+    <color name="sandbox_card_title">#E65100</color>
+    <color name="sandbox_card_text">#BF360C</color>
 </resources>
